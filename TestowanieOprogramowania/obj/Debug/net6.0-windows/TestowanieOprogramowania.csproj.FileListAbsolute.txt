@@ -1,0 +1,17 @@
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\bin\Debug\net6.0-windows\TestowanieOprogramowania.exe
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\bin\Debug\net6.0-windows\TestowanieOprogramowania.deps.json
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\bin\Debug\net6.0-windows\TestowanieOprogramowania.runtimeconfig.json
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\bin\Debug\net6.0-windows\TestowanieOprogramowania.dll
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\bin\Debug\net6.0-windows\TestowanieOprogramowania.pdb
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.csproj.AssemblyReference.cache
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.Form1.resources
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.csproj.GenerateResource.cache
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.AssemblyInfoInputs.cache
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.AssemblyInfo.cs
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.csproj.CoreCompileInputs.cache
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.dll
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\refint\TestowanieOprogramowania.dll
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.pdb
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.genruntimeconfig.cache
+C:\Users\cayna\source\repos\TestowanieOprogramowania\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
