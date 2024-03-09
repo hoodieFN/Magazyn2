@@ -28,129 +28,129 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            pictureBox1 = new PictureBox();
+            dataGridView1 = new DataGridView();
             label1 = new Label();
-            textBox1 = new TextBox();
+            textBoxSzukaj = new TextBox();
             label2 = new Label();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            button1 = new Button();
-            pictureBox2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            buttonSzukaj = new Button();
+            buttonDodajUzytkownika = new Button();
+            buttonUsunUzytkownika = new Button();
+            button4 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // dataGridView1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, -1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(580, 601);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            dataGridView1.Anchor = AnchorStyles.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(233, 264);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(619, 150);
+            dataGridView1.TabIndex = 8;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(703, 144);
+            label1.Location = new Point(233, 245);
             label1.Name = "label1";
-            label1.Size = new Size(64, 24);
-            label1.TabIndex = 1;
-            label1.Text = "Login";
+            label1.Size = new Size(74, 15);
+            label1.TabIndex = 9;
+            label1.Text = "Użytkownicy";
             // 
-            // textBox1
+            // textBoxSzukaj
             // 
-            textBox1.Location = new Point(622, 234);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(222, 23);
-            textBox1.TabIndex = 2;
+            textBoxSzukaj.Anchor = AnchorStyles.None;
+            textBoxSzukaj.Location = new Point(233, 219);
+            textBoxSzukaj.Name = "textBoxSzukaj";
+            textBoxSzukaj.Size = new Size(181, 23);
+            textBoxSzukaj.TabIndex = 10;
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(622, 210);
+            label2.Location = new Point(233, 201);
             label2.Name = "label2";
-            label2.Size = new Size(88, 21);
-            label2.TabIndex = 3;
-            label2.Text = "Username";
+            label2.Size = new Size(125, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Wyszukaj użytkownika";
             // 
-            // label3
+            // buttonSzukaj
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(622, 277);
-            label3.Name = "label3";
-            label3.Size = new Size(82, 21);
-            label3.TabIndex = 5;
-            label3.Text = "Password";
+            buttonSzukaj.Anchor = AnchorStyles.None;
+            buttonSzukaj.Location = new Point(420, 219);
+            buttonSzukaj.Name = "buttonSzukaj";
+            buttonSzukaj.Size = new Size(53, 23);
+            buttonSzukaj.TabIndex = 12;
+            buttonSzukaj.Text = "Szukaj";
+            buttonSzukaj.UseVisualStyleBackColor = true;
+            buttonSzukaj.Click += buttonSzukaj_Click;
             // 
-            // textBox2
+            // buttonDodajUzytkownika
             // 
-            textBox2.Location = new Point(622, 301);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(222, 23);
-            textBox2.TabIndex = 4;
-            textBox2.UseSystemPasswordChar = true;
+            buttonDodajUzytkownika.Anchor = AnchorStyles.None;
+            buttonDodajUzytkownika.Location = new Point(233, 420);
+            buttonDodajUzytkownika.Name = "buttonDodajUzytkownika";
+            buttonDodajUzytkownika.Size = new Size(90, 47);
+            buttonDodajUzytkownika.TabIndex = 13;
+            buttonDodajUzytkownika.Text = "Dodaj użytkownika";
+            buttonDodajUzytkownika.UseVisualStyleBackColor = true;
+            buttonDodajUzytkownika.Click += buttonDodajUzytkownika_Click_1;
             // 
-            // button1
+            // buttonUsunUzytkownika
             // 
-            button1.BackColor = SystemColors.ControlDark;
-            button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(622, 357);
-            button1.Name = "button1";
-            button1.Size = new Size(222, 39);
-            button1.TabIndex = 6;
-            button1.Text = "Sign in";
-            button1.UseVisualStyleBackColor = false;
+            buttonUsunUzytkownika.Anchor = AnchorStyles.None;
+            buttonUsunUzytkownika.Location = new Point(329, 420);
+            buttonUsunUzytkownika.Name = "buttonUsunUzytkownika";
+            buttonUsunUzytkownika.Size = new Size(89, 47);
+            buttonUsunUzytkownika.TabIndex = 14;
+            buttonUsunUzytkownika.Text = "Usuń użytkownika";
+            buttonUsunUzytkownika.UseVisualStyleBackColor = true;
+            buttonUsunUzytkownika.Click += buttonUsunUzytkownika_Click;
             // 
-            // pictureBox2
+            // button4
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(849, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(39, 36);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 8;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            button4.Anchor = AnchorStyles.None;
+            button4.Location = new Point(424, 420);
+            button4.Name = "button4";
+            button4.Size = new Size(91, 47);
+            button4.TabIndex = 15;
+            button4.Text = "Edytuj użytkownika";
+            button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(900, 600);
-            Controls.Add(pictureBox2);
-            Controls.Add(button1);
-            Controls.Add(label3);
-            Controls.Add(textBox2);
+            ClientSize = new Size(1024, 614);
+            Controls.Add(button4);
+            Controls.Add(buttonUsunUzytkownika);
+            Controls.Add(buttonDodajUzytkownika);
+            Controls.Add(buttonSzukaj);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxSzukaj);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
-            FormBorderStyle = FormBorderStyle.None;
+            Controls.Add(dataGridView1);
+            MinimumSize = new Size(300, 300);
             Name = "Form1";
             Text = "Lagerlokal";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
+        private DataGridView dataGridView1;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox textBoxSzukaj;
         private Label label2;
-        private Label label3;
-        private TextBox textBox2;
-        private Button button1;
-        private PictureBox pictureBox2;
+        private Button buttonSzukaj;
+        private Button buttonDodajUzytkownika;
+        private Button buttonUsunUzytkownika;
+        private Button button4;
     }
 }
