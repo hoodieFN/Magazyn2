@@ -13,6 +13,9 @@ namespace TestowanieOprogramowania
 {
     public partial class FormDodajUzytkownika : Form
     {//test ttuaj test
+        public string conString;
+        
+        private string dataSource = "TUF15";
         public FormDodajUzytkownika()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace TestowanieOprogramowania
         private void DodajUzytkownikaDoBazy(string imie, string nazwisko, string login, string numerTelefonu, string miejscowosc, string kodPocztowy,
             string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu)
         {
-            string connectionString = "Data Source=LAPTOP-72SPAJ8D;Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
+            string connectionString = $"Data Source={dataSource};Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu) "
                 +

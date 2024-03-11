@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TestowanieOprogramowania
 {
@@ -9,14 +10,14 @@ namespace TestowanieOprogramowania
     {
         public string conString;
         //Zmieñ dataSource na swoj¹ nazwê serwera
-        private string dataSource = "LAPTOP-72SPAJ8D";
+        private string dataSource = "TUF15";
         public Form1()
         {
             InitializeComponent();
             conString = $"Data Source={dataSource};Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
         }
-        
-       
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -115,8 +116,8 @@ namespace TestowanieOprogramowania
 
 
                                 Miejscowosc = reader["Miejscowosc"].ToString(),
-                                KodPocztowy= reader["KodPocztowy"].ToString(),
-                                Ulica= reader["Ulica"].ToString(),
+                                KodPocztowy = reader["KodPocztowy"].ToString(),
+                                Ulica = reader["Ulica"].ToString(),
                                 NumerPosesji = reader["NumerPosesji"].ToString(),
                                 NumerLokalu = reader["NumerLokalu"].ToString(),
                                 PESEL = reader["PESEL"].ToString(),
@@ -163,8 +164,8 @@ namespace TestowanieOprogramowania
                                 Nazwisko = reader["Nazwisko"].ToString(),
 
                                 Miejscowosc = reader["Miejscowosc"].ToString(),
-                                KodPocztowy= reader["KodPocztowy"].ToString(),
-                                Ulica= reader["Ulica"].ToString(),
+                                KodPocztowy = reader["KodPocztowy"].ToString(),
+                                Ulica = reader["Ulica"].ToString(),
                                 NumerPosesji = reader["NumerPosesji"].ToString(),
                                 NumerLokalu = reader["NumerLokalu"].ToString(),
                                 PESEL = reader["PESEL"].ToString(),
@@ -193,5 +194,32 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+
+
+
+        private void buttonEdytujUzytkownika_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int userId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["UzytkownikID"].Value);
+                EdytujUzytkownika(userId);
+            }
+            else
+            {
+                MessageBox.Show("Proszê zaznaczyæ wiersz do edycji", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void EdytujUzytkownika(int userId)
+        {
+            using (var formEdytuj = new FormEdytujUzytkownika(userId))
+            {
+                var result = formEdytuj.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    OdswiezDataGridView();
+                }
+            }
+        }
+
     }
 }
