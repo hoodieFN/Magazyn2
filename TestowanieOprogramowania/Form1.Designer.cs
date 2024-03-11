@@ -41,52 +41,46 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.Anchor = AnchorStyles.None;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(266, 352);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(12, 71);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(707, 200);
+            dataGridView1.Size = new Size(1296, 770);
             dataGridView1.TabIndex = 8;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(266, 327);
+            label1.Location = new Point(12, 52);
             label1.Name = "label1";
-            label1.Size = new Size(91, 20);
+            label1.Size = new Size(74, 15);
             label1.TabIndex = 9;
             label1.Text = "Użytkownicy";
             // 
             // textBoxSzukaj
             // 
-            textBoxSzukaj.Anchor = AnchorStyles.None;
-            textBoxSzukaj.Location = new Point(266, 292);
-            textBoxSzukaj.Margin = new Padding(3, 4, 3, 4);
+            textBoxSzukaj.Location = new Point(12, 27);
             textBoxSzukaj.Name = "textBoxSzukaj";
-            textBoxSzukaj.Size = new Size(206, 27);
+            textBoxSzukaj.Size = new Size(181, 23);
             textBoxSzukaj.TabIndex = 10;
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(266, 268);
+            label2.Location = new Point(12, 8);
             label2.Name = "label2";
-            label2.Size = new Size(155, 20);
+            label2.Size = new Size(125, 15);
             label2.TabIndex = 11;
             label2.Text = "Wyszukaj użytkownika";
             // 
             // buttonSzukaj
             // 
-            buttonSzukaj.Anchor = AnchorStyles.None;
-            buttonSzukaj.Location = new Point(480, 292);
-            buttonSzukaj.Margin = new Padding(3, 4, 3, 4);
+            buttonSzukaj.Location = new Point(199, 26);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(61, 31);
+            buttonSzukaj.Size = new Size(125, 23);
             buttonSzukaj.TabIndex = 12;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
@@ -94,11 +88,10 @@
             // 
             // buttonDodajUzytkownika
             // 
-            buttonDodajUzytkownika.Anchor = AnchorStyles.None;
-            buttonDodajUzytkownika.Location = new Point(266, 560);
-            buttonDodajUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonDodajUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDodajUzytkownika.Location = new Point(1032, 3);
             buttonDodajUzytkownika.Name = "buttonDodajUzytkownika";
-            buttonDodajUzytkownika.Size = new Size(103, 63);
+            buttonDodajUzytkownika.Size = new Size(90, 47);
             buttonDodajUzytkownika.TabIndex = 13;
             buttonDodajUzytkownika.Text = "Dodaj użytkownika";
             buttonDodajUzytkownika.UseVisualStyleBackColor = true;
@@ -106,11 +99,10 @@
             // 
             // buttonUsunUzytkownika
             // 
-            buttonUsunUzytkownika.Anchor = AnchorStyles.None;
-            buttonUsunUzytkownika.Location = new Point(376, 560);
-            buttonUsunUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonUsunUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonUsunUzytkownika.Location = new Point(1128, 3);
             buttonUsunUzytkownika.Name = "buttonUsunUzytkownika";
-            buttonUsunUzytkownika.Size = new Size(102, 63);
+            buttonUsunUzytkownika.Size = new Size(89, 47);
             buttonUsunUzytkownika.TabIndex = 14;
             buttonUsunUzytkownika.Text = "Usuń użytkownika";
             buttonUsunUzytkownika.UseVisualStyleBackColor = true;
@@ -118,11 +110,10 @@
             // 
             // buttonEdytujUzytkownika
             // 
-            buttonEdytujUzytkownika.Anchor = AnchorStyles.None;
-            buttonEdytujUzytkownika.Location = new Point(485, 560);
-            buttonEdytujUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonEdytujUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEdytujUzytkownika.Location = new Point(1223, 3);
             buttonEdytujUzytkownika.Name = "buttonEdytujUzytkownika";
-            buttonEdytujUzytkownika.Size = new Size(104, 63);
+            buttonEdytujUzytkownika.Size = new Size(91, 47);
             buttonEdytujUzytkownika.TabIndex = 15;
             buttonEdytujUzytkownika.Text = "Edytuj użytkownika";
             buttonEdytujUzytkownika.UseVisualStyleBackColor = true;
@@ -130,10 +121,10 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1170, 819);
+            ClientSize = new Size(1320, 853);
             Controls.Add(buttonEdytujUzytkownika);
             Controls.Add(buttonUsunUzytkownika);
             Controls.Add(buttonDodajUzytkownika);
@@ -142,8 +133,8 @@
             Controls.Add(textBoxSzukaj);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
-            Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(340, 384);
+            FormBorderStyle = FormBorderStyle.None;
+            MinimumSize = new Size(300, 298);
             Name = "Form1";
             Text = "Lagerlokal";
             Load += Form1_Load;

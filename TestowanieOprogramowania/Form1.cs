@@ -10,7 +10,7 @@ namespace TestowanieOprogramowania
     {
         public string conString;
         //Zmieñ dataSource na swoj¹ nazwê serwera
-        private string dataSource = "TUF15";
+        private string dataSource = "LAPTOP-72SPAJ8D";
         public Form1()
         {
             InitializeComponent();
@@ -142,7 +142,7 @@ namespace TestowanieOprogramowania
 
         private void WyszukajUzytkownikow(string szukanyTekst)
         {
-            string query = "SELECT * FROM dbo.Uzytkownicy WHERE Login LIKE @szukanyTekst OR Imie LIKE @szukanyTekst OR Nazwisko LIKE @szukanyTekst";
+            string query = "SELECT * FROM dbo.Uzytkownicy WHERE Login LIKE @szukanyTekst OR Imie LIKE @szukanyTekst OR Nazwisko LIKE @szukanyTekst OR Email LIKE @szukanyTekst OR NumerTelefonu LIKE @szukanyTekst";
             List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
 
             using (SqlConnection connection = new SqlConnection(conString))

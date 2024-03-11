@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             textBoxLogin = new TextBox();
             textBoxImie = new TextBox();
             textBoxNazwisko = new TextBox();
@@ -42,7 +41,6 @@
             textBoxPlec = new TextBox();
             textBoxEmail = new TextBox();
             textBoxNumerTelefonu = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -60,18 +58,10 @@
             buttonAnuluj = new Button();
             SuspendLayout();
             // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.Location = new Point(275, 75);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 0;
-            // 
             // textBoxLogin
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
-            textBoxLogin.Location = new Point(275, 124);
+            textBoxLogin.Location = new Point(279, 83);
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.Size = new Size(100, 23);
             textBoxLogin.TabIndex = 1;
@@ -79,7 +69,7 @@
             // textBoxImie
             // 
             textBoxImie.Anchor = AnchorStyles.None;
-            textBoxImie.Location = new Point(275, 178);
+            textBoxImie.Location = new Point(279, 137);
             textBoxImie.Name = "textBoxImie";
             textBoxImie.Size = new Size(100, 23);
             textBoxImie.TabIndex = 2;
@@ -87,7 +77,7 @@
             // textBoxNazwisko
             // 
             textBoxNazwisko.Anchor = AnchorStyles.None;
-            textBoxNazwisko.Location = new Point(275, 231);
+            textBoxNazwisko.Location = new Point(279, 190);
             textBoxNazwisko.Name = "textBoxNazwisko";
             textBoxNazwisko.Size = new Size(100, 23);
             textBoxNazwisko.TabIndex = 3;
@@ -95,7 +85,7 @@
             // textBoxMiejscowosc
             // 
             textBoxMiejscowosc.Anchor = AnchorStyles.None;
-            textBoxMiejscowosc.Location = new Point(275, 286);
+            textBoxMiejscowosc.Location = new Point(279, 245);
             textBoxMiejscowosc.Name = "textBoxMiejscowosc";
             textBoxMiejscowosc.Size = new Size(100, 23);
             textBoxMiejscowosc.TabIndex = 4;
@@ -103,7 +93,7 @@
             // textBoxKodPocztowy
             // 
             textBoxKodPocztowy.Anchor = AnchorStyles.None;
-            textBoxKodPocztowy.Location = new Point(275, 338);
+            textBoxKodPocztowy.Location = new Point(279, 297);
             textBoxKodPocztowy.Name = "textBoxKodPocztowy";
             textBoxKodPocztowy.Size = new Size(100, 23);
             textBoxKodPocztowy.TabIndex = 5;
@@ -111,7 +101,7 @@
             // textBoxUlica
             // 
             textBoxUlica.Anchor = AnchorStyles.None;
-            textBoxUlica.Location = new Point(275, 395);
+            textBoxUlica.Location = new Point(279, 354);
             textBoxUlica.Name = "textBoxUlica";
             textBoxUlica.Size = new Size(100, 23);
             textBoxUlica.TabIndex = 6;
@@ -119,7 +109,7 @@
             // textBoxNumerPosesji
             // 
             textBoxNumerPosesji.Anchor = AnchorStyles.None;
-            textBoxNumerPosesji.Location = new Point(275, 445);
+            textBoxNumerPosesji.Location = new Point(279, 404);
             textBoxNumerPosesji.Name = "textBoxNumerPosesji";
             textBoxNumerPosesji.Size = new Size(100, 23);
             textBoxNumerPosesji.TabIndex = 7;
@@ -172,21 +162,11 @@
             textBoxNumerTelefonu.Size = new Size(100, 23);
             textBoxNumerTelefonu.TabIndex = 13;
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Location = new Point(175, 78);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 15);
-            label1.TabIndex = 14;
-            label1.Text = "UzytkownikID";
-            // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(175, 127);
+            label2.Location = new Point(179, 86);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 15;
@@ -196,7 +176,7 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(175, 181);
+            label3.Location = new Point(179, 140);
             label3.Name = "label3";
             label3.Size = new Size(30, 15);
             label3.TabIndex = 16;
@@ -206,7 +186,7 @@
             // 
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
-            label4.Location = new Point(175, 234);
+            label4.Location = new Point(179, 193);
             label4.Name = "label4";
             label4.Size = new Size(57, 15);
             label4.TabIndex = 17;
@@ -216,7 +196,7 @@
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
-            label5.Location = new Point(175, 286);
+            label5.Location = new Point(179, 245);
             label5.Name = "label5";
             label5.Size = new Size(75, 15);
             label5.TabIndex = 18;
@@ -226,7 +206,7 @@
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
-            label6.Location = new Point(175, 341);
+            label6.Location = new Point(179, 300);
             label6.Name = "label6";
             label6.Size = new Size(79, 15);
             label6.TabIndex = 19;
@@ -236,7 +216,7 @@
             // 
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
-            label7.Location = new Point(175, 395);
+            label7.Location = new Point(179, 354);
             label7.Name = "label7";
             label7.Size = new Size(33, 15);
             label7.TabIndex = 20;
@@ -246,7 +226,7 @@
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(175, 445);
+            label8.Location = new Point(179, 404);
             label8.Name = "label8";
             label8.Size = new Size(80, 15);
             label8.TabIndex = 21;
@@ -315,9 +295,9 @@
             // buttonZapisz
             // 
             buttonZapisz.Anchor = AnchorStyles.None;
-            buttonZapisz.Location = new Point(412, 426);
+            buttonZapisz.Location = new Point(407, 404);
             buttonZapisz.Name = "buttonZapisz";
-            buttonZapisz.Size = new Size(75, 23);
+            buttonZapisz.Size = new Size(84, 23);
             buttonZapisz.TabIndex = 28;
             buttonZapisz.Text = "Zapisz";
             buttonZapisz.UseVisualStyleBackColor = true;
@@ -326,9 +306,9 @@
             // buttonAnuluj
             // 
             buttonAnuluj.Anchor = AnchorStyles.None;
-            buttonAnuluj.Location = new Point(510, 426);
+            buttonAnuluj.Location = new Point(518, 404);
             buttonAnuluj.Name = "buttonAnuluj";
-            buttonAnuluj.Size = new Size(75, 23);
+            buttonAnuluj.Size = new Size(100, 23);
             buttonAnuluj.TabIndex = 29;
             buttonAnuluj.Text = "Anuluj";
             buttonAnuluj.UseVisualStyleBackColor = true;
@@ -354,7 +334,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(textBoxNumerTelefonu);
             Controls.Add(textBoxEmail);
             Controls.Add(textBoxPlec);
@@ -368,7 +347,6 @@
             Controls.Add(textBoxNazwisko);
             Controls.Add(textBoxImie);
             Controls.Add(textBoxLogin);
-            Controls.Add(textBox1);
             Name = "FormDodajUzytkownika";
             Text = "FormDodajUzytkownika";
             Load += FormDodajUzytkownika_Load;
@@ -377,8 +355,6 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
         private TextBox textBoxLogin;
         private TextBox textBoxImie;
         private TextBox textBoxNazwisko;
@@ -392,7 +368,6 @@
         private TextBox textBoxPlec;
         private TextBox textBoxEmail;
         private TextBox textBoxNumerTelefonu;
-        private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
