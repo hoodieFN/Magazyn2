@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace TestowanieOprogramowania
 {
     public partial class FormDodajUzytkownika : Form
-    {
+    {//test ttuaj test
         public FormDodajUzytkownika()
         {
             InitializeComponent();
