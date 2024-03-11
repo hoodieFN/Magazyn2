@@ -12,10 +12,10 @@ using System.Windows.Forms;
 namespace TestowanieOprogramowania
 {
     public partial class FormDodajUzytkownika : Form
-    {//test ttuaj test
+    {
         public string conString;
-        
-        private string dataSource = "TUF15";
+
+        private string dataSource = "LAPTOP-72SPAJ8D";
         public FormDodajUzytkownika()
         {
             InitializeComponent();
@@ -29,6 +29,50 @@ namespace TestowanieOprogramowania
         private void DodajUzytkownikaDoBazy(string imie, string nazwisko, string login, string numerTelefonu, string miejscowosc, string kodPocztowy,
             string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu)
         {
+            if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) || string.IsNullOrWhiteSpace(login) ||
+            string.IsNullOrWhiteSpace(miejscowosc) || string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
+            string.IsNullOrWhiteSpace(numerPosesji) || string.IsNullOrWhiteSpace(pesel) || string.IsNullOrWhiteSpace(dataUrodzenia) ||
+            string.IsNullOrWhiteSpace(plec) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(numerTelefonu) ||
+            string.IsNullOrWhiteSpace(numerLokalu))
+            {
+                MessageBox.Show("Istnieje co najmniej jendo niewypełnione pole.");
+                return;
+            }
+            //b. Login –  minimum 6 znaków
+            if (login.Length < 8)
+            {
+                MessageBox.Show("Login musi zawierać co najmniej 8 liter.");
+                return;
+            }
+            //c. PESEL:
+            if (WalidujPesel(pesel) == false)
+            {
+                MessageBox.Show("Błędny PESEL");
+                return;
+            }
+            //d. Adres e-mail:
+            if (WalidujEmail(email) == false)
+            {
+                MessageBox.Show("Błędny e-mail");
+                return;
+            }
+            //e.Numer telefonu: 9 cyfr
+            if (WalidujNumerTelefonu(numerTelefonu) == false)
+            {
+                MessageBox.Show("Błędny numer telefonu");
+                return;
+            }
+            //data
+            if (!WalidujDate(dataUrodzenia))
+            {
+                return;
+            }
+            //plec K albo M
+            if (!WalidujPlec(plec))
+            {
+                return;
+            }
+
             string connectionString = $"Data Source={dataSource};Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu) "
@@ -89,5 +133,116 @@ namespace TestowanieOprogramowania
 
             DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu);
         }
+
+
+        private bool WalidujPesel(string pesel)
+        {
+            if (pesel.Length != 11 || !pesel.All(char.IsDigit))
+            {
+                MessageBox.Show("PESEL musi składać się z 11 cyfr.");
+                return false;
+            }
+
+            int rok = Convert.ToInt32(pesel.Substring(0, 2));
+            int miesiac = Convert.ToInt32(pesel.Substring(2, 2));
+            int dzien = Convert.ToInt32(pesel.Substring(4, 2));
+
+            miesiac %= 20;
+
+            if (miesiac < 1 || miesiac > 12 || dzien < 1 || dzien > 31)
+            {
+                MessageBox.Show("Data urodzenia w PESEL jest nieprawidłowa.");
+                return false;
+            }
+
+            //Niezaimplementowane
+
+            //ii.	Przedostatnia cyfra odpowiada płci: 
+            // 1.Nieparzyste – kobieta
+            //2.Parzyste i zero – mężczyźni
+
+            /*
+            int plecNumer = Convert.ToInt32(pesel[9].ToString());
+            if ((plec == "Kobieta" && plecNumer % 2 == 0) || (plec == "Mężczyzna" && plecNumer % 2 != 0))
+            {
+                MessageBox.Show("Nieprawidłowy numer PESEL dla podanej płci.");
+                return false;
+            }
+            */
+
+            int[] wagi = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
+            int sumaKontrolna = 0;
+
+            for (int i = 0; i < wagi.Length; i++)
+            {
+                sumaKontrolna += wagi[i] * Convert.ToInt32(pesel[i].ToString());
+            }
+
+            int cyfraKontrolna = (10 - sumaKontrolna % 10) % 10;
+            if (cyfraKontrolna != Convert.ToInt32(pesel[10].ToString()))
+            {
+                MessageBox.Show("Nieprawidłowa cyfra kontrolna PESEL.");
+                return false;
+            }
+
+
+            return true;
+        }
+        private bool WalidujEmail(string email)
+        {
+            if (email.Split('@').Length - 1 != 1)
+            {
+                MessageBox.Show("Adres e-mail musi zawierać dokładnie jeden znak '@'.");
+                return false;
+            }
+
+            if (email.Length > 255)
+            {
+                MessageBox.Show("Adres e-mail może zawierać maksymalnie 255 znaków.");
+                return false;
+            }
+
+            //Dodac czy email juz istnieje w bazie
+
+            return true;
+        }
+        private bool WalidujNumerTelefonu(string numerTelefonu)
+        {
+            if (numerTelefonu.Length != 9 || !long.TryParse(numerTelefonu, out _))
+            {
+                MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.");
+                return false;
+            }
+
+            return true;
+        }
+        private bool WalidujDate(string dataUrodzenia)
+        {
+            if (!DateTime.TryParse(dataUrodzenia, out DateTime parsedDate))
+            {
+                MessageBox.Show("Podana data urodzenia jest nieprawidłowa. Użyj formatu RRRR-MM-DD.");
+                return false;
+            }
+
+            if (parsedDate > DateTime.Now)
+            {
+                MessageBox.Show("Data urodzenia nie może być w przyszłości.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool WalidujPlec(string plec)
+        {
+            if (plec != "K" && plec != "M")
+            {
+                MessageBox.Show("Płeć musi być określona jako 'K' dla kobiety lub 'M' dla mężczyzny.");
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
