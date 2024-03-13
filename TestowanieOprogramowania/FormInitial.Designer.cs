@@ -37,7 +37,7 @@
             // 
             // panelslide
             // 
-            panelslide.BackColor = Color.Gray;
+            panelslide.BackColor = Color.FromArgb(24, 24, 24);
             panelslide.Controls.Add(buttonLogin);
             panelslide.Controls.Add(buttonZarzadzaj);
             panelslide.Dock = DockStyle.Left;

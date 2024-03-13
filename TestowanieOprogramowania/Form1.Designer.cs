@@ -32,7 +32,6 @@
             label1 = new Label();
             textBoxSzukaj = new TextBox();
             label2 = new Label();
-            buttonSzukaj = new Button();
             buttonDodajUzytkownika = new Button();
             buttonUsunUzytkownika = new Button();
             buttonEdytujUzytkownika = new Button();
@@ -42,6 +41,7 @@
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 71);
             dataGridView1.Name = "dataGridView1";
@@ -54,6 +54,7 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(12, 52);
             label1.Name = "label1";
             label1.Size = new Size(74, 15);
@@ -66,25 +67,18 @@
             textBoxSzukaj.Name = "textBoxSzukaj";
             textBoxSzukaj.Size = new Size(181, 23);
             textBoxSzukaj.TabIndex = 10;
+            textBoxSzukaj.TextChanged += buttonSzukaj_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(12, 8);
             label2.Name = "label2";
             label2.Size = new Size(125, 15);
             label2.TabIndex = 11;
             label2.Text = "Wyszukaj użytkownika";
-            // 
-            // buttonSzukaj
-            // 
-            buttonSzukaj.Location = new Point(199, 26);
-            buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(125, 23);
-            buttonSzukaj.TabIndex = 12;
-            buttonSzukaj.Text = "Szukaj";
-            buttonSzukaj.UseVisualStyleBackColor = true;
-            buttonSzukaj.Click += buttonSzukaj_Click;
             // 
             // buttonDodajUzytkownika
             // 
@@ -123,12 +117,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLightLight;
+            BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1320, 853);
             Controls.Add(buttonEdytujUzytkownika);
             Controls.Add(buttonUsunUzytkownika);
             Controls.Add(buttonDodajUzytkownika);
-            Controls.Add(buttonSzukaj);
             Controls.Add(label2);
             Controls.Add(textBoxSzukaj);
             Controls.Add(label1);
@@ -148,7 +141,6 @@
         private Label label1;
         private TextBox textBoxSzukaj;
         private Label label2;
-        private Button buttonSzukaj;
         private Button buttonDodajUzytkownika;
         private Button buttonUsunUzytkownika;
         private Button buttonEdytujUzytkownika;

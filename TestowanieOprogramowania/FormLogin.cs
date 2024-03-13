@@ -16,5 +16,13 @@ namespace TestowanieOprogramowania
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var formDodaj = new FormInitial())
+            {
+                var result = formDodaj.ShowDialog();
+            }
+        }
     }
 }
