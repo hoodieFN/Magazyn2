@@ -18,4 +18,4 @@ namespace TestowanieOprogramowania
 
 
 
-//AZURE TEST COMMIT
+//AZURE TEST COMMIT PRZECHODZIMY NA AZURE
