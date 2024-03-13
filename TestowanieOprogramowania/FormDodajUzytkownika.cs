@@ -13,9 +13,7 @@ namespace TestowanieOprogramowania
 {
     public partial class FormDodajUzytkownika : Form
     {
-        public string conString;
-
-        private string dataSource = "LAPTOP-72SPAJ8D";
+        string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
         public FormDodajUzytkownika()
         {
             InitializeComponent();
@@ -73,13 +71,13 @@ namespace TestowanieOprogramowania
                 return;
             }
 
-            string connectionString = $"Data Source={dataSource};Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
+            
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu) "
                 +
                 "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, @Plec, @Email, @NumerLokalu)";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
