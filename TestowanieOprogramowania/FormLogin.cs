@@ -26,3 +26,6 @@ namespace TestowanieOprogramowania
         }
     }
 }
+
+
+//Przykladowa zmiana
