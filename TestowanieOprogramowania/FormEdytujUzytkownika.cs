@@ -17,15 +17,13 @@ namespace TestowanieOprogramowania
     public partial class FormEdytujUzytkownika : Form
     {
         private int userId;
-        private string conString;
-        private string dataSource = "LAPTOP-72SPAJ8D";
+        string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
 
         public FormEdytujUzytkownika(int userId)
         {
             InitializeComponent();
             this.userId = userId;
 
-            this.conString = $"Data Source={dataSource};Initial Catalog=MagazynTestowanieOprogramowania;Integrated Security=True; TrustServerCertificate=True;";
 
             WczytajDaneUzytkownika();
         }
@@ -34,7 +32,7 @@ namespace TestowanieOprogramowania
         {
             string query = "SELECT * FROM dbo.Uzytkownicy WHERE UzytkownikID = @userId";
 
-            using (SqlConnection connection = new SqlConnection(this.conString))
+            using (SqlConnection connection = new SqlConnection(this.StringPolaczeniowy))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", this.userId);
@@ -120,7 +118,7 @@ namespace TestowanieOprogramowania
 
             string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu WHERE UzytkownikID = @UzytkownikID";
 
-            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

@@ -263,3 +263,5 @@ C:\Users\cayna\source\repos\ProjektTestowanieOprogramowaniaMagazyn\TestowanieOpr
 C:\Users\cayna\source\repos\ProjektTestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
 C:\Users\cayna\source\repos\ProjektTestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormInitial.resources
 C:\Users\cayna\source\repos\ProjektTestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormLogin.resources
+C:\Users\ernes\source\repos\ProjektTestowanieOprogramowaniaMagazyn2\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormInitial.resources
+C:\Users\ernes\source\repos\ProjektTestowanieOprogramowaniaMagazyn2\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormLogin.resources
