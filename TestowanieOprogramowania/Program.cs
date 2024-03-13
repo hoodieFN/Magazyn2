@@ -15,3 +15,7 @@ namespace TestowanieOprogramowania
         }
     }
 }
+
+
+
+//AZURE TEST COMMIT
