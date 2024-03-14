@@ -63,9 +63,12 @@
             // 
             // textBoxSzukaj
             // 
-            textBoxSzukaj.Location = new Point(12, 27);
+            textBoxSzukaj.BackColor = Color.Silver;
+            textBoxSzukaj.BorderStyle = BorderStyle.None;
+            textBoxSzukaj.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSzukaj.Location = new Point(12, 25);
             textBoxSzukaj.Name = "textBoxSzukaj";
-            textBoxSzukaj.Size = new Size(181, 23);
+            textBoxSzukaj.Size = new Size(181, 26);
             textBoxSzukaj.TabIndex = 10;
             textBoxSzukaj.TextChanged += buttonSzukaj_Click;
             // 
@@ -83,34 +86,43 @@
             // buttonDodajUzytkownika
             // 
             buttonDodajUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDodajUzytkownika.BackColor = Color.Indigo;
+            buttonDodajUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodajUzytkownika.ForeColor = Color.White;
             buttonDodajUzytkownika.Location = new Point(1032, 3);
             buttonDodajUzytkownika.Name = "buttonDodajUzytkownika";
             buttonDodajUzytkownika.Size = new Size(90, 47);
             buttonDodajUzytkownika.TabIndex = 13;
             buttonDodajUzytkownika.Text = "Dodaj użytkownika";
-            buttonDodajUzytkownika.UseVisualStyleBackColor = true;
+            buttonDodajUzytkownika.UseVisualStyleBackColor = false;
             buttonDodajUzytkownika.Click += buttonDodajUzytkownika_Click_1;
             // 
             // buttonUsunUzytkownika
             // 
             buttonUsunUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonUsunUzytkownika.BackColor = Color.Indigo;
+            buttonUsunUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUsunUzytkownika.ForeColor = Color.White;
             buttonUsunUzytkownika.Location = new Point(1128, 3);
             buttonUsunUzytkownika.Name = "buttonUsunUzytkownika";
             buttonUsunUzytkownika.Size = new Size(89, 47);
             buttonUsunUzytkownika.TabIndex = 14;
             buttonUsunUzytkownika.Text = "Usuń użytkownika";
-            buttonUsunUzytkownika.UseVisualStyleBackColor = true;
+            buttonUsunUzytkownika.UseVisualStyleBackColor = false;
             buttonUsunUzytkownika.Click += buttonUsunUzytkownika_Click;
             // 
             // buttonEdytujUzytkownika
             // 
             buttonEdytujUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEdytujUzytkownika.BackColor = Color.Indigo;
+            buttonEdytujUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEdytujUzytkownika.ForeColor = Color.White;
             buttonEdytujUzytkownika.Location = new Point(1223, 3);
             buttonEdytujUzytkownika.Name = "buttonEdytujUzytkownika";
             buttonEdytujUzytkownika.Size = new Size(91, 47);
             buttonEdytujUzytkownika.TabIndex = 15;
             buttonEdytujUzytkownika.Text = "Edytuj użytkownika";
-            buttonEdytujUzytkownika.UseVisualStyleBackColor = true;
+            buttonEdytujUzytkownika.UseVisualStyleBackColor = false;
             buttonEdytujUzytkownika.Click += buttonEdytujUzytkownika_Click;
             // 
             // Form1

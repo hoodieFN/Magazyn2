@@ -45,7 +45,7 @@ namespace TestowanieOprogramowania
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            loadform(new FormLogin());
+
         }
     }
 }

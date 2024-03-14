@@ -59,8 +59,9 @@ namespace TestowanieOprogramowania
 
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Wyszukiwanie narazie tylko po Login Imie Nazwisko - resztê trzeba dodaæ");
-            zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text);
+
+            List<Uzytkownik> listaUzytkownikow = zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text);
+            dataGridView1.DataSource = listaUzytkownikow;
         }
 
 

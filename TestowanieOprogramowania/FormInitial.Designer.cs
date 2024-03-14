@@ -49,26 +49,35 @@
             // buttonLogin
             // 
             buttonLogin.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            buttonLogin.BackColor = Color.Indigo;
+            buttonLogin.Cursor = Cursors.Hand;
+            buttonLogin.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLogin.ForeColor = Color.White;
             buttonLogin.Location = new Point(12, 698);
             buttonLogin.Name = "buttonLogin";
             buttonLogin.Size = new Size(171, 53);
             buttonLogin.TabIndex = 1;
-            buttonLogin.Text = "Login";
-            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Text = "Logout";
+            buttonLogin.UseVisualStyleBackColor = false;
             buttonLogin.Click += buttonLogin_Click;
             // 
             // buttonZarzadzaj
             // 
+            buttonZarzadzaj.BackColor = Color.Indigo;
+            buttonZarzadzaj.Cursor = Cursors.Hand;
+            buttonZarzadzaj.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonZarzadzaj.ForeColor = Color.White;
             buttonZarzadzaj.Location = new Point(12, 12);
             buttonZarzadzaj.Name = "buttonZarzadzaj";
             buttonZarzadzaj.Size = new Size(171, 53);
             buttonZarzadzaj.TabIndex = 0;
             buttonZarzadzaj.Text = "Zarządzaj Użytkownikami";
-            buttonZarzadzaj.UseVisualStyleBackColor = true;
+            buttonZarzadzaj.UseVisualStyleBackColor = false;
             buttonZarzadzaj.Click += buttonZarzadzaj_Click;
             // 
             // mainpanel
             // 
+            mainpanel.BackColor = Color.FromArgb(24, 24, 24);
             mainpanel.Dock = DockStyle.Fill;
             mainpanel.Location = new Point(200, 0);
             mainpanel.Name = "mainpanel";

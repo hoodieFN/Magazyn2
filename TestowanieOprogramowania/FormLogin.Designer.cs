@@ -44,11 +44,11 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 21F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(120, 88);
+            label1.Location = new Point(100, 92);
             label1.Name = "label1";
-            label1.Size = new Size(113, 34);
+            label1.Size = new Size(167, 34);
             label1.TabIndex = 0;
-            label1.Text = "Allegro";
+            label1.Text = "Warehouse";
             // 
             // textBox1
             // 
@@ -56,7 +56,7 @@
             textBox1.BackColor = Color.LightGray;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(69, 185);
+            textBox1.Location = new Point(75, 187);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(216, 26);
             textBox1.TabIndex = 1;
@@ -67,7 +67,7 @@
             textBox2.BackColor = Color.LightGray;
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(69, 249);
+            textBox2.Location = new Point(75, 251);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(216, 26);
             textBox2.TabIndex = 2;
@@ -78,7 +78,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(69, 165);
+            label2.Location = new Point(75, 167);
             label2.Name = "label2";
             label2.Size = new Size(67, 17);
             label2.TabIndex = 3;
@@ -90,7 +90,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(69, 229);
+            label3.Location = new Point(75, 231);
             label3.Name = "label3";
             label3.Size = new Size(63, 17);
             label3.TabIndex = 4;
@@ -104,7 +104,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(69, 314);
+            button1.Location = new Point(75, 316);
             button1.Name = "button1";
             button1.Size = new Size(216, 36);
             button1.TabIndex = 5;
@@ -120,7 +120,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(69, 367);
+            button2.Location = new Point(75, 369);
             button2.Name = "button2";
             button2.Size = new Size(216, 36);
             button2.TabIndex = 6;
