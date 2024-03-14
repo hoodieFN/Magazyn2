@@ -105,7 +105,7 @@ namespace TestowanieOprogramowania
             }
         }
 
-
+        //s
         public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst)
         {
             string query = "SELECT * FROM dbo.Uzytkownicy WHERE Login LIKE @szukanyTekst OR Imie LIKE @szukanyTekst OR Nazwisko LIKE @szukanyTekst OR Email LIKE @szukanyTekst OR NumerTelefonu LIKE @szukanyTekst";
