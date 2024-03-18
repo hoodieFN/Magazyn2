@@ -21,7 +21,9 @@ namespace TestowanieOprogramowania
         {
             using (var formDodaj = new FormInitial())
             {
+                this.Hide();
                 var result = formDodaj.ShowDialog();
+                
             }
         }
     }
