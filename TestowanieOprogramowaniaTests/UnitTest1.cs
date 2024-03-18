@@ -292,5 +292,19 @@ namespace TestowanieOprogramowaniaTests
             Assert.IsNotNull(listaUzytkownikow);
             Assert.AreEqual(0, listaUzytkownikow.Count); // Oczekujemy, ¿e lista bêdzie pusta
         }
+
+        [TestMethod]
+        public void TestPobierzUzytkownikow_ZwracaListeUzytkownikow()
+        {
+            // Arrange
+            Walidacja walidacja = new Walidacja();
+
+            // Act
+            List<Uzytkownik> result = walidacja.PobierzUzytkownikow();
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count > 0);
+        }
     }
 }

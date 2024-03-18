@@ -21,7 +21,7 @@ namespace TestowanieOprogramowania
         {
             if (plec != "K" && plec != "M")
             {
-                MessageBox.Show("Płeć musi być określona jako 'K' dla kobiety lub 'M' dla mężczyzny.");
+                //MessageBox.Show("Płeć musi być określona jako 'K' dla kobiety lub 'M' dla mężczyzny.");
                 return false;
             }
 
@@ -33,13 +33,13 @@ namespace TestowanieOprogramowania
         {
             if (!DateTime.TryParse(dataUrodzenia, out DateTime parsedDate))
             {
-                MessageBox.Show("Podana data urodzenia jest nieprawidłowa. Użyj formatu RRRR-MM-DD.");
+                //MessageBox.Show("Podana data urodzenia jest nieprawidłowa. Użyj formatu RRRR-MM-DD.");
                 return false;
             }
 
             if (parsedDate > DateTime.Now)
             {
-                MessageBox.Show("Data urodzenia nie może być w przyszłości.");
+                //MessageBox.Show("Data urodzenia nie może być w przyszłości.");
                 return false;
             }
 
@@ -51,7 +51,7 @@ namespace TestowanieOprogramowania
         {
             if (numerTelefonu.Length != 9 || !long.TryParse(numerTelefonu, out _))
             {
-                MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.");
+                //MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.");
                 return false;
             }
 
@@ -63,13 +63,13 @@ namespace TestowanieOprogramowania
         {
             if (email.Split('@').Length - 1 != 1)
             {
-                MessageBox.Show("Adres e-mail musi zawierać dokładnie jeden znak '@'.");
+                //MessageBox.Show("Adres e-mail musi zawierać dokładnie jeden znak '@'.");
                 return false;
             }
 
             if (email.Length > 255)
             {
-                MessageBox.Show("Adres e-mail może zawierać maksymalnie 255 znaków.");
+                //MessageBox.Show("Adres e-mail może zawierać maksymalnie 255 znaków.");
                 return false;
             }
 
@@ -83,7 +83,7 @@ namespace TestowanieOprogramowania
         {
             if (pesel.Length != 11 || !pesel.All(char.IsDigit))
             {
-                MessageBox.Show("PESEL musi składać się z 11 cyfr.");
+                //MessageBox.Show("PESEL musi składać się z 11 cyfr.");
                 return false;
             }
 
@@ -95,7 +95,7 @@ namespace TestowanieOprogramowania
 
             if (miesiac < 1 || miesiac > 12 || dzien < 1 || dzien > 31)
             {
-                MessageBox.Show("Data urodzenia w PESEL jest nieprawidłowa.");
+                //MessageBox.Show("Data urodzenia w PESEL jest nieprawidłowa.");
                 return false;
             }
 
@@ -125,7 +125,7 @@ namespace TestowanieOprogramowania
             int cyfraKontrolna = (10 - sumaKontrolna % 10) % 10;
             if (cyfraKontrolna != Convert.ToInt32(pesel[10].ToString()))
             {
-                MessageBox.Show("Nieprawidłowa cyfra kontrolna PESEL.");
+                //MessageBox.Show("Nieprawidłowa cyfra kontrolna PESEL.");
                 return false;
             }
 
@@ -193,6 +193,49 @@ namespace TestowanieOprogramowania
                     }
                 }
             }
+            return listaUzytkownikow;
+        }
+
+        //Pobieranie uzytkownikow z bazy danych
+        public List<Uzytkownik> PobierzUzytkownikow()
+        {
+            List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                string query = "SELECT * FROM dbo.Uzytkownicy";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Uzytkownik uzytkownik = new Uzytkownik
+                            {
+                                UzytkownikID = Convert.ToInt32(reader["UzytkownikID"]),
+                                Login = reader["Login"].ToString(),
+                                Imie = reader["Imie"].ToString(),
+                                Nazwisko = reader["Nazwisko"].ToString(),
+                                Miejscowosc = reader["Miejscowosc"].ToString(),
+                                KodPocztowy = reader["KodPocztowy"].ToString(),
+                                Ulica = reader["Ulica"].ToString(),
+                                NumerPosesji = reader["NumerPosesji"].ToString(),
+                                NumerLokalu = reader["NumerLokalu"].ToString(),
+                                PESEL = reader["PESEL"].ToString(),
+                                DataUrodzenia = reader["DataUrodzenia"].ToString(),
+                                Plec = reader["Plec"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                NumerTelefonu = reader["NumerTelefonu"].ToString()
+                            };
+                            listaUzytkownikow.Add(uzytkownik);
+                        }
+                    }
+                }
+            }
+
             return listaUzytkownikow;
         }
     }
