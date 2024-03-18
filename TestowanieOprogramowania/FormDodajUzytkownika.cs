@@ -161,7 +161,7 @@ namespace TestowanieOprogramowania
 
             /*
             int plecNumer = Convert.ToInt32(pesel[9].ToString());
-            if ((plec == "Kobieta" && plecNumer % 2 == 0) || (plec == "Mężczyzna" && plecNumer % 2 != 0))
+            if ((plec == "K" && plecNumer % 2 == 0) || (plec == "M" && plecNumer % 2 != 0))
             {
                 MessageBox.Show("Nieprawidłowy numer PESEL dla podanej płci.");
                 return false;
