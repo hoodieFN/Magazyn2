@@ -58,132 +58,121 @@
             buttonAnuluj = new Button();
             textBoxHaslo = new TextBox();
             label1 = new Label();
+            label15 = new Label();
             SuspendLayout();
             // 
             // textBoxLogin
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
-            textBoxLogin.Location = new Point(328, 108);
-            textBoxLogin.Margin = new Padding(3, 4, 3, 4);
+            textBoxLogin.Location = new Point(287, 81);
             textBoxLogin.Name = "textBoxLogin";
-            textBoxLogin.Size = new Size(114, 27);
+            textBoxLogin.Size = new Size(100, 23);
             textBoxLogin.TabIndex = 1;
             // 
             // textBoxImie
             // 
             textBoxImie.Anchor = AnchorStyles.None;
-            textBoxImie.Location = new Point(328, 180);
-            textBoxImie.Margin = new Padding(3, 4, 3, 4);
+            textBoxImie.Location = new Point(287, 135);
             textBoxImie.Name = "textBoxImie";
-            textBoxImie.Size = new Size(114, 27);
+            textBoxImie.Size = new Size(100, 23);
             textBoxImie.TabIndex = 2;
             // 
             // textBoxNazwisko
             // 
             textBoxNazwisko.Anchor = AnchorStyles.None;
-            textBoxNazwisko.Location = new Point(328, 250);
-            textBoxNazwisko.Margin = new Padding(3, 4, 3, 4);
+            textBoxNazwisko.Location = new Point(287, 188);
             textBoxNazwisko.Name = "textBoxNazwisko";
-            textBoxNazwisko.Size = new Size(114, 27);
+            textBoxNazwisko.Size = new Size(100, 23);
             textBoxNazwisko.TabIndex = 3;
             // 
             // textBoxMiejscowosc
             // 
             textBoxMiejscowosc.Anchor = AnchorStyles.None;
-            textBoxMiejscowosc.Location = new Point(328, 324);
-            textBoxMiejscowosc.Margin = new Padding(3, 4, 3, 4);
+            textBoxMiejscowosc.Location = new Point(287, 243);
             textBoxMiejscowosc.Name = "textBoxMiejscowosc";
-            textBoxMiejscowosc.Size = new Size(114, 27);
+            textBoxMiejscowosc.Size = new Size(100, 23);
             textBoxMiejscowosc.TabIndex = 4;
             // 
             // textBoxKodPocztowy
             // 
             textBoxKodPocztowy.Anchor = AnchorStyles.None;
-            textBoxKodPocztowy.Location = new Point(328, 393);
-            textBoxKodPocztowy.Margin = new Padding(3, 4, 3, 4);
+            textBoxKodPocztowy.Location = new Point(287, 295);
             textBoxKodPocztowy.Name = "textBoxKodPocztowy";
-            textBoxKodPocztowy.Size = new Size(114, 27);
+            textBoxKodPocztowy.Size = new Size(100, 23);
             textBoxKodPocztowy.TabIndex = 5;
             // 
             // textBoxUlica
             // 
             textBoxUlica.Anchor = AnchorStyles.None;
-            textBoxUlica.Location = new Point(328, 469);
-            textBoxUlica.Margin = new Padding(3, 4, 3, 4);
+            textBoxUlica.Location = new Point(287, 352);
             textBoxUlica.Name = "textBoxUlica";
-            textBoxUlica.Size = new Size(114, 27);
+            textBoxUlica.Size = new Size(100, 23);
             textBoxUlica.TabIndex = 6;
             // 
             // textBoxNumerPosesji
             // 
             textBoxNumerPosesji.Anchor = AnchorStyles.None;
-            textBoxNumerPosesji.Location = new Point(328, 536);
-            textBoxNumerPosesji.Margin = new Padding(3, 4, 3, 4);
+            textBoxNumerPosesji.Location = new Point(287, 402);
             textBoxNumerPosesji.Name = "textBoxNumerPosesji";
-            textBoxNumerPosesji.Size = new Size(114, 27);
+            textBoxNumerPosesji.Size = new Size(100, 23);
             textBoxNumerPosesji.TabIndex = 7;
             // 
             // textBoxNumerLokalu
             // 
             textBoxNumerLokalu.Anchor = AnchorStyles.None;
-            textBoxNumerLokalu.Location = new Point(612, 104);
-            textBoxNumerLokalu.Margin = new Padding(3, 4, 3, 4);
+            textBoxNumerLokalu.Location = new Point(536, 78);
             textBoxNumerLokalu.Name = "textBoxNumerLokalu";
-            textBoxNumerLokalu.Size = new Size(114, 27);
+            textBoxNumerLokalu.Size = new Size(100, 23);
             textBoxNumerLokalu.TabIndex = 8;
             // 
             // textBoxPesel
             // 
             textBoxPesel.Anchor = AnchorStyles.None;
-            textBoxPesel.Location = new Point(612, 169);
-            textBoxPesel.Margin = new Padding(3, 4, 3, 4);
+            textBoxPesel.Location = new Point(536, 127);
             textBoxPesel.Name = "textBoxPesel";
-            textBoxPesel.Size = new Size(114, 27);
+            textBoxPesel.Size = new Size(100, 23);
             textBoxPesel.TabIndex = 9;
             // 
             // textBoxDataUrodzenia
             // 
             textBoxDataUrodzenia.Anchor = AnchorStyles.None;
-            textBoxDataUrodzenia.Location = new Point(612, 241);
-            textBoxDataUrodzenia.Margin = new Padding(3, 4, 3, 4);
+            textBoxDataUrodzenia.Location = new Point(536, 181);
             textBoxDataUrodzenia.Name = "textBoxDataUrodzenia";
-            textBoxDataUrodzenia.Size = new Size(114, 27);
+            textBoxDataUrodzenia.Size = new Size(100, 23);
             textBoxDataUrodzenia.TabIndex = 10;
             // 
             // textBoxPlec
             // 
             textBoxPlec.Anchor = AnchorStyles.None;
-            textBoxPlec.Location = new Point(612, 312);
-            textBoxPlec.Margin = new Padding(3, 4, 3, 4);
+            textBoxPlec.Location = new Point(536, 234);
             textBoxPlec.Name = "textBoxPlec";
-            textBoxPlec.Size = new Size(114, 27);
+            textBoxPlec.Size = new Size(100, 23);
             textBoxPlec.TabIndex = 11;
             // 
             // textBoxEmail
             // 
             textBoxEmail.Anchor = AnchorStyles.None;
-            textBoxEmail.Location = new Point(612, 385);
-            textBoxEmail.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmail.Location = new Point(536, 289);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(114, 27);
+            textBoxEmail.Size = new Size(100, 23);
             textBoxEmail.TabIndex = 12;
             // 
             // textBoxNumerTelefonu
             // 
             textBoxNumerTelefonu.Anchor = AnchorStyles.None;
-            textBoxNumerTelefonu.Location = new Point(612, 454);
-            textBoxNumerTelefonu.Margin = new Padding(3, 4, 3, 4);
+            textBoxNumerTelefonu.Location = new Point(536, 340);
             textBoxNumerTelefonu.Name = "textBoxNumerTelefonu";
-            textBoxNumerTelefonu.Size = new Size(114, 27);
+            textBoxNumerTelefonu.Size = new Size(100, 23);
             textBoxNumerTelefonu.TabIndex = 13;
+            textBoxNumerTelefonu.KeyPress += textBoxNumerTelefonu_KeyPress;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(205, 115);
+            label2.Location = new Point(179, 86);
             label2.Name = "label2";
-            label2.Size = new Size(72, 20);
+            label2.Size = new Size(57, 15);
             label2.TabIndex = 15;
             label2.Text = "Login > 8";
             // 
@@ -191,9 +180,9 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(205, 187);
+            label3.Location = new Point(179, 140);
             label3.Name = "label3";
-            label3.Size = new Size(38, 20);
+            label3.Size = new Size(30, 15);
             label3.TabIndex = 16;
             label3.Text = "Imie";
             // 
@@ -201,9 +190,9 @@
             // 
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
-            label4.Location = new Point(205, 257);
+            label4.Location = new Point(179, 193);
             label4.Name = "label4";
-            label4.Size = new Size(72, 20);
+            label4.Size = new Size(57, 15);
             label4.TabIndex = 17;
             label4.Text = "Nazwisko";
             // 
@@ -211,9 +200,9 @@
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
-            label5.Location = new Point(205, 327);
+            label5.Location = new Point(179, 245);
             label5.Name = "label5";
-            label5.Size = new Size(93, 20);
+            label5.Size = new Size(75, 15);
             label5.TabIndex = 18;
             label5.Text = "Miejscowosc";
             // 
@@ -221,9 +210,9 @@
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
-            label6.Location = new Point(205, 400);
+            label6.Location = new Point(179, 300);
             label6.Name = "label6";
-            label6.Size = new Size(98, 20);
+            label6.Size = new Size(79, 15);
             label6.TabIndex = 19;
             label6.Text = "KodPocztowy";
             // 
@@ -231,9 +220,9 @@
             // 
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
-            label7.Location = new Point(205, 472);
+            label7.Location = new Point(179, 354);
             label7.Name = "label7";
-            label7.Size = new Size(42, 20);
+            label7.Size = new Size(33, 15);
             label7.TabIndex = 20;
             label7.Text = "Ulica";
             // 
@@ -241,9 +230,9 @@
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(205, 539);
+            label8.Location = new Point(179, 404);
             label8.Name = "label8";
-            label8.Size = new Size(98, 20);
+            label8.Size = new Size(80, 15);
             label8.TabIndex = 21;
             label8.Text = "NumerPosesji";
             // 
@@ -251,9 +240,9 @@
             // 
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
-            label9.Location = new Point(461, 111);
+            label9.Location = new Point(403, 83);
             label9.Name = "label9";
-            label9.Size = new Size(97, 20);
+            label9.Size = new Size(79, 15);
             label9.TabIndex = 22;
             label9.Text = "NumerLokalu";
             // 
@@ -261,9 +250,9 @@
             // 
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
-            label10.Location = new Point(461, 176);
+            label10.Location = new Point(403, 132);
             label10.Name = "label10";
-            label10.Size = new Size(82, 20);
+            label10.Size = new Size(64, 15);
             label10.TabIndex = 23;
             label10.Text = "PESEL = 11";
             // 
@@ -271,9 +260,9 @@
             // 
             label11.Anchor = AnchorStyles.None;
             label11.AutoSize = true;
-            label11.Location = new Point(461, 248);
+            label11.Location = new Point(403, 186);
             label11.Name = "label11";
-            label11.Size = new Size(145, 20);
+            label11.Size = new Size(111, 15);
             label11.TabIndex = 24;
             label11.Text = "DataUrodzenia Date";
             // 
@@ -281,9 +270,9 @@
             // 
             label12.Anchor = AnchorStyles.None;
             label12.AutoSize = true;
-            label12.Location = new Point(461, 312);
+            label12.Location = new Point(403, 234);
             label12.Name = "label12";
-            label12.Size = new Size(68, 20);
+            label12.Size = new Size(55, 15);
             label12.TabIndex = 25;
             label12.Text = "Plec K/M";
             // 
@@ -291,9 +280,9 @@
             // 
             label13.Anchor = AnchorStyles.None;
             label13.AutoSize = true;
-            label13.Location = new Point(461, 392);
+            label13.Location = new Point(403, 294);
             label13.Name = "label13";
-            label13.Size = new Size(46, 20);
+            label13.Size = new Size(36, 15);
             label13.TabIndex = 26;
             label13.Text = "Email";
             // 
@@ -301,19 +290,18 @@
             // 
             label14.Anchor = AnchorStyles.None;
             label14.AutoSize = true;
-            label14.Location = new Point(461, 461);
+            label14.Location = new Point(403, 346);
             label14.Name = "label14";
-            label14.Size = new Size(137, 20);
+            label14.Size = new Size(109, 15);
             label14.TabIndex = 27;
             label14.Text = "NumerTelefonu = 9";
             // 
             // buttonZapisz
             // 
             buttonZapisz.Anchor = AnchorStyles.None;
-            buttonZapisz.Location = new Point(461, 614);
-            buttonZapisz.Margin = new Padding(3, 4, 3, 4);
+            buttonZapisz.Location = new Point(403, 460);
             buttonZapisz.Name = "buttonZapisz";
-            buttonZapisz.Size = new Size(96, 31);
+            buttonZapisz.Size = new Size(84, 23);
             buttonZapisz.TabIndex = 28;
             buttonZapisz.Text = "Zapisz";
             buttonZapisz.UseVisualStyleBackColor = true;
@@ -322,10 +310,9 @@
             // buttonAnuluj
             // 
             buttonAnuluj.Anchor = AnchorStyles.None;
-            buttonAnuluj.Location = new Point(612, 614);
-            buttonAnuluj.Margin = new Padding(3, 4, 3, 4);
+            buttonAnuluj.Location = new Point(536, 460);
             buttonAnuluj.Name = "buttonAnuluj";
-            buttonAnuluj.Size = new Size(114, 31);
+            buttonAnuluj.Size = new Size(100, 23);
             buttonAnuluj.TabIndex = 29;
             buttonAnuluj.Text = "Anuluj";
             buttonAnuluj.UseVisualStyleBackColor = true;
@@ -334,27 +321,37 @@
             // textBoxHaslo
             // 
             textBoxHaslo.Anchor = AnchorStyles.None;
-            textBoxHaslo.Location = new Point(612, 515);
-            textBoxHaslo.Margin = new Padding(3, 4, 3, 4);
+            textBoxHaslo.Location = new Point(536, 386);
             textBoxHaslo.Name = "textBoxHaslo";
-            textBoxHaslo.Size = new Size(114, 27);
+            textBoxHaslo.Size = new Size(100, 23);
             textBoxHaslo.TabIndex = 30;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(461, 518);
+            label1.Location = new Point(403, 388);
             label1.Name = "label1";
-            label1.Size = new Size(66, 20);
+            label1.Size = new Size(52, 15);
             label1.TabIndex = 31;
             label1.Text = "haslo >5";
             // 
+            // label15
+            // 
+            label15.Anchor = AnchorStyles.None;
+            label15.AutoSize = true;
+            label15.Location = new Point(655, 346);
+            label15.Name = "label15";
+            label15.Size = new Size(63, 15);
+            label15.TabIndex = 32;
+            label15.Text = "Tylko cyfry";
+            // 
             // FormDodajUzytkownika
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 720);
+            ClientSize = new Size(794, 540);
+            Controls.Add(label15);
             Controls.Add(label1);
             Controls.Add(textBoxHaslo);
             Controls.Add(buttonAnuluj);
@@ -385,7 +382,6 @@
             Controls.Add(textBoxNazwisko);
             Controls.Add(textBoxImie);
             Controls.Add(textBoxLogin);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormDodajUzytkownika";
             Text = "FormDodajUzytkownika";
             Load += FormDodajUzytkownika_Load;
@@ -424,5 +420,6 @@
         private Button buttonAnuluj;
         private TextBox textBoxHaslo;
         private Label label1;
+        private Label label15;
     }
 }

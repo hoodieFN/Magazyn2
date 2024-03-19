@@ -71,7 +71,7 @@ namespace TestowanieOprogramowania
                 return;
             }
 
-            
+
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo) "
                 +
@@ -243,5 +243,12 @@ namespace TestowanieOprogramowania
             return true;
         }
 
+        private void textBoxNumerTelefonu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
