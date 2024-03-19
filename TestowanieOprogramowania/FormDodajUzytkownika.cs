@@ -25,13 +25,13 @@ namespace TestowanieOprogramowania
         }
 
         private void DodajUzytkownikaDoBazy(string imie, string nazwisko, string login, string numerTelefonu, string miejscowosc, string kodPocztowy,
-            string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu)
+            string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu, string haslo)
         {
             if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) || string.IsNullOrWhiteSpace(login) ||
             string.IsNullOrWhiteSpace(miejscowosc) || string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
             string.IsNullOrWhiteSpace(numerPosesji) || string.IsNullOrWhiteSpace(pesel) || string.IsNullOrWhiteSpace(dataUrodzenia) ||
             string.IsNullOrWhiteSpace(plec) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(numerTelefonu) ||
-            string.IsNullOrWhiteSpace(numerLokalu))
+            string.IsNullOrWhiteSpace(numerLokalu) || string.IsNullOrWhiteSpace(haslo))
             {
                 MessageBox.Show("Istnieje co najmniej jendo niewypełnione pole.");
                 return;
@@ -73,9 +73,9 @@ namespace TestowanieOprogramowania
 
             
             string query =
-                "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu) "
+                "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo) "
                 +
-                "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, @Plec, @Email, @NumerLokalu)";
+                "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, @Plec, @Email, @NumerLokalu, @Haslo)";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -94,7 +94,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@Plec", SqlDbType.NVarChar)).Value = plec;
                     cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = email;
                     cmd.Parameters.Add(new SqlParameter("@NumerLokalu", SqlDbType.NVarChar)).Value = numerLokalu;
-
+                    cmd.Parameters.Add(new SqlParameter("@Haslo", SqlDbType.NVarChar)).Value = haslo;
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -128,8 +128,9 @@ namespace TestowanieOprogramowania
             string plec = textBoxPlec.Text;
             string email = textBoxEmail.Text;
             string numerLokalu = textBoxNumerLokalu.Text;
+            string haslo = textBoxHaslo.Text;
 
-            DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu);
+            DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo);
         }
 
 

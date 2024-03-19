@@ -56,6 +56,8 @@
             label14 = new Label();
             buttonZapisz = new Button();
             buttonAnuluj = new Button();
+            textBoxHaslo = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -308,7 +310,7 @@
             // buttonZapisz
             // 
             buttonZapisz.Anchor = AnchorStyles.None;
-            buttonZapisz.Location = new Point(465, 539);
+            buttonZapisz.Location = new Point(461, 614);
             buttonZapisz.Margin = new Padding(3, 4, 3, 4);
             buttonZapisz.Name = "buttonZapisz";
             buttonZapisz.Size = new Size(96, 31);
@@ -320,7 +322,7 @@
             // buttonAnuluj
             // 
             buttonAnuluj.Anchor = AnchorStyles.None;
-            buttonAnuluj.Location = new Point(592, 539);
+            buttonAnuluj.Location = new Point(612, 614);
             buttonAnuluj.Margin = new Padding(3, 4, 3, 4);
             buttonAnuluj.Name = "buttonAnuluj";
             buttonAnuluj.Size = new Size(114, 31);
@@ -329,11 +331,32 @@
             buttonAnuluj.UseVisualStyleBackColor = true;
             buttonAnuluj.Click += buttonAnuluj_Click;
             // 
+            // textBoxHaslo
+            // 
+            textBoxHaslo.Anchor = AnchorStyles.None;
+            textBoxHaslo.Location = new Point(612, 515);
+            textBoxHaslo.Margin = new Padding(3, 4, 3, 4);
+            textBoxHaslo.Name = "textBoxHaslo";
+            textBoxHaslo.Size = new Size(114, 27);
+            textBoxHaslo.TabIndex = 30;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Location = new Point(461, 518);
+            label1.Name = "label1";
+            label1.Size = new Size(66, 20);
+            label1.TabIndex = 31;
+            label1.Text = "haslo >5";
+            // 
             // FormDodajUzytkownika
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(907, 720);
+            Controls.Add(label1);
+            Controls.Add(textBoxHaslo);
             Controls.Add(buttonAnuluj);
             Controls.Add(buttonZapisz);
             Controls.Add(label14);
@@ -399,5 +422,7 @@
         private Label label14;
         private Button buttonZapisz;
         private Button buttonAnuluj;
+        private TextBox textBoxHaslo;
+        private Label label1;
     }
 }
