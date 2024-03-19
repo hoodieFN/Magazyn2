@@ -22,7 +22,9 @@ namespace TestowanieOprogramowania
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
-                string query = "SELECT * FROM dbo.Uzytkownicy";
+                string query = "SELECT UzytkownikID, Login, Imie, Nazwisko, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, NumerLokalu, PESEL, DataUrodzenia,Plec,Email,NumerTelefonu FROM dbo.Uzytkownicy where dbo.Uzytkownicy.archiwizacja = '1'";
+
+
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -63,7 +65,7 @@ namespace TestowanieOprogramowania
         public void UsunUzytkownikaZBazy(int userId)
         {
             UsunPowiazaneUprawnienia(userId);
-            string query = "DELETE FROM dbo.Uzytkownicy WHERE UzytkownikID = @userId";
+            string query = "UPDATE dbo.Uzytkownicy SET archiwizacja = 0 WHERE UzytkownikID = @userId";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -77,7 +79,7 @@ namespace TestowanieOprogramowania
 
                     if (result > 0)
                     {
-                        MessageBox.Show("Użytkownik został usunięty.");
+                        MessageBox.Show("Użytkownik został zarchiwizowany.");
                     }
                     else
                     {

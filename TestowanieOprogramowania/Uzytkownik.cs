@@ -16,6 +16,7 @@ public class Uzytkownik : Osoba
     public string Plec { get; set; }
     public string Email { get; set; }
     public string NumerTelefonu { get; set; }
-
+    public string haslo { get; set; }
+    public string archiwizacja { get; set; }
 
 }

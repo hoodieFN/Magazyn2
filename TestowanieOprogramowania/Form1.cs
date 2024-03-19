@@ -34,6 +34,8 @@ namespace TestowanieOprogramowania
         {
             var listaUzytkownikow = zarzadzanieVoidami.PobierzUzytkownikow();
             dataGridView1.DataSource = listaUzytkownikow;
+            dataGridView1.Columns["haslo"].Visible = false;
+            dataGridView1.Columns["archiwizacja"].Visible = false;
         }
 
         private void buttonUsunUzytkownika_Click(object sender, EventArgs e)
