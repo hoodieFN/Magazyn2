@@ -36,7 +36,7 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Istnieje co najmniej jendo niewypełnione pole.");
                 return;
             }
-            //b. Login –  minimum 6 znaków
+            //b. Login –  minimum 8 znaków
             if (login.Length < 8)
             {
                 MessageBox.Show("Login musi zawierać co najmniej 8 liter.");
@@ -45,19 +45,16 @@ namespace TestowanieOprogramowania
             //c. PESEL:
             if (WalidujPesel(pesel) == false)
             {
-                MessageBox.Show("Błędny PESEL");
                 return;
             }
             //d. Adres e-mail:
             if (WalidujEmail(email) == false)
             {
-                MessageBox.Show("Błędny e-mail");
                 return;
             }
             //e.Numer telefonu: 9 cyfr
             if (WalidujNumerTelefonu(numerTelefonu) == false)
             {
-                MessageBox.Show("Błędny numer telefonu");
                 return;
             }
             //data
@@ -71,7 +68,9 @@ namespace TestowanieOprogramowania
                 return;
             }
 
-
+            string sprawdzenieLoginuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Login = @Login";
+            string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email";
+            string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL";
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo) "
                 +
@@ -79,6 +78,52 @@ namespace TestowanieOprogramowania
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
+                //Sprawdź czy istnieje juz taki login w bazie
+                conn.Open();
+                using (SqlCommand cmdSprawdzenieLoginu = new SqlCommand(sprawdzenieLoginuQuery, conn))
+                {
+                    cmdSprawdzenieLoginu.Parameters.Add(new SqlParameter("@Login", SqlDbType.NVarChar)).Value = login;
+
+                    int liczbaLoginow = (int)cmdSprawdzenieLoginu.ExecuteScalar();
+
+                    if (liczbaLoginow > 0)
+                    {
+                        MessageBox.Show("Login już istnieje w bazie danych.");
+                        conn.Close();
+                        return; 
+                    }
+                }
+                //Sprawdź czy istnieje juz taki login w bazie
+                using (SqlCommand cmdSprawdzenieEmailu = new SqlCommand(sprawdzenieEmailuQuery, conn))
+                {
+                    cmdSprawdzenieEmailu.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = email;
+
+                    int liczbaEmaili = (int)cmdSprawdzenieEmailu.ExecuteScalar();
+
+                    if (liczbaEmaili > 0)
+                    {
+                        MessageBox.Show("Email już istnieje w bazie danych.");
+                        conn.Close();
+                        return; 
+                    }
+                }
+                //Sprawdź czy PESEL istnieje już w bazie
+                using (SqlCommand cmdSprawdzeniePesel = new SqlCommand(sprawdzeniePeselQuery, conn))
+                {
+                    cmdSprawdzeniePesel.Parameters.Add(new SqlParameter("@PESEL", SqlDbType.NVarChar)).Value = pesel;
+
+                    int liczbaPeseli = (int)cmdSprawdzeniePesel.ExecuteScalar();
+
+                    if (liczbaPeseli > 0)
+                    {
+                        MessageBox.Show("PESEL już istnieje w bazie danych.");
+                        conn.Close();
+                        return;
+                    }
+                }
+
+
+
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.Add(new SqlParameter("@Login", SqlDbType.NVarChar)).Value = login;
@@ -96,7 +141,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@NumerLokalu", SqlDbType.NVarChar)).Value = numerLokalu;
                     cmd.Parameters.Add(new SqlParameter("@Haslo", SqlDbType.NVarChar)).Value = haslo;
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }

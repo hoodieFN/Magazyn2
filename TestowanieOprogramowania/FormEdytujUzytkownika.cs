@@ -90,19 +90,16 @@ namespace TestowanieOprogramowania
             //c. PESEL:
             if (WalidujPesel(PESEL) == false)
             {
-                MessageBox.Show("Błędny PESEL");
                 return;
             }
             //d. Adres e-mail:
             if (WalidujEmail(Email) == false)
             {
-                MessageBox.Show("Błędny e-mail");
                 return;
             }
             //e.Numer telefonu: 9 cyfr
             if (WalidujNumerTelefonu(NumerTelefonu) == false)
             {
-                MessageBox.Show("Błędny numer telefonu");
                 return;
             }
             //data
@@ -116,10 +113,63 @@ namespace TestowanieOprogramowania
                 return;
             }
 
+
+            //Dodając @UzytkownikID wykluczamy obecnego uzytkownika ze sprawdzania tak abysmy mogli po prostu zostawic taki sam login jak byl itp.
+            string sprawdzenieLoginuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Login = @Login AND UzytkownikID <> @UzytkownikID";
+            string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email AND UzytkownikID <> @UzytkownikID";
+            string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL AND UzytkownikID <> @UzytkownikID";
+
             string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu WHERE UzytkownikID = @UzytkownikID";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
+                //Sprawdź czy istnieje juz taki login w bazie
+                connection.Open();
+                using (SqlCommand cmdSprawdzenieLoginu = new SqlCommand(sprawdzenieLoginuQuery, connection))
+                {
+                    cmdSprawdzenieLoginu.Parameters.AddWithValue("@UzytkownikID", this.userId);
+                    cmdSprawdzenieLoginu.Parameters.Add(new SqlParameter("@Login", SqlDbType.NVarChar)).Value = Login;
+
+                    int liczbaLoginow = (int)cmdSprawdzenieLoginu.ExecuteScalar();
+
+                    if (liczbaLoginow > 0)
+                    {
+                        MessageBox.Show("Login już istnieje w bazie danych.");
+                        connection.Close();
+                        return;
+                    }
+                }
+                //Sprawdź czy istnieje juz taki login w bazie
+                using (SqlCommand cmdSprawdzenieEmailu = new SqlCommand(sprawdzenieEmailuQuery, connection))
+                {
+                    cmdSprawdzenieEmailu.Parameters.AddWithValue("@UzytkownikID", this.userId);
+                    cmdSprawdzenieEmailu.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = Email;
+
+                    int liczbaEmaili = (int)cmdSprawdzenieEmailu.ExecuteScalar();
+
+                    if (liczbaEmaili > 0)
+                    {
+                        MessageBox.Show("Email już istnieje w bazie danych.");
+                        connection.Close();
+                        return;
+                    }
+                }
+                //Sprawdź czy PESEL istnieje już w bazie
+                using (SqlCommand cmdSprawdzeniePesel = new SqlCommand(sprawdzeniePeselQuery, connection))
+                {
+                    cmdSprawdzeniePesel.Parameters.AddWithValue("@UzytkownikID", this.userId);
+                    cmdSprawdzeniePesel.Parameters.Add(new SqlParameter("@PESEL", SqlDbType.NVarChar)).Value = PESEL;
+
+                    int liczbaPeseli = (int)cmdSprawdzeniePesel.ExecuteScalar();
+
+                    if (liczbaPeseli > 0)
+                    {
+                        MessageBox.Show("PESEL już istnieje w bazie danych.");
+                        connection.Close();
+                        return;
+                    }
+                }
+
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@UzytkownikID", this.userId);
@@ -139,7 +189,7 @@ namespace TestowanieOprogramowania
 
 
 
-                    connection.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
