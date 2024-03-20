@@ -46,7 +46,6 @@
             textBoxNumerTelefonu = new TextBox();
             textBoxEmail = new TextBox();
             textBoxPlec = new TextBox();
-            textBoxDataUrodzenia = new TextBox();
             textBoxPESEL = new TextBox();
             textBoxNumerLokalu = new TextBox();
             textBoxNumerPosesji = new TextBox();
@@ -57,6 +56,8 @@
             textBoxImie = new TextBox();
             textBoxLogin = new TextBox();
             label1 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            textBoxDataUrodzenia = new TextBox();
             SuspendLayout();
             // 
             // buttonAnuluj
@@ -236,14 +237,6 @@
             textBoxPlec.Size = new Size(100, 23);
             textBoxPlec.TabIndex = 41;
             // 
-            // textBoxDataUrodzenia
-            // 
-            textBoxDataUrodzenia.Anchor = AnchorStyles.None;
-            textBoxDataUrodzenia.Location = new Point(545, 169);
-            textBoxDataUrodzenia.Name = "textBoxDataUrodzenia";
-            textBoxDataUrodzenia.Size = new Size(100, 23);
-            textBoxDataUrodzenia.TabIndex = 40;
-            // 
             // textBoxPESEL
             // 
             textBoxPESEL.Anchor = AnchorStyles.None;
@@ -326,11 +319,27 @@
             label1.TabIndex = 60;
             label1.Text = "Tylko cyfry";
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(545, 167);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 61;
+            // 
+            // textBoxDataUrodzenia
+            // 
+            textBoxDataUrodzenia.Location = new Point(550, 458);
+            textBoxDataUrodzenia.Name = "textBoxDataUrodzenia";
+            textBoxDataUrodzenia.Size = new Size(100, 23);
+            textBoxDataUrodzenia.TabIndex = 62;
+            // 
             // FormEdytujUzytkownika
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(812, 514);
+            Controls.Add(textBoxDataUrodzenia);
+            Controls.Add(dateTimePicker1);
             Controls.Add(label1);
             Controls.Add(buttonAnuluj);
             Controls.Add(buttonZapisz);
@@ -350,7 +359,6 @@
             Controls.Add(textBoxNumerTelefonu);
             Controls.Add(textBoxEmail);
             Controls.Add(textBoxPlec);
-            Controls.Add(textBoxDataUrodzenia);
             Controls.Add(textBoxPESEL);
             Controls.Add(textBoxNumerLokalu);
             Controls.Add(textBoxNumerPosesji);
@@ -388,7 +396,6 @@
         private TextBox textBoxNumerTelefonu;
         private TextBox textBoxEmail;
         private TextBox textBoxPlec;
-        private TextBox textBoxDataUrodzenia;
         private TextBox textBoxPESEL;
         private TextBox textBoxNumerLokalu;
         private TextBox textBoxNumerPosesji;
@@ -399,5 +406,7 @@
         private TextBox textBoxImie;
         private TextBox textBoxLogin;
         private Label label1;
+        private DateTimePicker dateTimePicker1;
+        private TextBox textBoxDataUrodzenia;
     }
 }

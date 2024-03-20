@@ -189,7 +189,7 @@ namespace TestowanieOprogramowania
 
 
 
-                    
+
                     cmd.ExecuteNonQuery();
                 }
             }

@@ -37,8 +37,6 @@
             textBoxNumerPosesji = new TextBox();
             textBoxNumerLokalu = new TextBox();
             textBoxPesel = new TextBox();
-            textBoxDataUrodzenia = new TextBox();
-            textBoxPlec = new TextBox();
             textBoxEmail = new TextBox();
             textBoxNumerTelefonu = new TextBox();
             label2 = new Label();
@@ -51,7 +49,6 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label12 = new Label();
             label13 = new Label();
             label14 = new Label();
             buttonZapisz = new Button();
@@ -59,6 +56,7 @@
             textBoxHaslo = new TextBox();
             label1 = new Label();
             label15 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -133,26 +131,10 @@
             textBoxPesel.Size = new Size(100, 23);
             textBoxPesel.TabIndex = 9;
             // 
-            // textBoxDataUrodzenia
-            // 
-            textBoxDataUrodzenia.Anchor = AnchorStyles.None;
-            textBoxDataUrodzenia.Location = new Point(536, 181);
-            textBoxDataUrodzenia.Name = "textBoxDataUrodzenia";
-            textBoxDataUrodzenia.Size = new Size(100, 23);
-            textBoxDataUrodzenia.TabIndex = 10;
-            // 
-            // textBoxPlec
-            // 
-            textBoxPlec.Anchor = AnchorStyles.None;
-            textBoxPlec.Location = new Point(536, 234);
-            textBoxPlec.Name = "textBoxPlec";
-            textBoxPlec.Size = new Size(100, 23);
-            textBoxPlec.TabIndex = 11;
-            // 
             // textBoxEmail
             // 
             textBoxEmail.Anchor = AnchorStyles.None;
-            textBoxEmail.Location = new Point(536, 289);
+            textBoxEmail.Location = new Point(545, 237);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(100, 23);
             textBoxEmail.TabIndex = 12;
@@ -160,7 +142,7 @@
             // textBoxNumerTelefonu
             // 
             textBoxNumerTelefonu.Anchor = AnchorStyles.None;
-            textBoxNumerTelefonu.Location = new Point(536, 340);
+            textBoxNumerTelefonu.Location = new Point(545, 288);
             textBoxNumerTelefonu.Name = "textBoxNumerTelefonu";
             textBoxNumerTelefonu.Size = new Size(100, 23);
             textBoxNumerTelefonu.TabIndex = 13;
@@ -266,21 +248,11 @@
             label11.TabIndex = 24;
             label11.Text = "DataUrodzenia Date";
             // 
-            // label12
-            // 
-            label12.Anchor = AnchorStyles.None;
-            label12.AutoSize = true;
-            label12.Location = new Point(403, 234);
-            label12.Name = "label12";
-            label12.Size = new Size(55, 15);
-            label12.TabIndex = 25;
-            label12.Text = "Plec K/M";
-            // 
             // label13
             // 
             label13.Anchor = AnchorStyles.None;
             label13.AutoSize = true;
-            label13.Location = new Point(403, 294);
+            label13.Location = new Point(412, 242);
             label13.Name = "label13";
             label13.Size = new Size(36, 15);
             label13.TabIndex = 26;
@@ -290,7 +262,7 @@
             // 
             label14.Anchor = AnchorStyles.None;
             label14.AutoSize = true;
-            label14.Location = new Point(403, 346);
+            label14.Location = new Point(412, 294);
             label14.Name = "label14";
             label14.Size = new Size(109, 15);
             label14.TabIndex = 27;
@@ -299,7 +271,7 @@
             // buttonZapisz
             // 
             buttonZapisz.Anchor = AnchorStyles.None;
-            buttonZapisz.Location = new Point(403, 460);
+            buttonZapisz.Location = new Point(412, 408);
             buttonZapisz.Name = "buttonZapisz";
             buttonZapisz.Size = new Size(84, 23);
             buttonZapisz.TabIndex = 28;
@@ -310,7 +282,7 @@
             // buttonAnuluj
             // 
             buttonAnuluj.Anchor = AnchorStyles.None;
-            buttonAnuluj.Location = new Point(536, 460);
+            buttonAnuluj.Location = new Point(545, 408);
             buttonAnuluj.Name = "buttonAnuluj";
             buttonAnuluj.Size = new Size(100, 23);
             buttonAnuluj.TabIndex = 29;
@@ -321,7 +293,7 @@
             // textBoxHaslo
             // 
             textBoxHaslo.Anchor = AnchorStyles.None;
-            textBoxHaslo.Location = new Point(536, 386);
+            textBoxHaslo.Location = new Point(545, 334);
             textBoxHaslo.Name = "textBoxHaslo";
             textBoxHaslo.Size = new Size(100, 23);
             textBoxHaslo.TabIndex = 30;
@@ -330,7 +302,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(403, 388);
+            label1.Location = new Point(412, 336);
             label1.Name = "label1";
             label1.Size = new Size(52, 15);
             label1.TabIndex = 31;
@@ -340,17 +312,26 @@
             // 
             label15.Anchor = AnchorStyles.None;
             label15.AutoSize = true;
-            label15.Location = new Point(655, 346);
+            label15.Location = new Point(664, 294);
             label15.Name = "label15";
             label15.Size = new Size(63, 15);
             label15.TabIndex = 32;
             label15.Text = "Tylko cyfry";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(545, 180);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(82, 23);
+            dateTimePicker1.TabIndex = 33;
             // 
             // FormDodajUzytkownika
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(794, 540);
+            Controls.Add(dateTimePicker1);
             Controls.Add(label15);
             Controls.Add(label1);
             Controls.Add(textBoxHaslo);
@@ -358,7 +339,6 @@
             Controls.Add(buttonZapisz);
             Controls.Add(label14);
             Controls.Add(label13);
-            Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
@@ -371,8 +351,6 @@
             Controls.Add(label2);
             Controls.Add(textBoxNumerTelefonu);
             Controls.Add(textBoxEmail);
-            Controls.Add(textBoxPlec);
-            Controls.Add(textBoxDataUrodzenia);
             Controls.Add(textBoxPesel);
             Controls.Add(textBoxNumerLokalu);
             Controls.Add(textBoxNumerPosesji);
@@ -399,8 +377,6 @@
         private TextBox textBoxNumerPosesji;
         private TextBox textBoxNumerLokalu;
         private TextBox textBoxPesel;
-        private TextBox textBoxDataUrodzenia;
-        private TextBox textBoxPlec;
         private TextBox textBoxEmail;
         private TextBox textBoxNumerTelefonu;
         private Label label2;
@@ -413,7 +389,6 @@
         private Label label9;
         private Label label10;
         private Label label11;
-        private Label label12;
         private Label label13;
         private Label label14;
         private Button buttonZapisz;
@@ -421,5 +396,6 @@
         private TextBox textBoxHaslo;
         private Label label1;
         private Label label15;
+        private DateTimePicker dateTimePicker1;
     }
 }
