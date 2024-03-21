@@ -28,6 +28,8 @@ namespace TestowanieOprogramowania
         private void Form1_Load(object sender, EventArgs e)
         {
             OdswiezDataGridView();
+            comboBox1.SelectedIndex = 0;
+
         }
 
         private void OdswiezDataGridView()
@@ -62,7 +64,7 @@ namespace TestowanieOprogramowania
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
 
-            List<Uzytkownik> listaUzytkownikow = zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text);
+            List<Uzytkownik> listaUzytkownikow = zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text, comboBox1.SelectedItem.ToString() );
             dataGridView1.DataSource = listaUzytkownikow;
         }
 

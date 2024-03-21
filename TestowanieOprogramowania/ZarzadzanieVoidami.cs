@@ -108,9 +108,10 @@ namespace TestowanieOprogramowania
         }
 
         //s
-        public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst)
+        public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst, string kategoria)
         {
-            string query = "SELECT * FROM dbo.Uzytkownicy WHERE Login LIKE @szukanyTekst OR Imie LIKE @szukanyTekst OR Nazwisko LIKE @szukanyTekst OR Email LIKE @szukanyTekst OR NumerTelefonu LIKE @szukanyTekst";
+            string query = $"SELECT * FROM dbo.Uzytkownicy WHERE {kategoria} LIKE @szukanyTekst and archiwizaScja = '1'";
+
             List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
@@ -139,7 +140,8 @@ namespace TestowanieOprogramowania
                                 DataUrodzenia = reader["DataUrodzenia"].ToString(),
                                 Plec = reader["Plec"].ToString(),
                                 Email = reader["Email"].ToString(),
-                                NumerTelefonu = reader["NumerTelefonu"].ToString()
+                                NumerTelefonu = reader["NumerTelefonu"].ToString(),
+                                archiwizacja = reader["archiwizacja"].ToString()
                             };
                             listaUzytkownikow.Add(uzytkownik);
                         }
