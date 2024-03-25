@@ -143,7 +143,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@DataUrodzenia", SqlDbType.DateTime)).Value = dataUrodzenia;
                     cmd.Parameters.Add(new SqlParameter("@Plec", SqlDbType.NVarChar)
                     {
-                        Value = (pesel[pesel.Length - 1] - '0') % 2 == 0 ? "K" : "M"
+                        Value = (pesel[9] - '0') % 2 == 0 ? "K" : "M"
                     });
                     cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = email;
                     cmd.Parameters.Add(new SqlParameter("@NumerLokalu", SqlDbType.NVarChar)).Value = numerLokalu;

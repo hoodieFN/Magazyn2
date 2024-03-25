@@ -220,7 +220,7 @@ namespace TestowanieOprogramowania
             string numerposesji = textBoxNumerPosesji.Text;
             string pesel = textBoxPESEL.Text;
             string dataurodzenia = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-            string plec = (pesel[pesel.Length - 1] - '0') % 2 == 0 ? "K" : "M"; // określenie płci na podstawie PESEL
+            string plec = (pesel[9] - '0') % 2 == 0 ? "K" : "M"; // określenie płci na podstawie PESEL
             string email = textBoxEmail.Text;
             string numerlokalu = textBoxNumerLokalu.Text;
             string haslo = textBoxHaslo.Text;
