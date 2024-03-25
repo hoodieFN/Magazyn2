@@ -64,7 +64,7 @@ namespace TestowanieOprogramowania
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
 
-            List<Uzytkownik> listaUzytkownikow = zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text, comboBox1.SelectedItem.ToString() );
+            List<Uzytkownik> listaUzytkownikow = zarzadzanieVoidami.WyszukajUzytkownikow(textBoxSzukaj.Text, comboBox1.SelectedItem.ToString());
             dataGridView1.DataSource = listaUzytkownikow;
         }
 

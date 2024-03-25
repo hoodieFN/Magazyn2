@@ -44,12 +44,11 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 95);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(12, 71);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1481, 991);
+            dataGridView1.Size = new Size(1296, 743);
             dataGridView1.TabIndex = 8;
             // 
             // label1
@@ -57,9 +56,9 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(14, 69);
+            label1.Location = new Point(12, 52);
             label1.Name = "label1";
-            label1.Size = new Size(91, 20);
+            label1.Size = new Size(74, 15);
             label1.TabIndex = 9;
             label1.Text = "Użytkownicy";
             // 
@@ -68,10 +67,9 @@
             textBoxSzukaj.BackColor = Color.Silver;
             textBoxSzukaj.BorderStyle = BorderStyle.None;
             textBoxSzukaj.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxSzukaj.Location = new Point(14, 33);
-            textBoxSzukaj.Margin = new Padding(3, 4, 3, 4);
+            textBoxSzukaj.Location = new Point(12, 25);
             textBoxSzukaj.Name = "textBoxSzukaj";
-            textBoxSzukaj.Size = new Size(207, 33);
+            textBoxSzukaj.Size = new Size(181, 26);
             textBoxSzukaj.TabIndex = 10;
             textBoxSzukaj.TextChanged += buttonSzukaj_Click;
             // 
@@ -80,9 +78,9 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(14, 11);
+            label2.Location = new Point(12, 8);
             label2.Name = "label2";
-            label2.Size = new Size(155, 20);
+            label2.Size = new Size(125, 15);
             label2.TabIndex = 11;
             label2.Text = "Wyszukaj użytkownika";
             // 
@@ -90,12 +88,12 @@
             // 
             buttonDodajUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonDodajUzytkownika.BackColor = Color.Indigo;
+            buttonDodajUzytkownika.Cursor = Cursors.Hand;
             buttonDodajUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodajUzytkownika.ForeColor = Color.White;
-            buttonDodajUzytkownika.Location = new Point(1179, 4);
-            buttonDodajUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonDodajUzytkownika.Location = new Point(1032, 3);
             buttonDodajUzytkownika.Name = "buttonDodajUzytkownika";
-            buttonDodajUzytkownika.Size = new Size(103, 63);
+            buttonDodajUzytkownika.Size = new Size(90, 47);
             buttonDodajUzytkownika.TabIndex = 13;
             buttonDodajUzytkownika.Text = "Dodaj użytkownika";
             buttonDodajUzytkownika.UseVisualStyleBackColor = false;
@@ -105,12 +103,12 @@
             // 
             buttonUsunUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonUsunUzytkownika.BackColor = Color.Indigo;
+            buttonUsunUzytkownika.Cursor = Cursors.Hand;
             buttonUsunUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonUsunUzytkownika.ForeColor = Color.White;
-            buttonUsunUzytkownika.Location = new Point(1289, 4);
-            buttonUsunUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonUsunUzytkownika.Location = new Point(1128, 3);
             buttonUsunUzytkownika.Name = "buttonUsunUzytkownika";
-            buttonUsunUzytkownika.Size = new Size(102, 63);
+            buttonUsunUzytkownika.Size = new Size(89, 47);
             buttonUsunUzytkownika.TabIndex = 14;
             buttonUsunUzytkownika.Text = "Usuń użytkownika";
             buttonUsunUzytkownika.UseVisualStyleBackColor = false;
@@ -120,12 +118,12 @@
             // 
             buttonEdytujUzytkownika.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonEdytujUzytkownika.BackColor = Color.Indigo;
+            buttonEdytujUzytkownika.Cursor = Cursors.Hand;
             buttonEdytujUzytkownika.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujUzytkownika.ForeColor = Color.White;
-            buttonEdytujUzytkownika.Location = new Point(1398, 4);
-            buttonEdytujUzytkownika.Margin = new Padding(3, 4, 3, 4);
+            buttonEdytujUzytkownika.Location = new Point(1223, 3);
             buttonEdytujUzytkownika.Name = "buttonEdytujUzytkownika";
-            buttonEdytujUzytkownika.Size = new Size(104, 63);
+            buttonEdytujUzytkownika.Size = new Size(91, 47);
             buttonEdytujUzytkownika.TabIndex = 15;
             buttonEdytujUzytkownika.Text = "Edytuj użytkownika";
             buttonEdytujUzytkownika.UseVisualStyleBackColor = false;
@@ -136,17 +134,18 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Imie", "Nazwisko", "Login", "Email", "NumerTelefonu" });
-            comboBox1.Location = new Point(271, 33);
+            comboBox1.Location = new Point(237, 25);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(157, 28);
+            comboBox1.Size = new Size(138, 23);
             comboBox1.TabIndex = 16;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(1509, 1102);
+            ClientSize = new Size(1320, 825);
             Controls.Add(comboBox1);
             Controls.Add(buttonEdytujUzytkownika);
             Controls.Add(buttonUsunUzytkownika);
@@ -156,8 +155,7 @@
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(343, 397);
+            MinimumSize = new Size(300, 298);
             Name = "Form1";
             Text = "Lagerlokal";
             Load += Form1_Load;

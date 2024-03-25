@@ -21,7 +21,7 @@ namespace TestowanieOprogramowania
 
         private void FormDodajUzytkownika_Load(object sender, EventArgs e)
         {
-
+            textBoxHaslo.UseSystemPasswordChar = true;
         }
 
         private void DodajUzytkownikaDoBazy(string imie, string nazwisko, string login, string numerTelefonu, string miejscowosc, string kodPocztowy,
@@ -64,6 +64,11 @@ namespace TestowanieOprogramowania
             }
             //plec K albo M
             if (!WalidujPlec(plec))
+            {
+                return;
+            }
+            //haslo co najmniej 5 znakow
+            if (WalidujHaslo(haslo) == false)
             {
                 return;
             }
@@ -260,15 +265,19 @@ namespace TestowanieOprogramowania
                 return false;
             }
 
-            //Dodac czy email juz istnieje w bazie
 
             return true;
         }
         private bool WalidujNumerTelefonu(string numerTelefonu)
         {
-            if (numerTelefonu.Length != 9 || !long.TryParse(numerTelefonu, out _))
+            if (numerTelefonu.Length != 9)
             {
                 MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.");
+                return false;
+            }
+            if (!long.TryParse(numerTelefonu, out _))
+            {
+                MessageBox.Show("Numer telefonu może zawierać tylko cyfry");
                 return false;
             }
 
@@ -372,5 +381,18 @@ namespace TestowanieOprogramowania
             }
             return false;
         }
+        private bool WalidujHaslo(string haslo)
+        {
+            if (haslo.Length >= 5)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Hasło musi zawierać co najmniej 5 znaków.");
+                return false;
+            }
+        }
+
     }
 }

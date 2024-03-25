@@ -110,7 +110,7 @@ namespace TestowanieOprogramowania
         //s
         public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst, string kategoria)
         {
-            string query = $"SELECT * FROM dbo.Uzytkownicy WHERE {kategoria} LIKE @szukanyTekst and archiwizaScja = '1'";
+            string query = $"SELECT * FROM dbo.Uzytkownicy WHERE {kategoria} LIKE @szukanyTekst and archiwizacja = '1'";
 
             List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
 

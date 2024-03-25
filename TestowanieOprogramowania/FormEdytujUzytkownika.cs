@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,6 +46,7 @@ namespace TestowanieOprogramowania
                     {
                         string data = reader["DataUrodzenia"].ToString();
                         string dataWyjsciowa = ZamienFormatDaty(data);
+                        DateTime dataConverted = DateTime.Parse(dataWyjsciowa);
 
                         textBoxLogin.Text = reader["Login"].ToString();
                         textBoxImie.Text = reader["Imie"].ToString();
@@ -55,10 +57,13 @@ namespace TestowanieOprogramowania
                         textBoxNumerPosesji.Text = reader["NumerPosesji"].ToString();
                         textBoxNumerLokalu.Text = reader["NumerLokalu"].ToString();
                         textBoxPESEL.Text = reader["PESEL"].ToString();
-                        textBoxDataUrodzenia.Text = dataWyjsciowa;
-                        textBoxPlec.Text = reader["Plec"].ToString();
+                        // textBoxDataUrodzenia.Text = dataWyjsciowa;
+                        //textBoxPlec.Text = reader["Plec"].ToString();
                         textBoxEmail.Text = reader["Email"].ToString();
                         textBoxNumerTelefonu.Text = reader["NumerTelefonu"].ToString();
+                        textBoxHaslo.Text = reader["haslo"].ToString();
+
+                        dateTimePicker1.Value = dataConverted;
 
                     }
                     reader.Close();
@@ -70,7 +75,7 @@ namespace TestowanieOprogramowania
             }
         }
 
-        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu)
+        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu, string haslo)
         {
             if (string.IsNullOrWhiteSpace(Imie) || string.IsNullOrWhiteSpace(Nazwisko) || string.IsNullOrWhiteSpace(Login) ||
             string.IsNullOrWhiteSpace(Miejscowosc) || string.IsNullOrWhiteSpace(KodPocztowy) || string.IsNullOrWhiteSpace(Ulica) ||
@@ -112,14 +117,18 @@ namespace TestowanieOprogramowania
             {
                 return;
             }
-
+            //haslo co najmniej 5 znakow
+            if (WalidujHaslo(haslo) == false)
+            {
+                return;
+            }
 
             //Dodając @UzytkownikID wykluczamy obecnego uzytkownika ze sprawdzania tak abysmy mogli po prostu zostawic taki sam login jak byl itp.
             string sprawdzenieLoginuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Login = @Login AND UzytkownikID <> @UzytkownikID";
             string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email AND UzytkownikID <> @UzytkownikID";
             string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL AND UzytkownikID <> @UzytkownikID";
 
-            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu WHERE UzytkownikID = @UzytkownikID";
+            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu, Haslo = @haslo WHERE UzytkownikID = @UzytkownikID";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -186,6 +195,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.AddWithValue("@Plec", Plec);
                     cmd.Parameters.AddWithValue("@Email", Email);
                     cmd.Parameters.AddWithValue("@NumerTelefonu", NumerTelefonu);
+                    cmd.Parameters.AddWithValue("@Haslo", haslo);
 
 
 
@@ -209,13 +219,14 @@ namespace TestowanieOprogramowania
             string ulica = textBoxUlica.Text;
             string numerposesji = textBoxNumerPosesji.Text;
             string pesel = textBoxPESEL.Text;
-            string dataurodzenia = textBoxDataUrodzenia.Text;
-            string plec = textBoxPlec.Text;
+            string dataurodzenia = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string plec = (pesel[pesel.Length - 1] - '0') % 2 == 0 ? "K" : "M"; // określenie płci na podstawie PESEL
             string email = textBoxEmail.Text;
             string numerlokalu = textBoxNumerLokalu.Text;
+            string haslo = textBoxHaslo.Text;
 
 
-            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu);
+            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo);
 
 
         }
@@ -228,7 +239,10 @@ namespace TestowanieOprogramowania
 
         private void FormEdytujUzytkownika_Load(object sender, EventArgs e)
         {
-
+            textBoxPESEL.KeyPress += textBoxPESEL_KeyPress;
+            textBoxPESEL.KeyDown += textBoxPESEL_KeyDown;
+            textBoxPESEL.MouseDown += textBoxPESEL_MouseDown;
+            textBoxHaslo.UseSystemPasswordChar = true;
         }
         public static string ZamienFormatDaty(string dataWejsciowa)
         {
@@ -309,9 +323,14 @@ namespace TestowanieOprogramowania
         }
         private bool WalidujNumerTelefonu(string numerTelefonu)
         {
-            if (numerTelefonu.Length != 9 || !long.TryParse(numerTelefonu, out _))
+            if (numerTelefonu.Length != 9)
             {
                 MessageBox.Show("Numer telefonu musi składać się z dokładnie 9 cyfr.");
+                return false;
+            }
+            if (!long.TryParse(numerTelefonu, out _))
+            {
+                MessageBox.Show("Numer telefonu może zawierać tylko cyfry");
                 return false;
             }
 
@@ -350,6 +369,42 @@ namespace TestowanieOprogramowania
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+        private void textBoxPESEL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void textBoxPESEL_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            // Jeśli długość tekstu wynosi 9, zablokuj Backspace i Delete, aby użytkownik nie mógł usunąć żadnych znaków
+            if (tb.Text.Length == 9 && (e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete))
+            {
+                e.Handled = true; // Zapobiegaj dalszemu przetwarzaniu zdarzenia
+                e.SuppressKeyPress = true; // Zapobiegaj generowaniu zdarzenia KeyPress
+            }
+        }
+
+        private void textBoxPESEL_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Przesuń kursor na koniec tekstu, jeśli kliknięto myszką
+            TextBox tb = (TextBox)sender;
+            tb.SelectionStart = tb.Text.Length;
+            tb.SelectionLength = 0;
+
+        }
+        private bool WalidujHaslo(string haslo)
+        {
+            if (haslo.Length >= 5)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Hasło musi zawierać co najmniej 5 znaków.");
+                return false;
             }
         }
     }
