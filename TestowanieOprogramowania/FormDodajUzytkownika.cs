@@ -42,11 +42,7 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Login musi zawierać co najmniej 8 liter.");
                 return;
             }
-            //c. PESEL:
-            if (WalidujPesel(pesel) == false)
-            {
-                return;
-            }
+            
             //d. Adres e-mail:
             if (WalidujEmail(email) == false)
             {
@@ -184,7 +180,11 @@ namespace TestowanieOprogramowania
             string haslo = textBoxHaslo.Text;
 
             DateTime data = dateTimePicker1.Value;
-
+            //c. PESEL:
+            if (WalidujPesel(pesel) == false)
+            {
+                return;
+            }
             if (IsBirthDateMatchingPesel(pesel, data))
             {
                 DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo);
