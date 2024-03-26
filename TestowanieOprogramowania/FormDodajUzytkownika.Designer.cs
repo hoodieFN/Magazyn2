@@ -356,9 +356,9 @@
             label12.AutoSize = true;
             label12.Location = new Point(318, 93);
             label12.Name = "label12";
-            label12.Size = new Size(115, 15);
+            label12.Size = new Size(117, 15);
             label12.TabIndex = 34;
-            label12.Text = "*więcej niż 8 znaków";
+            label12.Text = "*minimum 8 znaków";
             // 
             // label16
             // 
@@ -376,11 +376,12 @@
             label17.Anchor = AnchorStyles.None;
             label17.AutoSize = true;
             label17.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(715, 356);
+            label17.Location = new Point(715, 358);
             label17.Name = "label17";
-            label17.Size = new Size(129, 17);
+            label17.Size = new Size(124, 17);
             label17.TabIndex = 36;
-            label17.Text = "*więcej niż 5 znaków";
+            label17.Text = "*minimum 5 znaków";
+            label17.Click += label17_Click;
             // 
             // FormDodajUzytkownika
             // 

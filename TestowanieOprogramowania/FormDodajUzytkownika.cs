@@ -42,7 +42,7 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Login musi zawierać co najmniej 8 liter.");
                 return;
             }
-            
+
             //d. Adres e-mail:
             if (WalidujEmail(email) == false)
             {
@@ -394,5 +394,9 @@ namespace TestowanieOprogramowania
             }
         }
 
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
