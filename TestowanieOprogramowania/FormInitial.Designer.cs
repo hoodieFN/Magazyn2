@@ -47,7 +47,7 @@
             panelslide.Dock = DockStyle.Left;
             panelslide.Location = new Point(0, 0);
             panelslide.Name = "panelslide";
-            panelslide.Size = new Size(200, 763);
+            panelslide.Size = new Size(194, 763);
             panelslide.TabIndex = 0;
             panelslide.Paint += panelslide_Paint;
             // 
@@ -108,9 +108,9 @@
             // 
             mainpanel.BackColor = Color.FromArgb(24, 24, 24);
             mainpanel.Dock = DockStyle.Fill;
-            mainpanel.Location = new Point(200, 0);
+            mainpanel.Location = new Point(194, 0);
             mainpanel.Name = "mainpanel";
-            mainpanel.Size = new Size(1015, 763);
+            mainpanel.Size = new Size(1021, 763);
             mainpanel.TabIndex = 1;
             mainpanel.Paint += mainpanel_Paint;
             // 

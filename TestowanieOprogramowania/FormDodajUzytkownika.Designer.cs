@@ -423,6 +423,7 @@
             Controls.Add(textBoxLogin);
             ForeColor = SystemColors.Control;
             Name = "FormDodajUzytkownika";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormDodajUzytkownika";
             Load += FormDodajUzytkownika_Load;
             ResumeLayout(false);

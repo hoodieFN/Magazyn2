@@ -440,6 +440,7 @@
             Controls.Add(textBoxLogin);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormEdytujUzytkownika";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormEdytujUzytkownika";
             Load += FormEdytujUzytkownika_Load;
             ResumeLayout(false);
