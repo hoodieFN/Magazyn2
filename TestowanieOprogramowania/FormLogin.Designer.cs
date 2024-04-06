@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBoxUsername = new TextBox();
+            textBoxPassword = new TextBox();
             label2 = new Label();
             label3 = new Label();
             button1 = new Button();
@@ -50,27 +50,28 @@
             label1.TabIndex = 0;
             label1.Text = "Warehouse";
             // 
-            // textBox1
+            // textBoxUsername
             // 
-            textBox1.Anchor = AnchorStyles.None;
-            textBox1.BackColor = Color.LightGray;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(75, 187);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(216, 26);
-            textBox1.TabIndex = 1;
+            textBoxUsername.Anchor = AnchorStyles.None;
+            textBoxUsername.BackColor = Color.LightGray;
+            textBoxUsername.BorderStyle = BorderStyle.None;
+            textBoxUsername.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxUsername.Location = new Point(75, 187);
+            textBoxUsername.Name = "textBoxUsername";
+            textBoxUsername.Size = new Size(216, 26);
+            textBoxUsername.TabIndex = 1;
             // 
-            // textBox2
+            // textBoxPassword
             // 
-            textBox2.Anchor = AnchorStyles.None;
-            textBox2.BackColor = Color.LightGray;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(75, 251);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(216, 26);
-            textBox2.TabIndex = 2;
+            textBoxPassword.Anchor = AnchorStyles.None;
+            textBoxPassword.BackColor = Color.LightGray;
+            textBoxPassword.BorderStyle = BorderStyle.None;
+            textBoxPassword.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxPassword.Location = new Point(75, 251);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(216, 26);
+            textBoxPassword.TabIndex = 2;
+            textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -137,8 +138,8 @@
             Controls.Add(button1);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxPassword);
+            Controls.Add(textBoxUsername);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
@@ -151,8 +152,8 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBoxUsername;
+        private TextBox textBoxPassword;
         private Label label2;
         private Label label3;
         private Button button1;

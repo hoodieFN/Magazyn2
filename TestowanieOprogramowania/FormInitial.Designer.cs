@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             panelslide = new Panel();
-            buttonLogin = new Button();
+            labelWitajUzytkowniku = new Label();
+            buttonListaUprawnien = new Button();
+            buttonLogout = new Button();
             buttonZarzadzaj = new Button();
             mainpanel = new Panel();
             panelslide.SuspendLayout();
@@ -38,28 +40,55 @@
             // panelslide
             // 
             panelslide.BackColor = Color.FromArgb(24, 24, 24);
-            panelslide.Controls.Add(buttonLogin);
+            panelslide.Controls.Add(labelWitajUzytkowniku);
+            panelslide.Controls.Add(buttonListaUprawnien);
+            panelslide.Controls.Add(buttonLogout);
             panelslide.Controls.Add(buttonZarzadzaj);
             panelslide.Dock = DockStyle.Left;
             panelslide.Location = new Point(0, 0);
             panelslide.Name = "panelslide";
             panelslide.Size = new Size(200, 763);
             panelslide.TabIndex = 0;
+            panelslide.Paint += panelslide_Paint;
             // 
-            // buttonLogin
+            // labelWitajUzytkowniku
             // 
-            buttonLogin.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonLogin.BackColor = Color.Indigo;
-            buttonLogin.Cursor = Cursors.Hand;
-            buttonLogin.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonLogin.ForeColor = Color.White;
-            buttonLogin.Location = new Point(12, 698);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(171, 53);
-            buttonLogin.TabIndex = 1;
-            buttonLogin.Text = "Logout";
-            buttonLogin.UseVisualStyleBackColor = false;
-            buttonLogin.Click += buttonLogin_Click;
+            labelWitajUzytkowniku.AutoSize = true;
+            labelWitajUzytkowniku.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelWitajUzytkowniku.ForeColor = SystemColors.ControlLightLight;
+            labelWitajUzytkowniku.Location = new Point(12, 19);
+            labelWitajUzytkowniku.Name = "labelWitajUzytkowniku";
+            labelWitajUzytkowniku.Size = new Size(58, 19);
+            labelWitajUzytkowniku.TabIndex = 3;
+            labelWitajUzytkowniku.Text = "label1";
+            // 
+            // buttonListaUprawnien
+            // 
+            buttonListaUprawnien.BackColor = Color.Indigo;
+            buttonListaUprawnien.Cursor = Cursors.Hand;
+            buttonListaUprawnien.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonListaUprawnien.ForeColor = Color.White;
+            buttonListaUprawnien.Location = new Point(12, 110);
+            buttonListaUprawnien.Name = "buttonListaUprawnien";
+            buttonListaUprawnien.Size = new Size(171, 53);
+            buttonListaUprawnien.TabIndex = 2;
+            buttonListaUprawnien.Text = "Lista Uprawnien";
+            buttonListaUprawnien.UseVisualStyleBackColor = false;
+            // 
+            // buttonLogout
+            // 
+            buttonLogout.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            buttonLogout.BackColor = Color.Indigo;
+            buttonLogout.Cursor = Cursors.Hand;
+            buttonLogout.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLogout.ForeColor = Color.White;
+            buttonLogout.Location = new Point(12, 698);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(171, 53);
+            buttonLogout.TabIndex = 1;
+            buttonLogout.Text = "Wyloguj";
+            buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
             // 
             // buttonZarzadzaj
             // 
@@ -67,7 +96,7 @@
             buttonZarzadzaj.Cursor = Cursors.Hand;
             buttonZarzadzaj.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonZarzadzaj.ForeColor = Color.White;
-            buttonZarzadzaj.Location = new Point(12, 12);
+            buttonZarzadzaj.Location = new Point(12, 51);
             buttonZarzadzaj.Name = "buttonZarzadzaj";
             buttonZarzadzaj.Size = new Size(171, 53);
             buttonZarzadzaj.TabIndex = 0;
@@ -96,6 +125,7 @@
             Text = "FormInitial";
             WindowState = FormWindowState.Maximized;
             panelslide.ResumeLayout(false);
+            panelslide.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -104,6 +134,8 @@
         private Panel panelslide;
         private Button buttonZarzadzaj;
         private Panel mainpanel;
-        private Button buttonLogin;
+        private Button buttonLogout;
+        private Button buttonListaUprawnien;
+        private Label labelWitajUzytkowniku;
     }
 }
