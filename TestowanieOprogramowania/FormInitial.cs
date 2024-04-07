@@ -100,6 +100,37 @@ namespace TestowanieOprogramowania
 
             return userName;
         }
+        public string GetUserLogin(int userId)
+        {
+            string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+            string userlogin = "";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                string sqlQuery = "SELECT Login FROM dbo.Uzytkownicy WHERE UzytkownikID = @UzytkownikID";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    // Ustaw parametry zapytania
+                    command.Parameters.AddWithValue("@UzytkownikID", userId);
+
+                    try
+                    {
+                        connection.Open();
+                        // Wykonaj zapytanie i odbierz wynik
+                        userlogin = (string)command.ExecuteScalar();
+                    }
+                    catch (SqlException e)
+                    {
+                        // W przypadku wystąpienia błędu SQL, obsłuż go tutaj
+                        Console.WriteLine("Błąd SQL: " + e.Message);
+                    }
+                    // Zamknięcie połączenia jest obsługiwane przez blok using
+                }
+            }
+
+            return userlogin;
+        }
+
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
@@ -119,6 +150,56 @@ namespace TestowanieOprogramowania
             }
             // Jeśli użytkownik wybierze 'Nie', to nic nie rób
         }
+
+        private void buttonListaUprawnien_Click(object sender, EventArgs e)
+        {
+            
+           string login = GetUserLogin(UserSession.CurrentUserId);
+                int idUprawnieniaUzytkownika = PobierzIDUprawnienia(login);
+
+                if (idUprawnieniaUzytkownika == 1)
+                {
+                    // Użytkownik ma uprawnienie ID = 1 - nic się nie dzieje
+                    loadform(new FormUprawnienia());
+                }
+                else 
+                {
+                    // Użytkownik nie ma wymaganego uprawnienia - wyświetl komunikat
+                    MessageBox.Show("Brak wymaganych uprawnień do wyświetlenia listy uprawnień.", "Brak uprawnień", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        public int PobierzIDUprawnienia(string login)
+        {
+            int idUprawnienia = 0; // Domyślna wartość
+            string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                string query = "SELECT IDUprawnienia FROM Uzytkownicy WHERE Login = @Login";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Login", login);
+
+                try
+                {
+                    connection.Open();
+                    idUprawnienia = (int?)command.ExecuteScalar() ?? 0;
+                }
+                catch (Exception ex)
+                {
+                    // Obsługa błędów, np. logowanie błędu
+                    Console.WriteLine("Błąd podczas pobierania ID uprawnienia użytkownika: " + ex.Message);
+                }
+            }
+
+            return idUprawnienia;
+        }
     }
 
+   
+
+
+
 }
+
+

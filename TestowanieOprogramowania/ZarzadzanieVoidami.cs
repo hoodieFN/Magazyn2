@@ -151,7 +151,41 @@ namespace TestowanieOprogramowania
             return listaUzytkownikow;
         }
 
-        
+
+        public List<Uprawnienia> PobierzUprawnienia()
+        {
+            List<Uprawnienia> listaUprawnien = new List<Uprawnienia>();
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                string query = "SELECT * from dbo.Uprawnienia";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Uprawnienia uprawnienia = new Uprawnienia
+                            {
+                                UprawnienieID = Convert.ToInt32(reader["UprawnienieID"]),
+                                Nazwa_stanowiska = reader["Nazwa_Stanowiska"].ToString(),
+                                DostepDoRaportow = reader["DostepDoRaportow"].ToString(),
+                                ObslugaWozkowWidlowych = reader["ObslugaWozkowWidlowych"].ToString(),
+                                ZarzadzanieMagazynem = reader["ZarzadzanieMagazynem"].ToString(),
+                                NaprawaUrzadzen = reader["NaprawaUrzadzen"].ToString(),
+                                PakowaniePaczek = reader["PakowaniePaczek"].ToString()
+                            };
+                            listaUprawnien.Add(uprawnienia);
+                        }
+                    }
+                }
+            }
+
+            return listaUprawnien;
+        }
 
 
     }
