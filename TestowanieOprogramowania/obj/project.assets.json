@@ -2147,11 +2147,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn40\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectUniqueName": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn34\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "projectName": "TestowanieOprogramowania",
-      "projectPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn40\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn34\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "packagesPath": "C:\\Users\\marys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn40\\TestowanieOprogramowania\\obj\\",
+      "outputPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn34\\TestowanieOprogramowania\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\marys\\AppData\\Roaming\\NuGet\\NuGet.Config",

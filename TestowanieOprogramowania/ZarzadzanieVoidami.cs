@@ -22,7 +22,7 @@ namespace TestowanieOprogramowania
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
-                string query = "SELECT UzytkownikID, Login, Imie, Nazwisko, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, NumerLokalu, PESEL, DataUrodzenia,Plec,Email,NumerTelefonu FROM dbo.Uzytkownicy where dbo.Uzytkownicy.archiwizacja = '1'";
+                string query = "SELECT u.UzytkownikID, u.Login, u.Imie, u.Nazwisko, u.Miejscowosc, u.KodPocztowy, u.Ulica, u.NumerPosesji, u.NumerLokalu, u.PESEL, u.DataUrodzenia, u.Plec, u.Email, u.NumerTelefonu, up.Nazwa_stanowiska FROM dbo.Uzytkownicy u JOIN dbo.Uprawnienia up ON u.IDuprawnienia = up.UprawnienieID WHERE u.archiwizacja = '1'\r\n";
 
 
 
@@ -49,7 +49,9 @@ namespace TestowanieOprogramowania
                                 DataUrodzenia = reader["DataUrodzenia"].ToString(),
                                 Plec = reader["Plec"].ToString(),
                                 Email = reader["Email"].ToString(),
-                                NumerTelefonu = reader["NumerTelefonu"].ToString()
+                                NumerTelefonu = reader["NumerTelefonu"].ToString(),
+                                Nazwa_stanowiska = reader["Nazwa_stanowiska"].ToString()
+
                             };
                             listaUzytkownikow.Add(uzytkownik);
                         }
@@ -110,7 +112,7 @@ namespace TestowanieOprogramowania
         //s
         public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst, string kategoria)
         {
-            string query = $"SELECT * FROM dbo.Uzytkownicy WHERE {kategoria} LIKE @szukanyTekst and archiwizacja = '1'";
+            string query = $"SELECT * FROM dbo.Uzytkownicy join dbo.Uprawnienia on dbo.Uzytkownicy.IDUprawnienia = dbo.Uprawnienia.UprawnienieID WHERE {kategoria} LIKE @szukanyTekst and archiwizacja = '1'";
 
             List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
 
@@ -141,7 +143,8 @@ namespace TestowanieOprogramowania
                                 Plec = reader["Plec"].ToString(),
                                 Email = reader["Email"].ToString(),
                                 NumerTelefonu = reader["NumerTelefonu"].ToString(),
-                                archiwizacja = reader["archiwizacja"].ToString()
+                                archiwizacja = reader["archiwizacja"].ToString(),
+                                Nazwa_stanowiska = reader["Nazwa_stanowiska"].ToString()
                             };
                             listaUzytkownikow.Add(uzytkownik);
                         }

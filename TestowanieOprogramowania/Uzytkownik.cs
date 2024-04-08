@@ -18,5 +18,6 @@ public class Uzytkownik : Osoba
     public string NumerTelefonu { get; set; }
     public string haslo { get; set; }
     public string archiwizacja { get; set; }
+    public string Nazwa_stanowiska { get; set; }
 
 }
