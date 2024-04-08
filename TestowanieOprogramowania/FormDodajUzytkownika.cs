@@ -25,7 +25,7 @@ namespace TestowanieOprogramowania
         }
 
         private void DodajUzytkownikaDoBazy(string imie, string nazwisko, string login, string numerTelefonu, string miejscowosc, string kodPocztowy,
-            string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu, string haslo)
+            string ulica, string numerPosesji, string pesel, string dataUrodzenia, string plec, string email, string numerLokalu, string haslo, int numerUprawnienia)
         {
             if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) || string.IsNullOrWhiteSpace(login) ||
             string.IsNullOrWhiteSpace(miejscowosc) || string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
@@ -73,9 +73,9 @@ namespace TestowanieOprogramowania
             string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email";
             string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL";
             string query =
-                "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo) "
+                "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo, IDUprawnienia) "
   +
-  "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, \r\n        CASE RIGHT(@Pesel, 1) \r\n            WHEN '0' THEN 'K' \r\n            WHEN '2' THEN 'K' \r\n            WHEN '4' THEN 'K' \r\n            WHEN '6' THEN 'K' \r\n            WHEN '8' THEN 'K' \r\n            ELSE 'M' \r\n        END, \r\n        @Email, @NumerLokalu, @Haslo);";
+  "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, \r\n        CASE RIGHT(@Pesel, 1) \r\n            WHEN '0' THEN 'K' \r\n            WHEN '2' THEN 'K' \r\n            WHEN '4' THEN 'K' \r\n            WHEN '6' THEN 'K' \r\n            WHEN '8' THEN 'K' \r\n            ELSE 'M' \r\n        END, \r\n        @Email, @NumerLokalu, @Haslo, @IDUprawnienia );";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -144,7 +144,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)).Value = email;
                     cmd.Parameters.Add(new SqlParameter("@NumerLokalu", SqlDbType.NVarChar)).Value = numerLokalu;
                     cmd.Parameters.Add(new SqlParameter("@Haslo", SqlDbType.NVarChar)).Value = haslo;
-
+                    cmd.Parameters.Add(new SqlParameter("@IDUprawnienia", SqlDbType.Int)).Value = numerUprawnienia;
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -187,7 +187,23 @@ namespace TestowanieOprogramowania
             }
             if (IsBirthDateMatchingPesel(pesel, data))
             {
-                DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo);
+                int numerUprawnienia = 0;
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "Administrator":
+                        numerUprawnienia = 1;
+                        break;
+                    case "Pracownik magazynu":
+                        numerUprawnienia = 2;
+                        break;
+                    case "Sprzedawca":
+                        numerUprawnienia = 3;
+                        break;
+                    default:
+                        MessageBox.Show("Wybierz stanowisko użytkownika.");
+                        return;
+                }
+                        DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
             }
             else
             {
