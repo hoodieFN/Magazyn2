@@ -37,6 +37,7 @@ namespace TestowanieOprogramowania
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", this.userId);
+                
 
                 try
                 {
@@ -62,6 +63,8 @@ namespace TestowanieOprogramowania
                         textBoxEmail.Text = reader["Email"].ToString();
                         textBoxNumerTelefonu.Text = reader["NumerTelefonu"].ToString();
                         textBoxHaslo.Text = reader["haslo"].ToString();
+                        int idUprawnienia = Convert.ToInt32(reader["IDUprawnienia"]);
+                        comboBox1.SelectedItem = PobierzNazweUprawnienia(idUprawnienia);
 
                         dateTimePicker1.Value = dataConverted;
 
@@ -74,8 +77,36 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+        private string PobierzNazweUprawnienia(int idUprawnienia)
+        {
+            switch (idUprawnienia)
+            {
+                case 1:
+                    return "Administrator";
+                case 2:
+                    return "Pracownik magazynu";
+                case 3:
+                    return "Sprzedawca";
+                default:
+                    return "Nieznane uprawnienie";
+            }
+        }
+        private int PobierzIdUprawnienia(string nazwaUprawnienia)
+        {
+            switch (nazwaUprawnienia)
+            {
+                case "Administrator":
+                    return 1;
+                case "Pracownik magazynu":
+                    return 2;
+                case "Sprzedawca":
+                    return 3;
+                default:
+                    return -1; // Wartość domyślna w przypadku nieznanej wartości
+            }
+        }
 
-        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu, string haslo)
+        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu, string haslo, int idUprawnienia)
         {
             if (string.IsNullOrWhiteSpace(Imie) || string.IsNullOrWhiteSpace(Nazwisko) || string.IsNullOrWhiteSpace(Login) ||
             string.IsNullOrWhiteSpace(Miejscowosc) || string.IsNullOrWhiteSpace(KodPocztowy) || string.IsNullOrWhiteSpace(Ulica) ||
@@ -128,7 +159,7 @@ namespace TestowanieOprogramowania
             string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email AND UzytkownikID <> @UzytkownikID";
             string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL AND UzytkownikID <> @UzytkownikID";
 
-            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu, Haslo = @haslo WHERE UzytkownikID = @UzytkownikID";
+            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu, Haslo = @haslo, IDUprawnienia = @IDUprawnienia WHERE UzytkownikID = @UzytkownikID";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -196,6 +227,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.AddWithValue("@Email", Email);
                     cmd.Parameters.AddWithValue("@NumerTelefonu", NumerTelefonu);
                     cmd.Parameters.AddWithValue("@Haslo", haslo);
+                    cmd.Parameters.AddWithValue("@IDUprawnienia", idUprawnienia);
 
 
 
@@ -224,9 +256,10 @@ namespace TestowanieOprogramowania
             string email = textBoxEmail.Text;
             string numerlokalu = textBoxNumerLokalu.Text;
             string haslo = textBoxHaslo.Text;
+            string uprawnienia = comboBox1.SelectedItem.ToString();
+            int idUprawnienia = PobierzIdUprawnienia(uprawnienia); // Pobranie wartości liczbowej IDUprawnienia na podstawie nazwy
 
-
-            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo);
+            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo, idUprawnienia);
 
 
         }
