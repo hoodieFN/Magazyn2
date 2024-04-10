@@ -146,7 +146,7 @@ namespace TestowanieOprogramowania
                 // Pokaż formularz logowania
                 FormLogin loginForm = new FormLogin();
                 loginForm.FormClosed += (s, args) => this.Close(); // Zamknij aplikację, gdy formularz logowania zostanie zamknięty
-                loginForm.Show();
+                //loginForm.Show();
             }
             // Jeśli użytkownik wybierze 'Nie', to nic nie rób
         }
