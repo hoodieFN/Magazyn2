@@ -43,10 +43,10 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Imie", "Nazwisko", "Login", "Email", "NumerTelefonu" });
-            comboBox1.Location = new Point(10, 31);
+            comboBox1.Location = new Point(9, 23);
             comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(157, 28);
+            comboBox1.Size = new Size(138, 23);
             comboBox1.TabIndex = 24;
             // 
             // buttonEdytujRole
@@ -56,10 +56,9 @@
             buttonEdytujRole.Cursor = Cursors.Hand;
             buttonEdytujRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujRole.ForeColor = Color.White;
-            buttonEdytujRole.Location = new Point(1377, 13);
-            buttonEdytujRole.Margin = new Padding(3, 4, 3, 4);
+            buttonEdytujRole.Location = new Point(1205, 10);
             buttonEdytujRole.Name = "buttonEdytujRole";
-            buttonEdytujRole.Size = new Size(104, 62);
+            buttonEdytujRole.Size = new Size(91, 46);
             buttonEdytujRole.TabIndex = 23;
             buttonEdytujRole.Text = "Edytuj role";
             buttonEdytujRole.UseVisualStyleBackColor = false;
@@ -72,10 +71,9 @@
             buttonUsunRole.Cursor = Cursors.Hand;
             buttonUsunRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonUsunRole.ForeColor = Color.White;
-            buttonUsunRole.Location = new Point(1268, 13);
-            buttonUsunRole.Margin = new Padding(3, 4, 3, 4);
+            buttonUsunRole.Location = new Point(1110, 10);
             buttonUsunRole.Name = "buttonUsunRole";
-            buttonUsunRole.Size = new Size(102, 62);
+            buttonUsunRole.Size = new Size(89, 46);
             buttonUsunRole.TabIndex = 22;
             buttonUsunRole.Text = "Usuń role";
             buttonUsunRole.UseVisualStyleBackColor = false;
@@ -86,9 +84,9 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(2, 8);
+            label2.Location = new Point(2, 6);
             label2.Name = "label2";
-            label2.Size = new Size(155, 20);
+            label2.Size = new Size(124, 15);
             label2.TabIndex = 20;
             label2.Text = "Wyszukaj uprawnienia";
             // 
@@ -97,9 +95,9 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(2, 66);
+            label1.Location = new Point(2, 50);
             label1.Name = "label1";
-            label1.Size = new Size(92, 20);
+            label1.Size = new Size(73, 15);
             label1.TabIndex = 18;
             label1.Text = "Uprawnienia";
             // 
@@ -108,12 +106,11 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(2, 93);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(2, 70);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1495, 776);
+            dataGridView1.Size = new Size(1308, 582);
             dataGridView1.TabIndex = 17;
             // 
             // buttonDodajRole
@@ -123,10 +120,9 @@
             buttonDodajRole.Cursor = Cursors.Hand;
             buttonDodajRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodajRole.ForeColor = Color.White;
-            buttonDodajRole.Location = new Point(1159, 13);
-            buttonDodajRole.Margin = new Padding(3, 4, 3, 4);
+            buttonDodajRole.Location = new Point(1014, 10);
             buttonDodajRole.Name = "buttonDodajRole";
-            buttonDodajRole.Size = new Size(103, 62);
+            buttonDodajRole.Size = new Size(90, 46);
             buttonDodajRole.TabIndex = 25;
             buttonDodajRole.Text = "Dodaj role";
             buttonDodajRole.UseVisualStyleBackColor = false;
@@ -134,10 +130,10 @@
             // 
             // FormUprawnienia
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(1491, 840);
+            ClientSize = new Size(1305, 630);
             Controls.Add(buttonDodajRole);
             Controls.Add(comboBox1);
             Controls.Add(buttonEdytujRole);
@@ -145,6 +141,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "FormUprawnienia";
             Text = "FormUprawnienia";

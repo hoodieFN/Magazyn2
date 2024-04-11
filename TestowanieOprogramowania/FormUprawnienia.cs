@@ -109,7 +109,7 @@ namespace TestowanieOprogramowania
 
                     if (result == DialogResult.OK)
                     {
-                        OdswiezDataGridView(); 
+                        OdswiezDataGridView();
                     }
                 }
             }
