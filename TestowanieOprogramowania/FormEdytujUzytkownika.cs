@@ -37,7 +37,7 @@ namespace TestowanieOprogramowania
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", this.userId);
-                
+
 
                 try
                 {
@@ -242,6 +242,11 @@ namespace TestowanieOprogramowania
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedIndex == -1 || comboBox1.SelectedItem == null)
+            {
+                // Jeśli nie, wyświetl komunikat
+                MessageBox.Show("Musisz wybrać opcję z Rola/Stanowisko!", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             string login = textBoxLogin.Text;
             string imie = textBoxImie.Text;
             string nazwisko = textBoxNazwisko.Text;

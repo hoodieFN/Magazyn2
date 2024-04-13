@@ -25,11 +25,59 @@ namespace TestowanieOprogramowania
 
         private void FormUprawnienia_Load(object sender, EventArgs e)
         {
+            dataGridView2.Visible = false;
+            dataGridView2.MaximumSize = new Size(420, dataGridView2.Height);
+            WczytajDaneDoDataGridView2();
             OdswiezDataGridView();
-            comboBox1.SelectedIndex = 0;
+            //comboBox1.SelectedIndex = 0;
+            if (!ZarzadzanieVoidami.DodawanieRoli())
+            {
+                buttonDodajRole.Visible = false;
+            }
+            if (!ZarzadzanieVoidami.UsuwanieRoli())
+            {
+                buttonUsunRole.Visible = false;
+            }
+            if (!ZarzadzanieVoidami.EdytowanieRoli())
+            {
+                buttonEdytujRole.Visible = false;
+            }
 
         }
+        private void WczytajDaneDoDataGridView2()
+        {
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = "SELECT * FROM dbo.Uprawnienia"; // Zapytanie pobiera wszystkie kolumny
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
 
+                        DataTable transposedTable = new DataTable();
+
+                        // Tworzenie jednej kolumny dla transponowanej tabeli
+                        transposedTable.Columns.Add("Lista dostępnych uprawnien");
+
+                        // Transpozycja - pomijamy dwie pierwsze kolumny
+                        foreach (DataColumn col in dataTable.Columns)
+                        {
+                            if (dataTable.Columns.IndexOf(col) > 1) // Pomijamy dwie pierwsze kolumny
+                            {
+                                DataRow newRow = transposedTable.NewRow();
+                                newRow[0] = col.ColumnName; // Ustawiamy nazwę kolumny jako wartość wiersza
+                                transposedTable.Rows.Add(newRow);
+                            }
+                        }
+
+                        dataGridView2.DataSource = transposedTable;
+                    }
+                }
+            }
+        }
         private void OdswiezDataGridView()
         {
             var listaUprawnien = zarzadzanieVoidami.PobierzUprawnienia();
@@ -70,29 +118,41 @@ namespace TestowanieOprogramowania
             // Pobranie nazwy roli z zaznaczonego wiersza dataGridView1
             string nazwaRoli = dataGridView1.SelectedRows[0].Cells["Nazwa_stanowiska"].Value.ToString();
 
-            // Zapytanie SQL do usunięcia roli z bazy danych
-            string query = "DELETE FROM dbo.Uprawnienia WHERE Nazwa_stanowiska = @Nazwa";
+            // Wyświetlenie pytania z potwierdzeniem
+            var result = MessageBox.Show("Czy na pewno chcesz usunąć rolę: " + nazwaRoli + "?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            if (result == DialogResult.Yes)
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.Add(new SqlParameter("@Nazwa", SqlDbType.NVarChar)).Value = nazwaRoli;
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                // Zapytanie SQL do usunięcia roli z bazy danych
+                string query = "DELETE FROM dbo.Uprawnienia WHERE Nazwa_stanowiska = @Nazwa";
 
-                    // Sprawdzenie czy rola została pomyślnie usunięta
-                    if (rowsAffected > 0)
+                using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        MessageBox.Show("Rola została pomyślnie usunięta.");
-                        OdswiezDataGridView();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Wystąpił błąd podczas usuwania roli.");
+                        cmd.Parameters.Add(new SqlParameter("@Nazwa", SqlDbType.NVarChar)).Value = nazwaRoli;
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // Sprawdzenie czy rola została pomyślnie usunięta
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Rola została pomyślnie usunięta.");
+                            // Odświeżenie dataGridView1
+                            OdswiezDataGridView();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wystąpił błąd podczas usuwania roli.");
+                        }
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Usuwanie roli zostało anulowane.");
+            }
+
         }
 
         private void buttonEdytujRole_Click(object sender, EventArgs e)
@@ -117,6 +177,16 @@ namespace TestowanieOprogramowania
             {
                 MessageBox.Show("Proszę zaznaczyć wiersz do edycji", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Visible = false;
         }
     }
 }

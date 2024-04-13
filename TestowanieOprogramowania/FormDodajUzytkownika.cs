@@ -187,23 +187,32 @@ namespace TestowanieOprogramowania
             }
             if (IsBirthDateMatchingPesel(pesel, data))
             {
-                int numerUprawnienia = 0;
-                switch (comboBox1.SelectedItem.ToString())
+                if (comboBox1.SelectedIndex == -1 || comboBox1.SelectedItem == null)
                 {
-                    case "Administrator":
-                        numerUprawnienia = 1;
-                        break;
-                    case "Pracownik magazynu":
-                        numerUprawnienia = 2;
-                        break;
-                    case "Sprzedawca":
-                        numerUprawnienia = 3;
-                        break;
-                    default:
-                        MessageBox.Show("Wybierz stanowisko użytkownika.");
-                        return;
+                    // Jeśli nie, wyświetl komunikat
+                    MessageBox.Show("Musisz wybrać opcję z Rola/Stanowisko!", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                        DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
+                else
+                {
+                    int numerUprawnienia = 0;
+                    switch (comboBox1.SelectedItem.ToString())
+                    {
+                        case "Administrator":
+                            numerUprawnienia = 1;
+                            break;
+                        case "Pracownik magazynu":
+                            numerUprawnienia = 2;
+                            break;
+                        case "Sprzedawca":
+                            numerUprawnienia = 3;
+                            break;
+                        default:
+                            MessageBox.Show("Wybierz stanowisko użytkownika.");
+                            return;
+                    }
+                    DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
+                }
+                
             }
             else
             {

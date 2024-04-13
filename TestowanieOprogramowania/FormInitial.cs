@@ -16,10 +16,11 @@ namespace TestowanieOprogramowania
     {
         public FormInitial()
         {
-
             InitializeComponent();
             labelWitajUzytkowniku.Text = $"Witaj, {GetUserName(UserSession.CurrentUserId)}";
+            labelRola.Text = $"Rola: {GetUserRole(UserSession.CurrentUserId)}";
             this.FormClosing += new FormClosingEventHandler(FormInitial_FormClosing);
+
         }
         private void FormInitial_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -56,7 +57,14 @@ namespace TestowanieOprogramowania
 
         private void buttonZarzadzaj_Click(object sender, EventArgs e)
         {
-            loadform(new Form1());
+            if (ZarzadzanieVoidami.CzyMaDostepDoListyUzytkownikow())
+            {
+                loadform(new Form1());
+            }
+            else
+            {
+                MessageBox.Show("Brak uprawnień w systemie");
+            }
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
@@ -99,6 +107,36 @@ namespace TestowanieOprogramowania
             }
 
             return userName;
+        }
+        public string GetUserRole(int userId)
+        {
+            string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+            string userRole = "";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                string sqlQuery = "SELECT U.Nazwa_stanowiska\r\nFROM Uzytkownicy AS Uzyt\r\nJOIN Uprawnienia AS U ON Uzyt.IDUprawnienia = U.UprawnienieID\r\nWHERE Uzyt.UzytkownikID = @UzytkownikID;";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    // Ustaw parametry zapytania
+                    command.Parameters.AddWithValue("@UzytkownikID", userId);
+
+                    try
+                    {
+                        connection.Open();
+                        // Wykonaj zapytanie i odbierz wynik
+                        userRole = (string)command.ExecuteScalar();
+                    }
+                    catch (SqlException e)
+                    {
+                        // W przypadku wystąpienia błędu SQL, obsłuż go tutaj
+                        Console.WriteLine("Błąd SQL: " + e.Message);
+                    }
+                    // Zamknięcie połączenia jest obsługiwane przez blok using
+                }
+            }
+
+            return userRole;
         }
         public string GetUserLogin(int userId)
         {
@@ -153,8 +191,13 @@ namespace TestowanieOprogramowania
 
         private void buttonListaUprawnien_Click(object sender, EventArgs e)
         {
-            
-           string login = GetUserLogin(UserSession.CurrentUserId);
+            if (!ZarzadzanieVoidami.CzyMaDostepDoListyUprawnien())
+            {
+                MessageBox.Show("Brak uprawnień w systemie.");
+            }
+            else
+            {
+                string login = GetUserLogin(UserSession.CurrentUserId);
                 int idUprawnieniaUzytkownika = PobierzIDUprawnienia(login);
 
                 if (idUprawnieniaUzytkownika == 1)
@@ -162,12 +205,14 @@ namespace TestowanieOprogramowania
                     // Użytkownik ma uprawnienie ID = 1 - nic się nie dzieje
                     loadform(new FormUprawnienia());
                 }
-                else 
+                else
                 {
                     // Użytkownik nie ma wymaganego uprawnienia - wyświetl komunikat
                     MessageBox.Show("Brak wymaganych uprawnień do wyświetlenia listy uprawnień.", "Brak uprawnień", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+
+        }
         public int PobierzIDUprawnienia(string login)
         {
             int idUprawnienia = 0; // Domyślna wartość
@@ -194,9 +239,24 @@ namespace TestowanieOprogramowania
 
             return idUprawnienia;
         }
+
+        private void labelWitajUzytkowniku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadform(new FormPrzegldajUzytkow());
+        }
     }
 
-   
+
 
 
 

@@ -49,36 +49,53 @@ namespace TestowanieOprogramowania
             }
 
             // Sprawdzenie czy comboBoxDostep, comboBoxObsluga, comboBoxZarzadzanie, comboBoxNaprawa, comboBoxPakowanie nie są puste
-            if (comboBoxDostep.SelectedIndex == -1)
+            if (comboBoxListUz.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Dostęp do raportów' nie może być puste.");
                 return;
             }
-            if (comboBoxObsluga.SelectedIndex == -1)
+            if (comboBoxListUp.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Obsługa wózków widłowych' nie może być puste.");
                 return;
             }
-            if (comboBoxZarzadzanie.SelectedIndex == -1)
+            if (comboBoxDodUz.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Zarządzanie magazynem' nie może być puste.");
                 return;
             }
-            if (comboBoxNaprawa.SelectedIndex == -1)
+            if (comboBoxUsUz.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Naprawa urządzeń' nie może być puste.");
                 return;
             }
-            if (comboBoxPakowanie.SelectedIndex == -1)
+            if (comboBoxEdUs.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Uzytkownikow' nie może być puste.");
+                return;
+            } if (comboBoxDodRol.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Dodawanie Roli' nie może być puste.");
+                return;
+            } if (comboBoxUsRol.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Usuwanie Roli' nie może być puste.");
+                return;
+            } if (comboBoxEdRol.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+            /*if (comboBoxNadUp.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Pakowanie paczek' nie może być puste.");
                 return;
-            }
+            }*/
 
             // Wstawienie danych do tabeli Uprawnienia w bazie danych
             string query =
-                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoRaportow, ObslugaWozkowWidlowych, ZarzadzanieMagazynem, NaprawaUrzadzen, PakowaniePaczek) " +
-                "VALUES (@Nazwa, @DostepDoRaportow, @ObslugaWozkowWidlowych, @ZarzadzanieMagazynem, @NaprawaUrzadzen, @PakowaniePaczek)";
+                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoListyUzytkownikow, DostepDoListyUprawnien, DodawanieUzytkownika, UsuwanieUzytkownika, EdytowanieUzytkownika,DodawanieRoli,UsuwanieRoli,EdytowanieRoli) " +
+                "VALUES (@Nazwa, @DostepDoListyUzytkownikow, @DostepDoListyUprawnien, @DodawanieUzytkownika, @UsuwanieUzytkownika, @EdytowanieUzytkownika, @DodawanieRoli, @UsuwanieRoli, @EdytowanieRoli)";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -86,11 +103,15 @@ namespace TestowanieOprogramowania
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.Add(new SqlParameter("@Nazwa", SqlDbType.NVarChar)).Value = nazwa;
-                    cmd.Parameters.Add(new SqlParameter("@DostepDoRaportow", SqlDbType.NVarChar)).Value = comboBoxDostep.SelectedItem.ToString();
-                    cmd.Parameters.Add(new SqlParameter("@ObslugaWozkowWidlowych", SqlDbType.NVarChar)).Value = comboBoxObsluga.SelectedItem.ToString();
-                    cmd.Parameters.Add(new SqlParameter("@ZarzadzanieMagazynem", SqlDbType.NVarChar)).Value = comboBoxZarzadzanie.SelectedItem.ToString();
-                    cmd.Parameters.Add(new SqlParameter("@NaprawaUrzadzen", SqlDbType.NVarChar)).Value = comboBoxNaprawa.SelectedItem.ToString();
-                    cmd.Parameters.Add(new SqlParameter("@PakowaniePaczek", SqlDbType.NVarChar)).Value = comboBoxPakowanie.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@DostepDoListyUzytkownikow", SqlDbType.NVarChar)).Value = comboBoxListUz.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@DostepDoListyUprawnien", SqlDbType.NVarChar)).Value = comboBoxListUp.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@DodawanieUzytkownika", SqlDbType.NVarChar)).Value = comboBoxDodUz.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@UsuwanieUzytkownika", SqlDbType.NVarChar)).Value = comboBoxUsUz.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@EdytowanieUzytkownika", SqlDbType.NVarChar)).Value = comboBoxEdUs.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@DodawanieRoli", SqlDbType.NVarChar)).Value = comboBoxDodRol.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@UsuwanieRoli", SqlDbType.NVarChar)).Value = comboBoxUsRol.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@EdytowanieRoli", SqlDbType.NVarChar)).Value = comboBoxEdRol.SelectedItem.ToString();
+                    //cmd.Parameters.Add(new SqlParameter("@PakowaniePaczek", SqlDbType.NVarChar)).Value = comboBoxNadUp.SelectedItem.ToString();
 
                     cmd.ExecuteNonQuery();
                 }

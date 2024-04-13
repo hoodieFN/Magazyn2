@@ -37,11 +37,19 @@
             label3 = new Label();
             label2 = new Label();
             textBoxNazwa = new TextBox();
-            comboBoxDostep = new ComboBox();
-            comboBoxPakowanie = new ComboBox();
-            comboBoxNaprawa = new ComboBox();
-            comboBoxZarzadzanie = new ComboBox();
-            comboBoxObsluga = new ComboBox();
+            comboBoxListUz = new ComboBox();
+            comboBoxEdUs = new ComboBox();
+            comboBoxUsUz = new ComboBox();
+            comboBoxDodUz = new ComboBox();
+            comboBoxListUp = new ComboBox();
+            label1 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            comboBoxDodRol = new ComboBox();
+            comboBoxUsRol = new ComboBox();
+            comboBoxEdRol = new ComboBox();
+            label10 = new Label();
+            comboBoxNadUp = new ComboBox();
             SuspendLayout();
             // 
             // buttonAnuluj
@@ -50,10 +58,9 @@
             buttonAnuluj.BackColor = Color.Indigo;
             buttonAnuluj.Cursor = Cursors.Hand;
             buttonAnuluj.ForeColor = SystemColors.ButtonHighlight;
-            buttonAnuluj.Location = new Point(488, 538);
-            buttonAnuluj.Margin = new Padding(3, 4, 3, 4);
+            buttonAnuluj.Location = new Point(467, 550);
             buttonAnuluj.Name = "buttonAnuluj";
-            buttonAnuluj.Size = new Size(114, 36);
+            buttonAnuluj.Size = new Size(100, 27);
             buttonAnuluj.TabIndex = 63;
             buttonAnuluj.Text = "Anuluj";
             buttonAnuluj.UseVisualStyleBackColor = false;
@@ -65,10 +72,9 @@
             buttonZapisz.BackColor = Color.Indigo;
             buttonZapisz.Cursor = Cursors.Hand;
             buttonZapisz.ForeColor = SystemColors.ButtonFace;
-            buttonZapisz.Location = new Point(327, 538);
-            buttonZapisz.Margin = new Padding(3, 4, 3, 4);
+            buttonZapisz.Location = new Point(312, 550);
             buttonZapisz.Name = "buttonZapisz";
-            buttonZapisz.Size = new Size(110, 36);
+            buttonZapisz.Size = new Size(96, 27);
             buttonZapisz.TabIndex = 62;
             buttonZapisz.Text = "Zapisz";
             buttonZapisz.UseVisualStyleBackColor = false;
@@ -79,132 +85,237 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(268, 462);
+            label7.Location = new Point(266, 312);
             label7.Name = "label7";
-            label7.Size = new Size(150, 20);
+            label7.Size = new Size(152, 17);
             label7.TabIndex = 55;
-            label7.Text = "Pakowanie paczek";
+            label7.Text = "Edytowanie Uzytkownika";
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(268, 390);
+            label6.Location = new Point(266, 258);
             label6.Name = "label6";
-            label6.Size = new Size(148, 20);
+            label6.Size = new Size(139, 17);
             label6.TabIndex = 54;
-            label6.Text = "Naprawa urządzeń";
+            label6.Text = "Usuwanie Uzytkownika";
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(268, 317);
+            label5.Location = new Point(266, 204);
             label5.Name = "label5";
-            label5.Size = new Size(188, 20);
+            label5.Size = new Size(152, 17);
             label5.TabIndex = 53;
-            label5.Text = "Zarządzanie magazynem";
+            label5.Text = "Dodawanie Uzytkownika";
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(268, 247);
+            label4.Location = new Point(266, 151);
             label4.Name = "label4";
-            label4.Size = new Size(223, 20);
+            label4.Size = new Size(165, 17);
             label4.TabIndex = 52;
-            label4.Text = "Obsługa wózków widłowych";
+            label4.Text = "Dostęp Do Listy Uprawnien";
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(268, 177);
+            label3.Location = new Point(266, 99);
             label3.Name = "label3";
-            label3.Size = new Size(158, 20);
+            label3.Size = new Size(183, 17);
             label3.TabIndex = 51;
-            label3.Text = "Dostęp do raportów";
+            label3.Text = "Dostęp do Listy Uzytkownikow";
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(268, 105);
+            label2.Location = new Point(266, 45);
             label2.Name = "label2";
-            label2.Size = new Size(60, 20);
+            label2.Size = new Size(48, 17);
             label2.TabIndex = 50;
             label2.Text = "Nazwa";
             // 
             // textBoxNazwa
             // 
             textBoxNazwa.Anchor = AnchorStyles.None;
-            textBoxNazwa.Location = new Point(497, 105);
-            textBoxNazwa.Margin = new Padding(3, 4, 3, 4);
+            textBoxNazwa.Location = new Point(467, 45);
             textBoxNazwa.Name = "textBoxNazwa";
-            textBoxNazwa.Size = new Size(114, 27);
+            textBoxNazwa.Size = new Size(100, 23);
             textBoxNazwa.TabIndex = 39;
             // 
-            // comboBoxDostep
+            // comboBoxListUz
             // 
-            comboBoxDostep.FormattingEnabled = true;
-            comboBoxDostep.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxDostep.Location = new Point(497, 169);
-            comboBoxDostep.Name = "comboBoxDostep";
-            comboBoxDostep.Size = new Size(114, 28);
-            comboBoxDostep.TabIndex = 64;
+            comboBoxListUz.Anchor = AnchorStyles.None;
+            comboBoxListUz.FormattingEnabled = true;
+            comboBoxListUz.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxListUz.Location = new Point(467, 93);
+            comboBoxListUz.Margin = new Padding(3, 2, 3, 2);
+            comboBoxListUz.Name = "comboBoxListUz";
+            comboBoxListUz.Size = new Size(100, 23);
+            comboBoxListUz.TabIndex = 64;
             // 
-            // comboBoxPakowanie
+            // comboBoxEdUs
             // 
-            comboBoxPakowanie.FormattingEnabled = true;
-            comboBoxPakowanie.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxPakowanie.Location = new Point(497, 454);
-            comboBoxPakowanie.Name = "comboBoxPakowanie";
-            comboBoxPakowanie.Size = new Size(114, 28);
-            comboBoxPakowanie.TabIndex = 65;
+            comboBoxEdUs.Anchor = AnchorStyles.None;
+            comboBoxEdUs.FormattingEnabled = true;
+            comboBoxEdUs.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxEdUs.Location = new Point(467, 306);
+            comboBoxEdUs.Margin = new Padding(3, 2, 3, 2);
+            comboBoxEdUs.Name = "comboBoxEdUs";
+            comboBoxEdUs.Size = new Size(100, 23);
+            comboBoxEdUs.TabIndex = 65;
             // 
-            // comboBoxNaprawa
+            // comboBoxUsUz
             // 
-            comboBoxNaprawa.FormattingEnabled = true;
-            comboBoxNaprawa.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxNaprawa.Location = new Point(497, 382);
-            comboBoxNaprawa.Name = "comboBoxNaprawa";
-            comboBoxNaprawa.Size = new Size(114, 28);
-            comboBoxNaprawa.TabIndex = 66;
+            comboBoxUsUz.Anchor = AnchorStyles.None;
+            comboBoxUsUz.FormattingEnabled = true;
+            comboBoxUsUz.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxUsUz.Location = new Point(467, 252);
+            comboBoxUsUz.Margin = new Padding(3, 2, 3, 2);
+            comboBoxUsUz.Name = "comboBoxUsUz";
+            comboBoxUsUz.Size = new Size(100, 23);
+            comboBoxUsUz.TabIndex = 66;
             // 
-            // comboBoxZarzadzanie
+            // comboBoxDodUz
             // 
-            comboBoxZarzadzanie.FormattingEnabled = true;
-            comboBoxZarzadzanie.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxZarzadzanie.Location = new Point(497, 317);
-            comboBoxZarzadzanie.Name = "comboBoxZarzadzanie";
-            comboBoxZarzadzanie.Size = new Size(114, 28);
-            comboBoxZarzadzanie.TabIndex = 67;
+            comboBoxDodUz.Anchor = AnchorStyles.None;
+            comboBoxDodUz.FormattingEnabled = true;
+            comboBoxDodUz.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxDodUz.Location = new Point(467, 204);
+            comboBoxDodUz.Margin = new Padding(3, 2, 3, 2);
+            comboBoxDodUz.Name = "comboBoxDodUz";
+            comboBoxDodUz.Size = new Size(100, 23);
+            comboBoxDodUz.TabIndex = 67;
             // 
-            // comboBoxObsluga
+            // comboBoxListUp
             // 
-            comboBoxObsluga.FormattingEnabled = true;
-            comboBoxObsluga.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxObsluga.Location = new Point(497, 239);
-            comboBoxObsluga.Name = "comboBoxObsluga";
-            comboBoxObsluga.Size = new Size(114, 28);
-            comboBoxObsluga.TabIndex = 68;
+            comboBoxListUp.Anchor = AnchorStyles.None;
+            comboBoxListUp.FormattingEnabled = true;
+            comboBoxListUp.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxListUp.Location = new Point(467, 145);
+            comboBoxListUp.Margin = new Padding(3, 2, 3, 2);
+            comboBoxListUp.Name = "comboBoxListUp";
+            comboBoxListUp.Size = new Size(100, 23);
+            comboBoxListUp.TabIndex = 68;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(266, 362);
+            label1.Name = "label1";
+            label1.Size = new Size(101, 17);
+            label1.TabIndex = 69;
+            label1.Text = "Dodawanie Roli";
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.None;
+            label8.AutoSize = true;
+            label8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(266, 404);
+            label8.Name = "label8";
+            label8.Size = new Size(88, 17);
+            label8.TabIndex = 70;
+            label8.Text = "Usuwanie Roli";
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.None;
+            label9.AutoSize = true;
+            label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(266, 454);
+            label9.Name = "label9";
+            label9.Size = new Size(101, 17);
+            label9.TabIndex = 71;
+            label9.Text = "Edytowanie Roli";
+            // 
+            // comboBoxDodRol
+            // 
+            comboBoxDodRol.Anchor = AnchorStyles.None;
+            comboBoxDodRol.FormattingEnabled = true;
+            comboBoxDodRol.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxDodRol.Location = new Point(467, 356);
+            comboBoxDodRol.Margin = new Padding(3, 2, 3, 2);
+            comboBoxDodRol.Name = "comboBoxDodRol";
+            comboBoxDodRol.Size = new Size(100, 23);
+            comboBoxDodRol.TabIndex = 72;
+            // 
+            // comboBoxUsRol
+            // 
+            comboBoxUsRol.Anchor = AnchorStyles.None;
+            comboBoxUsRol.FormattingEnabled = true;
+            comboBoxUsRol.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxUsRol.Location = new Point(467, 404);
+            comboBoxUsRol.Margin = new Padding(3, 2, 3, 2);
+            comboBoxUsRol.Name = "comboBoxUsRol";
+            comboBoxUsRol.Size = new Size(100, 23);
+            comboBoxUsRol.TabIndex = 73;
+            // 
+            // comboBoxEdRol
+            // 
+            comboBoxEdRol.Anchor = AnchorStyles.None;
+            comboBoxEdRol.FormattingEnabled = true;
+            comboBoxEdRol.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxEdRol.Location = new Point(467, 448);
+            comboBoxEdRol.Margin = new Padding(3, 2, 3, 2);
+            comboBoxEdRol.Name = "comboBoxEdRol";
+            comboBoxEdRol.Size = new Size(100, 23);
+            comboBoxEdRol.TabIndex = 74;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.None;
+            label10.AutoSize = true;
+            label10.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(266, 506);
+            label10.Name = "label10";
+            label10.Size = new Size(142, 17);
+            label10.TabIndex = 75;
+            label10.Text = "Nadawanie uprawnien";
+            // 
+            // comboBoxNadUp
+            // 
+            comboBoxNadUp.Anchor = AnchorStyles.None;
+            comboBoxNadUp.FormattingEnabled = true;
+            comboBoxNadUp.Items.AddRange(new object[] { "Tak", "Nie" });
+            comboBoxNadUp.Location = new Point(467, 500);
+            comboBoxNadUp.Margin = new Padding(3, 2, 3, 2);
+            comboBoxNadUp.Name = "comboBoxNadUp";
+            comboBoxNadUp.Size = new Size(100, 23);
+            comboBoxNadUp.TabIndex = 76;
             // 
             // FormDodajRole
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(993, 720);
-            Controls.Add(comboBoxObsluga);
-            Controls.Add(comboBoxZarzadzanie);
-            Controls.Add(comboBoxNaprawa);
-            Controls.Add(comboBoxPakowanie);
-            Controls.Add(comboBoxDostep);
+            ClientSize = new Size(869, 618);
+            Controls.Add(comboBoxNadUp);
+            Controls.Add(label10);
+            Controls.Add(comboBoxEdRol);
+            Controls.Add(comboBoxUsRol);
+            Controls.Add(comboBoxDodRol);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label1);
+            Controls.Add(comboBoxListUp);
+            Controls.Add(comboBoxDodUz);
+            Controls.Add(comboBoxUsUz);
+            Controls.Add(comboBoxEdUs);
+            Controls.Add(comboBoxListUz);
             Controls.Add(buttonAnuluj);
             Controls.Add(buttonZapisz);
             Controls.Add(label7);
@@ -215,6 +326,7 @@
             Controls.Add(label2);
             Controls.Add(textBoxNazwa);
             ForeColor = SystemColors.Control;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormDodajRole";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormDodajRole";
@@ -237,10 +349,18 @@
         private TextBox textBoxNazwisko;
         private TextBox textBoxImie;
         private TextBox textBoxNazwa;
-        private ComboBox comboBoxDostep;
-        private ComboBox comboBoxPakowanie;
-        private ComboBox comboBoxNaprawa;
-        private ComboBox comboBoxZarzadzanie;
-        private ComboBox comboBoxObsluga;
+        private ComboBox comboBoxListUz;
+        private ComboBox comboBoxEdUs;
+        private ComboBox comboBoxUsUz;
+        private ComboBox comboBoxDodUz;
+        private ComboBox comboBoxListUp;
+        private Label label1;
+        private Label label8;
+        private Label label9;
+        private ComboBox comboBoxDodRol;
+        private ComboBox comboBoxUsRol;
+        private ComboBox comboBoxEdRol;
+        private Label label10;
+        private ComboBox comboBoxNadUp;
     }
 }

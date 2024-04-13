@@ -12,7 +12,7 @@ namespace TestowanieOprogramowania
     internal class ZarzadzanieVoidami
     {
 
-        string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+        static string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
 
 
 
@@ -22,8 +22,14 @@ namespace TestowanieOprogramowania
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
-                string query = "SELECT u.UzytkownikID, u.Login, u.Imie, u.Nazwisko, u.Miejscowosc, u.KodPocztowy, u.Ulica, u.NumerPosesji, u.NumerLokalu, u.PESEL, u.DataUrodzenia, u.Plec, u.Email, u.NumerTelefonu, up.Nazwa_stanowiska FROM dbo.Uzytkownicy u JOIN dbo.Uprawnienia up ON u.IDuprawnienia = up.UprawnienieID WHERE u.archiwizacja = '1'\r\n";
-
+                string query = @"SELECT 
+                                u.UzytkownikID, u.Login, u.Imie, u.Nazwisko, u.Miejscowosc, 
+                                u.KodPocztowy, u.Ulica, u.NumerPosesji, u.NumerLokalu, u.PESEL, 
+                                u.DataUrodzenia, u.Plec, u.Email, u.NumerTelefonu, 
+                                ISNULL(up.Nazwa_stanowiska, 'Brak roli') AS Nazwa_stanowiska 
+                                FROM dbo.Uzytkownicy u 
+                                LEFT JOIN dbo.Uprawnienia up ON u.IDUprawnienia = up.UprawnienieID 
+                                WHERE u.archiwizacja = '1'";
 
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -66,7 +72,7 @@ namespace TestowanieOprogramowania
 
         public void UsunUzytkownikaZBazy(int userId)
         {
-            UsunPowiazaneUprawnienia(userId);
+            //UsunPowiazaneUprawnienia(userId);
             string query = "UPDATE dbo.Uzytkownicy SET archiwizacja = 0 WHERE UzytkownikID = @userId";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
@@ -112,7 +118,16 @@ namespace TestowanieOprogramowania
         //s
         public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst, string kategoria)
         {
-            string query = $"SELECT * FROM dbo.Uzytkownicy join dbo.Uprawnienia on dbo.Uzytkownicy.IDUprawnienia = dbo.Uprawnienia.UprawnienieID WHERE {kategoria} LIKE @szukanyTekst and archiwizacja = '1'";
+            string query = $@"
+            SELECT 
+                u.UzytkownikID, u.Login, u.Imie, u.Nazwisko, u.Miejscowosc, 
+                u.KodPocztowy, u.Ulica, u.NumerPosesji, u.NumerLokalu, u.PESEL, 
+                u.DataUrodzenia, u.Plec, u.Email, u.NumerTelefonu, 
+                ISNULL(up.Nazwa_stanowiska, 'Brak roli') AS Nazwa_stanowiska 
+            FROM dbo.Uzytkownicy u 
+            LEFT JOIN dbo.Uprawnienia up ON u.IDUprawnienia = up.UprawnienieID 
+            WHERE {kategoria} LIKE @szukanyTekst AND u.archiwizacja = '1'";
+
 
             List<Uzytkownik> listaUzytkownikow = new List<Uzytkownik>();
 
@@ -143,7 +158,7 @@ namespace TestowanieOprogramowania
                                 Plec = reader["Plec"].ToString(),
                                 Email = reader["Email"].ToString(),
                                 NumerTelefonu = reader["NumerTelefonu"].ToString(),
-                                archiwizacja = reader["archiwizacja"].ToString(),
+                                //archiwizacja = reader["archiwizacja"].ToString(),
                                 Nazwa_stanowiska = reader["Nazwa_stanowiska"].ToString()
                             };
                             listaUzytkownikow.Add(uzytkownik);
@@ -175,11 +190,14 @@ namespace TestowanieOprogramowania
                             {
                                 UprawnienieID = Convert.ToInt32(reader["UprawnienieID"]),
                                 Nazwa_stanowiska = reader["Nazwa_Stanowiska"].ToString(),
-                                DostepDoRaportow = reader["DostepDoRaportow"].ToString(),
-                                ObslugaWozkowWidlowych = reader["ObslugaWozkowWidlowych"].ToString(),
-                                ZarzadzanieMagazynem = reader["ZarzadzanieMagazynem"].ToString(),
-                                NaprawaUrzadzen = reader["NaprawaUrzadzen"].ToString(),
-                                PakowaniePaczek = reader["PakowaniePaczek"].ToString()
+                                DostepDoListyUzytkownikow = reader["DostepDoListyUzytkownikow"].ToString(),
+                                DostepDoListyUprawnien = reader["DostepDoListyUprawnien"].ToString(),
+                                DodawanieUzytkownika = reader["DodawanieUzytkownika"].ToString(),
+                                UsuwanieUzytkownika = reader["UsuwanieUzytkownika"].ToString(),
+                                EdytowanieUzytkownika = reader["EdytowanieUzytkownika"].ToString(),
+                                DodawanieRoli  = reader["DodawanieRoli"].ToString(),
+                                UsuwanieRoli = reader["UsuwanieRoli"].ToString(),
+                                EdytowanieRoli = reader["EdytowanieRoli"].ToString()
                             };
                             listaUprawnien.Add(uprawnienia);
                         }
@@ -190,6 +208,216 @@ namespace TestowanieOprogramowania
             return listaUprawnien;
         }
 
+        public static int CurrentUserId = UserSession.CurrentUserId;
+
+        public static bool CzyMaDostepDoListyUzytkownikow()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT DostepDoListyUzytkownikow 
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool CzyMaDostepDoListyUprawnien()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT DostepDoListyUprawnien
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool DodawanieUzytkownika()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT DodawanieUzytkownika
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool UsuwanieUzytkownika()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT UsuwanieUzytkownika
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool EdytowanieUzytkownika()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT EdytowanieUzytkownika
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool DodawanieRoli()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT DodawanieRoli
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool UsuwanieRoli()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT UsuwanieRoli
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+        public static bool EdytowanieRoli()
+        {
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT EdytowanieRoli
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
 
     }
 

@@ -29,6 +29,18 @@ namespace TestowanieOprogramowania
         {
             OdswiezDataGridView();
             comboBox1.SelectedIndex = 0;
+            if (!ZarzadzanieVoidami.DodawanieUzytkownika())
+            {
+                buttonDodajUzytkownika.Visible = false;
+            }
+            if (!ZarzadzanieVoidami.UsuwanieUzytkownika())
+            {
+                buttonUsunUzytkownika.Visible = false;
+            }
+            if (!ZarzadzanieVoidami.EdytowanieUzytkownika())
+            {
+                buttonEdytujUzytkownika.Visible = false;
+            }
 
         }
 
@@ -105,6 +117,30 @@ namespace TestowanieOprogramowania
             }
         }
 
-    
+        private void buttonNadajRole_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int userId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["UzytkownikID"].Value);
+                using (var formRola = new FormNadajRole(userId))
+                {
+                    var result = formRola.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        OdswiezDataGridView(); // Zak³adaj¹c, ¿e ta metoda istnieje w formularzu
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszê zaznaczyæ wiersz do edycji", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            OdswiezDataGridView();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

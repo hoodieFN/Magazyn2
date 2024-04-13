@@ -26,7 +26,7 @@ namespace TestowanieOprogramowania
 
         private void WczytajDaneRoli()
         {
-            string query = "SELECT [Nazwa_stanowiska], [DostepDoRaportow], [ObslugaWozkowWidlowych], [ZarzadzanieMagazynem], [NaprawaUrzadzen], [PakowaniePaczek] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
+            string query = "SELECT [Nazwa_stanowiska], [DostepDoListyUzytkownikow], [DostepDoListyUprawnien], [DodawanieUzytkownika], [UsuwanieUzytkownika], [EdytowanieUzytkownika], [DodawanieRoli], [UsuwanieRoli], [EdytowanieRoli] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
 
             using (SqlConnection connection = new SqlConnection(this.StringPolaczeniowy))
             {
@@ -40,11 +40,15 @@ namespace TestowanieOprogramowania
                     if (reader.Read())
                     {
                         textBoxNazwa.Text = reader["Nazwa_stanowiska"].ToString();
-                        comboBoxDostep.SelectedItem = reader["DostepDoRaportow"].ToString();
-                        comboBoxObsluga.SelectedItem = reader["ObslugaWozkowWidlowych"].ToString();
-                        comboBoxZarzadzanie.SelectedItem = reader["ZarzadzanieMagazynem"].ToString();
-                        comboBoxNaprawa.SelectedItem = reader["NaprawaUrzadzen"].ToString();
-                        comboBoxPakowanie.SelectedItem = reader["PakowaniePaczek"].ToString();
+                        comboBoxListUz.SelectedItem = reader["DostepDoListyUzytkownikow"].ToString();
+                        comboBoxListUp.SelectedItem = reader["DostepDoListyUprawnien"].ToString();
+                        comboBoxDodUz.SelectedItem = reader["DodawanieUzytkownika"].ToString();
+                        comboBoxUsuUz.SelectedItem = reader["UsuwanieUzytkownika"].ToString();
+                        comboBoxEdUz.SelectedItem = reader["EdytowanieUzytkownika"].ToString();
+                        comboBoxDodRol.SelectedItem = reader["DodawanieRoli"].ToString();
+                        comboBoxUsRol.SelectedItem = reader["UsuwanieRoli"].ToString();
+                        comboBoxEdRol.SelectedItem = reader["EdytowanieRoli"].ToString();
+                        //comboBoxNadUp.SelectedItem = reader["PakowaniePaczek"].ToString();
                     }
                     reader.Close();
                 }
@@ -59,20 +63,27 @@ namespace TestowanieOprogramowania
         {
             // Pobierz dane z formularza
             string nazwaRoli = textBoxNazwa.Text;
-            string dostepDoRaportow = comboBoxDostep.SelectedItem.ToString();
-            string obslugaWozkowWidlowych = comboBoxObsluga.SelectedItem.ToString();
-            string zarzadzanieMagazynem = comboBoxZarzadzanie.SelectedItem.ToString();
-            string naprawaUrzadzen = comboBoxNaprawa.SelectedItem.ToString();
-            string pakowaniePaczek = comboBoxPakowanie.SelectedItem.ToString();
+            string dostepDoListyUzytkownikow = comboBoxListUz.SelectedItem.ToString();
+            string dostepDoListyUprawnien = comboBoxListUp.SelectedItem.ToString();
+            string dodawanieUzytkownika = comboBoxDodUz.SelectedItem.ToString();
+            string usuwanieUzytkownika = comboBoxUsuUz.SelectedItem.ToString();
+            string edytowanieUzytkownika = comboBoxEdUz.SelectedItem.ToString();
+            string dodawanieRoli = comboBoxEdUz.SelectedItem.ToString();
+            string usuwanieRoli = comboBoxEdUz.SelectedItem.ToString();
+            string edytowanieRoli = comboBoxEdUz.SelectedItem.ToString();
 
             // Zapytanie SQL do aktualizacji danych roli w bazie danych
             string query = @"UPDATE dbo.Uprawnienia 
                              SET Nazwa_stanowiska = @NazwaRoli, 
-                                 DostepDoRaportow = @Dostep, 
-                                 ObslugaWozkowWidlowych = @Obsluga, 
-                                 ZarzadzanieMagazynem = @Zarzadzanie, 
-                                 NaprawaUrzadzen = @Naprawa, 
-                                 PakowaniePaczek = @Pakowanie 
+                                 DostepDoListyUzytkownikow = @DostepDoListyUzytkownikow, 
+                                 DostepDoListyUprawnien = @DostepDoListyUprawnien, 
+                                 DodawanieUzytkownika = @DodawanieUzytkownika, 
+                                 UsuwanieUzytkownika = @UsuwanieUzytkownika, 
+                                 EdytowanieUzytkownika = @EdytowanieUzytkownika, 
+                                 DodawanieRoli = @DodawanieRoli, 
+                                 UsuwanieRoli = @UsuwanieRoli, 
+                                 EdytowanieRoli = @EdytowanieRoli
+                                 
                              WHERE UprawnienieID = @ID";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
@@ -81,11 +92,14 @@ namespace TestowanieOprogramowania
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NazwaRoli", nazwaRoli);
-                    cmd.Parameters.AddWithValue("@Dostep", dostepDoRaportow);
-                    cmd.Parameters.AddWithValue("@Obsluga", obslugaWozkowWidlowych);
-                    cmd.Parameters.AddWithValue("@Zarzadzanie", zarzadzanieMagazynem);
-                    cmd.Parameters.AddWithValue("@Naprawa", naprawaUrzadzen);
-                    cmd.Parameters.AddWithValue("@Pakowanie", pakowaniePaczek);
+                    cmd.Parameters.AddWithValue("@DostepDoListyUzytkownikow", dostepDoListyUzytkownikow);
+                    cmd.Parameters.AddWithValue("@DostepDoListyUprawnien", dostepDoListyUprawnien);
+                    cmd.Parameters.AddWithValue("@DodawanieUzytkownika", dodawanieUzytkownika);
+                    cmd.Parameters.AddWithValue("@UsuwanieUzytkownika", usuwanieUzytkownika);
+                    cmd.Parameters.AddWithValue("@EdytowanieUzytkownika", edytowanieUzytkownika);
+                    cmd.Parameters.AddWithValue("@DodawanieRoli", dodawanieRoli);
+                    cmd.Parameters.AddWithValue("@UsuwanieRoli", usuwanieRoli);
+                    cmd.Parameters.AddWithValue("@EdytowanieRoli", edytowanieRoli);
                     cmd.Parameters.AddWithValue("@ID", roleId);
 
                     try
@@ -112,8 +126,13 @@ namespace TestowanieOprogramowania
 
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel; 
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void FormEdytujRole_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,10 +10,13 @@ namespace TestowanieOprogramowania
     {
         public int UprawnienieID { get; set; }
         public string Nazwa_stanowiska { get; set; }
-        public string DostepDoRaportow {  get; set; }
-        public string ObslugaWozkowWidlowych {  get; set; }
-        public string ZarzadzanieMagazynem {  get; set; }
-        public string NaprawaUrzadzen {  get; set; }
-        public string PakowaniePaczek {  get; set; }
+        public string DostepDoListyUzytkownikow {  get; set; }
+        public string DostepDoListyUprawnien {  get; set; }
+        public string DodawanieUzytkownika {  get; set; }
+        public string UsuwanieUzytkownika {  get; set; }
+        public string EdytowanieUzytkownika {  get; set; }
+        public string DodawanieRoli { get; set; }
+        public string UsuwanieRoli { get; set; }
+        public string EdytowanieRoli { get; set; }
     }
 }
