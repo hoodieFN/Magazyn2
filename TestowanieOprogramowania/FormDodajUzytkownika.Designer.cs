@@ -60,8 +60,6 @@
             label12 = new Label();
             label16 = new Label();
             label17 = new Label();
-            label18 = new Label();
-            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -291,7 +289,7 @@
             buttonZapisz.BackColor = Color.Indigo;
             buttonZapisz.Cursor = Cursors.Hand;
             buttonZapisz.ForeColor = SystemColors.ButtonFace;
-            buttonZapisz.Location = new Point(457, 468);
+            buttonZapisz.Location = new Point(456, 410);
             buttonZapisz.Name = "buttonZapisz";
             buttonZapisz.Size = new Size(96, 27);
             buttonZapisz.TabIndex = 28;
@@ -305,7 +303,7 @@
             buttonAnuluj.BackColor = Color.Indigo;
             buttonAnuluj.Cursor = Cursors.Hand;
             buttonAnuluj.ForeColor = SystemColors.ButtonHighlight;
-            buttonAnuluj.Location = new Point(598, 468);
+            buttonAnuluj.Location = new Point(598, 410);
             buttonAnuluj.Name = "buttonAnuluj";
             buttonAnuluj.Size = new Size(100, 27);
             buttonAnuluj.TabIndex = 29;
@@ -385,35 +383,12 @@
             label17.Text = "*minimum 5 znaków";
             label17.Click += label17_Click;
             // 
-            // label18
-            // 
-            label18.Anchor = AnchorStyles.None;
-            label18.AutoSize = true;
-            label18.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(457, 408);
-            label18.Name = "label18";
-            label18.Size = new Size(106, 17);
-            label18.TabIndex = 37;
-            label18.Text = "Rola/Stanowisko";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Administrator", "Pracownik magazynu", "Sprzedawca" });
-            comboBox1.Location = new Point(598, 404);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(100, 23);
-            comboBox1.TabIndex = 38;
-            // 
             // FormDodajUzytkownika
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(869, 540);
-            Controls.Add(comboBox1);
-            Controls.Add(label18);
             Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(label12);
@@ -488,7 +463,5 @@
         private Label label12;
         private Label label16;
         private Label label17;
-        private Label label18;
-        private ComboBox comboBox1;
     }
 }

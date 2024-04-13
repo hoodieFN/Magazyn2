@@ -191,6 +191,8 @@ namespace TestowanieOprogramowania
 
         private void buttonListaUprawnien_Click(object sender, EventArgs e)
         {
+            loadform(new FormUprawnienia());
+            /*
             if (!ZarzadzanieVoidami.CzyMaDostepDoListyUprawnien())
             {
                 MessageBox.Show("Brak uprawnień w systemie.");
@@ -203,14 +205,14 @@ namespace TestowanieOprogramowania
                 if (idUprawnieniaUzytkownika == 1)
                 {
                     // Użytkownik ma uprawnienie ID = 1 - nic się nie dzieje
-                    loadform(new FormUprawnienia());
+                   
                 }
                 else
                 {
                     // Użytkownik nie ma wymaganego uprawnienia - wyświetl komunikat
                     MessageBox.Show("Brak wymaganych uprawnień do wyświetlenia listy uprawnień.", "Brak uprawnień", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
+            }*/
 
         }
         public int PobierzIDUprawnienia(string login)

@@ -176,7 +176,7 @@ namespace TestowanieOprogramowania
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
-                string query = "SELECT * from dbo.Uprawnienia";
+                string query = "SELECT * from dbo.Uprawnienia WHERE UprawnienieID <> 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

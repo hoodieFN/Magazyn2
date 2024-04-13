@@ -59,8 +59,6 @@
             label15 = new Label();
             textBoxHaslo = new TextBox();
             label16 = new Label();
-            label17 = new Label();
-            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // buttonAnuluj
@@ -69,7 +67,7 @@
             buttonAnuluj.BackColor = Color.Indigo;
             buttonAnuluj.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonAnuluj.ForeColor = SystemColors.ControlLightLight;
-            buttonAnuluj.Location = new Point(634, 442);
+            buttonAnuluj.Location = new Point(634, 394);
             buttonAnuluj.Name = "buttonAnuluj";
             buttonAnuluj.Size = new Size(100, 29);
             buttonAnuluj.TabIndex = 59;
@@ -83,7 +81,7 @@
             buttonZapisz.BackColor = Color.Indigo;
             buttonZapisz.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonZapisz.ForeColor = SystemColors.ControlLightLight;
-            buttonZapisz.Location = new Point(501, 442);
+            buttonZapisz.Location = new Point(502, 394);
             buttonZapisz.Name = "buttonZapisz";
             buttonZapisz.Size = new Size(98, 29);
             buttonZapisz.TabIndex = 58;
@@ -403,36 +401,12 @@
             label16.TabIndex = 65;
             label16.Text = "*więcej niż 8 znaków";
             // 
-            // label17
-            // 
-            label17.Anchor = AnchorStyles.None;
-            label17.AutoSize = true;
-            label17.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.ForeColor = SystemColors.ControlLightLight;
-            label17.Location = new Point(502, 394);
-            label17.Name = "label17";
-            label17.Size = new Size(106, 17);
-            label17.TabIndex = 66;
-            label17.Text = "Rola/Stanowisko";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Administrator", "Pracownik magazynu", "Sprzedawca" });
-            comboBox1.Location = new Point(634, 394);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(100, 23);
-            comboBox1.TabIndex = 67;
-            // 
             // FormEdytujUzytkownika
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(986, 514);
-            Controls.Add(comboBox1);
-            Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(textBoxHaslo);
             Controls.Add(label15);
@@ -506,7 +480,5 @@
         private Label label15;
         private TextBox textBoxHaslo;
         private Label label16;
-        private Label label17;
-        private ComboBox comboBox1;
     }
 }

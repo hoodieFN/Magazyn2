@@ -75,7 +75,7 @@ namespace TestowanieOprogramowania
             string query =
                 "INSERT INTO dbo.Uzytkownicy (Login, Imie, Nazwisko, NumerTelefonu, Miejscowosc, KodPocztowy, Ulica, NumerPosesji, Pesel, DataUrodzenia, Plec, Email, NumerLokalu, Haslo, IDUprawnienia) "
   +
-  "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, \r\n        CASE RIGHT(@Pesel, 1) \r\n            WHEN '0' THEN 'K' \r\n            WHEN '2' THEN 'K' \r\n            WHEN '4' THEN 'K' \r\n            WHEN '6' THEN 'K' \r\n            WHEN '8' THEN 'K' \r\n            ELSE 'M' \r\n        END, \r\n        @Email, @NumerLokalu, @Haslo, @IDUprawnienia );";
+  "VALUES (@Login, @Imie, @Nazwisko, @NumerTelefonu, @Miejscowosc, @KodPocztowy, @Ulica, @NumerPosesji, @Pesel, @DataUrodzenia, \r\n        CASE RIGHT(@Pesel, 1) \r\n            WHEN '0' THEN 'K' \r\n            WHEN '2' THEN 'K' \r\n            WHEN '4' THEN 'K' \r\n            WHEN '6' THEN 'K' \r\n            WHEN '8' THEN 'K' \r\n            ELSE 'M' \r\n        END, \r\n        @Email, @NumerLokalu, @Haslo, 0 );";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -187,31 +187,9 @@ namespace TestowanieOprogramowania
             }
             if (IsBirthDateMatchingPesel(pesel, data))
             {
-                if (comboBox1.SelectedIndex == -1 || comboBox1.SelectedItem == null)
-                {
-                    // Jeśli nie, wyświetl komunikat
-                    MessageBox.Show("Musisz wybrać opcję z Rola/Stanowisko!", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
+                //deafultow daje 0
                     int numerUprawnienia = 0;
-                    switch (comboBox1.SelectedItem.ToString())
-                    {
-                        case "Administrator":
-                            numerUprawnienia = 1;
-                            break;
-                        case "Pracownik magazynu":
-                            numerUprawnienia = 2;
-                            break;
-                        case "Sprzedawca":
-                            numerUprawnienia = 3;
-                            break;
-                        default:
-                            MessageBox.Show("Wybierz stanowisko użytkownika.");
-                            return;
-                    }
                     DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
-                }
                 
             }
             else

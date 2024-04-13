@@ -49,7 +49,7 @@ namespace TestowanieOprogramowania
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
                 conn.Open();
-                string query = "SELECT * FROM dbo.Uprawnienia"; // Zapytanie pobiera wszystkie kolumny
+                string query = "SELECT * FROM dbo.Uprawnienia"; 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -181,7 +181,14 @@ namespace TestowanieOprogramowania
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView2.Visible = true;
+            if (!ZarzadzanieVoidami.CzyMaDostepDoListyUprawnien())
+            {
+                MessageBox.Show("Brak uprawnień w systemie.");
+            }
+            else
+            {
+                dataGridView2.Visible = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

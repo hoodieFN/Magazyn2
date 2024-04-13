@@ -64,7 +64,6 @@ namespace TestowanieOprogramowania
                         textBoxNumerTelefonu.Text = reader["NumerTelefonu"].ToString();
                         textBoxHaslo.Text = reader["haslo"].ToString();
                         int idUprawnienia = Convert.ToInt32(reader["IDUprawnienia"]);
-                        comboBox1.SelectedItem = PobierzNazweUprawnienia(idUprawnienia);
 
                         dateTimePicker1.Value = dataConverted;
 
@@ -106,7 +105,7 @@ namespace TestowanieOprogramowania
             }
         }
 
-        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu, string haslo, int idUprawnienia)
+        private void AktualizujUzytkownikaWBazie(string Login, string Imie, string Nazwisko, string Miejscowosc, string KodPocztowy, string Ulica, string NumerPosesji, string NumerLokalu, string PESEL, string Dataurodzenia, string Plec, string Email, string NumerTelefonu, string haslo)
         {
             if (string.IsNullOrWhiteSpace(Imie) || string.IsNullOrWhiteSpace(Nazwisko) || string.IsNullOrWhiteSpace(Login) ||
             string.IsNullOrWhiteSpace(Miejscowosc) || string.IsNullOrWhiteSpace(KodPocztowy) || string.IsNullOrWhiteSpace(Ulica) ||
@@ -159,7 +158,7 @@ namespace TestowanieOprogramowania
             string sprawdzenieEmailuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Email = @Email AND UzytkownikID <> @UzytkownikID";
             string sprawdzeniePeselQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE PESEL = @PESEL AND UzytkownikID <> @UzytkownikID";
 
-            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu, Haslo = @haslo, IDUprawnienia = @IDUprawnienia WHERE UzytkownikID = @UzytkownikID";
+            string query = "UPDATE dbo.Uzytkownicy SET Login = @Login, Imie = @Imie, Nazwisko = @Nazwisko, Miejscowosc = @Miejscowosc, KodPocztowy = @KodPocztowy, Ulica=@Ulica, NumerPosesji = @NumerPosesji, NumerLokalu = @NumerLokalu, PESEL = @PESEL, DataUrodzenia = @DataUrodzenia, Plec=@Plec, Email=@Email, NumerTelefonu = @NumerTelefonu, Haslo = @haslo WHERE UzytkownikID = @UzytkownikID";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -227,7 +226,6 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.AddWithValue("@Email", Email);
                     cmd.Parameters.AddWithValue("@NumerTelefonu", NumerTelefonu);
                     cmd.Parameters.AddWithValue("@Haslo", haslo);
-                    cmd.Parameters.AddWithValue("@IDUprawnienia", idUprawnienia);
 
 
 
@@ -242,11 +240,7 @@ namespace TestowanieOprogramowania
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == -1 || comboBox1.SelectedItem == null)
-            {
-                // Jeśli nie, wyświetl komunikat
-                MessageBox.Show("Musisz wybrać opcję z Rola/Stanowisko!", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
             string login = textBoxLogin.Text;
             string imie = textBoxImie.Text;
             string nazwisko = textBoxNazwisko.Text;
@@ -261,10 +255,9 @@ namespace TestowanieOprogramowania
             string email = textBoxEmail.Text;
             string numerlokalu = textBoxNumerLokalu.Text;
             string haslo = textBoxHaslo.Text;
-            string uprawnienia = comboBox1.SelectedItem.ToString();
-            int idUprawnienia = PobierzIdUprawnienia(uprawnienia); // Pobranie wartości liczbowej IDUprawnienia na podstawie nazwy
+            
 
-            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo, idUprawnienia);
+            AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo);
 
 
         }
