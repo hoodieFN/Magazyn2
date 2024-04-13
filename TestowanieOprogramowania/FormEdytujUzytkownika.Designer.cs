@@ -65,6 +65,7 @@
             // 
             buttonAnuluj.Anchor = AnchorStyles.None;
             buttonAnuluj.BackColor = Color.Indigo;
+            buttonAnuluj.Cursor = Cursors.Hand;
             buttonAnuluj.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonAnuluj.ForeColor = SystemColors.ControlLightLight;
             buttonAnuluj.Location = new Point(634, 394);
@@ -79,6 +80,7 @@
             // 
             buttonZapisz.Anchor = AnchorStyles.None;
             buttonZapisz.BackColor = Color.Indigo;
+            buttonZapisz.Cursor = Cursors.Hand;
             buttonZapisz.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonZapisz.ForeColor = SystemColors.ControlLightLight;
             buttonZapisz.Location = new Point(502, 394);

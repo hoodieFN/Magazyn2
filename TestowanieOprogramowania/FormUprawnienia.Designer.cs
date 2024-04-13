@@ -76,7 +76,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(9, 179);
+            label1.Location = new Point(9, 145);
             label1.Name = "label1";
             label1.Size = new Size(30, 15);
             label1.TabIndex = 18;
@@ -87,11 +87,11 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(9, 197);
+            dataGridView1.Location = new Point(9, 166);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1284, 421);
+            dataGridView1.Size = new Size(1284, 452);
             dataGridView1.TabIndex = 17;
             // 
             // buttonDodajRole
@@ -117,7 +117,7 @@
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(242, 118);
+            dataGridView2.Size = new Size(973, 118);
             dataGridView2.TabIndex = 26;
             // 
             // label3
@@ -135,11 +135,12 @@
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(657, 10);
+            button1.Location = new Point(1014, 62);
             button1.Name = "button1";
-            button1.Size = new Size(181, 46);
+            button1.Size = new Size(279, 46);
             button1.TabIndex = 28;
             button1.Text = "Lista uprawnien";
             button1.UseVisualStyleBackColor = false;
@@ -149,11 +150,12 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.BackColor = Color.Indigo;
+            button2.Cursor = Cursors.Hand;
             button2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(844, 10);
+            button2.Location = new Point(1014, 114);
             button2.Name = "button2";
-            button2.Size = new Size(164, 46);
+            button2.Size = new Size(279, 46);
             button2.TabIndex = 29;
             button2.Text = "Ukryj liste uprawnien";
             button2.UseVisualStyleBackColor = false;

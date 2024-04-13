@@ -73,15 +73,18 @@ namespace TestowanieOprogramowania
             {
                 MessageBox.Show("Pole 'Edytowanie Uzytkownikow' nie może być puste.");
                 return;
-            } if (comboBoxDodRol.SelectedIndex == -1)
+            }
+            if (comboBoxDodRol.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Dodawanie Roli' nie może być puste.");
                 return;
-            } if (comboBoxUsRol.SelectedIndex == -1)
+            }
+            if (comboBoxUsRol.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Usuwanie Roli' nie może być puste.");
                 return;
-            } if (comboBoxEdRol.SelectedIndex == -1)
+            }
+            if (comboBoxEdRol.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
                 return;

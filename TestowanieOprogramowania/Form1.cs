@@ -122,6 +122,11 @@ namespace TestowanieOprogramowania
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int userId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["UzytkownikID"].Value);
+                if (userId == UserSession.CurrentUserId)
+                {
+                    MessageBox.Show("Nie mo¿esz zmieniaæ sobie roli/stanowiska");
+                    return;
+                }
                 using (var formRola = new FormNadajRole(userId))
                 {
                     var result = formRola.ShowDialog();

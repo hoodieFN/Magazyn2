@@ -49,7 +49,7 @@ namespace TestowanieOprogramowania
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
                 conn.Open();
-                string query = "SELECT * FROM dbo.Uprawnienia"; 
+                string query = "SELECT * FROM dbo.Uprawnienia";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))

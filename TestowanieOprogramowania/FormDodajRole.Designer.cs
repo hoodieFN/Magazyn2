@@ -50,6 +50,7 @@
             comboBoxEdRol = new ComboBox();
             label10 = new Label();
             comboBoxNadUp = new ComboBox();
+            label11 = new Label();
             SuspendLayout();
             // 
             // buttonAnuluj
@@ -72,7 +73,7 @@
             buttonZapisz.BackColor = Color.Indigo;
             buttonZapisz.Cursor = Cursors.Hand;
             buttonZapisz.ForeColor = SystemColors.ButtonFace;
-            buttonZapisz.Location = new Point(312, 550);
+            buttonZapisz.Location = new Point(353, 550);
             buttonZapisz.Name = "buttonZapisz";
             buttonZapisz.Size = new Size(96, 27);
             buttonZapisz.TabIndex = 62;
@@ -85,7 +86,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(266, 312);
+            label7.Location = new Point(266, 306);
             label7.Name = "label7";
             label7.Size = new Size(152, 17);
             label7.TabIndex = 55;
@@ -140,7 +141,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(266, 45);
+            label2.Location = new Point(266, 51);
             label2.Name = "label2";
             label2.Size = new Size(48, 17);
             label2.TabIndex = 50;
@@ -170,7 +171,7 @@
             comboBoxEdUs.Anchor = AnchorStyles.None;
             comboBoxEdUs.FormattingEnabled = true;
             comboBoxEdUs.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxEdUs.Location = new Point(467, 306);
+            comboBoxEdUs.Location = new Point(467, 300);
             comboBoxEdUs.Margin = new Padding(3, 2, 3, 2);
             comboBoxEdUs.Name = "comboBoxEdUs";
             comboBoxEdUs.Size = new Size(100, 23);
@@ -192,7 +193,7 @@
             comboBoxDodUz.Anchor = AnchorStyles.None;
             comboBoxDodUz.FormattingEnabled = true;
             comboBoxDodUz.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxDodUz.Location = new Point(467, 204);
+            comboBoxDodUz.Location = new Point(467, 198);
             comboBoxDodUz.Margin = new Padding(3, 2, 3, 2);
             comboBoxDodUz.Name = "comboBoxDodUz";
             comboBoxDodUz.Size = new Size(100, 23);
@@ -214,7 +215,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(266, 362);
+            label1.Location = new Point(266, 358);
             label1.Name = "label1";
             label1.Size = new Size(101, 17);
             label1.TabIndex = 69;
@@ -236,7 +237,7 @@
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
             label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(266, 454);
+            label9.Location = new Point(266, 448);
             label9.Name = "label9";
             label9.Size = new Size(101, 17);
             label9.TabIndex = 71;
@@ -247,7 +248,7 @@
             comboBoxDodRol.Anchor = AnchorStyles.None;
             comboBoxDodRol.FormattingEnabled = true;
             comboBoxDodRol.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxDodRol.Location = new Point(467, 356);
+            comboBoxDodRol.Location = new Point(467, 352);
             comboBoxDodRol.Margin = new Padding(3, 2, 3, 2);
             comboBoxDodRol.Name = "comboBoxDodRol";
             comboBoxDodRol.Size = new Size(100, 23);
@@ -258,7 +259,7 @@
             comboBoxUsRol.Anchor = AnchorStyles.None;
             comboBoxUsRol.FormattingEnabled = true;
             comboBoxUsRol.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxUsRol.Location = new Point(467, 404);
+            comboBoxUsRol.Location = new Point(467, 398);
             comboBoxUsRol.Margin = new Padding(3, 2, 3, 2);
             comboBoxUsRol.Name = "comboBoxUsRol";
             comboBoxUsRol.Size = new Size(100, 23);
@@ -269,7 +270,7 @@
             comboBoxEdRol.Anchor = AnchorStyles.None;
             comboBoxEdRol.FormattingEnabled = true;
             comboBoxEdRol.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxEdRol.Location = new Point(467, 448);
+            comboBoxEdRol.Location = new Point(467, 442);
             comboBoxEdRol.Margin = new Padding(3, 2, 3, 2);
             comboBoxEdRol.Name = "comboBoxEdRol";
             comboBoxEdRol.Size = new Size(100, 23);
@@ -280,7 +281,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(266, 506);
+            label10.Location = new Point(266, 495);
             label10.Name = "label10";
             label10.Size = new Size(142, 17);
             label10.TabIndex = 75;
@@ -291,11 +292,20 @@
             comboBoxNadUp.Anchor = AnchorStyles.None;
             comboBoxNadUp.FormattingEnabled = true;
             comboBoxNadUp.Items.AddRange(new object[] { "Tak", "Nie" });
-            comboBoxNadUp.Location = new Point(467, 500);
+            comboBoxNadUp.Location = new Point(467, 489);
             comboBoxNadUp.Margin = new Padding(3, 2, 3, 2);
             comboBoxNadUp.Name = "comboBoxNadUp";
             comboBoxNadUp.Size = new Size(100, 23);
             comboBoxNadUp.TabIndex = 76;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(266, 101);
+            label11.Name = "label11";
+            label11.Size = new Size(169, 15);
+            label11.TabIndex = 77;
+            label11.Text = "Dostep Do Listy Uzytkownikow";
             // 
             // FormDodajRole
             // 
@@ -303,6 +313,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(869, 618);
+            Controls.Add(label11);
             Controls.Add(comboBoxNadUp);
             Controls.Add(label10);
             Controls.Add(comboBoxEdRol);
@@ -362,5 +373,6 @@
         private ComboBox comboBoxEdRol;
         private Label label10;
         private ComboBox comboBoxNadUp;
+        private Label label11;
     }
 }

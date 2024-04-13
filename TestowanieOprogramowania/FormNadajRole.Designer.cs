@@ -36,7 +36,7 @@
             // 
             comboBoxRole.Anchor = AnchorStyles.None;
             comboBoxRole.FormattingEnabled = true;
-            comboBoxRole.Location = new Point(123, 91);
+            comboBoxRole.Location = new Point(126, 85);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(121, 23);
             comboBoxRole.TabIndex = 0;
@@ -45,10 +45,11 @@
             // 
             buttonNadajRole.Anchor = AnchorStyles.None;
             buttonNadajRole.BackColor = Color.Indigo;
+            buttonNadajRole.Cursor = Cursors.Hand;
             buttonNadajRole.ForeColor = SystemColors.ControlLightLight;
-            buttonNadajRole.Location = new Point(146, 143);
+            buttonNadajRole.Location = new Point(143, 130);
             buttonNadajRole.Name = "buttonNadajRole";
-            buttonNadajRole.Size = new Size(75, 23);
+            buttonNadajRole.Size = new Size(88, 30);
             buttonNadajRole.TabIndex = 1;
             buttonNadajRole.Text = "Zapisz";
             buttonNadajRole.UseVisualStyleBackColor = false;
@@ -59,7 +60,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(371, 252);
+            ClientSize = new Size(376, 241);
             Controls.Add(buttonNadajRole);
             Controls.Add(comboBoxRole);
             Name = "FormNadajRole";

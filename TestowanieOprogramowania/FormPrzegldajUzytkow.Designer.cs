@@ -55,8 +55,9 @@
             // button1
             // 
             button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(228, 12);
+            button1.Location = new Point(224, 12);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;

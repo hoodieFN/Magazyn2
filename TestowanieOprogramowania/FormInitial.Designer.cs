@@ -58,6 +58,7 @@
             // button1
             // 
             button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
             button1.Location = new Point(12, 193);
