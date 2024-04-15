@@ -93,6 +93,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(1284, 452);
             dataGridView1.TabIndex = 17;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // buttonDodajRole
             // 

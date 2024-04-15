@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace TestowanieOprogramowania
 {
@@ -52,6 +53,48 @@ namespace TestowanieOprogramowania
             string wybranaRola = comboBoxRole.SelectedItem.ToString();
             int idUprawnienia = PobierzIdUprawnieniaDlaRoli(wybranaRola);
 
+            bool a = CzyRolaRoznaOd(wybraneIdUzytkownika.ToString());
+
+            if (a)
+            {
+                MessageBox.Show("Zmieniles na taka samą rolę");
+            }
+
+            //Sprawdz czy zmieniona rola nie jest taka sama 
+            bool CzyRolaRoznaOd(string wybranaRola)
+            {
+                string query = @"
+            SELECT up.Nazwa_stanowiska 
+            FROM dbo.Uprawnienia as up, dbo.Uzytkownicy as u 
+            WHERE "+wybraneIdUzytkownika+" = u.UzytkownikID AND u.IDUprawnienia = up.UprawnienieID";
+
+                using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    try
+                    {
+                        connection.Open();
+                        var result = command.ExecuteScalar();
+
+                        if (result != null && result.ToString() != wybranaRola)
+                        {
+                            return true;
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        Console.WriteLine($"SQL Error: {e.Message}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"General Error: {e.Message}");
+                    }
+                }
+
+                return false;
+            }
+
+
             // Aktualizacja roli użytkownika w bazie danych
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -82,5 +125,11 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

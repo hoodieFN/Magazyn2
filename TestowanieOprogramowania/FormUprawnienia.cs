@@ -72,7 +72,6 @@ namespace TestowanieOprogramowania
                                 transposedTable.Rows.Add(newRow);
                             }
                         }
-
                         dataGridView2.DataSource = transposedTable;
                     }
                 }
@@ -89,6 +88,9 @@ namespace TestowanieOprogramowania
             else
             {
                 dataGridView1.DataSource = listaUprawnien;
+                dataGridView1.Columns["UprawnienieID"].HeaderText = "ID Roli";
+                dataGridView1.Columns["Nazwa_stanowiska"].HeaderText = "Nazwa Roli";
+                dataGridView1.Columns["NadawanieRoli"].HeaderText = "Nadaj/Zmień Role";
             }
         }
 
@@ -194,6 +196,11 @@ namespace TestowanieOprogramowania
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridView2.Visible = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

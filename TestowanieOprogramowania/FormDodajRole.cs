@@ -27,6 +27,11 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Podaj nazwę roli.");
                 return;
             }
+            if (textBoxNazwa.Text.Length > 20)
+            {
+                MessageBox.Show("Zbyd dluga nazwa roli");
+                return;
+            }
 
             // Sprawdzenie czy wartość z textBoxNazwa nie pokrywa się z żadną nazwą w tabeli Uprawnienia w rzędzie Nazwa_stanowiska
             string nazwa = textBoxNazwa.Text;
@@ -97,8 +102,8 @@ namespace TestowanieOprogramowania
 
             // Wstawienie danych do tabeli Uprawnienia w bazie danych
             string query =
-                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoListyUzytkownikow, DostepDoListyUprawnien, DodawanieUzytkownika, UsuwanieUzytkownika, EdytowanieUzytkownika,DodawanieRoli,UsuwanieRoli,EdytowanieRoli) " +
-                "VALUES (@Nazwa, @DostepDoListyUzytkownikow, @DostepDoListyUprawnien, @DodawanieUzytkownika, @UsuwanieUzytkownika, @EdytowanieUzytkownika, @DodawanieRoli, @UsuwanieRoli, @EdytowanieRoli)";
+                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoListyUzytkownikow, DostepDoListyUprawnien, DodawanieUzytkownika, UsuwanieUzytkownika, EdytowanieUzytkownika,DodawanieRoli,UsuwanieRoli,EdytowanieRoli, NadajZmienRoleStanowisko) " +
+                "VALUES (@Nazwa, @DostepDoListyUzytkownikow, @DostepDoListyUprawnien, @DodawanieUzytkownika, @UsuwanieUzytkownika, @EdytowanieUzytkownika, @DodawanieRoli, @UsuwanieRoli, @EdytowanieRoli, @NadajZmienRoleStanowisko)";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -114,7 +119,7 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@DodawanieRoli", SqlDbType.NVarChar)).Value = comboBoxDodRol.SelectedItem.ToString();
                     cmd.Parameters.Add(new SqlParameter("@UsuwanieRoli", SqlDbType.NVarChar)).Value = comboBoxUsRol.SelectedItem.ToString();
                     cmd.Parameters.Add(new SqlParameter("@EdytowanieRoli", SqlDbType.NVarChar)).Value = comboBoxEdRol.SelectedItem.ToString();
-                    //cmd.Parameters.Add(new SqlParameter("@PakowaniePaczek", SqlDbType.NVarChar)).Value = comboBoxNadUp.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@NadajZmienRoleStanowisko", SqlDbType.NVarChar)).Value = comboBoxNadUp.SelectedItem.ToString();
 
                     cmd.ExecuteNonQuery();
                 }
@@ -130,6 +135,11 @@ namespace TestowanieOprogramowania
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void FormDodajRole_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

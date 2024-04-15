@@ -249,9 +249,9 @@
             label10.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(267, 514);
             label10.Name = "label10";
-            label10.Size = new Size(143, 17);
+            label10.Size = new Size(149, 17);
             label10.TabIndex = 86;
-            label10.Text = "Nadawanie Uprawnien";
+            label10.Text = "Nadawanie/Zmiana Roli";
             // 
             // comboBoxDodRol
             // 
@@ -263,6 +263,7 @@
             comboBoxDodRol.Name = "comboBoxDodRol";
             comboBoxDodRol.Size = new Size(100, 23);
             comboBoxDodRol.TabIndex = 87;
+            comboBoxDodRol.SelectedIndexChanged += comboBoxDodRol_SelectedIndexChanged;
             // 
             // comboBoxUsRol
             // 

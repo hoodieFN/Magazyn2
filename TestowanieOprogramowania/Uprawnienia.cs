@@ -18,5 +18,6 @@ namespace TestowanieOprogramowania
         public string DodawanieRoli { get; set; }
         public string UsuwanieRoli { get; set; }
         public string EdytowanieRoli { get; set; }
+        public string NadawanieRoli { get; set; }
     }
 }

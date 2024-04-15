@@ -16,7 +16,7 @@ namespace TestowanieOprogramowania
 
         private string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
         private int roleId;
-
+        private string currentName;
         public FormEdytujRole(int roleId)
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace TestowanieOprogramowania
 
         private void WczytajDaneRoli()
         {
-            string query = "SELECT [Nazwa_stanowiska], [DostepDoListyUzytkownikow], [DostepDoListyUprawnien], [DodawanieUzytkownika], [UsuwanieUzytkownika], [EdytowanieUzytkownika], [DodawanieRoli], [UsuwanieRoli], [EdytowanieRoli] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
+            string query = "SELECT [Nazwa_stanowiska], [DostepDoListyUzytkownikow], [DostepDoListyUprawnien], [DodawanieUzytkownika], [UsuwanieUzytkownika], [EdytowanieUzytkownika], [DodawanieRoli], [UsuwanieRoli], [EdytowanieRoli], [NadajZmienRoleStanowisko] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
 
             using (SqlConnection connection = new SqlConnection(this.StringPolaczeniowy))
             {
@@ -40,6 +40,7 @@ namespace TestowanieOprogramowania
                     if (reader.Read())
                     {
                         textBoxNazwa.Text = reader["Nazwa_stanowiska"].ToString();
+                        currentName = reader["Nazwa_stanowiska"].ToString(); ;
                         comboBoxListUz.SelectedItem = reader["DostepDoListyUzytkownikow"].ToString();
                         comboBoxListUp.SelectedItem = reader["DostepDoListyUprawnien"].ToString();
                         comboBoxDodUz.SelectedItem = reader["DodawanieUzytkownika"].ToString();
@@ -48,7 +49,7 @@ namespace TestowanieOprogramowania
                         comboBoxDodRol.SelectedItem = reader["DodawanieRoli"].ToString();
                         comboBoxUsRol.SelectedItem = reader["UsuwanieRoli"].ToString();
                         comboBoxEdRol.SelectedItem = reader["EdytowanieRoli"].ToString();
-                        //comboBoxNadUp.SelectedItem = reader["PakowaniePaczek"].ToString();
+                        comboBoxNadUp.SelectedItem = reader["NadajZmienRoleStanowisko"].ToString();
                     }
                     reader.Close();
                 }
@@ -61,6 +62,11 @@ namespace TestowanieOprogramowania
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
+            if (textBoxNazwa.Text.Length > 20)
+            {
+                MessageBox.Show("Zbyd dluga nazwa roli");
+                return;
+            }
             // Pobierz dane z formularza
             string nazwaRoli = textBoxNazwa.Text;
             string dostepDoListyUzytkownikow = comboBoxListUz.SelectedItem.ToString();
@@ -68,9 +74,10 @@ namespace TestowanieOprogramowania
             string dodawanieUzytkownika = comboBoxDodUz.SelectedItem.ToString();
             string usuwanieUzytkownika = comboBoxUsuUz.SelectedItem.ToString();
             string edytowanieUzytkownika = comboBoxEdUz.SelectedItem.ToString();
-            string dodawanieRoli = comboBoxEdUz.SelectedItem.ToString();
-            string usuwanieRoli = comboBoxEdUz.SelectedItem.ToString();
-            string edytowanieRoli = comboBoxEdUz.SelectedItem.ToString();
+            string dodawanieRoli = comboBoxDodRol.SelectedItem.ToString();
+            string usuwanieRoli = comboBoxUsRol.SelectedItem.ToString();
+            string edytowanieRoli = comboBoxEdRol.SelectedItem.ToString();
+            string nadawanieRoli = comboBoxNadUp.SelectedItem.ToString();
 
             // Zapytanie SQL do aktualizacji danych roli w bazie danych
             string query = @"UPDATE dbo.Uprawnienia 
@@ -82,9 +89,38 @@ namespace TestowanieOprogramowania
                                  EdytowanieUzytkownika = @EdytowanieUzytkownika, 
                                  DodawanieRoli = @DodawanieRoli, 
                                  UsuwanieRoli = @UsuwanieRoli, 
-                                 EdytowanieRoli = @EdytowanieRoli
+                                 EdytowanieRoli = @EdytowanieRoli,
+                            NadajZmienRoleStanowisko=@NadajZmienRoleStanowisko
                                  
                              WHERE UprawnienieID = @ID";
+
+            // Sprawdzenie czy wartość z textBoxNazwa nie pokrywa się z żadną nazwą w tabeli Uprawnienia w rzędzie Nazwa_stanowiska
+            string nazwa = textBoxNazwa.Text;
+            string sprawdzenieNazwyQuery = "SELECT COUNT(*) FROM dbo.Uprawnienia WHERE Nazwa_stanowiska = @Nazwa";
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                if(nazwa == currentName)
+                {
+
+                }
+                else
+                {
+                    conn.Open();
+                    using (SqlCommand cmdSprawdzenieNazwy = new SqlCommand(sprawdzenieNazwyQuery, conn))
+                    {
+                        cmdSprawdzenieNazwy.Parameters.Add(new SqlParameter("@Nazwa", SqlDbType.NVarChar)).Value = nazwa;
+
+                        int liczbaNazw = (int)cmdSprawdzenieNazwy.ExecuteScalar();
+
+                        if (liczbaNazw > 0)
+                        {
+                            MessageBox.Show("Nazwa stanowiska już istnieje w bazie danych.");
+                            return;
+                        }
+                    }
+                }
+                
+            }
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -100,6 +136,8 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.AddWithValue("@DodawanieRoli", dodawanieRoli);
                     cmd.Parameters.AddWithValue("@UsuwanieRoli", usuwanieRoli);
                     cmd.Parameters.AddWithValue("@EdytowanieRoli", edytowanieRoli);
+                    cmd.Parameters.AddWithValue("@NadajZmienRoleStanowisko", nadawanieRoli);
+
                     cmd.Parameters.AddWithValue("@ID", roleId);
 
                     try
@@ -131,6 +169,11 @@ namespace TestowanieOprogramowania
         }
 
         private void FormEdytujRole_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDodRol_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

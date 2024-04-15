@@ -29,6 +29,10 @@ namespace TestowanieOprogramowania
         {
             OdswiezDataGridView();
             comboBox1.SelectedIndex = 0;
+            if (!ZarzadzanieVoidami.NadawanieZmianaRoli())
+            {
+                buttonNadajRole.Visible = false;
+            }
             if (!ZarzadzanieVoidami.DodawanieUzytkownika())
             {
                 buttonDodajUzytkownika.Visible = false;
@@ -50,6 +54,7 @@ namespace TestowanieOprogramowania
             dataGridView1.DataSource = listaUzytkownikow;
             dataGridView1.Columns["haslo"].Visible = false;
             dataGridView1.Columns["archiwizacja"].Visible = false;
+            dataGridView1.Columns["Nazwa_stanowiska"].HeaderText = "Nazwa Roli";
         }
 
         private void buttonUsunUzytkownika_Click(object sender, EventArgs e)

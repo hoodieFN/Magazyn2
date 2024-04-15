@@ -34,6 +34,7 @@ namespace TestowanieOprogramowania
             comboBoxUprawnienia.Items.Add("DodawanieRoli");
             comboBoxUprawnienia.Items.Add("UsuwanieRoli");
             comboBoxUprawnienia.Items.Add("EdytowanieRoli");
+            comboBoxUprawnienia.Items.Add("NadajZmienRoleStanowisko");
         }
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -79,7 +80,7 @@ namespace TestowanieOprogramowania
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bląd");
+                MessageBox.Show("Bląd. Upewnij się czy wybrałeś uprawnienie");
             }
 
         }

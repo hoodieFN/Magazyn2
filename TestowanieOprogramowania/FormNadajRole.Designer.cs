@@ -30,6 +30,7 @@
         {
             comboBoxRole = new ComboBox();
             buttonNadajRole = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // comboBoxRole
@@ -47,7 +48,7 @@
             buttonNadajRole.BackColor = Color.Indigo;
             buttonNadajRole.Cursor = Cursors.Hand;
             buttonNadajRole.ForeColor = SystemColors.ControlLightLight;
-            buttonNadajRole.Location = new Point(143, 130);
+            buttonNadajRole.Location = new Point(87, 151);
             buttonNadajRole.Name = "buttonNadajRole";
             buttonNadajRole.Size = new Size(88, 30);
             buttonNadajRole.TabIndex = 1;
@@ -55,12 +56,27 @@
             buttonNadajRole.UseVisualStyleBackColor = false;
             buttonNadajRole.Click += buttonNadajRole_Click;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(192, 151);
+            button1.Name = "button1";
+            button1.Size = new Size(88, 30);
+            button1.TabIndex = 2;
+            button1.Text = "Anuluj";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // FormNadajRole
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(376, 241);
+            Controls.Add(button1);
             Controls.Add(buttonNadajRole);
             Controls.Add(comboBoxRole);
             Name = "FormNadajRole";
@@ -74,5 +90,6 @@
 
         private ComboBox comboBoxRole;
         private Button buttonNadajRole;
+        private Button button1;
     }
 }
