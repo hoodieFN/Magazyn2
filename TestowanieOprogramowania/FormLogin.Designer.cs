@@ -35,6 +35,7 @@
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
+            button_odzyskajhaslo = new Button();
             SuspendLayout();
             // 
             // label1
@@ -44,9 +45,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 21F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(100, 92);
+            label1.Location = new Point(114, 123);
             label1.Name = "label1";
-            label1.Size = new Size(167, 34);
+            label1.Size = new Size(206, 42);
             label1.TabIndex = 0;
             label1.Text = "Warehouse";
             // 
@@ -56,9 +57,10 @@
             textBoxUsername.BackColor = Color.LightGray;
             textBoxUsername.BorderStyle = BorderStyle.None;
             textBoxUsername.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxUsername.Location = new Point(75, 187);
+            textBoxUsername.Location = new Point(86, 249);
+            textBoxUsername.Margin = new Padding(3, 4, 3, 4);
             textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.Size = new Size(216, 26);
+            textBoxUsername.Size = new Size(247, 33);
             textBoxUsername.TabIndex = 1;
             // 
             // textBoxPassword
@@ -67,9 +69,10 @@
             textBoxPassword.BackColor = Color.LightGray;
             textBoxPassword.BorderStyle = BorderStyle.None;
             textBoxPassword.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxPassword.Location = new Point(75, 251);
+            textBoxPassword.Location = new Point(86, 335);
+            textBoxPassword.Margin = new Padding(3, 4, 3, 4);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(216, 26);
+            textBoxPassword.Size = new Size(247, 33);
             textBoxPassword.TabIndex = 2;
             textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -79,9 +82,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(75, 167);
+            label2.Location = new Point(86, 223);
             label2.Name = "label2";
-            label2.Size = new Size(67, 17);
+            label2.Size = new Size(83, 20);
             label2.TabIndex = 3;
             label2.Text = "Username";
             // 
@@ -91,9 +94,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(75, 231);
+            label3.Location = new Point(86, 308);
             label3.Name = "label3";
-            label3.Size = new Size(63, 17);
+            label3.Size = new Size(79, 20);
             label3.TabIndex = 4;
             label3.Text = "Password";
             // 
@@ -105,9 +108,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(75, 316);
+            button1.Location = new Point(86, 421);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(216, 36);
+            button1.Size = new Size(247, 48);
             button1.TabIndex = 5;
             button1.Text = "LOGIN";
             button1.UseVisualStyleBackColor = false;
@@ -121,19 +125,38 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(75, 369);
+            button2.Location = new Point(86, 492);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(216, 36);
+            button2.Size = new Size(247, 48);
             button2.TabIndex = 6;
             button2.Text = "REGISTER";
             button2.UseVisualStyleBackColor = false;
             // 
+            // button_odzyskajhaslo
+            // 
+            button_odzyskajhaslo.Anchor = AnchorStyles.None;
+            button_odzyskajhaslo.BackColor = Color.Black;
+            button_odzyskajhaslo.Cursor = Cursors.Hand;
+            button_odzyskajhaslo.FlatStyle = FlatStyle.Flat;
+            button_odzyskajhaslo.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button_odzyskajhaslo.ForeColor = Color.Transparent;
+            button_odzyskajhaslo.Location = new Point(86, 385);
+            button_odzyskajhaslo.Margin = new Padding(3, 4, 3, 4);
+            button_odzyskajhaslo.Name = "button_odzyskajhaslo";
+            button_odzyskajhaslo.Size = new Size(247, 28);
+            button_odzyskajhaslo.TabIndex = 7;
+            button_odzyskajhaslo.Text = "Odzyskaj hasło";
+            button_odzyskajhaslo.UseVisualStyleBackColor = false;
+            button_odzyskajhaslo.Click += button_odzyskajhaslo_Click;
+            // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(366, 536);
+            ClientSize = new Size(418, 715);
+            Controls.Add(button_odzyskajhaslo);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label3);
@@ -142,6 +165,7 @@
             Controls.Add(textBoxUsername);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLogin";
@@ -159,5 +183,6 @@
         private Label label3;
         private Button button1;
         private Button button2;
+        private Button button_odzyskajhaslo;
     }
 }

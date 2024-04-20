@@ -23,6 +23,7 @@ namespace TestowanieOprogramowania
         {
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(FormLogin_FormClosed);
+            
         }
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -153,6 +154,25 @@ namespace TestowanieOprogramowania
         private void FormLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_odzyskajhaslo_Click(object sender, EventArgs e)
+        {
+            string username = textBoxUsername.Text; 
+
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("Proszę wprowadzić nazwę użytkownika.");
+                return;
+            }
+            else
+            {
+                var odzyskajhaslo = new OdzyskiwanieHasla();
+                odzyskajhaslo.ResetPassword(username);
+            }
+            
+                
+            
         }
     }
 }

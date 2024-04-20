@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1504a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {}
+    "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1504a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {
+    "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1504a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+        "projectUniqueName": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
         "projectName": "TestowanieOprogramowania",
-        "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1504a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
-        "packagesPath": "C:\\Users\\cayna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1504a\\TestowanieOprogramowania\\obj\\",
+        "projectPath": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+        "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\cayna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -43,6 +48,10 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.2.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
             }
           },
           "imports": [
@@ -64,7 +73,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
