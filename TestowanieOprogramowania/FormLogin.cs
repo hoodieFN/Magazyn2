@@ -23,7 +23,7 @@ namespace TestowanieOprogramowania
         {
             InitializeComponent();
             this.FormClosed += new FormClosedEventHandler(FormLogin_FormClosed);
-            
+
         }
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -97,13 +97,13 @@ namespace TestowanieOprogramowania
                     }
                     break;
                 case LoginResult.InvalidUsername:
-                    MessageBox.Show("Nieprawidłowa nazwa użytkownika.");
+                    MessageBox.Show("Nieprawidłowa nazwa użytkownika lub hasło");
                     break;
                 case LoginResult.InvalidPassword:
-                    MessageBox.Show("Nieprawidłowe hasło.");
+                    MessageBox.Show("Nieprawidłowa nazwa użytkownika lub hasło");
                     break;
                 case LoginResult.InvalidUsernameAndPassword:
-                    MessageBox.Show("Nieprawidłowa nazwa użytkownika i hasło.");
+                    MessageBox.Show("Nieprawidłowa nazwa użytkownika lub hasło");
                     break;
                 default:
                     MessageBox.Show("Nieoczekiwany błąd logowania.");
@@ -158,7 +158,7 @@ namespace TestowanieOprogramowania
 
         private void button_odzyskajhaslo_Click(object sender, EventArgs e)
         {
-            string username = textBoxUsername.Text; 
+            string username = textBoxUsername.Text;
 
             if (string.IsNullOrEmpty(username))
             {
@@ -170,9 +170,9 @@ namespace TestowanieOprogramowania
                 var odzyskajhaslo = new OdzyskiwanieHasla();
                 odzyskajhaslo.ResetPassword(username);
             }
-            
-                
-            
+
+
+
         }
     }
 }
