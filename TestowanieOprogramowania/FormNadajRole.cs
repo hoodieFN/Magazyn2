@@ -111,7 +111,7 @@ namespace TestowanieOprogramowania
         }
         private int PobierzIdUprawnieniaDlaRoli(string rola)
         {
-            if (rola == "Brak roli") return -1; // Specjalna wartość oznaczająca brak roli
+            if (rola == "brak roli") return 0; // Specjalna wartość oznaczająca brak roli
 
             // Pobierz ID uprawnienia dla danej roli
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
