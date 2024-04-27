@@ -110,7 +110,7 @@
             Controls.Add(textBoxUsername);
             Name = "FromResetPas";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FromResetPas";
+            Text = "Resetuj hasło";
             ResumeLayout(false);
             PerformLayout();
         }

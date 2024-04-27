@@ -240,7 +240,7 @@ namespace TestowanieOprogramowania
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
-            
+
             string login = textBoxLogin.Text;
             string imie = textBoxImie.Text;
             string nazwisko = textBoxNazwisko.Text;
@@ -255,7 +255,7 @@ namespace TestowanieOprogramowania
             string email = textBoxEmail.Text;
             string numerlokalu = textBoxNumerLokalu.Text;
             string haslo = textBoxHaslo.Text;
-            
+
 
             AktualizujUzytkownikaWBazie(login, imie, nazwisko, miejscowosc, kodPocztowy, ulica, numerposesji, numerlokalu, pesel, dataurodzenia, plec, email, numertelefonu, haslo);
 

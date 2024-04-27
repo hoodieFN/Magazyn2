@@ -330,7 +330,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormEdytujRole";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormEdytujRole";
+            Text = "Edytuj rolę";
             Load += FormEdytujRole_Load;
             ResumeLayout(false);
             PerformLayout();

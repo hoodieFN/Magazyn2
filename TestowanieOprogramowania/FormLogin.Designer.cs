@@ -162,7 +162,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormLogin";
+            Text = "Warehouse";
             Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();

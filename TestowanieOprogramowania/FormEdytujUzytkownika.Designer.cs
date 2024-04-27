@@ -443,7 +443,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormEdytujUzytkownika";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormEdytujUzytkownika";
+            Text = "Edytuj użytkownika";
             Load += FormEdytujUzytkownika_Load;
             ResumeLayout(false);
             PerformLayout();

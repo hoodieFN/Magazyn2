@@ -188,9 +188,9 @@ namespace TestowanieOprogramowania
             if (IsBirthDateMatchingPesel(pesel, data))
             {
                 //deafultow daje 0
-                    int numerUprawnienia = 0;
-                    DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
-                
+                int numerUprawnienia = 0;
+                DodajUzytkownikaDoBazy(imie, nazwisko, login, numerTelefonu, miejscowosc, kodPocztowy, ulica, numerPosesji, pesel, dataUrodzenia, plec, email, numerLokalu, haslo, numerUprawnienia);
+
             }
             else
             {

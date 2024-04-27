@@ -424,7 +424,7 @@
             ForeColor = SystemColors.Control;
             Name = "FormDodajUzytkownika";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormDodajUzytkownika";
+            Text = "Dodaj użytkownika";
             Load += FormDodajUzytkownika_Load;
             ResumeLayout(false);
             PerformLayout();

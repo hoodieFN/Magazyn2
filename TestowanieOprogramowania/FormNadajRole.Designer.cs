@@ -81,7 +81,7 @@
             Controls.Add(comboBoxRole);
             Name = "FormNadajRole";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormNadajRole";
+            Text = "Nadaj rolę";
             Load += FormNadajRole_Load;
             ResumeLayout(false);
         }

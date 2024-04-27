@@ -153,7 +153,7 @@
             Controls.Add(mainpanel);
             Controls.Add(panelslide);
             Name = "FormInitial";
-            Text = "FormInitial";
+            Text = "Warehouse";
             WindowState = FormWindowState.Maximized;
             panelslide.ResumeLayout(false);
             panelslide.PerformLayout();

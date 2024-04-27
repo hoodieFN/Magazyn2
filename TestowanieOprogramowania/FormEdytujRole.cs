@@ -99,7 +99,7 @@ namespace TestowanieOprogramowania
             string sprawdzenieNazwyQuery = "SELECT COUNT(*) FROM dbo.Uprawnienia WHERE Nazwa_stanowiska = @Nazwa";
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
-                if(nazwa == currentName)
+                if (nazwa == currentName)
                 {
 
                 }
@@ -119,7 +119,7 @@ namespace TestowanieOprogramowania
                         }
                     }
                 }
-                
+
             }
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))

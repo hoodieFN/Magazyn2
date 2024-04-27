@@ -66,7 +66,7 @@ namespace TestowanieOprogramowania
                 string query = @"
             SELECT up.Nazwa_stanowiska 
             FROM dbo.Uprawnienia as up, dbo.Uzytkownicy as u 
-            WHERE "+wybraneIdUzytkownika+" = u.UzytkownikID AND u.IDUprawnienia = up.UprawnienieID";
+            WHERE " + wybraneIdUzytkownika + " = u.UzytkownikID AND u.IDUprawnienia = up.UprawnienieID";
 
                 using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
                 {
