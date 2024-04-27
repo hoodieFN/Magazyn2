@@ -36,12 +36,14 @@
             buttonLogout = new Button();
             buttonZarzadzaj = new Button();
             mainpanel = new Panel();
+            button2 = new Button();
             panelslide.SuspendLayout();
             SuspendLayout();
             // 
             // panelslide
             // 
             panelslide.BackColor = Color.FromArgb(24, 24, 24);
+            panelslide.Controls.Add(button2);
             panelslide.Controls.Add(button1);
             panelslide.Controls.Add(labelRola);
             panelslide.Controls.Add(labelWitajUzytkowniku);
@@ -145,6 +147,21 @@
             mainpanel.TabIndex = 1;
             mainpanel.Paint += mainpanel_Paint;
             // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button2.BackColor = Color.Indigo;
+            button2.Cursor = Cursors.Hand;
+            button2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(12, 507);
+            button2.Name = "button2";
+            button2.Size = new Size(171, 52);
+            button2.TabIndex = 6;
+            button2.Text = "Zmień hasło";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // FormInitial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -170,5 +187,6 @@
         private Label labelWitajUzytkowniku;
         private Label labelRola;
         private Button button1;
+        private Button button2;
     }
 }

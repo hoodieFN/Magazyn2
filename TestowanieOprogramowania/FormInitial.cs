@@ -256,6 +256,18 @@ namespace TestowanieOprogramowania
         {
             loadform(new FormPrzegldajUzytkow());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var formReset = new FormZmienHaslo())
+            {
+                var result = formReset.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
     }
 
 
