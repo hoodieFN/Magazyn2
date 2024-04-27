@@ -15,15 +15,28 @@ namespace TestowanieOprogramowania
     {
         static string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
 
-        public void ResetPassword(string username)
+        public void ResetPassword(string username, string userEmailToCheck, Func<string, bool> confirmAction)
         {
             try
             {
                 string userEmail = GetUserEmail(username);
                 if (string.IsNullOrEmpty(userEmail))
                 {
-                    MessageBox.Show($"Nie znaleziono użytkownika o nazwie: {username}", "Błąd");
+                    MessageBox.Show($"Niepoprawny login lub mail");
                     return; 
+                }
+                // Sprawdzenie, czy podany adres email pasuje do adresu email przypisanego do użytkownika
+                if (!string.Equals(userEmail, userEmailToCheck, StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show($"Niepoprawny login lub mail");
+                    return;
+                }
+
+                bool isConfirmed = confirmAction?.Invoke($"Czy na pewno chcesz zresetować hasło dla użytkownika {username}?") ?? false;
+                if (!isConfirmed)
+                {
+                    MessageBox.Show("Resetowanie hasła zostało anulowane.");
+                    return;
                 }
 
                 string newPassword = GenerateRandomPassword();
@@ -100,7 +113,8 @@ namespace TestowanieOprogramowania
                         smtp.EnableSsl = true;
                         smtp.Credentials = new NetworkCredential(email, haslo) ; 
                         smtp.Send(mail);
-                        MessageBox.Show("Wiadomość została wysłana na adres email", "Success");
+                        MessageBox.Show("Hasło zostało zresetowane. \n" +
+                            "Wiadomość została wysłana na adres email, w przypadku braku wiadomości sprawdź spam.", "Success");
 
                     }
                 }
@@ -111,7 +125,6 @@ namespace TestowanieOprogramowania
             {
                 MessageBox.Show($"Wystąpił błąd podczas wysyłania e-maila: {ex.ToString()}");
                 
-
             }
         }
         private void UpdatePassword(string userEmail, string newPassword)

@@ -156,6 +156,8 @@ namespace TestowanieOprogramowania
 
         }
 
+        //STARA FUNKCJA RESETOWANIA HASLA
+        /*
         private void button_odzyskajhaslo_Click(object sender, EventArgs e)
         {
             string username = textBoxUsername.Text;
@@ -173,6 +175,18 @@ namespace TestowanieOprogramowania
 
 
 
+        }*/
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (var formReset = new FromResetPas())
+            {
+                var result = formReset.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }
