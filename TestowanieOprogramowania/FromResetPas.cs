@@ -34,7 +34,7 @@ namespace TestowanieOprogramowania
                 return MessageBox.Show(message, "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
                 
             });
-            this.Close();
+            
         }
     }
 }
