@@ -29,9 +29,37 @@ namespace TestowanieOprogramowania
         {
             Application.Exit();
         }
+        private bool CheckChangePassFlagByLogin(string userLogin)
+        {
+            using (var con = new SqlConnection(StringPolaczeniowy))
+            {
+                var cmd = new SqlCommand("SELECT changePass FROM Uzytkownicy WHERE Login = @Login", con);
+                cmd.Parameters.AddWithValue("@Login", userLogin);
+                con.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read() && reader["changePass"] != DBNull.Value)
+                    {
+                        int changePassValue = Convert.ToInt32(reader["changePass"]);
+                        if (changePassValue == 1)
+                        {
+                            
+                            return true; // Zwraca true, gdy changePass jest równy 1.
+                        }
+                    }
+                }
+            }
+            return false; // Zwraca false, gdy changePass nie jest równy 1 lub nie zostało znalezione.
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
+
+
             // Sprawdź, czy logowanie jest obecnie zablokowane
             if (isLoginBlocked)
             {
@@ -51,6 +79,18 @@ namespace TestowanieOprogramowania
 
             string username = textBoxUsername.Text;
             string password = textBoxPassword.Text;
+
+
+            bool check = CheckChangePassFlagByLogin(username);
+            if (check)
+            {
+                MessageBox.Show("Wymagana jest zmiana hasła po zrestartowaniu hasła. Po kliknięciu ok zostaniesz przeniesiony do nowego okna");
+                FormZmianaPoResecie formZmianaPoResecie = new FormZmianaPoResecie();
+                formZmianaPoResecie.ShowDialog(); // Otwiera formularz jako modalne okno dialogowe
+                return;
+            }
+
+
             // Sprawdź, czy nazwa użytkownika lub hasło są puste
             if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
             {
@@ -184,7 +224,7 @@ namespace TestowanieOprogramowania
                 var result = formReset.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-
+                   
                 }
             }
         }

@@ -42,6 +42,7 @@ namespace TestowanieOprogramowania
                 string newPassword = GenerateRandomPassword();
                 SendEmail(userEmail, newPassword);
                 UpdatePassword(userEmail, newPassword);
+                SetChangePassFlag(userEmail);
             }
             catch (Exception ex)
             {
@@ -114,7 +115,7 @@ namespace TestowanieOprogramowania
                         smtp.Credentials = new NetworkCredential(email, haslo) ; 
                         smtp.Send(mail);
                         MessageBox.Show("Hasło zostało zresetowane. \n" +
-                            "Wiadomość została wysłana na adres email, w przypadku braku wiadomości sprawdź spam.", "Success");
+                            "Wiadomość została wysłana na adres email, w przypadku braku wiadomości sprawdź spam. \nPrzy następnej próbie logowania wymusimy na tobie zmiane hasła.", "Success");
 
                     }
                 }
@@ -133,6 +134,16 @@ namespace TestowanieOprogramowania
             {
                 var cmd = new SqlCommand("UPDATE Uzytkownicy SET haslo = @haslo WHERE Email = @Email", con);
                 cmd.Parameters.AddWithValue("@haslo", newPassword);
+                cmd.Parameters.AddWithValue("@Email", userEmail);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void SetChangePassFlag(string userEmail)
+        {
+            using (var con = new SqlConnection(StringPolaczeniowy))
+            {
+                var cmd = new SqlCommand("UPDATE Uzytkownicy SET changePass = 1 WHERE Email = @Email", con);
                 cmd.Parameters.AddWithValue("@Email", userEmail);
                 con.Open();
                 cmd.ExecuteNonQuery();
