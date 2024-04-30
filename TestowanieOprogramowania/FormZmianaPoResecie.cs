@@ -13,6 +13,7 @@ namespace TestowanieOprogramowania
 {
     public partial class FormZmianaPoResecie : Form
     {
+        string con = PolaczenieBazyDanych.StringPolaczeniowy();
         static string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
         public FormZmianaPoResecie()
         {
@@ -26,6 +27,12 @@ namespace TestowanieOprogramowania
             string noweHaslo = textBoxNewPassword.Text;
             string nowe2Haslo = textBoxNewPassword2.Text;
 
+            int userID = UserSession.CurrentUserId;
+            if(CheckIfPasswordIsInHistory(userID, noweHaslo))
+            {
+                MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
+                return;
+            }
             // Sprawdzenie czy jakiekolwiek pole jest puste
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(hasloZMaila) ||
                 string.IsNullOrEmpty(noweHaslo) || string.IsNullOrEmpty(nowe2Haslo))
@@ -99,6 +106,30 @@ namespace TestowanieOprogramowania
         private void FormZmianaPoResecie_Load(object sender, EventArgs e)
         {
 
+        }
+        private bool CheckIfPasswordIsInHistory(int userId, string newPassword)
+        {
+            using (var connection = new SqlConnection(con))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT haslo1, haslo2, haslo3 FROM HistoriaHasel WHERE UzytkownikID = @id", connection))
+                {
+                    command.Parameters.AddWithValue("@id", userId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string historyPassword1 = reader["haslo1"] as string;
+                            string historyPassword2 = reader["haslo2"] as string;
+                            string historyPassword3 = reader["haslo3"] as string;
+
+                            return (newPassword == historyPassword1 || newPassword == historyPassword2 || newPassword == historyPassword3);
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }

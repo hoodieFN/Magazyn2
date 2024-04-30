@@ -24,7 +24,7 @@ namespace TestowanieOprogramowania
             {
                 if (oldPassword == newPassword)
                 {
-                    MessageBox.Show("Nowe hasło jest takie samo jak stare. Wybierz inne hasło.");
+                    MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
                 }
                 else if (CheckIfPasswordIsInHistory(currentId, newPassword))
                 {
