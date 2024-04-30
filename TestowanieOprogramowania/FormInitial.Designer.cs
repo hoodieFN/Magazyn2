@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelslide = new Panel();
+            button2 = new Button();
             button1 = new Button();
             labelRola = new Label();
             labelWitajUzytkowniku = new Label();
@@ -36,7 +37,6 @@
             buttonLogout = new Button();
             buttonZarzadzaj = new Button();
             mainpanel = new Panel();
-            button2 = new Button();
             panelslide.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,13 +57,28 @@
             panelslide.TabIndex = 0;
             panelslide.Paint += panelslide_Paint;
             // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button2.BackColor = Color.Indigo;
+            button2.Cursor = Cursors.Hand;
+            button2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(12, 507);
+            button2.Name = "button2";
+            button2.Size = new Size(171, 52);
+            button2.TabIndex = 6;
+            button2.Text = "Zmień hasło";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // button1
             // 
             button1.BackColor = Color.Indigo;
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(12, 193);
+            button1.Location = new Point(12, 195);
             button1.Name = "button1";
             button1.Size = new Size(171, 49);
             button1.TabIndex = 5;
@@ -100,7 +115,7 @@
             buttonListaUprawnien.Cursor = Cursors.Hand;
             buttonListaUprawnien.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonListaUprawnien.ForeColor = Color.White;
-            buttonListaUprawnien.Location = new Point(12, 135);
+            buttonListaUprawnien.Location = new Point(12, 137);
             buttonListaUprawnien.Name = "buttonListaUprawnien";
             buttonListaUprawnien.Size = new Size(171, 52);
             buttonListaUprawnien.TabIndex = 2;
@@ -129,7 +144,7 @@
             buttonZarzadzaj.Cursor = Cursors.Hand;
             buttonZarzadzaj.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonZarzadzaj.ForeColor = Color.White;
-            buttonZarzadzaj.Location = new Point(12, 77);
+            buttonZarzadzaj.Location = new Point(12, 79);
             buttonZarzadzaj.Name = "buttonZarzadzaj";
             buttonZarzadzaj.Size = new Size(171, 52);
             buttonZarzadzaj.TabIndex = 0;
@@ -146,21 +161,6 @@
             mainpanel.Size = new Size(1021, 630);
             mainpanel.TabIndex = 1;
             mainpanel.Paint += mainpanel_Paint;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button2.BackColor = Color.Indigo;
-            button2.Cursor = Cursors.Hand;
-            button2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 507);
-            button2.Name = "button2";
-            button2.Size = new Size(171, 52);
-            button2.TabIndex = 6;
-            button2.Text = "Zmień hasło";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // FormInitial
             // 

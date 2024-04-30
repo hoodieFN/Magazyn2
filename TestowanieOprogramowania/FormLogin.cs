@@ -119,6 +119,10 @@ namespace TestowanieOprogramowania
 
             // Załóżmy, że VerifyLogin teraz zwraca enum zamiast bool
             LoginResult loginResult = VerifyLogin(username, password, out int userId);
+            
+            
+            
+            ///////===============Debug==================/////////////MessageBox.Show("po enum" + userId);
 
             switch (loginResult)
             {
@@ -127,7 +131,11 @@ namespace TestowanieOprogramowania
                     loginAttempts = 0;
                     isLoginBlocked = false;
                     // Utworzenie sesji użytkownika (prosta demonstracja)
+
                     UserSession.StartSession(userId);
+                    ///////===============Debug==================/////////////MessageBox.Show("po starcie sesji" + userId);
+
+
                     MessageBox.Show("Logowanie pomyślne!");
 
                     using (var formDodaj = new FormInitial())
@@ -174,9 +182,11 @@ namespace TestowanieOprogramowania
                     {
                         string storedPassword = reader["haslo"].ToString();
                         userId = reader.GetInt32(0); // przypisz ID użytkownika
+                        ///////===============Debug==================/////////////MessageBox.Show("Funkcja Login Result Verify Login: " + userId.ToString());
 
                         if (storedPassword == password)
                         {
+                            UserSession.StartSession(userId);
                             return LoginResult.Success; // Zwróć Success, jeśli hasło się zgadza
                         }
                         else

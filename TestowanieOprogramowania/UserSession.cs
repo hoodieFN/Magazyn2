@@ -14,6 +14,7 @@ namespace TestowanieOprogramowania
         public static void StartSession(int userId)
         {
             CurrentUserId = userId;
+            ///////===============Debug==================/////////////MessageBox.Show("Klasa User session - ustawiono user id na: " + userId);
             // Możesz dodać więcej logiki związanej z sesją tutaj
         }
 

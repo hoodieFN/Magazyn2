@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UxEWK2PuXovJmN26Q8qux53vdAZyRrDOirQC206dvXozrNkmr0AytfIk5PB7rZSq8QwR95JDYADm1E5xuo+ZCQ==",
+  "dgSpecHash": "KyL95VDoFf2Nzs3pafzHls7vL0Pxnc0D66Of7dCApsjgzAoZEOkZl9Sh/E67a3UYrcdwi9flKjCPN0m0IeB9rA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2904d\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+  "projectFilePath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn3004a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cayna\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\cayna\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

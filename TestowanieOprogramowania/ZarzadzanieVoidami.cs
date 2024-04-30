@@ -209,15 +209,19 @@ namespace TestowanieOprogramowania
             return listaUprawnien;
         }
 
-        public static int CurrentUserId = UserSession.CurrentUserId;
+        //public static int CurrentUserId = UserSession.CurrentUserId;
+        
 
         public static bool CzyMaDostepDoListyUzytkownikow()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
             }
 
+            //MessageBox.Show("Inaczej pobrane curentid: " + CurrentID);
+            ///////===============Debug==================/////////////MessageBox.Show("Current id: "+ CurrentUserId);
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
                 conn.Open();
@@ -226,6 +230,7 @@ namespace TestowanieOprogramowania
                 FROM Uprawnienia 
                 JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
                 WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+                
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -233,12 +238,15 @@ namespace TestowanieOprogramowania
 
                     // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
                     string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    ///////===============Debug==================///////////// MessageBox.Show($"{dostep}");
                     return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                    
                 }
             }
         }
         public static bool CzyMaDostepDoListyUprawnien()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -265,6 +273,7 @@ namespace TestowanieOprogramowania
         }
         public static bool DodawanieUzytkownika()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -291,6 +300,7 @@ namespace TestowanieOprogramowania
         }
         public static bool UsuwanieUzytkownika()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -317,6 +327,7 @@ namespace TestowanieOprogramowania
         }
         public static bool EdytowanieUzytkownika()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -343,6 +354,7 @@ namespace TestowanieOprogramowania
         }
         public static bool DodawanieRoli()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -369,6 +381,7 @@ namespace TestowanieOprogramowania
         }
         public static bool UsuwanieRoli()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -395,6 +408,7 @@ namespace TestowanieOprogramowania
         }
         public static bool EdytowanieRoli()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika
@@ -421,6 +435,7 @@ namespace TestowanieOprogramowania
         }
         public static bool NadawanieZmianaRoli()
         {
+            int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
             {
                 return false; // Brak zalogowanego użytkownika

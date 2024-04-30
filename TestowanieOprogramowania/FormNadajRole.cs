@@ -57,7 +57,7 @@ namespace TestowanieOprogramowania
 
             if (a)
             {
-                MessageBox.Show("Zmieniles na taka samą rolę");
+               // MessageBox.Show("Zmieniles na taka samą rolę");
             }
 
             //Sprawdz czy zmieniona rola nie jest taka sama 
