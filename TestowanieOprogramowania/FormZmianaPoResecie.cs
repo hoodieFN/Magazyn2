@@ -15,6 +15,7 @@ namespace TestowanieOprogramowania
     {
         string con = PolaczenieBazyDanych.StringPolaczeniowy();
         static string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+
         public FormZmianaPoResecie()
         {
             InitializeComponent();
@@ -28,12 +29,8 @@ namespace TestowanieOprogramowania
             string nowe2Haslo = textBoxNewPassword2.Text;
 
             int userID = UserSession.CurrentUserId;
-            if(CheckIfPasswordIsInHistory(userID, noweHaslo))
-            {
-                MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
-                return;
-            }
-            // Sprawdzenie czy jakiekolwiek pole jest puste
+
+            // Sprawdzenie, czy jakiekolwiek pole jest puste
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(hasloZMaila) ||
                 string.IsNullOrEmpty(noweHaslo) || string.IsNullOrEmpty(nowe2Haslo))
             {
@@ -41,9 +38,15 @@ namespace TestowanieOprogramowania
                 return;
             }
 
-            if (noweHaslo.Length < 8)
+            if (CheckIfPasswordIsInHistory(userID, noweHaslo))
             {
-                MessageBox.Show("Nowe hasło musi zawierać przynajmniej 8 znaków.");
+                MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
+                return;
+            }
+
+            if (!ValidatePassword(noweHaslo, nowe2Haslo, userID))
+            {
+                MessageBox.Show("Hasło nie spełnia wymagań.");
                 return;
             }
 
@@ -70,11 +73,40 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Wystąpił błąd: " + ex.Message);
             }
         }
+
+        private bool ValidatePassword(string newPassword, string confirmPassword, int userId)
+        {
+            if (newPassword.Length < 8 || newPassword.Length > 15)
+            {
+                return false; // Sprawdzenie długości hasła
+            }
+
+            bool hasUpper = false;
+            bool hasLower = false;
+            bool hasDigit = false;
+            bool hasSpecial = false;
+
+            foreach (char c in newPassword)
+            {
+                if (char.IsUpper(c)) hasUpper = true;
+                if (char.IsLower(c)) hasLower = true;
+                if (char.IsDigit(c)) hasDigit = true;
+                if ("-_!*$&#".Contains(c)) hasSpecial = true;
+            }
+
+            if (!hasUpper || !hasLower || !hasDigit || !hasSpecial ||
+                newPassword != confirmPassword || CheckIfPasswordIsInHistory(userId, newPassword))
+            {
+                return false;
+            }
+
+            return true; // Wszystkie warunki zostały spełnione
+        }
+
         private bool ZmienHaslo(string userLogin, string currentPassword, string newPassword)
         {
             using (var con = new SqlConnection(StringPolaczeniowy))
             {
-                // Najpierw sprawdzamy, czy obecne hasło użytkownika jest poprawne
                 var cmd = new SqlCommand("SELECT haslo FROM Uzytkownicy WHERE Login = @Login", con);
                 cmd.Parameters.AddWithValue("@Login", userLogin);
                 con.Open();
@@ -94,7 +126,6 @@ namespace TestowanieOprogramowania
                     }
                 }
 
-                // Jeśli obecne hasło jest poprawne, aktualizujemy hasło na nowe
                 var updateCmd = new SqlCommand("UPDATE Uzytkownicy SET haslo = @newPassword, changePass = 0 WHERE Login = @Login", con);
                 updateCmd.Parameters.AddWithValue("@newPassword", newPassword);
                 updateCmd.Parameters.AddWithValue("@Login", userLogin);
@@ -105,31 +136,43 @@ namespace TestowanieOprogramowania
 
         private void FormZmianaPoResecie_Load(object sender, EventArgs e)
         {
-
         }
+
         private bool CheckIfPasswordIsInHistory(int userId, string newPassword)
         {
-            using (var connection = new SqlConnection(con))
+            try
             {
-                connection.Open();
-                using (var command = new SqlCommand("SELECT haslo1, haslo2, haslo3 FROM HistoriaHasel WHERE UzytkownikID = @id", connection))
+                using (var connection = new SqlConnection(con))
                 {
-                    command.Parameters.AddWithValue("@id", userId);
-
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand("SELECT haslo1, haslo2, haslo3 FROM HistoriaHasel WHERE UzytkownikID = @id", connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@id", userId);
+                        using (var reader = command.ExecuteReader())
                         {
-                            string historyPassword1 = reader["haslo1"] as string;
-                            string historyPassword2 = reader["haslo2"] as string;
-                            string historyPassword3 = reader["haslo3"] as string;
+                            if (reader.Read())
+                            {
+                                string historyPassword1 = reader["haslo1"] as string ?? "";
+                                string historyPassword2 = reader["haslo2"] as string ?? "";
+                                string historyPassword3 = reader["haslo3"] as string ?? "";
 
-                            return (newPassword == historyPassword1 || newPassword == historyPassword2 || newPassword == historyPassword3);
+                                if (newPassword == historyPassword1 || newPassword == historyPassword2 || newPassword == historyPassword3)
+                                {
+                                    return true;
+                                }
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas sprawdzania historii haseł: " + ex.Message);
+                return false; // W przypadku błędu zwracamy false, aby uniknąć zmiany hasła na podstawie błędnego sprawdzenia
+            }
             return false;
         }
+
+
     }
 }

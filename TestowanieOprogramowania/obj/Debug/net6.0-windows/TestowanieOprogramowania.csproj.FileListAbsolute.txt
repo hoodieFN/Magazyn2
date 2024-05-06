@@ -2507,3 +2507,7 @@ C:\Users\marys\Source\Repos\TestowanieOprogramowaniaMagazyn888\TestowanieOprogra
 C:\Users\marys\Source\Repos\TestowanieOprogramowaniaMagazyn888\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.genruntimeconfig.cache
 C:\Users\marys\Source\Repos\TestowanieOprogramowaniaMagazyn888\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
 C:\Users\marys\Source\Repos\TestowanieOprogramowaniaMagazyn888\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.StanMagazynu.resources
+C:\Users\ernes\Source\Repos\TestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormZmianaPoResecie.resources
+C:\Users\ernes\Source\Repos\TestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormZmienHaslo.resources
+C:\Users\ernes\Source\Repos\TestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FromResetPas.resources
+C:\Users\ernes\Source\Repos\TestowanieOprogramowaniaMagazyn\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.StanMagazynu.resources

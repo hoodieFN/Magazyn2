@@ -45,15 +45,16 @@ namespace TestowanieOprogramowania
         int currentId = UserSession.CurrentUserId;
         private void button1_Click(object sender, EventArgs e)
         {
-            string oldPassword = textBoxOldPassword.Text; 
-            string newPassword = textBoxNewPassword.Text; 
+            string oldPassword = textBoxOldPassword.Text;
+            string newPassword = textBoxNewPassword.Text;
             string new2Password = textBoxNewPassword2.Text;
 
-            if (newPassword.Length < 8)
+            if (!IsValidPassword(newPassword))
             {
-                MessageBox.Show("Nowe hasło musi mieć co najmniej 8 znaków.");
-                return; 
+                MessageBox.Show("Nowe hasło nie spełnia wymagań: musi mieć od 8 do 15 znaków, zawierać wielką literę, małą literę, cyfrę i jeden ze znaków specjalnych");
+                return;
             }
+
 
             if (newPassword == new2Password)
             {
@@ -64,6 +65,28 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Nowe hasła nie są identyczne. Spróbuj ponownie.");
             }
         }
+
+        private bool IsValidPassword(string password)
+        {
+            if (password.Length < 8 || password.Length > 15)
+                return false;
+
+            bool hasUpper = false;
+            bool hasLower = false;
+            bool hasDigit = false;
+            bool hasSpecial = false;
+
+            foreach (char c in password)
+            {
+                if (char.IsUpper(c)) hasUpper = true;
+                if (char.IsLower(c)) hasLower = true;
+                if (char.IsDigit(c)) hasDigit = true;
+                if ("-_!*$&#".Contains(c)) hasSpecial = true;
+            }
+
+            return hasUpper && hasLower && hasDigit && hasSpecial;
+        }
+
         private bool CheckPassword(int userId, string oldPassword)
         {
             using (var connection = new SqlConnection(con))

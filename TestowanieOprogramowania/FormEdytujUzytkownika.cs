@@ -17,6 +17,7 @@ namespace TestowanieOprogramowania
 {
     public partial class FormEdytujUzytkownika : Form
     {
+        string con = PolaczenieBazyDanych.StringPolaczeniowy();
         private int userId;
         string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
 
@@ -116,6 +117,11 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Istnieje co najmniej jendo niewypełnione pole.");
                 return;
             }
+            if (CheckIfPasswordIsInHistory(userId, haslo) == true)
+            {
+                MessageBox.Show("Hasło musi różnić się od 3 poprzednich haseł.");
+                return;
+            }
             //b. Login –  minimum 6 znaków
             if (Login.Length < 8)
             {
@@ -152,6 +158,7 @@ namespace TestowanieOprogramowania
             {
                 return;
             }
+            
 
             //Dodając @UzytkownikID wykluczamy obecnego uzytkownika ze sprawdzania tak abysmy mogli po prostu zostawic taki sam login jak byl itp.
             string sprawdzenieLoginuQuery = "SELECT COUNT(*) FROM dbo.Uzytkownicy WHERE Login = @Login AND UzytkownikID <> @UzytkownikID";
@@ -352,7 +359,10 @@ namespace TestowanieOprogramowania
 
             return true;
         }
-        private bool WalidujNumerTelefonu(string numerTelefonu)
+
+        
+
+    private bool WalidujNumerTelefonu(string numerTelefonu)
         {
             if (numerTelefonu.Length != 9)
             {
@@ -428,15 +438,68 @@ namespace TestowanieOprogramowania
         }
         private bool WalidujHaslo(string haslo)
         {
-            if (haslo.Length >= 5)
+            if (haslo.Length < 8 || haslo.Length > 15)
             {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Hasło musi zawierać co najmniej 5 znaków.");
+                MessageBox.Show("Nowe hasło nie spełnia wymagań: musi mieć od 8 do 15 znaków, zawierać wielką literę, małą literę, cyfrę i jeden ze znaków specjalnych");
                 return false;
             }
+
+            bool hasUpper = false;
+            bool hasLower = false;
+            bool hasDigit = false;
+            bool hasSpecial = false;
+
+            foreach (char c in haslo)
+            {
+                if (char.IsUpper(c)) hasUpper = true;
+                if (char.IsLower(c)) hasLower = true;
+                if (char.IsDigit(c)) hasDigit = true;
+                if ("-_!*$&#".Contains(c)) hasSpecial = true;
+            }
+
+            if (!hasUpper || !hasLower || !hasDigit || !hasSpecial)
+            {
+                MessageBox.Show("Nowe hasło nie spełnia wymagań: musi mieć od 8 do 15 znaków, zawierać wielką literę, małą literę, cyfrę i jeden ze znaków specjalnych");
+                return false;
+            }
+
+            return true; // Wszystkie warunki spełnione
         }
+
+        private bool CheckIfPasswordIsInHistory(int userId, string haslo)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(con))
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand("SELECT haslo1, haslo2, haslo3 FROM HistoriaHasel WHERE UzytkownikID = @id", connection))
+                    {
+                        command.Parameters.AddWithValue("@id", userId);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string historyPassword1 = reader["haslo1"] as string ?? "";
+                                string historyPassword2 = reader["haslo2"] as string ?? "";
+                                string historyPassword3 = reader["haslo3"] as string ?? "";
+
+                                if (haslo == historyPassword1 || haslo == historyPassword2 || haslo == historyPassword3)
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas sprawdzania historii haseł: " + ex.Message);
+                return false; // W przypadku błędu zwracamy false, aby uniknąć zmiany hasła na podstawie błędnego sprawdzenia
+            }
+            return false;
+        }
+
     }
 }
