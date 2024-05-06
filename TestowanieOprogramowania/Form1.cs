@@ -121,6 +121,7 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Proszê zaznaczyæ wiersz do edycji", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+       
 
         private void buttonNadajRole_Click(object sender, EventArgs e)
         {
@@ -148,9 +149,7 @@ namespace TestowanieOprogramowania
             OdswiezDataGridView();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
     }
+
 }

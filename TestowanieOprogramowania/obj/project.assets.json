@@ -2248,19 +2248,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cayna\\.nuget\\packages\\": {}
+    "C:\\Users\\marys\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn3004b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectUniqueName": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn888\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "projectName": "TestowanieOprogramowania",
-      "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn3004b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
-      "packagesPath": "C:\\Users\\cayna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn3004b\\TestowanieOprogramowania\\obj\\",
+      "projectPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn888\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "packagesPath": "C:\\Users\\marys\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn888\\TestowanieOprogramowania\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cayna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marys\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2280,6 +2280,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2314,7 +2319,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
