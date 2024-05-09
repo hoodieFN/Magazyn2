@@ -16,11 +16,13 @@ namespace TestowanieOprogramowania
     {
         public FormInitial()
         {
+            
             InitializeComponent();
             labelWitajUzytkowniku.Text = $"Witaj, {GetUserName(UserSession.CurrentUserId)}";
             labelRola.Text = $"Rola: {GetUserRole(UserSession.CurrentUserId)}";
             this.FormClosing += new FormClosingEventHandler(FormInitial_FormClosing);
 
+            
         }
         private void FormInitial_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -259,13 +261,23 @@ namespace TestowanieOprogramowania
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (var formReset = new FormZmienHaslo())
-            {
-                var result = formReset.ShowDialog();
-                if (result == DialogResult.OK)
-                {
 
-                }
+            if (!ZarzadzanieVoidami.ZmianaHaslaAdmin())
+            {
+                MessageBox.Show("Brak uprawnień do zmiany hasła - musisz być administratorem");
+            }
+            else
+            {
+                loadform(new FormZmienHaslo());
+                /*
+                using (var formReset = new FormZmienHaslo())
+                {
+                    var result = formReset.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                }*/
             }
         }
 

@@ -42,6 +42,7 @@ namespace TestowanieOprogramowania
             {
                 buttonEdytujRole.Visible = false;
             }
+            label3.Visible = false;
 
         }
         private void WczytajDaneDoDataGridView2()
@@ -189,6 +190,7 @@ namespace TestowanieOprogramowania
             }
             else
             {
+                label3.Visible = true;
                 dataGridView2.Visible = true;
             }
         }
@@ -196,6 +198,7 @@ namespace TestowanieOprogramowania
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridView2.Visible = false;
+            label3.Visible = false;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -198,7 +198,8 @@ namespace TestowanieOprogramowania
                                 DodawanieRoli  = reader["DodawanieRoli"].ToString(),
                                 UsuwanieRoli = reader["UsuwanieRoli"].ToString(),
                                 EdytowanieRoli = reader["EdytowanieRoli"].ToString(),
-                                NadawanieRoli = reader["NadajZmienRoleStanowisko"].ToString()
+                                NadawanieRoli = reader["NadajZmienRoleStanowisko"].ToString(),
+                                ZmienHaslo = reader["ZmienHaslo"].ToString()
                             };
                             listaUprawnien.Add(uprawnienia);
                         }
@@ -446,6 +447,34 @@ namespace TestowanieOprogramowania
                 conn.Open();
                 string query = @"
                 SELECT NadajZmienRoleStanowisko
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+        public static bool ZmianaHaslaAdmin()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT ZmienHaslo
                 FROM Uprawnienia 
                 JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
                 WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";

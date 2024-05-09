@@ -40,7 +40,7 @@ namespace TestowanieOprogramowania
 
 
         }
-     
+
 
         private void SzukajProdukt_Click(object sender, EventArgs e)
         {

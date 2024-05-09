@@ -25,16 +25,31 @@ namespace TestowanieOprogramowania
         }
         private void ZaładujUprawnieniaDoComboBox()
         {
-            // Tutaj dodajemy nazwy uprawnień, które znajdują się w tabeli Uprawnienia
-            comboBoxUprawnienia.Items.Add("DostepDoListyUzytkownikow");
-            comboBoxUprawnienia.Items.Add("DostepDoListyUprawnien");
-            comboBoxUprawnienia.Items.Add("DodawanieUzytkownika");
-            comboBoxUprawnienia.Items.Add("UsuwanieUzytkownika");
-            comboBoxUprawnienia.Items.Add("EdytowanieUzytkownika");
-            comboBoxUprawnienia.Items.Add("DodawanieRoli");
-            comboBoxUprawnienia.Items.Add("UsuwanieRoli");
-            comboBoxUprawnienia.Items.Add("EdytowanieRoli");
-            comboBoxUprawnienia.Items.Add("NadajZmienRoleStanowisko");
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM Uprawnienia WHERE 1 = 0", connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader(CommandBehavior.KeyInfo))
+                        {
+                            DataTable schemaTable = reader.GetSchemaTable();
+                            foreach (DataRow row in schemaTable.Rows)
+                            {
+                                if (row["ColumnName"].ToString() != "UprawnienieID" && row["ColumnName"].ToString() != "Nazwa_stanowiska")
+                                {
+                                    comboBoxUprawnienia.Items.Add(row["ColumnName"].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Błąd podczas ładowania uprawnień: " + ex.Message);
+                }
+            }
         }
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -82,6 +97,11 @@ namespace TestowanieOprogramowania
             {
                 MessageBox.Show("Bląd. Upewnij się czy wybrałeś uprawnienie");
             }
+
+        }
+
+        private void comboBoxUprawnienia_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
 
         }
     }

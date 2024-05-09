@@ -14,26 +14,56 @@ namespace TestowanieOprogramowania
     public partial class FormZmienHaslo : Form
     {
         string con = PolaczenieBazyDanych.StringPolaczeniowy();
+
         public FormZmienHaslo()
         {
             InitializeComponent();
+            LoadUserLogins();
         }
-        public void ChangePassword(string oldPassword, string newPassword)
+        private void LoadUserLogins()
         {
-            if (CheckPassword(currentId, oldPassword))
+            using (var connection = new SqlConnection(con))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT login FROM Uzytkownicy WHERE archiwizacja = 1", connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            comboBoxUsers.Items.Add(reader["login"].ToString());
+                        }
+                    }
+                }
+            }
+        }
+        public void ChangePassword(string login, string oldPassword, string newPassword)
+        {
+            int userId = GetUserIdByLogin(login);
+            if (userId == -1)
+            {
+                MessageBox.Show("Nie znaleziono użytkownika.");
+                return;
+            }
+
+            if (CheckPassword(userId, oldPassword))
             {
                 if (oldPassword == newPassword)
                 {
                     MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
                 }
-                else if (CheckIfPasswordIsInHistory(currentId, newPassword))
+                else if (CheckIfPasswordIsInHistory(userId, newPassword))
                 {
                     MessageBox.Show("Hasło musi się różnić od 3 ostatnich haseł.");
                 }
                 else
                 {
-                    UpdatePassword(currentId, newPassword);
+                    UpdatePassword(userId, newPassword);
                     MessageBox.Show("Hasło zostało zmienione.");
+                    comboBoxUsers.SelectedIndex = -1;
+                    textBoxNewPassword.Text = "";
+                    textBoxOldPassword.Text = "";
+                    textBoxNewPassword2.Text = "";
                 }
             }
             else
@@ -42,28 +72,52 @@ namespace TestowanieOprogramowania
             }
         }
 
-        int currentId = UserSession.CurrentUserId;
+        private int GetUserIdByLogin(string login)
+        {
+            using (var connection = new SqlConnection(con))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT UzytkownikID FROM Uzytkownicy WHERE login = @login", connection))
+                {
+                    command.Parameters.AddWithValue("@login", login);
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                    return -1;
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            if (comboBoxUsers.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać login użytkownika.");
+                return;
+            }
+            string login = comboBoxUsers.SelectedItem.ToString();
             string oldPassword = textBoxOldPassword.Text;
             string newPassword = textBoxNewPassword.Text;
             string new2Password = textBoxNewPassword2.Text;
 
             if (!IsValidPassword(newPassword))
             {
-                MessageBox.Show("Nowe hasło nie spełnia wymagań: musi mieć od 8 do 15 znaków, zawierać wielką literę, małą literę, cyfrę i jeden ze znaków specjalnych");
+                MessageBox.Show("Nowe hasło nie spełnia wymagań: musi mieć od 8 do 15 znaków, zawierać wielką literę, małą literę, cyfrę i jeden ze znaków specjalnych tj. -, _, !, *, #, $, &.");
                 return;
             }
 
-
             if (newPassword == new2Password)
             {
-                ChangePassword(oldPassword, newPassword);
+                ChangePassword(login, oldPassword, newPassword);
+                
             }
             else
             {
                 MessageBox.Show("Nowe hasła nie są identyczne. Spróbuj ponownie.");
             }
+
         }
 
         private bool IsValidPassword(string password)
@@ -86,7 +140,6 @@ namespace TestowanieOprogramowania
 
             return hasUpper && hasLower && hasDigit && hasSpecial;
         }
-
         private bool CheckPassword(int userId, string oldPassword)
         {
             using (var connection = new SqlConnection(con))
@@ -101,7 +154,6 @@ namespace TestowanieOprogramowania
                 }
             }
         }
-
         private void UpdatePassword(int userId, string newPassword)
         {
             using (var connection = new SqlConnection(con))

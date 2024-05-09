@@ -36,30 +36,33 @@
             // 
             // comboBoxUprawnienia
             // 
+            comboBoxUprawnienia.Anchor = AnchorStyles.None;
             comboBoxUprawnienia.FormattingEnabled = true;
-            comboBoxUprawnienia.Location = new Point(12, 12);
+            comboBoxUprawnienia.Location = new Point(265, 24);
             comboBoxUprawnienia.Name = "comboBoxUprawnienia";
             comboBoxUprawnienia.Size = new Size(187, 23);
             comboBoxUprawnienia.TabIndex = 0;
+            comboBoxUprawnienia.SelectedIndexChanged += comboBoxUprawnienia_SelectedIndexChanged_1;
             // 
             // dataGridViewUzytkownicy
             // 
-            dataGridViewUzytkownicy.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewUzytkownicy.Anchor = AnchorStyles.None;
             dataGridViewUzytkownicy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUzytkownicy.Location = new Point(12, 57);
+            dataGridViewUzytkownicy.Location = new Point(138, 89);
             dataGridViewUzytkownicy.Name = "dataGridViewUzytkownicy";
             dataGridViewUzytkownicy.RowTemplate.Height = 25;
-            dataGridViewUzytkownicy.Size = new Size(776, 381);
+            dataGridViewUzytkownicy.Size = new Size(618, 306);
             dataGridViewUzytkownicy.TabIndex = 1;
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.None;
             button1.BackColor = Color.Indigo;
             button1.Cursor = Cursors.Hand;
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(224, 12);
+            button1.Location = new Point(474, 17);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(133, 35);
             button1.TabIndex = 2;
             button1.Text = "Szukaj";
             button1.UseVisualStyleBackColor = false;
@@ -69,8 +72,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(37, 37, 37);
+            ClientSize = new Size(902, 503);
             Controls.Add(button1);
             Controls.Add(dataGridViewUzytkownicy);
             Controls.Add(comboBoxUprawnienia);
