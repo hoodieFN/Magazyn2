@@ -2248,19 +2248,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ernes\\.nuget\\packages\\": {}
+    "C:\\Users\\marys\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectUniqueName": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn999\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "projectName": "TestowanieOprogramowania",
-      "projectPath": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
-      "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ernes\\Source\\Repos\\TestowanieOprogramowaniaMagazyn\\TestowanieOprogramowania\\obj\\",
+      "projectPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn999\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "packagesPath": "C:\\Users\\marys\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marys\\Source\\Repos\\TestowanieOprogramowaniaMagazyn999\\TestowanieOprogramowania\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marys\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

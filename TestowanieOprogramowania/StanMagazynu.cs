@@ -16,25 +16,36 @@ namespace TestowanieOprogramowania
         public StanMagazynu()
         {
             InitializeComponent();
+
             zarzadzanieVoidami = new ZarzadzanieVoidami();
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+            OdswiezDataGridViewProdukty();
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void StanMagazynu_Load(object sender, EventArgs e)
         {
             OdswiezDataGridViewProdukty();
-            comboBox1.SelectedIndex = 0;
-        
+            comboBoxSzukaj.SelectedIndex = 0;
+
 
         }
         private void OdswiezDataGridViewProdukty()
         {
             var listaProduktów = zarzadzanieVoidami.PobierzPodukty();
-            dataGridView1.DataSource = listaProduktów;
-           
+            dataGridView2.DataSource = listaProduktów;
+            if (listaProduktów == null || listaProduktów.Count == 0)
+            {
+                MessageBox.Show("Brak danych do wyświetlenia.");
+            }
+
+
         }
+     
 
-
-
+        private void SzukajProdukt_Click(object sender, EventArgs e)
+        {
+            List<Produkt> listaProduktów = zarzadzanieVoidami.WyszukajProdukt(textBoxSzukajProduktu.Text, comboBoxSzukaj.SelectedItem.ToString());
+            dataGridView2.DataSource = listaProduktów;
+        }
     }
 }

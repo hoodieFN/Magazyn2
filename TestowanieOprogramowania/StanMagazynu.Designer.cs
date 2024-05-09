@@ -28,48 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            comboBox1 = new ComboBox();
-            textBoxSzukaj = new TextBox();
+            dataGridView2 = new DataGridView();
+            comboBoxSzukaj = new ComboBox();
+            textBoxSzukajProduktu = new TextBox();
             label2 = new Label();
             buttonNadajRole = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SzukajProdukt = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(1, 140);
-            dataGridView1.Margin = new Padding(4, 5, 4, 5);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1869, 878);
-            dataGridView1.TabIndex = 9;
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(-2, 172);
+            dataGridView2.Margin = new Padding(4, 5, 4, 5);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(1869, 878);
+            dataGridView2.TabIndex = 9;
             // 
-            // comboBox1
+            // comboBoxSzukaj
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Imie", "Nazwisko", "Login", "Email", "NumerTelefonu", "Nazwa_stanowiska" });
-            comboBox1.Location = new Point(344, 57);
-            comboBox1.Margin = new Padding(4, 3, 4, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(195, 33);
-            comboBox1.TabIndex = 18;
+            comboBoxSzukaj.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSzukaj.FormattingEnabled = true;
+            comboBoxSzukaj.Items.AddRange(new object[] { "ProduktID", "NazwaTowaru", "RodzajTowaru", "JednostkaMiary", "Ilosc", "CenaNetto", "StawkaVAT", "Opis", "Dostawca", "DataDostawy", "DataRejestracji", "Rejestrujacy" });
+            comboBoxSzukaj.Location = new Point(344, 57);
+            comboBoxSzukaj.Margin = new Padding(4, 3, 4, 3);
+            comboBoxSzukaj.Name = "comboBoxSzukaj";
+            comboBoxSzukaj.Size = new Size(195, 33);
+            comboBoxSzukaj.TabIndex = 18;
             // 
-            // textBoxSzukaj
+            // textBoxSzukajProduktu
             // 
-            textBoxSzukaj.BackColor = Color.Silver;
-            textBoxSzukaj.BorderStyle = BorderStyle.None;
-            textBoxSzukaj.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxSzukaj.Location = new Point(23, 57);
-            textBoxSzukaj.Margin = new Padding(4, 5, 4, 5);
-            textBoxSzukaj.Name = "textBoxSzukaj";
-            textBoxSzukaj.Size = new Size(259, 39);
-            textBoxSzukaj.TabIndex = 17;
+            textBoxSzukajProduktu.BackColor = Color.Silver;
+            textBoxSzukajProduktu.BorderStyle = BorderStyle.None;
+            textBoxSzukajProduktu.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSzukajProduktu.Location = new Point(23, 57);
+            textBoxSzukajProduktu.Margin = new Padding(4, 5, 4, 5);
+            textBoxSzukajProduktu.Name = "textBoxSzukajProduktu";
+            textBoxSzukajProduktu.Size = new Size(259, 39);
+            textBoxSzukajProduktu.TabIndex = 17;
             // 
             // label2
             // 
@@ -91,7 +92,7 @@
             buttonNadajRole.Cursor = Cursors.Hand;
             buttonNadajRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonNadajRole.ForeColor = Color.White;
-            buttonNadajRole.Location = new Point(1352, 35);
+            buttonNadajRole.Location = new Point(1373, 35);
             buttonNadajRole.Margin = new Padding(4, 5, 4, 5);
             buttonNadajRole.Name = "buttonNadajRole";
             buttonNadajRole.Size = new Size(176, 77);
@@ -99,30 +100,49 @@
             buttonNadajRole.Text = "Dodaj produkt";
             buttonNadajRole.UseVisualStyleBackColor = false;
             // 
+            // SzukajProdukt
+            // 
+            SzukajProdukt.AllowDrop = true;
+            SzukajProdukt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            SzukajProdukt.BackColor = Color.Indigo;
+            SzukajProdukt.Cursor = Cursors.Hand;
+            SzukajProdukt.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SzukajProdukt.ForeColor = Color.White;
+            SzukajProdukt.Location = new Point(1166, 35);
+            SzukajProdukt.Margin = new Padding(4, 5, 4, 5);
+            SzukajProdukt.Name = "SzukajProdukt";
+            SzukajProdukt.Size = new Size(176, 77);
+            SzukajProdukt.TabIndex = 21;
+            SzukajProdukt.Text = "Szukaj";
+            SzukajProdukt.UseVisualStyleBackColor = false;
+            SzukajProdukt.Click += SzukajProdukt_Click;
+            // 
             // StanMagazynu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1864, 1050);
+            Controls.Add(SzukajProdukt);
             Controls.Add(buttonNadajRole);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBoxSzukaj);
-            Controls.Add(dataGridView1);
+            Controls.Add(comboBoxSzukaj);
+            Controls.Add(textBoxSzukajProduktu);
+            Controls.Add(dataGridView2);
             Name = "StanMagazynu";
             Text = "StanMagazynu";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private ComboBox comboBox1;
-        private TextBox textBoxSzukaj;
+        private DataGridView dataGridView2;
+        private ComboBox comboBoxSzukaj;
+        private TextBox textBoxSzukajProduktu;
         private Label label2;
         private Button buttonNadajRole;
+        private Button SzukajProdukt;
     }
 }

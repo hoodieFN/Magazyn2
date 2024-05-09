@@ -518,9 +518,68 @@ namespace TestowanieOprogramowania
 
             return listaProduktów;
         }
+        public List<Produkt> WyszukajProdukt(string szukanyTekst, string kategoria)
+        {
+            string query = $@"
+                                 SELECT 
+                                ProduktID,         
+                                NazwaTowaru,       
+                                RodzajTowaru,     
+                                JednostkaMiary,   
+                                Ilosc,             
+                                CenaNetto,       
+                                StawkaVAT,         
+                                Opis,             
+                                Dostawca,          
+                                DataDostawy,      
+                                DataRejestracji,   
+                                Rejestrujacy      
+                                FROM 
+                                 Produkty
+                                WHERE {kategoria} LIKE @szukanyTekst";
+
+
+            List<Produkt> listaProduktów = new List<Produkt>();
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@szukanyTekst", SqlDbType.NVarChar)).Value = "%" + szukanyTekst + "%";
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Produkt produkt = new Produkt
+                            {
+                                ProduktID = Convert.ToInt32(reader["ProduktID"]),
+                                NazwaTowaru = reader["NazwaTowaru"].ToString(),
+                                RodzajTowaru = reader["RodzajTowaru"].ToString(),
+                                JednostkaMiary = reader["JednostkaMiary"].ToString(),
+                                Ilosc = Convert.ToDouble(reader["Ilosc"]),
+                                CenaNetto = Convert.ToDouble(reader["CenaNetto"].ToString()),
+                                StawkaVAT = Convert.ToDouble(reader["StawkaVAT"].ToString()),
+                                Opis = reader["Opis"].ToString(),
+                                Dostawca = reader["Dostawca"].ToString(),
+                                DataDostawy = Convert.ToDateTime(reader["DataDostawy"].ToString()),
+                                DataRejestracji = Convert.ToDateTime(reader["DataRejestracji"].ToString()),
+                                Rejestrujacy = reader["Rejestrujacy"].ToString()
+
+
+                            };
+                            listaProduktów.Add(produkt);
+                        }
+                    }
+                }
+            }
+            return listaProduktów;
+        }
+
 
     }
-   
+
 
 }
 
