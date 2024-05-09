@@ -68,8 +68,6 @@ namespace TestowanieOprogramowania
             return listaUzytkownikow;
         }
 
-
-
         public void UsunUzytkownikaZBazy(int userId)
         {
             //UsunPowiazaneUprawnienia(userId);
@@ -98,7 +96,6 @@ namespace TestowanieOprogramowania
             }
         }
 
-
         public void UsunPowiazaneUprawnienia(int userId)
         {
             string query = "DELETE FROM dbo.Uprawnienia WHERE UzytkownikID = @userId";
@@ -115,7 +112,6 @@ namespace TestowanieOprogramowania
             }
         }
 
-        //s
         public List<Uzytkownik> WyszukajUzytkownikow(string szukanyTekst, string kategoria)
         {
             string query = $@"
@@ -169,7 +165,6 @@ namespace TestowanieOprogramowania
             return listaUzytkownikow;
         }
 
-
         public List<Uprawnienia> PobierzUprawnienia()
         {
             List<Uprawnienia> listaUprawnien = new List<Uprawnienia>();
@@ -212,7 +207,6 @@ namespace TestowanieOprogramowania
 
         //public static int CurrentUserId = UserSession.CurrentUserId;
         
-
         public static bool CzyMaDostepDoListyUzytkownikow()
         {
             int CurrentUserId = UserSession.CurrentUserId;

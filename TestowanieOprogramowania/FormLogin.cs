@@ -81,14 +81,7 @@ namespace TestowanieOprogramowania
             string password = textBoxPassword.Text;
 
 
-            bool check = CheckChangePassFlagByLogin(username);
-            if (check)
-            {
-                MessageBox.Show("Wymagana jest zmiana hasła po zrestartowaniu hasła. Po kliknięciu ok zostaniesz przeniesiony do nowego okna");
-                FormZmianaPoResecie formZmianaPoResecie = new FormZmianaPoResecie();
-                formZmianaPoResecie.ShowDialog(); // Otwiera formularz jako modalne okno dialogowe
-                return;
-            }
+            
 
 
             // Sprawdź, czy nazwa użytkownika lub hasło są puste
@@ -137,12 +130,27 @@ namespace TestowanieOprogramowania
 
 
                     MessageBox.Show("Logowanie pomyślne!");
+                    //Sprawdz czy nie zresetowal hasla przed chwilą
+                    bool check = CheckChangePassFlagByLogin(username);
+                    if (check)
+                    {
+                        MessageBox.Show("Wymagana jest zmiana hasła po zrestartowaniu hasła. Po kliknięciu ok zostaniesz przeniesiony do nowego okna");
+                        FormZmianaPoResecie formZmianaPoResecie = new FormZmianaPoResecie();
+                        formZmianaPoResecie.ShowDialog(); // Otwiera formularz jako modalne okno dialogowe
+                        return;
+                    }
+
 
                     using (var formDodaj = new FormInitial())
                     {
                         this.Hide();
                         var result = formDodaj.ShowDialog();
                     }
+
+
+                    
+
+
                     break;
                 case LoginResult.InvalidUsername:
                     MessageBox.Show("Nieprawidłowa nazwa użytkownika lub hasło");

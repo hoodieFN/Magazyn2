@@ -167,6 +167,7 @@
             Name = "FormZmienHaslo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Zmień hasło";
+            Load += FormZmienHaslo_Load;
             ResumeLayout(false);
             PerformLayout();
         }

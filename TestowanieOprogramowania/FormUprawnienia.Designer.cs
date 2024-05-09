@@ -48,7 +48,7 @@
             buttonEdytujRole.Cursor = Cursors.Hand;
             buttonEdytujRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujRole.ForeColor = Color.White;
-            buttonEdytujRole.Location = new Point(1205, 10);
+            buttonEdytujRole.Location = new Point(1107, 12);
             buttonEdytujRole.Name = "buttonEdytujRole";
             buttonEdytujRole.Size = new Size(91, 46);
             buttonEdytujRole.TabIndex = 23;
@@ -63,7 +63,7 @@
             buttonUsunRole.Cursor = Cursors.Hand;
             buttonUsunRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonUsunRole.ForeColor = Color.White;
-            buttonUsunRole.Location = new Point(1207, 62);
+            buttonUsunRole.Location = new Point(1204, 12);
             buttonUsunRole.Name = "buttonUsunRole";
             buttonUsunRole.Size = new Size(89, 46);
             buttonUsunRole.TabIndex = 22;
@@ -76,7 +76,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(9, 132);
+            label1.Location = new Point(318, 59);
             label1.Name = "label1";
             label1.Size = new Size(30, 15);
             label1.TabIndex = 18;
@@ -87,11 +87,11 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(9, 150);
+            dataGridView1.Location = new Point(305, 77);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1284, 468);
+            dataGridView1.Size = new Size(988, 541);
             dataGridView1.TabIndex = 17;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -102,7 +102,7 @@
             buttonDodajRole.Cursor = Cursors.Hand;
             buttonDodajRole.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodajRole.ForeColor = Color.White;
-            buttonDodajRole.Location = new Point(1109, 10);
+            buttonDodajRole.Location = new Point(1011, 12);
             buttonDodajRole.Name = "buttonDodajRole";
             buttonDodajRole.Size = new Size(90, 46);
             buttonDodajRole.TabIndex = 25;
@@ -114,11 +114,11 @@
             // 
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(9, 21);
+            dataGridView2.Location = new Point(12, 77);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(429, 87);
+            dataGridView2.Size = new Size(287, 541);
             dataGridView2.TabIndex = 26;
             // 
             // label3
@@ -126,7 +126,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(9, 3);
+            label3.Location = new Point(12, 59);
             label3.Name = "label3";
             label3.Size = new Size(125, 15);
             label3.TabIndex = 27;
@@ -139,7 +139,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(824, 12);
+            button1.Location = new Point(441, 12);
             button1.Name = "button1";
             button1.Size = new Size(279, 46);
             button1.TabIndex = 28;
@@ -154,7 +154,7 @@
             button2.Cursor = Cursors.Hand;
             button2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(922, 62);
+            button2.Location = new Point(726, 12);
             button2.Name = "button2";
             button2.Size = new Size(279, 46);
             button2.TabIndex = 29;

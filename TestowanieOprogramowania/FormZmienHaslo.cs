@@ -111,7 +111,7 @@ namespace TestowanieOprogramowania
             if (newPassword == new2Password)
             {
                 ChangePassword(login, oldPassword, newPassword);
-                
+
             }
             else
             {
@@ -192,7 +192,9 @@ namespace TestowanieOprogramowania
             return false;
         }
 
+        private void FormZmienHaslo_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

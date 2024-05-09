@@ -25,7 +25,7 @@ namespace TestowanieOprogramowania
 
         private void FormUprawnienia_Load(object sender, EventArgs e)
         {
-            dataGridView2.Visible = false;
+            dataGridView2.Visible = true;
             dataGridView2.MaximumSize = new Size(420, dataGridView2.Height);
             WczytajDaneDoDataGridView2();
             OdswiezDataGridView();
@@ -42,7 +42,7 @@ namespace TestowanieOprogramowania
             {
                 buttonEdytujRole.Visible = false;
             }
-            label3.Visible = false;
+            label3.Visible = true;
 
         }
         private void WczytajDaneDoDataGridView2()
