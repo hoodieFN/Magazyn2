@@ -20,6 +20,8 @@ namespace TestowanieOprogramowania
             zarzadzanieVoidami = new ZarzadzanieVoidami();
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+            
+
             OdswiezDataGridViewProdukty();
         }
         private void StanMagazynu_Load(object sender, EventArgs e)
@@ -74,6 +76,20 @@ namespace TestowanieOprogramowania
         private void StanMagazynu_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var formPrzegladaj = new FormPrzegladajHistorie())
+            {
+                var result = formPrzegladaj.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    OdswiezDataGridViewProdukty();
+                }
+
+            }
+            OdswiezDataGridViewProdukty();
         }
     }
 }

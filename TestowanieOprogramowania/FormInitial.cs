@@ -21,8 +21,15 @@ namespace TestowanieOprogramowania
             labelWitajUzytkowniku.Text = $"Witaj, {GetUserName(UserSession.CurrentUserId)}";
             labelRola.Text = $"Rola: {GetUserRole(UserSession.CurrentUserId)}";
             this.FormClosing += new FormClosingEventHandler(FormInitial_FormClosing);
+            if (ZarzadzanieVoidami.PrzegladStanuMagazynowego())
+            {
+                button3.Visible = true;
+            }
+            else
+            {
+                button3.Visible = false;
+            }
 
-            
         }
         private void FormInitial_FormClosing(object sender, FormClosingEventArgs e)
         {

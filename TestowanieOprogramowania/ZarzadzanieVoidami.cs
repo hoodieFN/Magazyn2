@@ -190,11 +190,15 @@ namespace TestowanieOprogramowania
                                 DodawanieUzytkownika = reader["DodawanieUzytkownika"].ToString(),
                                 UsuwanieUzytkownika = reader["UsuwanieUzytkownika"].ToString(),
                                 EdytowanieUzytkownika = reader["EdytowanieUzytkownika"].ToString(),
-                                DodawanieRoli  = reader["DodawanieRoli"].ToString(),
+                                DodawanieRoli = reader["DodawanieRoli"].ToString(),
                                 UsuwanieRoli = reader["UsuwanieRoli"].ToString(),
                                 EdytowanieRoli = reader["EdytowanieRoli"].ToString(),
                                 NadawanieRoli = reader["NadajZmienRoleStanowisko"].ToString(),
-                                ZmienHaslo = reader["ZmienHaslo"].ToString()
+                                ZmienHaslo = reader["ZmienHaslo"].ToString(),
+                                zmianaVAT = reader["zmianaVAT"].ToString(),
+                                PrzegladStanuMagazynowego = reader["PrzegladStanuMagazynowego"].ToString(),
+                                PrzegladanieHistoriiStanuMagazynowego = reader["PrzegladanieHistoriiStanuMagazynowego"].ToString(),
+                                PrzegladHistoriiUzupelniania = reader["PrzegladHistoriiUzupelniania"].ToString()
                             };
                             listaUprawnien.Add(uprawnienia);
                         }
@@ -206,7 +210,7 @@ namespace TestowanieOprogramowania
         }
 
         //public static int CurrentUserId = UserSession.CurrentUserId;
-        
+
         public static bool CzyMaDostepDoListyUzytkownikow()
         {
             int CurrentUserId = UserSession.CurrentUserId;
@@ -225,7 +229,7 @@ namespace TestowanieOprogramowania
                 FROM Uprawnienia 
                 JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
                 WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
-                
+
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -235,7 +239,7 @@ namespace TestowanieOprogramowania
                     string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
                     ///////===============Debug==================///////////// MessageBox.Show($"{dostep}");
                     return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
-                    
+
                 }
             }
         }
@@ -456,6 +460,62 @@ namespace TestowanieOprogramowania
             }
         }
 
+        public static bool zmianaVAT()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT zmianaVAT
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+        public static bool PrzegladStanuMagazynowego()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT PrzegladStanuMagazynowego
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
         public static bool ZmianaHaslaAdmin()
         {
             int CurrentUserId = UserSession.CurrentUserId;
@@ -530,7 +590,7 @@ namespace TestowanieOprogramowania
                                 DataDostawy = Convert.ToDateTime(reader["DataDostawy"].ToString()),
                                 DataRejestracji = Convert.ToDateTime(reader["DataRejestracji"].ToString()),
                                 Rejestrujacy = reader["Rejestrujacy"].ToString()
-                            
+
 
                             };
                             listaProduktów.Add(produkt);
@@ -599,6 +659,8 @@ namespace TestowanieOprogramowania
             }
             return listaProduktów;
         }
+
+        
 
 
     }
