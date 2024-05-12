@@ -15,7 +15,7 @@ namespace TestowanieOprogramowania
     public String JednostkaMiary { get; set; }
     public Double Ilosc { get; set; }
     public Double CenaNetto { get; set; }
-    public Double StawkaVAT  { get; set; }
+    public String StawkaVAT  { get; set; }
     public String Opis { get; set; }
     public String Dostawca { get; set; }
     public DateTime DataDostawy { get; set; }

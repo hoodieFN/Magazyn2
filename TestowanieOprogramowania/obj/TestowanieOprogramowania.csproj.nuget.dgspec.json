@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn0905b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {}
+    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1205\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn0905b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {
+    "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1205\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn0905b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+        "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1205\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
         "projectName": "TestowanieOprogramowania",
-        "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn0905b\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+        "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1205\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
         "packagesPath": "C:\\Users\\cayna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn0905b\\TestowanieOprogramowania\\obj\\",
+        "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn1205\\TestowanieOprogramowania\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cayna\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -44,8 +44,36 @@ namespace TestowanieOprogramowania
 
         private void SzukajProdukt_Click(object sender, EventArgs e)
         {
-            List<Produkt> listaProduktów = zarzadzanieVoidami.WyszukajProdukt(textBoxSzukajProduktu.Text, comboBoxSzukaj.SelectedItem.ToString());
+            // Sprawdzenie, czy został wybrany element z comboBoxSzukaj
+            if (comboBoxSzukaj.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać kryterium wyszukiwania z listy.");
+                return;  // Zakończ funkcję, jeśli nic nie zostało wybrane
+            }
+
+            // Kontynuacja, jeśli element został wybrany
+            string kryteriumWyszukiwania = comboBoxSzukaj.SelectedItem.ToString();
+            List<Produkt> listaProduktów = zarzadzanieVoidami.WyszukajProdukt(textBoxSzukajProduktu.Text, kryteriumWyszukiwania);
             dataGridView2.DataSource = listaProduktów;
+        }
+
+        private void buttonDodajProdukt_Click(object sender, EventArgs e)
+        {
+            using (var formDodaj = new FormDodajProdukt())
+            {
+                var result = formDodaj.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    OdswiezDataGridViewProdukty();
+                }
+
+            }
+            OdswiezDataGridViewProdukty();
+        }
+
+        private void StanMagazynu_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
