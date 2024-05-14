@@ -1,12 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestowanieOprogramowania
@@ -15,37 +10,43 @@ namespace TestowanieOprogramowania
     {
         private ZarzadzanieVoidami zarzadzanieVoidami;
         string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+
         public FormPrzegladajHistorie()
         {
             InitializeComponent();
 
             zarzadzanieVoidami = new ZarzadzanieVoidami();
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Ukrywanie DateTimePickerów i CheckBox na starcie
             dateTimePickerStart.Visible = false;
             dateTimePickerEnd.Visible = false;
-
+            label3.Visible = false;
+            label4.Visible = false;
+            checkBoxOkres.Visible = true;
 
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            checkBoxOkres.CheckedChanged += CheckBoxOkres_CheckedChanged;
+            buttonSzukaj.Click += buttonSzukaj_Click;
 
             OdswiezDataGridViewHistoriaAkcji();
         }
 
         private void FormPrzegladajHistorie_Load(object sender, EventArgs e)
         {
-
         }
 
         private void OdswiezDataGridViewHistoriaAkcji()
         {
             string query = @"
-        SELECT 
-            ProductID,         
-            NazwaTowaru,       
-            Rodzaj,         
-            DataRejestracji,   
-            Rejestrujacy      
-        FROM 
-            ProductDetails";
+                SELECT 
+                    ProductID,         
+                    NazwaTowaru,       
+                    Rodzaj,         
+                    DataRejestracji,   
+                    Rejestrujacy      
+                FROM 
+                    ProductDetails";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -59,20 +60,33 @@ namespace TestowanieOprogramowania
             }
         }
 
-
-
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "okres")
+            if (comboBox1.SelectedItem.ToString() == "Okres")
             {
                 dateTimePickerStart.Visible = true;
                 dateTimePickerEnd.Visible = true;
+                label3.Visible = true;
+                label4.Visible = true;
+                checkBoxOkres.Visible = false;
             }
             else
             {
-                dateTimePickerStart.Visible = false;
-                dateTimePickerEnd.Visible = false;
+                dateTimePickerStart.Visible = checkBoxOkres.Checked;
+                dateTimePickerEnd.Visible = checkBoxOkres.Checked;
+                label3.Visible = checkBoxOkres.Checked;
+                label4.Visible = checkBoxOkres.Checked;
+                checkBoxOkres.Visible = true;
             }
+        }
+
+        private void CheckBoxOkres_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = checkBoxOkres.Checked;
+            dateTimePickerStart.Visible = isChecked;
+            dateTimePickerEnd.Visible = isChecked;
+            label3.Visible = isChecked;
+            label4.Visible = isChecked;
         }
 
         private void buttonSzukaj_Click(object sender, EventArgs e)
@@ -86,64 +100,88 @@ namespace TestowanieOprogramowania
             string searchText = textBoxSearchText.Text;
             string option = comboBox1.SelectedItem.ToString();
 
-            if (option == "okres" && dateTimePickerEnd.Value < dateTimePickerStart.Value)
+            if (option == "Okres" || (checkBoxOkres.Checked && option != "Okres"))
             {
-                MessageBox.Show("Data końcowa nie może być wcześniejsza niż data początkowa.");
-                return;
-            }
+                if (dateTimePickerEnd.Value < dateTimePickerStart.Value)
+                {
+                    MessageBox.Show("Data końcowa nie może być wcześniejsza niż data początkowa.");
+                    return;
+                }
 
-            SearchData(searchText, option);
+                SearchData(searchText, option, dateTimePickerStart.Value, dateTimePickerEnd.Value);
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    MessageBox.Show("Proszę wprowadzić tekst wyszukiwania.");
+                    return;
+                }
+
+                SearchData(searchText, option);
+            }
         }
 
-        private void SearchData(string searchText, string option)
+        private void SearchData(string searchText, string option, DateTime? startDate = null, DateTime? endDate = null)
         {
-            string baseQuery = @"SELECT ProductID, NazwaTowaru, Rodzaj, DataRejestracji, Rejestrujacy FROM ProductDetails";
-            List<string> conditions = new List<string>();
+            string query = @"SELECT ProductID, NazwaTowaru, Rodzaj, DataRejestracji, Rejestrujacy FROM ProductDetails WHERE ";
 
-            if (option == "okres")
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            if (option == "Okres")
             {
-                conditions.Add("DataRejestracji BETWEEN @startDate AND @endDate");
+                query += "DataRejestracji BETWEEN @startDate AND @endDate";
+                parameters.Add(new SqlParameter("@startDate", SqlDbType.DateTime) { Value = startDate.Value.Date });
+                parameters.Add(new SqlParameter("@endDate", SqlDbType.DateTime) { Value = endDate.Value.Date.AddDays(1).AddTicks(-1) });
             }
-            else if (option == "nazwa towaru")
+            else
             {
-                conditions.Add("NazwaTowaru LIKE @search");
+                query += $"{option} LIKE @search";
+                parameters.Add(new SqlParameter("@search", SqlDbType.NVarChar) { Value = "%" + searchText + "%" });
+
+                if (startDate.HasValue && endDate.HasValue)
+                {
+                    query += " AND DataRejestracji BETWEEN @startDate AND @endDate";
+                    parameters.Add(new SqlParameter("@startDate", SqlDbType.DateTime) { Value = startDate.Value.Date });
+                    parameters.Add(new SqlParameter("@endDate", SqlDbType.DateTime) { Value = endDate.Value.Date.AddDays(1).AddTicks(-1) });
+                }
             }
-            else if (option == "rejestrujacy")
-            {
-                conditions.Add("Rejestrujacy LIKE @search");
-            }
-            else if(option == "Rodzaj")
-            {
-                conditions.Add("Rodzaj LIKE @search");
-            }
-            if (conditions.Count > 0)
-            {
-                baseQuery += " WHERE " + string.Join(" AND ", conditions);
-            }
+
+            List<ProductDetails> listaProduktow = new List<ProductDetails>();
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
-                using (SqlCommand command = new SqlCommand(baseQuery, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    if (option == "okres")
-                    {
-                        command.Parameters.AddWithValue("@startDate", dateTimePickerStart.Value);
-                        command.Parameters.AddWithValue("@endDate", dateTimePickerEnd.Value);
-                    }
-                    else if (option != "okres" && !string.IsNullOrWhiteSpace(searchText))
-                    {
-                        command.Parameters.AddWithValue("@search", $"%{searchText}%");
-                    }
+                    command.Parameters.AddRange(parameters.ToArray());
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    dataGridView1.DataSource = dataTable;
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ProductDetails produkt = new ProductDetails
+                            {
+                                ProductID = Convert.ToInt32(reader["ProductID"]),
+                                NazwaTowaru = reader["NazwaTowaru"].ToString(),
+                                Rodzaj = reader["Rodzaj"].ToString(),
+                                DataRejestracji = Convert.ToDateTime(reader["DataRejestracji"]),
+                                Rejestrujacy = reader["Rejestrujacy"].ToString()
+                            };
+                            listaProduktow.Add(produkt);
+                        }
+                    }
                 }
             }
+            dataGridView1.DataSource = listaProduktow;
         }
     }
 
-
-
+    public class ProductDetails
+    {
+        public int ProductID { get; set; }
+        public string NazwaTowaru { get; set; }
+        public string Rodzaj { get; set; }
+        public DateTime DataRejestracji { get; set; }
+        public string Rejestrujacy { get; set; }
+    }
 }

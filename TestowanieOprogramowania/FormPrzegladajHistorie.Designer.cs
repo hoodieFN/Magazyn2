@@ -38,6 +38,7 @@
             label3 = new Label();
             label4 = new Label();
             buttonSzukaj = new Button();
+            checkBoxOkres = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             // 
             comboBox1.Anchor = AnchorStyles.None;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Okres", "Rodzaj towaru", "Nazwa towaru", "Rejestrujacy" });
+            comboBox1.Items.AddRange(new object[] { "Okres", "Rodzaj", "NazwaTowaru", "Rejestrujacy" });
             comboBox1.Location = new Point(456, 108);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
@@ -149,12 +150,24 @@
             buttonSzukaj.UseVisualStyleBackColor = false;
             buttonSzukaj.Click += buttonSzukaj_Click;
             // 
+            // checkBoxOkres
+            // 
+            checkBoxOkres.AutoSize = true;
+            checkBoxOkres.ForeColor = Color.White;
+            checkBoxOkres.Location = new Point(376, 33);
+            checkBoxOkres.Name = "checkBoxOkres";
+            checkBoxOkres.Size = new Size(89, 24);
+            checkBoxOkres.TabIndex = 30;
+            checkBoxOkres.Text = "+ Okres?";
+            checkBoxOkres.UseVisualStyleBackColor = true;
+            // 
             // FormPrzegladajHistorie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1255, 688);
+            Controls.Add(checkBoxOkres);
             Controls.Add(buttonSzukaj);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -185,5 +198,6 @@
         private Label label3;
         private Label label4;
         private Button buttonSzukaj;
+        private CheckBox checkBoxOkres;
     }
 }
