@@ -20,7 +20,7 @@ namespace TestowanieOprogramowania
             zarzadzanieVoidami = new ZarzadzanieVoidami();
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
-            
+
 
             OdswiezDataGridViewProdukty();
         }
@@ -90,6 +90,26 @@ namespace TestowanieOprogramowania
 
             }
             OdswiezDataGridViewProdukty();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                var result = MessageBox.Show("Czy na pewno chcesz usunąć zaznaczony produkt?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    int produktId = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells["ProduktID"].Value);
+
+                    zarzadzanieVoidami.UsunProduktZBazy(produktId);
+
+                    OdswiezDataGridViewProdukty();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć wiersz do usunięcia", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

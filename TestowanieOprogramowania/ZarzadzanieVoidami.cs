@@ -655,12 +655,40 @@ namespace TestowanieOprogramowania
                             listaProduktów.Add(produkt);
                         }
                     }
+
                 }
             }
             return listaProduktów;
         }
+        public void UsunProduktZBazy(int produktId)
+        {
+            //UsunPowiazaneUprawnienia(userId);
+            string query = "Delete From dbo.Produkty WHERE ProduktID = @produktId";
 
-        
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    // SQL Injection
+                    cmd.Parameters.AddWithValue("@produktId", produktId);
+
+                    connection.Open();
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Produkt został usunięty.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie znaleziono użytkownika o podanym ID.");
+                    }
+                    connection.Close();
+                }
+            }
+        }
+
+
 
 
     }
