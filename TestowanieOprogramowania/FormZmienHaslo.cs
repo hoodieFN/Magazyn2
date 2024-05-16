@@ -92,9 +92,12 @@ namespace TestowanieOprogramowania
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBoxUsers.SelectedItem == null)
+            if (comboBoxUsers.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(textBoxOldPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNewPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNewPassword2.Text))
             {
-                MessageBox.Show("Proszę wybrać login użytkownika.");
+                MessageBox.Show("Proszę wypełnić wszystkie pola.");
                 return;
             }
             string login = comboBoxUsers.SelectedItem.ToString();
