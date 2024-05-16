@@ -44,17 +44,19 @@ namespace TestowanieOprogramowania
                 return;
             }
 
+            if (noweHaslo != nowe2Haslo)
+            {
+                MessageBox.Show("Podane hasła nie są identyczne.");
+                return;
+            }
+
             if (!ValidatePassword(noweHaslo, nowe2Haslo, userID))
             {
                 MessageBox.Show("Hasło nie spełnia wymagań. Haslo musi mieć od 8 do 15 znaków oraz posiadać co najmniej jedną wielką literę, małą literę, cyfrę oraz znak specjalny tj. -, _, !, *, #, $, & ");
                 return;
             }
 
-            if (noweHaslo != nowe2Haslo)
-            {
-                MessageBox.Show("Podane hasła nie są identyczne.");
-                return;
-            }
+            
 
             try
             {
