@@ -111,5 +111,11 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Proszę zaznaczyć wiersz do usunięcia", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void buttonHUSM_Click(object sender, EventArgs e)
+        {
+            FormHUSM formHUSM = new FormHUSM();
+            formHUSM.ShowDialog();
+        }
     }
 }

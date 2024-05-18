@@ -19,15 +19,15 @@ namespace TestowanieOprogramowania
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Ukrywanie DateTimePickerów i CheckBox na starcie
-            dateTimePickerStart.Visible = false;
-            dateTimePickerEnd.Visible = false;
-            label3.Visible = false;
-            label4.Visible = false;
-            checkBoxOkres.Visible = true;
+            //dateTimePickerStart.Visible = false;
+            // dateTimePickerEnd.Visible = false;
+            //  label3.Visible = false;
+            // label4.Visible = false;
+            // checkBoxOkres.Visible = true;
 
-            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-            checkBoxOkres.CheckedChanged += CheckBoxOkres_CheckedChanged;
-            buttonSzukaj.Click += buttonSzukaj_Click;
+            //  comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            // checkBoxOkres.CheckedChanged += CheckBoxOkres_CheckedChanged;
+            // buttonSzukaj.Click += buttonSzukaj_Click;
 
             OdswiezDataGridViewHistoriaAkcji();
         }
@@ -39,14 +39,21 @@ namespace TestowanieOprogramowania
         private void OdswiezDataGridViewHistoriaAkcji()
         {
             string query = @"
-                SELECT 
-                    ProductID,         
-                    NazwaTowaru,       
-                    Rodzaj,         
-                    DataRejestracji,   
-                    Rejestrujacy      
+                SELECT [ProduktID]
+                  ,[NazwaTowaru]
+                  ,[RodzajTowaru]
+                  ,[JednostkaMiary]
+                  ,[Ilosc]
+                  ,[CenaNetto]
+                  ,[StawkaVAT]
+                  ,[Opis]
+                  ,[Dostawca]
+                  ,[DataDostawy]
+                  ,[DataRejestracji]
+                  ,[Rejestrujacy]
+                  ,[DataZapisu]     
                 FROM 
-                    ProductDetails";
+                    ProduktyHistoria";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -59,7 +66,50 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+        private void OdswiezDataGridViewHistoriaAkcjiPoDacie()
+        {
+            // Pobierz datę z kontrolki DateTimePicker
+            DateTime selectedDate = dateTimePickerStart.Value.Date;
 
+            // Formatuj datę na postać, która jest kompatybilna z SQL
+            string formattedDate = selectedDate.ToString("yyyy-MM-dd");
+
+            // Zapytanie SQL z filtrem na podstawie daty
+            string query = @"
+        SELECT [ProduktID]
+              ,[NazwaTowaru]
+              ,[RodzajTowaru]
+              ,[JednostkaMiary]
+              ,[Ilosc]
+              ,[CenaNetto]
+              ,[StawkaVAT]
+              ,[Opis]
+              ,[Dostawca]
+              ,[DataDostawy]
+              ,[DataRejestracji]
+              ,[Rejestrujacy]
+              ,[DataZapisu]
+        FROM 
+            ProduktyHistoria
+        WHERE 
+            DataZapisu = @DataZapisu";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Dodaj parametr z datą do zapytania
+                    command.Parameters.AddWithValue("@DataZapisu", formattedDate);
+
+                    DataTable dataTable = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
+                }
+            }
+        }
+
+        /*
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem.ToString() == "Okres")
@@ -79,7 +129,8 @@ namespace TestowanieOprogramowania
                 checkBoxOkres.Visible = true;
             }
         }
-
+        */
+        /*
         private void CheckBoxOkres_CheckedChanged(object sender, EventArgs e)
         {
             bool isChecked = checkBoxOkres.Checked;
@@ -88,7 +139,9 @@ namespace TestowanieOprogramowania
             label3.Visible = isChecked;
             label4.Visible = isChecked;
         }
+        */
 
+        /*
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null)
@@ -121,6 +174,7 @@ namespace TestowanieOprogramowania
                 SearchData(searchText, option);
             }
         }
+        */
 
         private void SearchData(string searchText, string option, DateTime? startDate = null, DateTime? endDate = null)
         {
@@ -173,6 +227,16 @@ namespace TestowanieOprogramowania
                 }
             }
             dataGridView1.DataSource = listaProduktow;
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSzukaj_Click(object sender, EventArgs e)
+        {
+            OdswiezDataGridViewHistoriaAkcjiPoDacie();
         }
     }
 
