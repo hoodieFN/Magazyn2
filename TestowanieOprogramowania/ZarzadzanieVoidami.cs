@@ -351,6 +351,7 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+
         public static bool DodawanieRoli()
         {
             int CurrentUserId = UserSession.CurrentUserId;
@@ -687,13 +688,78 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+        public void EdytowanieStawkiVat(decimal nowaStawka, string selectedItem)
+        {
+            string query = "UPDATE Produkty SET StawkaVat = @NewVatRate WHERE NazwaTowaru = @ProductName";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NewVatRate", nowaStawka);
+                    command.Parameters.AddWithValue("@ProductName", selectedItem);
+
+                    try
+                    {
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Stawka VAT została zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono produktu.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Wystąpił błąd podczas aktualizacji: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+
+
+        }
+        public void EdytowanieStawkiVatKategoria(decimal nowaStawka, string Kategoria)
+        {
+            string query = "UPDATE Produkty SET StawkaVat = @NewVatRate WHERE RodzajTowaru = @Category";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NewVatRate", nowaStawka);
+                    command.Parameters.AddWithValue("@Category", Kategoria);
+
+                    try
+                    {
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Stawka VAT została zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono produktu.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Wystąpił błąd podczas aktualizacji: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
 
 
 
+        }
     }
-
-
 }
 
 

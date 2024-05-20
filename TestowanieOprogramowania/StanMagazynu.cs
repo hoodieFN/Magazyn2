@@ -117,5 +117,19 @@ namespace TestowanieOprogramowania
             FormHUSM formHUSM = new FormHUSM();
             formHUSM.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormZmianaVat formZmianaVat = new FormZmianaVat();
+            formZmianaVat.ShowDialog();
+            formZmianaVat.FormClosed += (s, args) => OdswiezDataGridViewProdukty();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormVATKategoria formVaTKategoria = new FormVATKategoria();
+            formVaTKategoria.ShowDialog();
+
+        }
     }
 }
