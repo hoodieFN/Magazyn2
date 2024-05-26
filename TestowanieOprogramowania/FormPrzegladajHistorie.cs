@@ -34,9 +34,11 @@ namespace TestowanieOprogramowania
 
         private void FormPrzegladajHistorie_Load(object sender, EventArgs e)
         {
+            /*
             button2.Visible = false;
             dateTimePicker3.Visible = false;
             textBoxID.Visible = false;
+            */
         }
 
         private void OdswiezDataGridViewHistoriaAkcji()

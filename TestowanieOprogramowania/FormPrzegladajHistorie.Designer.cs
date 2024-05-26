@@ -38,6 +38,8 @@
             button2 = new Button();
             dateTimePicker3 = new DateTimePicker();
             textBoxID = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1438, 658);
+            dataGridView1.Size = new Size(1447, 658);
             dataGridView1.TabIndex = 0;
             // 
             // dateTimePickerStart
@@ -123,10 +125,11 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.BackColor = Color.Indigo;
             button2.Cursor = Cursors.Hand;
             button2.ForeColor = SystemColors.ButtonFace;
-            button2.Location = new Point(611, 12);
+            button2.Location = new Point(1068, 12);
             button2.Name = "button2";
             button2.Size = new Size(166, 42);
             button2.TabIndex = 34;
@@ -136,8 +139,9 @@
             // 
             // dateTimePicker3
             // 
+            dateTimePicker3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(783, 28);
+            dateTimePicker3.Location = new Point(1240, 28);
             dateTimePicker3.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(109, 23);
@@ -145,10 +149,37 @@
             // 
             // textBoxID
             // 
-            textBoxID.Location = new Point(898, 28);
+            textBoxID.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBoxID.Location = new Point(1355, 28);
             textBoxID.Name = "textBoxID";
             textBoxID.Size = new Size(100, 23);
             textBoxID.TabIndex = 36;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(1240, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 17);
+            label2.TabIndex = 37;
+            label2.Text = "Data";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(1355, 8);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 17);
+            label3.TabIndex = 38;
+            label3.Text = "ProduktID";
             // 
             // FormPrzegladajHistorie
             // 
@@ -156,6 +187,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1462, 728);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(textBoxID);
             Controls.Add(dateTimePicker3);
             Controls.Add(button2);
@@ -188,5 +221,7 @@
         private Button button2;
         private DateTimePicker dateTimePicker3;
         private TextBox textBoxID;
+        private Label label2;
+        private Label label3;
     }
 }
