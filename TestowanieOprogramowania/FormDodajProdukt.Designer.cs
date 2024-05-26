@@ -65,8 +65,7 @@
             // 
             comboBoxRodzajTowaru.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxRodzajTowaru.FormattingEnabled = true;
-            comboBoxRodzajTowaru.Items.AddRange(new object[] { "test" });
-            comboBoxRodzajTowaru.Location = new Point(181, 151);
+            comboBoxRodzajTowaru.Location = new Point(181, 147);
             comboBoxRodzajTowaru.Name = "comboBoxRodzajTowaru";
             comboBoxRodzajTowaru.Size = new Size(181, 30);
             comboBoxRodzajTowaru.TabIndex = 22;
@@ -89,7 +88,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(181, 131);
+            label1.Location = new Point(181, 127);
             label1.Name = "label1";
             label1.Size = new Size(92, 17);
             label1.TabIndex = 24;
@@ -122,7 +121,7 @@
             textBoxIlosc.BackColor = Color.Silver;
             textBoxIlosc.BorderStyle = BorderStyle.None;
             textBoxIlosc.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIlosc.Location = new Point(181, 263);
+            textBoxIlosc.Location = new Point(181, 268);
             textBoxIlosc.Name = "textBoxIlosc";
             textBoxIlosc.Size = new Size(181, 26);
             textBoxIlosc.TabIndex = 27;
@@ -133,7 +132,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(181, 243);
+            label4.Location = new Point(181, 248);
             label4.Name = "label4";
             label4.Size = new Size(35, 17);
             label4.TabIndex = 28;
@@ -167,7 +166,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(181, 312);
+            label6.Location = new Point(181, 305);
             label6.Name = "label6";
             label6.Size = new Size(76, 17);
             label6.TabIndex = 32;
@@ -178,7 +177,7 @@
             textBoxCenaNetto.BackColor = Color.Silver;
             textBoxCenaNetto.BorderStyle = BorderStyle.None;
             textBoxCenaNetto.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxCenaNetto.Location = new Point(181, 332);
+            textBoxCenaNetto.Location = new Point(181, 325);
             textBoxCenaNetto.Name = "textBoxCenaNetto";
             textBoxCenaNetto.Size = new Size(181, 26);
             textBoxCenaNetto.TabIndex = 31;
@@ -254,9 +253,9 @@
             buttonDodajProdukt.Cursor = Cursors.Hand;
             buttonDodajProdukt.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodajProdukt.ForeColor = Color.White;
-            buttonDodajProdukt.Location = new Point(316, 403);
+            buttonDodajProdukt.Location = new Point(518, 413);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
-            buttonDodajProdukt.Size = new Size(132, 40);
+            buttonDodajProdukt.Size = new Size(132, 53);
             buttonDodajProdukt.TabIndex = 41;
             buttonDodajProdukt.Text = "Dodaj produkt";
             buttonDodajProdukt.UseVisualStyleBackColor = false;
@@ -269,7 +268,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(630, 390);
+            button1.Location = new Point(656, 413);
             button1.Name = "button1";
             button1.Size = new Size(132, 53);
             button1.TabIndex = 42;

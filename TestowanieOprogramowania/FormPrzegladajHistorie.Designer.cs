@@ -35,6 +35,9 @@
             button1 = new Button();
             textBoxProduktID = new TextBox();
             ProduktID = new Label();
+            button2 = new Button();
+            dateTimePicker3 = new DateTimePicker();
+            textBoxID = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -118,12 +121,44 @@
             ProduktID.TabIndex = 33;
             ProduktID.Text = "ProduktID";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Indigo;
+            button2.Cursor = Cursors.Hand;
+            button2.ForeColor = SystemColors.ButtonFace;
+            button2.Location = new Point(611, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(166, 42);
+            button2.TabIndex = 34;
+            button2.Text = "Szukaj po dacie i ProduktID";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // dateTimePicker3
+            // 
+            dateTimePicker3.Format = DateTimePickerFormat.Short;
+            dateTimePicker3.Location = new Point(783, 28);
+            dateTimePicker3.Margin = new Padding(3, 2, 3, 2);
+            dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.Size = new Size(109, 23);
+            dateTimePicker3.TabIndex = 35;
+            // 
+            // textBoxID
+            // 
+            textBoxID.Location = new Point(898, 28);
+            textBoxID.Name = "textBoxID";
+            textBoxID.Size = new Size(100, 23);
+            textBoxID.TabIndex = 36;
+            // 
             // FormPrzegladajHistorie
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1462, 728);
+            Controls.Add(textBoxID);
+            Controls.Add(dateTimePicker3);
+            Controls.Add(button2);
             Controls.Add(ProduktID);
             Controls.Add(textBoxProduktID);
             Controls.Add(button1);
@@ -150,5 +185,8 @@
         private Button button1;
         private TextBox textBoxProduktID;
         private Label ProduktID;
+        private Button button2;
+        private DateTimePicker dateTimePicker3;
+        private TextBox textBoxID;
     }
 }

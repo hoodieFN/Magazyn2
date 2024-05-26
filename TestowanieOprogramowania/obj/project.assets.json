@@ -2253,11 +2253,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2605e\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectUniqueName": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2705a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "projectName": "TestowanieOprogramowania",
-      "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2605e\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
+      "projectPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2705a\\TestowanieOprogramowania\\TestowanieOprogramowania.csproj",
       "packagesPath": "C:\\Users\\cayna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2605e\\TestowanieOprogramowania\\obj\\",
+      "outputPath": "C:\\Users\\cayna\\Source\\Repos\\TestowanieOprogramowaniaMagazyn2705a\\TestowanieOprogramowania\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cayna\\AppData\\Roaming\\NuGet\\NuGet.Config",

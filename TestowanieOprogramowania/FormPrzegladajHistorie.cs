@@ -34,6 +34,9 @@ namespace TestowanieOprogramowania
 
         private void FormPrzegladajHistorie_Load(object sender, EventArgs e)
         {
+            button2.Visible = false;
+            dateTimePicker3.Visible = false;
+            textBoxID.Visible = false;
         }
 
         private void OdswiezDataGridViewHistoriaAkcji()
@@ -233,14 +236,14 @@ namespace TestowanieOprogramowania
         {
 
         }
-        
+
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             OdswiezDataGridViewHistoriaAkcjiPoDacie();
         }
         private DataTable WyszukajProduktPoID(int produktID)
         {
-            
+
             string query = "SELECT * FROM ProduktyHistoria1_Temp WHERE ProduktID = @ProduktID";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
@@ -270,6 +273,67 @@ namespace TestowanieOprogramowania
                 else
                 {
                     MessageBox.Show("Nie znaleziono produktu o podanym ID.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wprowadź prawidłowy ProduktID.");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private DataTable WyszukajProduktPoIDiDacie(int produktID, DateTime data)
+        {
+            string query = "SELECT * FROM ProduktyHistoria1_Temp WHERE ProduktID = @ProduktID AND CAST(DataZapisu AS DATE) = @DataZapisu";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@ProduktID", SqlDbType.Int)).Value = produktID;
+                    command.Parameters.Add(new SqlParameter("@DataZapisu", SqlDbType.Date)).Value = data.Date;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int produktID;
+            if (int.TryParse(textBoxID.Text, out produktID))
+            {
+                DateTime data = dateTimePicker3.Value.Date;
+                DataTable wynik = WyszukajProduktPoIDiDacie(produktID, data);
+                if (wynik.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = wynik;
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono produktu o podanym ID i dacie.");
                 }
             }
             else

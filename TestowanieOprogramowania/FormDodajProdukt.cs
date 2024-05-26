@@ -15,6 +15,9 @@ namespace TestowanieOprogramowania
             textBoxOpisTowaru.Width = 300;
             textBoxOpisTowaru.Height = 100;
             textBoxOpisTowaru.Multiline = true; // pozwala na wpisywanie wielu linii tekstu
+            WypelnijRodzajeTowarow();
+            this.comboBoxRodzajTowaru.SelectedIndexChanged += new System.EventHandler(this.comboBoxRodzajTowaru_SelectedIndexChanged);
+
         }
 
         private void buttonDodajProdukt_Click(object sender, EventArgs e)
@@ -117,7 +120,7 @@ namespace TestowanieOprogramowania
             }
         }
 
-        
+
 
         public void DodajProdukt(string nazwaTowaru, string rodzajTowaru, string jednostkaMiary, int ilosc, decimal cenaNetto,
             string stawkaVAT, string opis, string dostawca, DateTime dataDostawy, DateTime dataRejestracji, string rejestracja)
@@ -161,7 +164,7 @@ namespace TestowanieOprogramowania
                 }*/
             }
         }
-
+        /*
         private DataTable PobierzRodzajeTowarow()
         {
             DataTable dt = new DataTable();
@@ -175,26 +178,91 @@ namespace TestowanieOprogramowania
                 }
             }
             return dt;
-        }
+        }*/
 
         private void button1_Click(object sender, EventArgs e)
         {
             EdytujRodzajeTowarow formEdytuj = new EdytujRodzajeTowarow();
             formEdytuj.ShowDialog();
-            LoadRodzajeToComboBox();
+            // LoadRodzajeToComboBox();
         }
-
+        /*
         private void LoadRodzajeToComboBox()
         {
             DataTable rodzajeTowarow = PobierzRodzajeTowarow();
             comboBoxRodzajTowaru.DataSource = rodzajeTowarow;
             comboBoxRodzajTowaru.DisplayMember = "NazwaRodzaju";  // Kolumna, która ma być wyświetlana
             comboBoxRodzajTowaru.ValueMember = "RodzajTowaruID";  // Kolumna, która ma być wartością
-        }
+        }*/
 
         private void FormDodajProdukt_Load(object sender, EventArgs e)
         {
-            LoadRodzajeToComboBox();
+            // LoadRodzajeToComboBox();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+        //Stawka VAT
+        private string PobierzStawkeVAT(string nazwaRodzaju)
+        {
+            string stawkaVAT = string.Empty;
+
+            string query = "SELECT StawkaVAT FROM RodzajeTowarow WHERE NazwaRodzaju = @NazwaRodzaju";
+
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@NazwaRodzaju", SqlDbType.NVarChar)).Value = nazwaRodzaju;
+
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        stawkaVAT = reader["StawkaVAT"].ToString();
+                    }
+                }
+            }
+
+            return stawkaVAT;
+        }
+        private void WypelnijRodzajeTowarow()
+        {
+            string query = "SELECT NazwaRodzaju FROM RodzajeTowarow";
+
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        comboBoxRodzajTowaru.Items.Add(reader["NazwaRodzaju"].ToString());
+                    }
+                }
+            }
+        }
+        private void comboBoxRodzajTowaru_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string wybranyRodzaj = comboBoxRodzajTowaru.SelectedItem.ToString();
+            string stawkaVAT = PobierzStawkeVAT(wybranyRodzaj);
+
+            if (!string.IsNullOrEmpty(stawkaVAT))
+            {
+                comboBoxStawkaVat.SelectedItem = stawkaVAT;
+            }
+        }
+
+
     }
 }
