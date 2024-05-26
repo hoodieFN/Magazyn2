@@ -7,6 +7,7 @@ namespace TestowanieOprogramowania
 {
     public partial class FormHUSM : Form
     {
+
         private ZarzadzanieVoidami zarzadzanieVoidami;
         string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
 
@@ -14,9 +15,20 @@ namespace TestowanieOprogramowania
         {
             InitializeComponent();
             HUSM();
+           
         }
 
-        
+        private void UstawSzerokoscKolumny()
+        {
+            // Pobierz bieżącą szerokość kolumny "Operacja"
+            int currentWidth = dataGridView1.Columns["Operacja"].Width;
+
+            // Oblicz nową szerokość jako 1.4 razy (czyli 2/5 większą) bieżącej szerokości
+            int newWidth = (int)(currentWidth * 2);
+
+            // Ustaw nową szerokość kolumny "Operacja"
+            dataGridView1.Columns["Operacja"].Width = newWidth;
+        }
 
         private void HUSM()
         {
@@ -64,6 +76,7 @@ namespace TestowanieOprogramowania
 
         private void FormHUSM_Load(object sender, EventArgs e)
         {
+            UstawSzerokoscKolumny();
 
         }
     }

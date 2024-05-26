@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace TestowanieOprogramowania
 {
     public partial class StanMagazynu : Form
     {
+
+
         private ZarzadzanieVoidami zarzadzanieVoidami;
         public StanMagazynu()
         {
@@ -42,6 +45,72 @@ namespace TestowanieOprogramowania
 
 
         }
+
+        private void DodajIloscProduktu(string nazwaTowaru, int ilosc, DateTime dataRejestracji, string rejestracja)
+        {
+            string con = PolaczenieBazyDanych.StringPolaczeniowy();
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                // Update product quantity
+                string queryUpdate = "UPDATE Produkty SET Ilosc = Ilosc + @Ilosc WHERE NazwaTowaru = @NazwaTowaru";
+                using (SqlCommand command = new SqlCommand(queryUpdate, connection))
+                {
+                    command.Parameters.AddWithValue("@Ilosc", ilosc);
+                    command.Parameters.AddWithValue("@NazwaTowaru", nazwaTowaru);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                // Retrieve product details for logging
+                string querySelect = "SELECT * FROM Produkty WHERE NazwaTowaru = @NazwaTowaru";
+                DataRow productData;
+                using (SqlCommand command = new SqlCommand(querySelect, connection))
+                {
+                    command.Parameters.AddWithValue("@NazwaTowaru", nazwaTowaru);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        productData = dt.Rows[0];
+                    }
+
+                    connection.Close();
+                }
+
+                // Insert into history
+                string queryInsert = "INSERT INTO ProduktyHistoriaOperacji (ProduktID, NazwaTowaru, RodzajTowaru, JednostkaMiary, Ilosc, CenaNetto, StawkaVAT, Opis, Dostawca, DataDostawy, DataRejestracji, Rejestrujacy, DataZapisu, Operacja) " +
+                                     "VALUES (@ProduktID, @NazwaTowaru, @RodzajTowaru, @JednostkaMiary, @Ilosc, @CenaNetto, @StawkaVAT, @Opis, @Dostawca, @DataDostawy, @DataRejestracji, @Rejestrujacy, @DataZapisu, @Operacja)";
+
+                using (SqlCommand command = new SqlCommand(queryInsert, connection))
+                {
+                    command.Parameters.AddWithValue("@ProduktID", productData["ProduktID"]);
+                    command.Parameters.AddWithValue("@NazwaTowaru", productData["NazwaTowaru"]);
+                    command.Parameters.AddWithValue("@RodzajTowaru", productData["RodzajTowaru"]);
+                    command.Parameters.AddWithValue("@JednostkaMiary", productData["JednostkaMiary"]);
+                    command.Parameters.AddWithValue("@Ilosc", productData["Ilosc"]);
+                    command.Parameters.AddWithValue("@CenaNetto", productData["CenaNetto"]);
+                    command.Parameters.AddWithValue("@StawkaVAT", productData["StawkaVAT"]);
+                    command.Parameters.AddWithValue("@Opis", productData["Opis"]);
+                    command.Parameters.AddWithValue("@Dostawca", productData["Dostawca"]);
+                    command.Parameters.AddWithValue("@DataDostawy", productData["DataDostawy"]);
+                    command.Parameters.AddWithValue("@DataRejestracji", productData["DataRejestracji"]);
+                    command.Parameters.AddWithValue("@Rejestrujacy", rejestracja);
+                    command.Parameters.AddWithValue("@DataZapisu", DateTime.Now);
+                    command.Parameters.AddWithValue("@Operacja", $"Dodanie ilości ({ilosc} sztuk)");
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
 
 
         private void SzukajProdukt_Click(object sender, EventArgs e)
@@ -92,6 +161,29 @@ namespace TestowanieOprogramowania
             OdswiezDataGridViewProdukty();
         }
 
+        public string PobierzImieNazwisko(int userId)
+        {
+            string con = PolaczenieBazyDanych.StringPolaczeniowy();
+            string fullName = "";
+
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                string query = "SELECT CONCAT(Imie, ' ', Nazwisko) AS PelneImieNazwisko FROM Uzytkownicy WHERE UzytkownikID = @UzytkownikID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UzytkownikID", userId);
+
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+
+                    if (result != null)
+                        fullName = result.ToString();
+                }
+            }
+
+            return fullName;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView2.SelectedRows.Count > 0)
@@ -131,5 +223,34 @@ namespace TestowanieOprogramowania
             formVaTKategoria.ShowDialog();
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView2.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Proszę wybrać produkt z listy.");
+                    return;
+                }
+
+                string nazwaTowaru = dataGridView2.SelectedRows[0].Cells["NazwaTowaru"].Value.ToString();
+                string dostawca = dataGridView2.SelectedRows[0].Cells["Dostawca"].Value.ToString();
+                string opis = dataGridView2.SelectedRows[0].Cells["Opis"].Value.ToString();
+                string jednostkaMiary = dataGridView2.SelectedRows[0].Cells["JednostkaMiary"].Value.ToString();
+
+                Action<string, int, DateTime, string> dodajIloscProduktu = DodajIloscProduktu;
+                FormDodajIlosc formDodajIlosc = new FormDodajIlosc(nazwaTowaru, dostawca, opis, jednostkaMiary, dodajIloscProduktu);
+                formDodajIlosc.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił nieoczekiwany błąd: " + ex.Message);
+            }
+            OdswiezDataGridViewProdukty();
+        }
+
     }
 }
+
+

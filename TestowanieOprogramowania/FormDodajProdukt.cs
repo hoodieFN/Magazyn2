@@ -1,12 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestowanieOprogramowania
@@ -14,16 +8,19 @@ namespace TestowanieOprogramowania
     public partial class FormDodajProdukt : Form
     {
         string con = PolaczenieBazyDanych.StringPolaczeniowy();
+
         public FormDodajProdukt()
         {
             InitializeComponent();
+            textBoxOpisTowaru.Width = 300;
+            textBoxOpisTowaru.Height = 100;
+            textBoxOpisTowaru.Multiline = true; // pozwala na wpisywanie wielu linii tekstu
         }
 
         private void buttonDodajProdukt_Click(object sender, EventArgs e)
         {
             try
             {
-                // Sprawdzanie, czy pola są wypełnione
                 if (string.IsNullOrWhiteSpace(textBoxNazwaTowaru.Text) ||
                     string.IsNullOrWhiteSpace(comboBoxRodzajTowaru.Text) ||
                     string.IsNullOrWhiteSpace(comboBoxJednostkaMiary.Text) ||
@@ -34,10 +31,9 @@ namespace TestowanieOprogramowania
                     string.IsNullOrWhiteSpace(textBoxDostawca.Text))
                 {
                     MessageBox.Show("Proszę wypełnić wszystkie pola.");
-                    return; // Zakończ funkcję, jeśli nie wszystkie pola są wypełnione
+                    return;
                 }
 
-                // Pobieranie wartości z formularza
                 string nazwaTowaru = textBoxNazwaTowaru.Text;
                 string rodzajTowaru = comboBoxRodzajTowaru.Text;
                 string jednostkaMiary = comboBoxJednostkaMiary.Text;
@@ -50,11 +46,21 @@ namespace TestowanieOprogramowania
                 DateTime dataRejestracji = DateTime.Now;
                 string imieNazwiskoRejestr = PobierzImieNazwisko(UserSession.CurrentUserId);
 
-                // Wywołanie funkcji dodającej produkt
-                DodajProdukt(nazwaTowaru, rodzajTowaru, jednostkaMiary, ilosc, cenaNetto, stawkaVat,
-                    opisTowaru, dostawca, dataDostawy, dataRejestracji, imieNazwiskoRejestr);
+                // Sprawdzenie czy produkt już istnieje
+                if (ProduktIstnieje(nazwaTowaru))
+                {
+                    // Aktualizacja ilości istniejącego produktu
+                    MessageBox.Show("Produkt już istnieje");
+                    return;
+                }
+                else
+                {
+                    // Dodanie nowego produktu
+                    DodajProdukt(nazwaTowaru, rodzajTowaru, jednostkaMiary, ilosc, cenaNetto, stawkaVat,
+                        opisTowaru, dostawca, dataDostawy, dataRejestracji, imieNazwiskoRejestr);
+                }
 
-                MessageBox.Show("Produkt został dodany.");
+                MessageBox.Show("Operacja zakończona pomyślnie.");
                 this.Close();
             }
             catch (FormatException)
@@ -70,13 +76,13 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Wystąpił nieoczekiwany błąd: " + ex.Message);
             }
         }
+
         public string PobierzImieNazwisko(int userId)
         {
             string fullName = "";
 
             using (SqlConnection connection = new SqlConnection(con))
             {
-                // Zapytanie SQL, które skleja imię i nazwisko w jeden string
                 string query = "SELECT CONCAT(Imie, ' ', Nazwisko) AS PelneImieNazwisko FROM Uzytkownicy WHERE UzytkownikID = @UzytkownikID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -84,7 +90,7 @@ namespace TestowanieOprogramowania
                     command.Parameters.AddWithValue("@UzytkownikID", userId);
 
                     connection.Open();
-                    object result = command.ExecuteScalar();  // ExecuteScalar używane, gdy spodziewamy się pojedynczej wartości
+                    object result = command.ExecuteScalar();
 
                     if (result != null)
                         fullName = result.ToString();
@@ -93,6 +99,26 @@ namespace TestowanieOprogramowania
 
             return fullName;
         }
+
+        private bool ProduktIstnieje(string nazwaTowaru)
+        {
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                string query = "SELECT COUNT(*) FROM Produkty WHERE NazwaTowaru = @NazwaTowaru";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@NazwaTowaru", nazwaTowaru);
+
+                    connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
+
+        
+
         public void DodajProdukt(string nazwaTowaru, string rodzajTowaru, string jednostkaMiary, int ilosc, decimal cenaNetto,
             string stawkaVAT, string opis, string dostawca, DateTime dataDostawy, DateTime dataRejestracji, string rejestracja)
         {
@@ -117,9 +143,25 @@ namespace TestowanieOprogramowania
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-            }
 
+
+                //TO raczej zmienic na trigera
+                // Dodanie rekordu rejestracji
+
+                /*
+                string insertRejestracja = "INSERT INTO Rejestracja (NazwaTowaru, Ilosc, DataRejestracji, Rejestrujacy) VALUES (@NazwaTowaru, @Ilosc, @DataRejestracji, @Rejestrujacy)";
+                using (SqlCommand command = new SqlCommand(insertRejestracja, connection))
+                {
+                    command.Parameters.AddWithValue("@NazwaTowaru", nazwaTowaru);
+                    command.Parameters.AddWithValue("@Ilosc", ilosc);
+                    command.Parameters.AddWithValue("@DataRejestracji", dataRejestracji);
+                    command.Parameters.AddWithValue("@Rejestrujacy", rejestracja);
+
+                    command.ExecuteNonQuery();
+                }*/
+            }
         }
+
         private DataTable PobierzRodzajeTowarow()
         {
             DataTable dt = new DataTable();
@@ -141,6 +183,7 @@ namespace TestowanieOprogramowania
             formEdytuj.ShowDialog();
             LoadRodzajeToComboBox();
         }
+
         private void LoadRodzajeToComboBox()
         {
             DataTable rodzajeTowarow = PobierzRodzajeTowarow();

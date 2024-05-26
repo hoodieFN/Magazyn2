@@ -63,11 +63,12 @@
             // 
             // comboBoxRodzajTowaru
             // 
+            comboBoxRodzajTowaru.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxRodzajTowaru.FormattingEnabled = true;
             comboBoxRodzajTowaru.Items.AddRange(new object[] { "test" });
             comboBoxRodzajTowaru.Location = new Point(181, 151);
             comboBoxRodzajTowaru.Name = "comboBoxRodzajTowaru";
-            comboBoxRodzajTowaru.Size = new Size(181, 23);
+            comboBoxRodzajTowaru.Size = new Size(181, 30);
             comboBoxRodzajTowaru.TabIndex = 22;
             // 
             // label2
@@ -96,11 +97,12 @@
             // 
             // comboBoxJednostkaMiary
             // 
+            comboBoxJednostkaMiary.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxJednostkaMiary.FormattingEnabled = true;
             comboBoxJednostkaMiary.Items.AddRange(new object[] { "Sztuki", "Kilogramy", "Litry", "Palety" });
             comboBoxJednostkaMiary.Location = new Point(181, 208);
             comboBoxJednostkaMiary.Name = "comboBoxJednostkaMiary";
-            comboBoxJednostkaMiary.Size = new Size(181, 23);
+            comboBoxJednostkaMiary.Size = new Size(181, 30);
             comboBoxJednostkaMiary.TabIndex = 25;
             // 
             // label3
@@ -151,11 +153,12 @@
             // 
             // comboBoxStawkaVat
             // 
+            comboBoxStawkaVat.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxStawkaVat.FormattingEnabled = true;
             comboBoxStawkaVat.Items.AddRange(new object[] { "23%", "8%", "5%", "0%", "zw" });
             comboBoxStawkaVat.Location = new Point(407, 87);
             comboBoxStawkaVat.Name = "comboBoxStawkaVat";
-            comboBoxStawkaVat.Size = new Size(181, 23);
+            comboBoxStawkaVat.Size = new Size(181, 30);
             comboBoxStawkaVat.TabIndex = 29;
             // 
             // label6
@@ -208,7 +211,7 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(407, 188);
+            label8.Location = new Point(407, 258);
             label8.Name = "label8";
             label8.Size = new Size(69, 17);
             label8.TabIndex = 36;
@@ -219,16 +222,17 @@
             textBoxDostawca.BackColor = Color.Silver;
             textBoxDostawca.BorderStyle = BorderStyle.None;
             textBoxDostawca.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDostawca.Location = new Point(407, 208);
+            textBoxDostawca.Location = new Point(407, 278);
             textBoxDostawca.Name = "textBoxDostawca";
             textBoxDostawca.Size = new Size(181, 26);
             textBoxDostawca.TabIndex = 35;
             // 
             // dateTimePickerDataDostawy
             // 
-            dateTimePickerDataDostawy.Location = new Point(407, 266);
+            dateTimePickerDataDostawy.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerDataDostawy.Location = new Point(407, 336);
             dateTimePickerDataDostawy.Name = "dateTimePickerDataDostawy";
-            dateTimePickerDataDostawy.Size = new Size(200, 23);
+            dateTimePickerDataDostawy.Size = new Size(244, 27);
             dateTimePickerDataDostawy.TabIndex = 37;
             // 
             // label9
@@ -237,7 +241,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(407, 246);
+            label9.Location = new Point(407, 316);
             label9.Name = "label9";
             label9.Size = new Size(91, 17);
             label9.TabIndex = 38;
