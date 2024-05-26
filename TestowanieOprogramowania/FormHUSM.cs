@@ -13,7 +13,7 @@ namespace TestowanieOprogramowania
         public FormHUSM()
         {
             InitializeComponent();
-           // HUSM();
+            // HUSM();
             DefaultHUSM();
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
@@ -41,6 +41,12 @@ namespace TestowanieOprogramowania
                     dateTimePickerEnd.Visible = false;
                 }
                 else if (comboBox1.SelectedItem.ToString() == "Rejestrujacy")
+                {
+                    textBox1.Visible = true; // Show textBox1
+                    dateTimePickerStart1.Visible = false;
+                    dateTimePickerEnd.Visible = false;
+                }
+                else if (comboBox1.SelectedItem.ToString() == "ProduktID")
                 {
                     textBox1.Visible = true; // Show textBox1
                     dateTimePickerStart1.Visible = false;
@@ -231,6 +237,46 @@ namespace TestowanieOprogramowania
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Rejestrujacy", string.IsNullOrEmpty(rejestrujący) ? "" : "%" + rejestrujący + "%");
+
+                        DataTable dataTable = new DataTable();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                        // Formatowanie kolumny DataZapisu aby wyświetlała datę i czas
+                        if (dataGridView1.Columns["DataZapisu"] != null)
+                        {
+                            dataGridView1.Columns["DataZapisu"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm:ss";
+                        }
+                    }
+                }
+
+            }
+            else if (comboBox1.SelectedItem.ToString() == "ProduktID")
+            {
+                string produktid = textBox1.Text;
+
+                string query = @"SELECT TOP (1000) [ProduktID]
+                          ,[NazwaTowaru]
+                          ,[RodzajTowaru]
+                          ,[JednostkaMiary]
+                          ,[Ilosc]
+                          ,[CenaNetto]
+                          ,[StawkaVAT]
+                          ,[Opis]
+                          ,[Dostawca]
+                          ,[DataDostawy]
+                          ,[DataRejestracji]
+                          ,[Rejestrujacy]
+                          ,[DataZapisu]
+                          ,[Operacja]
+                      FROM [MagazynTestowanieOprogramowania].[dbo].[ProduktyHistoriaOperacji]
+                      WHERE @ProduktID = '' OR ProduktID LIKE @ProduktID";
+
+                using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ProduktID", string.IsNullOrEmpty(produktid) ? "" : "%" + produktid + "%");
 
                         DataTable dataTable = new DataTable();
                         SqlDataAdapter adapter = new SqlDataAdapter(command);

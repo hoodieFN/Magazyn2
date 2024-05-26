@@ -32,6 +32,9 @@
             dateTimePickerStart = new DateTimePicker();
             buttonSzukaj = new Button();
             label1 = new Label();
+            button1 = new Button();
+            textBoxProduktID = new TextBox();
+            ProduktID = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +54,7 @@
             // dateTimePickerStart
             // 
             dateTimePickerStart.Format = DateTimePickerFormat.Short;
-            dateTimePickerStart.Location = new Point(166, 31);
+            dateTimePickerStart.Location = new Point(156, 31);
             dateTimePickerStart.Margin = new Padding(3, 2, 3, 2);
             dateTimePickerStart.Name = "dateTimePickerStart";
             dateTimePickerStart.Size = new Size(109, 23);
@@ -67,7 +70,7 @@
             buttonSzukaj.Name = "buttonSzukaj";
             buttonSzukaj.Size = new Size(138, 42);
             buttonSzukaj.TabIndex = 29;
-            buttonSzukaj.Text = "Szukaj";
+            buttonSzukaj.Text = "Szukaj po dacie";
             buttonSzukaj.UseVisualStyleBackColor = false;
             buttonSzukaj.Click += buttonSzukaj_Click;
             // 
@@ -77,11 +80,43 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(166, 12);
+            label1.Location = new Point(156, 12);
             label1.Name = "label1";
             label1.Size = new Size(38, 17);
             label1.TabIndex = 30;
             label1.Text = "Data";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.Location = new Point(271, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(138, 42);
+            button1.TabIndex = 31;
+            button1.Text = "Szukaj po ProduktID";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // textBoxProduktID
+            // 
+            textBoxProduktID.Location = new Point(415, 31);
+            textBoxProduktID.Name = "textBoxProduktID";
+            textBoxProduktID.Size = new Size(100, 23);
+            textBoxProduktID.TabIndex = 32;
+            // 
+            // ProduktID
+            // 
+            ProduktID.AutoSize = true;
+            ProduktID.BackColor = Color.Transparent;
+            ProduktID.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ProduktID.ForeColor = Color.White;
+            ProduktID.Location = new Point(415, 9);
+            ProduktID.Name = "ProduktID";
+            ProduktID.Size = new Size(65, 17);
+            ProduktID.TabIndex = 33;
+            ProduktID.Text = "ProduktID";
             // 
             // FormPrzegladajHistorie
             // 
@@ -89,6 +124,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1462, 728);
+            Controls.Add(ProduktID);
+            Controls.Add(textBoxProduktID);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(buttonSzukaj);
             Controls.Add(dateTimePickerStart);
@@ -109,5 +147,8 @@
         private DateTimePicker dateTimePickerStart;
         private Button buttonSzukaj;
         private Label label1;
+        private Button button1;
+        private TextBox textBoxProduktID;
+        private Label ProduktID;
     }
 }

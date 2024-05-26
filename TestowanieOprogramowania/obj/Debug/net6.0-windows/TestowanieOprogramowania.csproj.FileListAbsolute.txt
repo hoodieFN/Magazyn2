@@ -3515,3 +3515,4 @@ C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn2605e\TestowanieOprog
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn2605e\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.pdb
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn2605e\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.genruntimeconfig.cache
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn2605e\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
+C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn2605e\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormZapisDzienny.resources

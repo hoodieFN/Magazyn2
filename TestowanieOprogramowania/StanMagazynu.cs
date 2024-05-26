@@ -146,21 +146,12 @@ namespace TestowanieOprogramowania
         {
 
         }
-
+        /*
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var formPrzegladaj = new FormPrzegladajHistorie())
-            {
-                var result = formPrzegladaj.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    OdswiezDataGridViewProdukty();
-                }
-
-            }
-            OdswiezDataGridViewProdukty();
+            
         }
-
+        */
         public string PobierzImieNazwisko(int userId)
         {
             string con = PolaczenieBazyDanych.StringPolaczeniowy();
@@ -250,6 +241,25 @@ namespace TestowanieOprogramowania
             OdswiezDataGridViewProdukty();
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (var formPrzegladaj = new FormPrzegladajHistorie())
+            {
+                var result = formPrzegladaj.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    OdswiezDataGridViewProdukty();
+                }
+
+            }
+            OdswiezDataGridViewProdukty();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FormZapisDzienny formZapisDzienny = new FormZapisDzienny();
+            formZapisDzienny.Show();
+        }
     }
 }
 

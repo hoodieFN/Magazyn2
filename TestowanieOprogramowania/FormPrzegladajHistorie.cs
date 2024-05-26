@@ -53,7 +53,7 @@ namespace TestowanieOprogramowania
                   ,[Rejestrujacy]
                   ,[DataZapisu]     
                 FROM 
-                    ProduktyHistoria";
+                    ProduktyHistoria1_Temp";
 
             using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
             {
@@ -90,7 +90,7 @@ namespace TestowanieOprogramowania
               ,[Rejestrujacy]
               ,[DataZapisu]
         FROM 
-            ProduktyHistoria
+            ProduktyHistoria1_Temp
         WHERE 
             DataZapisu = @DataZapisu";
 
@@ -237,6 +237,45 @@ namespace TestowanieOprogramowania
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             OdswiezDataGridViewHistoriaAkcjiPoDacie();
+        }
+        private DataTable WyszukajProduktPoID(int produktID)
+        {
+            
+            string query = "SELECT * FROM ProduktyHistoria1_Temp WHERE ProduktID = @ProduktID";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@ProduktID", SqlDbType.Int)).Value = produktID;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int produktID;
+            if (int.TryParse(textBoxProduktID.Text, out produktID))
+            {
+                DataTable wynik = WyszukajProduktPoID(produktID);
+                if (wynik.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = wynik;
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono produktu o podanym ID.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wprowadź prawidłowy ProduktID.");
+            }
         }
     }
 
