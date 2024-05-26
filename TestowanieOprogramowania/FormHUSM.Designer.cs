@@ -32,6 +32,8 @@
             dataGridView1 = new DataGridView();
             dateTimePickerStart1 = new DateTimePicker();
             dateTimePickerEnd = new DateTimePicker();
+            textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -62,17 +64,33 @@
             // 
             // dateTimePickerStart1
             // 
-            dateTimePickerStart1.Location = new Point(649, 19);
+            dateTimePickerStart1.Location = new Point(428, 18);
             dateTimePickerStart1.Name = "dateTimePickerStart1";
             dateTimePickerStart1.Size = new Size(200, 23);
             dateTimePickerStart1.TabIndex = 27;
             // 
             // dateTimePickerEnd
             // 
-            dateTimePickerEnd.Location = new Point(870, 18);
+            dateTimePickerEnd.Location = new Point(634, 18);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
             dateTimePickerEnd.Size = new Size(200, 23);
             dateTimePickerEnd.TabIndex = 28;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(166, 18);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 29;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Rodzaje towarów", "Nazwy towarów", "Rejestrujacy", "Okres" });
+            comboBox1.Location = new Point(285, 18);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 30;
             // 
             // FormHUSM
             // 
@@ -80,6 +98,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1527, 662);
+            Controls.Add(comboBox1);
+            Controls.Add(textBox1);
             Controls.Add(dateTimePickerEnd);
             Controls.Add(dateTimePickerStart1);
             Controls.Add(dataGridView1);
@@ -89,6 +109,7 @@
             Load += FormHUSM_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -97,5 +118,7 @@
         private DataGridView dataGridView1;
         private DateTimePicker dateTimePickerStart1;
         private DateTimePicker dateTimePickerEnd;
+        private TextBox textBox1;
+        private ComboBox comboBox1;
     }
 }
