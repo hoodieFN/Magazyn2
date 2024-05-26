@@ -233,7 +233,7 @@ namespace TestowanieOprogramowania
         {
 
         }
-
+        
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             OdswiezDataGridViewHistoriaAkcjiPoDacie();
