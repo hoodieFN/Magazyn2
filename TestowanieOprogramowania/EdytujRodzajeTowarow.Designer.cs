@@ -35,7 +35,6 @@
             label1 = new Label();
             listBoxStawkaVAT = new ComboBox();
             label2 = new Label();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -121,23 +120,12 @@
             label2.TabIndex = 49;
             label2.Text = "Stawka VAT";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = SystemColors.Control;
-            label3.Location = new Point(379, 24);
-            label3.Name = "label3";
-            label3.Size = new Size(101, 15);
-            label3.TabIndex = 50;
-            label3.Text = "Dorobic walidacje";
-            // 
             // EdytujRodzajeTowarow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(800, 450);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(listBoxStawkaVAT);
             Controls.Add(label1);
@@ -162,6 +150,5 @@
         private Label label1;
         private ComboBox listBoxStawkaVAT;
         private Label label2;
-        private Label label3;
     }
 }

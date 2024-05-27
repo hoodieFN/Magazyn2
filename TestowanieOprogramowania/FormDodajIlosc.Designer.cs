@@ -27,6 +27,7 @@
             // labelNazwaTowaru
             // 
             labelNazwaTowaru.AutoSize = true;
+            labelNazwaTowaru.ForeColor = SystemColors.Control;
             labelNazwaTowaru.Location = new Point(14, 10);
             labelNazwaTowaru.Margin = new Padding(4, 0, 4, 0);
             labelNazwaTowaru.Name = "labelNazwaTowaru";
@@ -37,6 +38,7 @@
             // labelDostawca
             // 
             labelDostawca.AutoSize = true;
+            labelDostawca.ForeColor = SystemColors.Control;
             labelDostawca.Location = new Point(14, 37);
             labelDostawca.Margin = new Padding(4, 0, 4, 0);
             labelDostawca.Name = "labelDostawca";
@@ -47,6 +49,7 @@
             // labelOpis
             // 
             labelOpis.AutoSize = true;
+            labelOpis.ForeColor = SystemColors.Control;
             labelOpis.Location = new Point(14, 63);
             labelOpis.Margin = new Padding(4, 0, 4, 0);
             labelOpis.Name = "labelOpis";
@@ -57,6 +60,7 @@
             // labelJednostkaMiary
             // 
             labelJednostkaMiary.AutoSize = true;
+            labelJednostkaMiary.ForeColor = SystemColors.Control;
             labelJednostkaMiary.Location = new Point(14, 90);
             labelJednostkaMiary.Margin = new Padding(4, 0, 4, 0);
             labelJednostkaMiary.Name = "labelJednostkaMiary";
@@ -74,19 +78,22 @@
             // 
             // buttonDodaj
             // 
+            buttonDodaj.BackColor = Color.Indigo;
+            buttonDodaj.ForeColor = SystemColors.Control;
             buttonDodaj.Location = new Point(18, 151);
             buttonDodaj.Margin = new Padding(4, 3, 4, 3);
             buttonDodaj.Name = "buttonDodaj";
             buttonDodaj.Size = new Size(140, 27);
             buttonDodaj.TabIndex = 5;
             buttonDodaj.Text = "Dodaj ilość";
-            buttonDodaj.UseVisualStyleBackColor = true;
+            buttonDodaj.UseVisualStyleBackColor = false;
             buttonDodaj.Click += buttonDodaj_Click;
             // 
             // FormDodajIlosc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(331, 186);
             Controls.Add(buttonDodaj);
             Controls.Add(numericUpDownIlosc);
@@ -96,6 +103,7 @@
             Controls.Add(labelNazwaTowaru);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormDodajIlosc";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj ilość produktu";
             Load += FormDodajIlosc_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDownIlosc).EndInit();

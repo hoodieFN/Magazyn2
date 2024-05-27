@@ -183,8 +183,9 @@ namespace TestowanieOprogramowania
         private void button1_Click(object sender, EventArgs e)
         {
             EdytujRodzajeTowarow formEdytuj = new EdytujRodzajeTowarow();
+            comboBoxRodzajTowaru.Items.Clear();
+            formEdytuj.FormClosed += (s, args) => WypelnijRodzajeTowarow();
             formEdytuj.ShowDialog();
-            // LoadRodzajeToComboBox();
         }
         /*
         private void LoadRodzajeToComboBox()
