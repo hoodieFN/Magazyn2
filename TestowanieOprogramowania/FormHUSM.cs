@@ -253,7 +253,8 @@ namespace TestowanieOprogramowania
             }
             else if (comboBox1.SelectedItem.ToString() == "ProduktID")
             {
-                string produktid = textBox1.Text;
+                int produktid;
+                bool isNumeric = int.TryParse(textBox1.Text, out produktid);
 
                 string query = @"SELECT TOP (1000) [ProduktID]
                           ,[NazwaTowaru]
@@ -270,18 +271,19 @@ namespace TestowanieOprogramowania
                           ,[DataZapisu]
                           ,[Operacja]
                       FROM [MagazynTestowanieOprogramowania].[dbo].[ProduktyHistoriaOperacji]
-                      WHERE @ProduktID = '' OR ProduktID LIKE @ProduktID";
+                      WHERE @ProduktID = '' OR ProduktID = @ProduktID";
 
                 using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@ProduktID", string.IsNullOrEmpty(produktid) ? "" : "%" + produktid + "%");
+                        command.Parameters.AddWithValue("@ProduktID", isNumeric ? produktid : 0);
 
                         DataTable dataTable = new DataTable();
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         adapter.Fill(dataTable);
                         dataGridView1.DataSource = dataTable;
+
                         // Formatowanie kolumny DataZapisu aby wyświetlała datę i czas
                         if (dataGridView1.Columns["DataZapisu"] != null)
                         {
@@ -289,7 +291,6 @@ namespace TestowanieOprogramowania
                         }
                     }
                 }
-
             }
         }
 
