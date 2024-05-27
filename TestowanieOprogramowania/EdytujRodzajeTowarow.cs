@@ -17,16 +17,16 @@ namespace TestowanieOprogramowania
         public EdytujRodzajeTowarow()
         {
             InitializeComponent();
-
         }
 
         private void EdytujRodzajeTowarow_Load(object sender, EventArgs e)
         {
             WczytajRodzajeTowarow();
         }
+
         public void WczytajRodzajeTowarow()
         {
-            string query = "SELECT RodzajTowaruID, NazwaRodzaju FROM RodzajeTowarow";
+            string query = "SELECT RodzajTowaruID, NazwaRodzaju, StawkaVAT FROM RodzajeTowarow";
 
             using (SqlConnection conn = new SqlConnection(con))
             {
@@ -38,20 +38,23 @@ namespace TestowanieOprogramowania
                 dataGridView1.DataSource = dt;
             }
         }
-        public void DodajNazweRodzaju(string nazwaRodzaju)
+
+        public void DodajNazweRodzaju(string nazwaRodzaju, string stawkaVAT)
         {
-            string query = "INSERT INTO RodzajeTowarow (NazwaRodzaju) VALUES (@NazwaRodzaju)";
+            string query = "INSERT INTO RodzajeTowarow (NazwaRodzaju, StawkaVAT) VALUES (@NazwaRodzaju, @StawkaVAT)";
 
             using (SqlConnection conn = new SqlConnection(con))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NazwaRodzaju", nazwaRodzaju);
+                    cmd.Parameters.AddWithValue("@StawkaVAT", stawkaVAT);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
         }
+
         public void UsunZaznaczonyWiersz(int rodZajTowaruId)
         {
             string query = "DELETE FROM RodzajeTowarow WHERE RodzajTowaruID = @RodzajTowaruID";
@@ -70,7 +73,22 @@ namespace TestowanieOprogramowania
         private void button1_Click(object sender, EventArgs e)
         {
             string nazwaRodzaju = textBoxNazwaTowaru.Text;
-            DodajNazweRodzaju(nazwaRodzaju);
+            string selectedStawkaVAT = listBoxStawkaVAT.Text;
+
+            // Walidacja, aby upewnić się, że pola nie są puste
+            if (string.IsNullOrWhiteSpace(nazwaRodzaju))
+            {
+                MessageBox.Show("Proszę wpisać nazwę towaru.", "Brak nazwy towaru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(selectedStawkaVAT))
+            {
+                MessageBox.Show("Proszę wybrać stawkę VAT.", "Brak stawki VAT", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DodajNazweRodzaju(nazwaRodzaju, selectedStawkaVAT);
             WczytajRodzajeTowarow();
         }
 

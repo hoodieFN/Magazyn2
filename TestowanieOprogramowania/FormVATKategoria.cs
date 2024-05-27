@@ -64,65 +64,73 @@ namespace TestowanieOprogramowania
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Sprawdzenie, czy wybrano kategorię
+            if (KategoriaTowaru.SelectedItem == null)
             {
-                // Sprawdzenie, czy wybrano kategorię
-                if (KategoriaTowaru.SelectedItem == null)
+                MessageBox.Show("Proszę wybrać kategorię.", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać stawkę VAT.", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Pobranie wybranej kategorii
+            string selectedCategory = KategoriaTowaru.SelectedItem.ToString();
+            string newVatRate = comboBox1.SelectedItem.ToString();
+
+            // Wyświetlenie komunikatu z potwierdzeniem
+            DialogResult result = MessageBox.Show($"Czy na pewno chcesz zmienić stawkę VAT dla wszystkich produktów w kategorii \"{selectedCategory}\"?", "Potwierdzenie zmiany", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Sprawdzenie odpowiedzi użytkownika
+            if (result == DialogResult.Yes)
+            {
+                // Aktualizacja stawki VAT w bazie danych
+                string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
+                string queryProdukty = "UPDATE Produkty SET StawkaVat = @NewVatRate WHERE RodzajTowaru = @CategoryName";
+                string queryRodzajeTowarow = "UPDATE RodzajeTowarow SET StawkaVAT = @NewVatRate WHERE NazwaRodzaju = @CategoryName";
+
+                using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
                 {
-                    MessageBox.Show("Proszę wybrać kategorię.", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Pobranie wybranej kategorii
-                string selectedCategory = KategoriaTowaru.SelectedItem.ToString();
-
-                // Sprawdzenie poprawności wprowadzonej stawki VAT
-                if (!decimal.TryParse(NowaStawka.Text, out decimal newVatRate))
-                {
-                    MessageBox.Show("Proszę wprowadzić poprawną stawkę VAT.", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Wyświetlenie komunikatu z potwierdzeniem
-                DialogResult result = MessageBox.Show($"Czy na pewno chcesz zmienić stawkę VAT dla wszystkich produktów w kategorii \"{selectedCategory}\"?", "Potwierdzenie zmiany", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Sprawdzenie odpowiedzi użytkownika
-                if (result == DialogResult.Yes)
-                {
-                    // Aktualizacja stawki VAT w bazie danych
-                    string StringPolaczeniowy = PolaczenieBazyDanych.StringPolaczeniowy();
-                    string query = "UPDATE Produkty SET StawkaVat = @NewVatRate WHERE RodzajTowaru = @CategoryName";
-
-                    using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+                    using (SqlCommand commandProdukty = new SqlCommand(queryProdukty, connection))
+                    using (SqlCommand commandRodzajeTowarow = new SqlCommand(queryRodzajeTowarow, connection))
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        commandProdukty.Parameters.AddWithValue("@NewVatRate", newVatRate);
+                        commandProdukty.Parameters.AddWithValue("@CategoryName", selectedCategory);
+
+                        commandRodzajeTowarow.Parameters.AddWithValue("@NewVatRate", newVatRate);
+                        commandRodzajeTowarow.Parameters.AddWithValue("@CategoryName", selectedCategory);
+
+                        try
                         {
-                            command.Parameters.AddWithValue("@NewVatRate", newVatRate);
-                            command.Parameters.AddWithValue("@CategoryName", selectedCategory);
+                            connection.Open();
+                            int rowsAffectedProdukty = commandProdukty.ExecuteNonQuery();
+                            int rowsAffectedRodzajeTowarow = commandRodzajeTowarow.ExecuteNonQuery();
 
-                            try
+                            if (rowsAffectedProdukty > 0 || rowsAffectedRodzajeTowarow > 0)
                             {
-                                connection.Open();
-                                int rowsAffected = command.ExecuteNonQuery();
-
-                                if (rowsAffected > 0)
-                                {
-                                    MessageBox.Show("Stawka VAT została zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    OdswiezDataGridViewProdukty(); // Odśwież DataGridView
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nie znaleziono produktów w wybranej kategorii.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                MessageBox.Show("Stawka VAT została zaktualizowana.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                OdswiezDataGridViewProdukty(); // Odśwież DataGridView
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show("Wystąpił błąd podczas aktualizacji: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Nie znaleziono produktów w wybranej kategorii lub kategorii w tabeli rodzajów.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Wystąpił błąd podczas aktualizacji: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
             OdswiezDataGridViewProdukty();
+        }
+
+
+        private void FormVATKategoria_Load(object sender, EventArgs e)
+        {
 
         }
     }

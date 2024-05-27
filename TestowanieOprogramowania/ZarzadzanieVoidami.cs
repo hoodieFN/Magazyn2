@@ -688,7 +688,7 @@ namespace TestowanieOprogramowania
                 }
             }
         }
-        public void EdytowanieStawkiVat(decimal nowaStawka, string selectedItem)
+        public void EdytowanieStawkiVat(string nowaStawka, string selectedItem)
         {
             string query = "UPDATE Produkty SET StawkaVat = @NewVatRate WHERE NazwaTowaru = @ProductName";
 

@@ -56,7 +56,7 @@
             textBoxNazwaTowaru.BackColor = Color.Silver;
             textBoxNazwaTowaru.BorderStyle = BorderStyle.None;
             textBoxNazwaTowaru.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNazwaTowaru.Location = new Point(181, 87);
+            textBoxNazwaTowaru.Location = new Point(109, 43);
             textBoxNazwaTowaru.Name = "textBoxNazwaTowaru";
             textBoxNazwaTowaru.Size = new Size(181, 26);
             textBoxNazwaTowaru.TabIndex = 18;
@@ -65,7 +65,7 @@
             // 
             comboBoxRodzajTowaru.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxRodzajTowaru.FormattingEnabled = true;
-            comboBoxRodzajTowaru.Location = new Point(181, 147);
+            comboBoxRodzajTowaru.Location = new Point(109, 103);
             comboBoxRodzajTowaru.Name = "comboBoxRodzajTowaru";
             comboBoxRodzajTowaru.Size = new Size(181, 30);
             comboBoxRodzajTowaru.TabIndex = 22;
@@ -76,7 +76,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(181, 67);
+            label2.Location = new Point(109, 23);
             label2.Name = "label2";
             label2.Size = new Size(93, 17);
             label2.TabIndex = 23;
@@ -88,7 +88,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(181, 127);
+            label1.Location = new Point(109, 83);
             label1.Name = "label1";
             label1.Size = new Size(92, 17);
             label1.TabIndex = 24;
@@ -99,7 +99,7 @@
             comboBoxJednostkaMiary.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxJednostkaMiary.FormattingEnabled = true;
             comboBoxJednostkaMiary.Items.AddRange(new object[] { "Sztuki", "Kilogramy", "Litry", "Palety" });
-            comboBoxJednostkaMiary.Location = new Point(181, 208);
+            comboBoxJednostkaMiary.Location = new Point(109, 164);
             comboBoxJednostkaMiary.Name = "comboBoxJednostkaMiary";
             comboBoxJednostkaMiary.Size = new Size(181, 30);
             comboBoxJednostkaMiary.TabIndex = 25;
@@ -110,7 +110,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(181, 188);
+            label3.Location = new Point(109, 144);
             label3.Name = "label3";
             label3.Size = new Size(104, 17);
             label3.TabIndex = 26;
@@ -121,7 +121,7 @@
             textBoxIlosc.BackColor = Color.Silver;
             textBoxIlosc.BorderStyle = BorderStyle.None;
             textBoxIlosc.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIlosc.Location = new Point(181, 268);
+            textBoxIlosc.Location = new Point(109, 224);
             textBoxIlosc.Name = "textBoxIlosc";
             textBoxIlosc.Size = new Size(181, 26);
             textBoxIlosc.TabIndex = 27;
@@ -132,7 +132,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(181, 248);
+            label4.Location = new Point(109, 204);
             label4.Name = "label4";
             label4.Size = new Size(35, 17);
             label4.TabIndex = 28;
@@ -144,7 +144,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(407, 67);
+            label5.Location = new Point(109, 317);
             label5.Name = "label5";
             label5.Size = new Size(78, 17);
             label5.TabIndex = 30;
@@ -155,7 +155,7 @@
             comboBoxStawkaVat.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxStawkaVat.FormattingEnabled = true;
             comboBoxStawkaVat.Items.AddRange(new object[] { "23%", "8%", "5%", "0%", "zw" });
-            comboBoxStawkaVat.Location = new Point(407, 87);
+            comboBoxStawkaVat.Location = new Point(109, 337);
             comboBoxStawkaVat.Name = "comboBoxStawkaVat";
             comboBoxStawkaVat.Size = new Size(181, 30);
             comboBoxStawkaVat.TabIndex = 29;
@@ -166,7 +166,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(181, 305);
+            label6.Location = new Point(109, 261);
             label6.Name = "label6";
             label6.Size = new Size(76, 17);
             label6.TabIndex = 32;
@@ -177,7 +177,7 @@
             textBoxCenaNetto.BackColor = Color.Silver;
             textBoxCenaNetto.BorderStyle = BorderStyle.None;
             textBoxCenaNetto.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxCenaNetto.Location = new Point(181, 325);
+            textBoxCenaNetto.Location = new Point(109, 281);
             textBoxCenaNetto.Name = "textBoxCenaNetto";
             textBoxCenaNetto.Size = new Size(181, 26);
             textBoxCenaNetto.TabIndex = 31;
@@ -188,7 +188,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(407, 131);
+            label7.Location = new Point(364, 23);
             label7.Name = "label7";
             label7.Size = new Size(79, 17);
             label7.TabIndex = 34;
@@ -199,7 +199,7 @@
             textBoxOpisTowaru.BackColor = Color.Silver;
             textBoxOpisTowaru.BorderStyle = BorderStyle.None;
             textBoxOpisTowaru.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxOpisTowaru.Location = new Point(407, 151);
+            textBoxOpisTowaru.Location = new Point(364, 43);
             textBoxOpisTowaru.Name = "textBoxOpisTowaru";
             textBoxOpisTowaru.Size = new Size(181, 26);
             textBoxOpisTowaru.TabIndex = 33;
@@ -210,7 +210,7 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(407, 258);
+            label8.Location = new Point(109, 375);
             label8.Name = "label8";
             label8.Size = new Size(69, 17);
             label8.TabIndex = 36;
@@ -221,7 +221,7 @@
             textBoxDostawca.BackColor = Color.Silver;
             textBoxDostawca.BorderStyle = BorderStyle.None;
             textBoxDostawca.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDostawca.Location = new Point(407, 278);
+            textBoxDostawca.Location = new Point(109, 395);
             textBoxDostawca.Name = "textBoxDostawca";
             textBoxDostawca.Size = new Size(181, 26);
             textBoxDostawca.TabIndex = 35;
@@ -229,9 +229,9 @@
             // dateTimePickerDataDostawy
             // 
             dateTimePickerDataDostawy.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerDataDostawy.Location = new Point(407, 336);
+            dateTimePickerDataDostawy.Location = new Point(109, 453);
             dateTimePickerDataDostawy.Name = "dateTimePickerDataDostawy";
-            dateTimePickerDataDostawy.Size = new Size(244, 27);
+            dateTimePickerDataDostawy.Size = new Size(222, 27);
             dateTimePickerDataDostawy.TabIndex = 37;
             // 
             // label9
@@ -240,7 +240,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(407, 316);
+            label9.Location = new Point(109, 433);
             label9.Name = "label9";
             label9.Size = new Size(91, 17);
             label9.TabIndex = 38;
@@ -253,7 +253,7 @@
             buttonDodajProdukt.Cursor = Cursors.Hand;
             buttonDodajProdukt.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodajProdukt.ForeColor = Color.White;
-            buttonDodajProdukt.Location = new Point(518, 413);
+            buttonDodajProdukt.Location = new Point(364, 427);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
             buttonDodajProdukt.Size = new Size(132, 53);
             buttonDodajProdukt.TabIndex = 41;
@@ -268,7 +268,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(656, 413);
+            button1.Location = new Point(513, 427);
             button1.Name = "button1";
             button1.Size = new Size(132, 53);
             button1.TabIndex = 42;
@@ -281,7 +281,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(800, 478);
+            ClientSize = new Size(800, 515);
             Controls.Add(button1);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(label9);

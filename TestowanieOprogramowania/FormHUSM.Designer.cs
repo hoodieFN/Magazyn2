@@ -56,10 +56,10 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 63);
+            dataGridView1.Location = new Point(0, 52);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1503, 587);
+            dataGridView1.Size = new Size(1528, 610);
             dataGridView1.TabIndex = 23;
             // 
             // dateTimePickerStart1

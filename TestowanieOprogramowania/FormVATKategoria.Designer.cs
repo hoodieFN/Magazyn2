@@ -31,11 +31,10 @@
             DGVStawka = new DataGridView();
             button1 = new Button();
             label3 = new Label();
-            NowaStawka = new NumericUpDown();
             label1 = new Label();
             KategoriaTowaru = new ComboBox();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)DGVStawka).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)NowaStawka).BeginInit();
             SuspendLayout();
             // 
             // DGVStawka
@@ -43,12 +42,11 @@
             DGVStawka.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGVStawka.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGVStawka.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVStawka.Location = new Point(-3, 143);
-            DGVStawka.Margin = new Padding(4, 5, 4, 5);
+            DGVStawka.Location = new Point(-2, 86);
             DGVStawka.Name = "DGVStawka";
             DGVStawka.RowHeadersWidth = 51;
             DGVStawka.RowTemplate.Height = 25;
-            DGVStawka.Size = new Size(1869, 907);
+            DGVStawka.Size = new Size(1269, 544);
             DGVStawka.TabIndex = 11;
             // 
             // button1
@@ -58,10 +56,9 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(737, 48);
-            button1.Margin = new Padding(4, 5, 4, 5);
+            button1.Location = new Point(331, 32);
             button1.Name = "button1";
-            button1.Size = new Size(176, 57);
+            button1.Size = new Size(123, 34);
             button1.TabIndex = 36;
             button1.Text = "Zmień";
             button1.UseVisualStyleBackColor = false;
@@ -73,19 +70,11 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(515, 38);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(191, 23);
             label3.Name = "label3";
-            label3.Size = new Size(170, 21);
+            label3.Size = new Size(114, 17);
             label3.TabIndex = 35;
             label3.Text = "Nowa stawka VAT";
-            // 
-            // NowaStawka
-            // 
-            NowaStawka.Location = new Point(515, 74);
-            NowaStawka.Name = "NowaStawka";
-            NowaStawka.Size = new Size(180, 31);
-            NowaStawka.TabIndex = 34;
             // 
             // label1
             // 
@@ -93,10 +82,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(45, 38);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(32, 23);
             label1.Name = "label1";
-            label1.Size = new Size(162, 21);
+            label1.Size = new Size(112, 17);
             label1.TabIndex = 33;
             label1.Text = "Kategoria towaru";
             // 
@@ -104,28 +92,38 @@
             // 
             KategoriaTowaru.DropDownStyle = ComboBoxStyle.DropDownList;
             KategoriaTowaru.FormattingEnabled = true;
-            KategoriaTowaru.Location = new Point(45, 72);
-            KategoriaTowaru.Margin = new Padding(4, 3, 4, 3);
+            KategoriaTowaru.Location = new Point(32, 43);
+            KategoriaTowaru.Margin = new Padding(3, 2, 3, 2);
             KategoriaTowaru.Name = "KategoriaTowaru";
-            KategoriaTowaru.Size = new Size(195, 33);
+            KategoriaTowaru.Size = new Size(138, 23);
             KategoriaTowaru.TabIndex = 31;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "23%", "8%", "5%", "0%", "zw" });
+            comboBox1.Location = new Point(191, 43);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 37;
             // 
             // FormVATKategoria
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(38, 38, 38);
-            ClientSize = new Size(1924, 1050);
+            ClientSize = new Size(1265, 630);
+            Controls.Add(comboBox1);
             Controls.Add(button1);
             Controls.Add(label3);
-            Controls.Add(NowaStawka);
             Controls.Add(label1);
             Controls.Add(KategoriaTowaru);
             Controls.Add(DGVStawka);
+            Margin = new Padding(2);
             Name = "FormVATKategoria";
             Text = "FormVATKategoria";
+            Load += FormVATKategoria_Load;
             ((System.ComponentModel.ISupportInitialize)DGVStawka).EndInit();
-            ((System.ComponentModel.ISupportInitialize)NowaStawka).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,8 +133,8 @@
         private DataGridView DGVStawka;
         private Button button1;
         private Label label3;
-        private NumericUpDown NowaStawka;
         private Label label1;
         private ComboBox KategoriaTowaru;
+        private ComboBox comboBox1;
     }
 }

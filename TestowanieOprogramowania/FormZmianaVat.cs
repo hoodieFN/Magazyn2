@@ -62,16 +62,17 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Proszę wybrać produkt.", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać stawkę VAT.", "Brak wyboru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             // Pobranie wybranego produktu
             string selectedProduct = DGVStawka.SelectedRows[0].Cells[1].Value.ToString();
 
-            // Sprawdzenie poprawności wprowadzonej stawki VAT
-            if (!decimal.TryParse(NowaStawka.Text, out decimal newVatRate))
-            {
-                MessageBox.Show("Proszę wprowadzić poprawną stawkę VAT.", "Błąd danych", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            string newVatRate = comboBox1.SelectedItem.ToString();
+
 
             // Wyświetlenie komunikatu z potwierdzeniem
             DialogResult result = MessageBox.Show($"Czy na pewno chcesz zmienić stawkę VAT dla produktu \"{selectedProduct}\"?", "Potwierdzenie zmiany", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -92,5 +93,11 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("zmiana stawki VAT została anulowana");
             }
         }
-    } }
-    
+
+        private void FormZmianaVat_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+

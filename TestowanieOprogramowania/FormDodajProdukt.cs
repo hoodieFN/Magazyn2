@@ -13,7 +13,7 @@ namespace TestowanieOprogramowania
         {
             InitializeComponent();
             textBoxOpisTowaru.Width = 300;
-            textBoxOpisTowaru.Height = 100;
+            textBoxOpisTowaru.Height = 330;
             textBoxOpisTowaru.Multiline = true; // pozwala na wpisywanie wielu linii tekstu
             WypelnijRodzajeTowarow();
             this.comboBoxRodzajTowaru.SelectedIndexChanged += new System.EventHandler(this.comboBoxRodzajTowaru_SelectedIndexChanged);
