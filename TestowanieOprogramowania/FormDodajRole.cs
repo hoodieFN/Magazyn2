@@ -94,6 +94,36 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
                 return;
             }
+            if (comboRejNowTow.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+            if (comboBoxZmHa.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+
+            if (comboBoxPrzStMag.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+
+            if (comboBoxPHSM.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+            if (comboBoxPHU.SelectedIndex == -1)
+            {
+                MessageBox.Show("Pole 'Edytowanie Roli' nie może być puste.");
+                return;
+            }
+
+
+
             /*if (comboBoxNadUp.SelectedIndex == -1)
             {
                 MessageBox.Show("Pole 'Pakowanie paczek' nie może być puste.");
@@ -102,8 +132,8 @@ namespace TestowanieOprogramowania
 
             // Wstawienie danych do tabeli Uprawnienia w bazie danych
             string query =
-                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoListyUzytkownikow, DostepDoListyUprawnien, DodawanieUzytkownika, UsuwanieUzytkownika, EdytowanieUzytkownika,DodawanieRoli,UsuwanieRoli,EdytowanieRoli, NadajZmienRoleStanowisko) " +
-                "VALUES (@Nazwa, @DostepDoListyUzytkownikow, @DostepDoListyUprawnien, @DodawanieUzytkownika, @UsuwanieUzytkownika, @EdytowanieUzytkownika, @DodawanieRoli, @UsuwanieRoli, @EdytowanieRoli, @NadajZmienRoleStanowisko)";
+                "INSERT INTO dbo.Uprawnienia (Nazwa_stanowiska, DostepDoListyUzytkownikow, DostepDoListyUprawnien, DodawanieUzytkownika, UsuwanieUzytkownika, EdytowanieUzytkownika,DodawanieRoli,UsuwanieRoli,EdytowanieRoli, NadajZmienRoleStanowisko, RejestracjaNowegoTowaru, ZmienHaslo, PrzegladStanuMagazynowego,PrzegladanieHistoriiStanuMagazynowego,PrzegladHistoriiUzupelniania,zmianaVAT) " +
+                "VALUES (@Nazwa, @DostepDoListyUzytkownikow, @DostepDoListyUprawnien, @DodawanieUzytkownika, @UsuwanieUzytkownika, @EdytowanieUzytkownika, @DodawanieRoli, @UsuwanieRoli, @EdytowanieRoli, @NadajZmienRoleStanowisko, @RejestracjaNowegoTowaru, @ZmienHaslo, @PrzegladStanuMagazynowego,@PrzegladanieHistoriiStanuMagazynowego,@PrzegladHistoriiUzupelniania,@zmianaVAT)";
 
             using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
             {
@@ -120,6 +150,14 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.Add(new SqlParameter("@UsuwanieRoli", SqlDbType.NVarChar)).Value = comboBoxUsRol.SelectedItem.ToString();
                     cmd.Parameters.Add(new SqlParameter("@EdytowanieRoli", SqlDbType.NVarChar)).Value = comboBoxEdRol.SelectedItem.ToString();
                     cmd.Parameters.Add(new SqlParameter("@NadajZmienRoleStanowisko", SqlDbType.NVarChar)).Value = comboBoxNadUp.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@RejestracjaNowegoTowaru", SqlDbType.NVarChar)).Value = comboRejNowTow.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@ZmienHaslo", SqlDbType.NVarChar)).Value = comboBoxZmHa.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@PrzegladStanuMagazynowego", SqlDbType.NVarChar)).Value = comboBoxPrzStMag.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@PrzegladanieHistoriiStanuMagazynowego", SqlDbType.NVarChar)).Value = comboBoxPHSM.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@PrzegladHistoriiUzupelniania", SqlDbType.NVarChar)).Value = comboBoxPHU.SelectedItem.ToString();
+                    cmd.Parameters.Add(new SqlParameter("@zmianaVAT", SqlDbType.NVarChar)).Value = comboBoxZSV.SelectedItem.ToString();
+
+
 
                     cmd.ExecuteNonQuery();
                 }

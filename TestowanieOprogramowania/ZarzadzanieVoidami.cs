@@ -461,7 +461,7 @@ namespace TestowanieOprogramowania
             }
         }
 
-        public static bool zmianaVAT()
+        public static bool zmianaVATA()
         {
             int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
@@ -488,6 +488,83 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+
+
+        
+       
+
+        public static bool ZmianaHaslaAdmin()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT ZmienHaslo
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+
+
+
+        public static bool RejestracjaNowegoTowaru()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT RejestracjaNowegoTowaru
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        //1. Pracownik magazynu oraz Kierownik magazynu mają możliwość wyszukiwania towarów po nazwie, rodzaju, oraz imieniu i
+        //nazwisku osoby rejestrującej towar w magazynie
+        //2. Pracownik magazynu oraz Kierownik magazynu mają dostęp do bieżących stanów magazynowych wyszukanego towaru
+
+
+        //PrzegladStanuMagazynowego
 
         public static bool PrzegladStanuMagazynowego()
         {
@@ -517,7 +594,13 @@ namespace TestowanieOprogramowania
             }
         }
 
-        public static bool ZmianaHaslaAdmin()
+
+
+
+
+        //3. Kierownik magazynu ma możliwość przeglądania historycznych stanów magazynowych na wskazaną datę
+
+        public static bool PrzegladanieHistoriiStanuMagazynowego()
         {
             int CurrentUserId = UserSession.CurrentUserId;
             if (CurrentUserId == -1)
@@ -529,7 +612,7 @@ namespace TestowanieOprogramowania
             {
                 conn.Open();
                 string query = @"
-                SELECT ZmienHaslo
+                SELECT PrzegladanieHistoriiStanuMagazynowego
                 FROM Uprawnienia 
                 JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
                 WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
@@ -544,6 +627,96 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+
+
+        public static bool PrzegladHistoriiUzupelniania()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT PrzegladHistoriiUzupelniania
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+        public static bool zmianaVAT()
+        {
+            int CurrentUserId = UserSession.CurrentUserId;
+            if (CurrentUserId == -1)
+            {
+                return false; // Brak zalogowanego użytkownika
+            }
+
+            using (SqlConnection conn = new SqlConnection(StringPolaczeniowy))
+            {
+                conn.Open();
+                string query = @"
+                SELECT zmianaVAT
+                FROM Uprawnienia 
+                JOIN Uzytkownicy ON Uprawnienia.UprawnienieID = Uzytkownicy.IDUprawnienia 
+                WHERE Uzytkownicy.UzytkownikID = @CurrentUserId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CurrentUserId", CurrentUserId);
+
+                    // Zakładamy, że wartość w kolumnie to 'Tak' lub 'Nie'
+                    string dostep = cmd.ExecuteScalar()?.ToString() ?? "Nie";
+                    return dostep.Equals("Tak", StringComparison.OrdinalIgnoreCase);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public List<Produkt> PobierzPodukty()
         {

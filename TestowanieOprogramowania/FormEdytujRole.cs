@@ -26,7 +26,7 @@ namespace TestowanieOprogramowania
 
         private void WczytajDaneRoli()
         {
-            string query = "SELECT [Nazwa_stanowiska], [DostepDoListyUzytkownikow], [DostepDoListyUprawnien], [DodawanieUzytkownika], [UsuwanieUzytkownika], [EdytowanieUzytkownika], [DodawanieRoli], [UsuwanieRoli], [EdytowanieRoli], [NadajZmienRoleStanowisko] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
+            string query = "SELECT [Nazwa_stanowiska], [DostepDoListyUzytkownikow], [DostepDoListyUprawnien], [DodawanieUzytkownika], [UsuwanieUzytkownika], [EdytowanieUzytkownika], [DodawanieRoli], [UsuwanieRoli], [EdytowanieRoli], [NadajZmienRoleStanowisko],[RejestracjaNowegoTowaru],[ZmienHaslo],[PrzegladStanuMagazynowego],[PrzegladanieHistoriiStanuMagazynowego],[PrzegladHistoriiUzupelniania],[zmianaVAT] FROM dbo.Uprawnienia WHERE UprawnienieID = @roleId";
 
             using (SqlConnection connection = new SqlConnection(this.StringPolaczeniowy))
             {
@@ -50,6 +50,14 @@ namespace TestowanieOprogramowania
                         comboBoxUsRol.SelectedItem = reader["UsuwanieRoli"].ToString();
                         comboBoxEdRol.SelectedItem = reader["EdytowanieRoli"].ToString();
                         comboBoxNadUp.SelectedItem = reader["NadajZmienRoleStanowisko"].ToString();
+                        comboRejNowTow.SelectedItem = reader["RejestracjaNowegoTowaru"].ToString();
+                        comboBoxZmHa.SelectedItem = reader["ZmienHaslo"].ToString();
+                        comboBoxPrzStMag.SelectedItem = reader["PrzegladStanuMagazynowego"].ToString();
+                        comboBoxPHSM.SelectedItem = reader["PrzegladanieHistoriiStanuMagazynowego"].ToString();
+                        comboBoxPHU.SelectedItem = reader["PrzegladHistoriiUzupelniania"].ToString();
+                        comboBoxZSV.SelectedItem = reader["zmianaVAT"].ToString();
+
+
                     }
                     reader.Close();
                 }
@@ -78,6 +86,13 @@ namespace TestowanieOprogramowania
             string usuwanieRoli = comboBoxUsRol.SelectedItem.ToString();
             string edytowanieRoli = comboBoxEdRol.SelectedItem.ToString();
             string nadawanieRoli = comboBoxNadUp.SelectedItem.ToString();
+            string rejesrowanieTowaru = comboRejNowTow.SelectedItem.ToString();
+            string zmianaHasla = comboBoxZmHa.SelectedItem.ToString();
+            string przegladStanuMagazynowego = comboBoxPrzStMag.SelectedItem.ToString();
+            string przegladanieHistoriiStanuMagazynowego = comboBoxPHSM.SelectedItem.ToString();
+            string przegladHistoriiUzupelniania = comboBoxPHU.SelectedItem.ToString();
+            string zmianaVAT = comboBoxZSV.SelectedItem.ToString();
+
 
             // Zapytanie SQL do aktualizacji danych roli w bazie danych
             string query = @"UPDATE dbo.Uprawnienia 
@@ -90,7 +105,13 @@ namespace TestowanieOprogramowania
                                  DodawanieRoli = @DodawanieRoli, 
                                  UsuwanieRoli = @UsuwanieRoli, 
                                  EdytowanieRoli = @EdytowanieRoli,
-                            NadajZmienRoleStanowisko=@NadajZmienRoleStanowisko
+                            NadajZmienRoleStanowisko=@NadajZmienRoleStanowisko,
+                            RejestracjaNowegoTowaru=@RejestracjaNowegoTowaru,
+                            ZmienHaslo=@ZmienHaslo,
+                        PrzegladStanuMagazynowego=@PrzegladStanuMagazynowego,
+                        PrzegladanieHistoriiStanuMagazynowego = @PrzegladanieHistoriiStanuMagazynowego,
+                        PrzegladHistoriiUzupelniania = @PrzegladHistoriiUzupelniania,
+                        zmianaVAT = @zmianaVAT
                                  
                              WHERE UprawnienieID = @ID";
 
@@ -137,6 +158,14 @@ namespace TestowanieOprogramowania
                     cmd.Parameters.AddWithValue("@UsuwanieRoli", usuwanieRoli);
                     cmd.Parameters.AddWithValue("@EdytowanieRoli", edytowanieRoli);
                     cmd.Parameters.AddWithValue("@NadajZmienRoleStanowisko", nadawanieRoli);
+                    cmd.Parameters.AddWithValue("@RejestracjaNowegoTowaru", rejesrowanieTowaru);
+                    cmd.Parameters.AddWithValue("@ZmienHaslo", zmianaHasla);
+                    cmd.Parameters.AddWithValue("@PrzegladStanuMagazynowego", przegladStanuMagazynowego);
+                    cmd.Parameters.AddWithValue("@PrzegladanieHistoriiStanuMagazynowego", przegladanieHistoriiStanuMagazynowego);
+                    cmd.Parameters.AddWithValue("@PrzegladHistoriiUzupelniania", przegladHistoriiUzupelniania);
+                    cmd.Parameters.AddWithValue("@zmianaVAT", zmianaVAT);
+
+                    
 
                     cmd.Parameters.AddWithValue("@ID", roleId);
 

@@ -130,16 +130,26 @@ namespace TestowanieOprogramowania
 
         private void buttonDodajProdukt_Click(object sender, EventArgs e)
         {
-            using (var formDodaj = new FormDodajProdukt())
+            if (ZarzadzanieVoidami.RejestracjaNowegoTowaru())
             {
-                var result = formDodaj.ShowDialog();
-                if (result == DialogResult.OK)
+                using (var formDodaj = new FormDodajProdukt())
                 {
-                    OdswiezDataGridViewProdukty();
-                }
+                    var result = formDodaj.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        OdswiezDataGridViewProdukty();
+                    }
 
+                }
+                OdswiezDataGridViewProdukty();
             }
-            OdswiezDataGridViewProdukty();
+            else
+            {
+                MessageBox.Show("Brak uprawnień");
+                return;
+            }
+
+            
         }
 
         private void StanMagazynu_Load_1(object sender, EventArgs e)
@@ -197,21 +207,46 @@ namespace TestowanieOprogramowania
 
         private void buttonHUSM_Click(object sender, EventArgs e)
         {
-            FormHUSM formHUSM = new FormHUSM();
-            formHUSM.ShowDialog();
+            if (ZarzadzanieVoidami.PrzegladHistoriiUzupelniania())
+            {
+                FormHUSM formHUSM = new FormHUSM();
+                formHUSM.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnien do tej sekcji");
+                return;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FormZmianaVat formZmianaVat = new FormZmianaVat();
-            formZmianaVat.ShowDialog();
-            formZmianaVat.FormClosed += (s, args) => OdswiezDataGridViewProdukty();
+            if (ZarzadzanieVoidami.zmianaVATA())
+            {
+                FormZmianaVat formZmianaVat = new FormZmianaVat();
+                formZmianaVat.ShowDialog();
+                formZmianaVat.FormClosed += (s, args) => OdswiezDataGridViewProdukty();
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnien do tej sekcji");
+                return;
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FormVATKategoria formVaTKategoria = new FormVATKategoria();
-            formVaTKategoria.ShowDialog();
+            if (ZarzadzanieVoidami.zmianaVATA())
+            {
+                FormVATKategoria formVaTKategoria = new FormVATKategoria();
+                formVaTKategoria.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnien do tej sekcji");
+                return;
+            }
 
         }
 
@@ -243,16 +278,25 @@ namespace TestowanieOprogramowania
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            using (var formPrzegladaj = new FormPrzegladajHistorie())
-            {
-                var result = formPrzegladaj.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    OdswiezDataGridViewProdukty();
-                }
 
+            if (ZarzadzanieVoidami.PrzegladanieHistoriiStanuMagazynowego())
+            {
+                using (var formPrzegladaj = new FormPrzegladajHistorie())
+                {
+                    var result = formPrzegladaj.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        OdswiezDataGridViewProdukty();
+                    }
+
+                }
+                OdswiezDataGridViewProdukty();
             }
-            OdswiezDataGridViewProdukty();
+            else
+            {
+                MessageBox.Show("Nie masz uprawnień do tej sekcji");
+                return;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)

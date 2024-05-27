@@ -21,14 +21,10 @@ namespace TestowanieOprogramowania
             labelWitajUzytkowniku.Text = $"Witaj, {GetUserName(UserSession.CurrentUserId)}";
             labelRola.Text = $"Rola: {GetUserRole(UserSession.CurrentUserId)}";
             this.FormClosing += new FormClosingEventHandler(FormInitial_FormClosing);
-            if (ZarzadzanieVoidami.PrzegladStanuMagazynowego())
-            {
-                button3.Visible = true;
-            }
-            else
-            {
-                button3.Visible = false;
-            }
+            
+            
+            
+           
 
         }
         private void FormInitial_FormClosing(object sender, FormClosingEventArgs e)
@@ -290,7 +286,16 @@ namespace TestowanieOprogramowania
 
         private void button3_Click(object sender, EventArgs e)
         {
-            loadform(new StanMagazynu());
+            if (ZarzadzanieVoidami.PrzegladStanuMagazynowego())
+            {
+                loadform(new StanMagazynu());
+            }
+            else
+            {
+                MessageBox.Show("Nie masz uprawnien do tej sekcji.");
+                return;
+            }
+            
         }
     }
 

@@ -76,7 +76,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(318, 59);
+            label1.Location = new Point(12, 213);
             label1.Name = "label1";
             label1.Size = new Size(30, 15);
             label1.TabIndex = 18;
@@ -87,11 +87,11 @@
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(305, 77);
+            dataGridView1.Location = new Point(1, 231);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(988, 541);
+            dataGridView1.Size = new Size(1303, 402);
             dataGridView1.TabIndex = 17;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -114,11 +114,11 @@
             // 
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(12, 77);
+            dataGridView2.Location = new Point(12, 27);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(287, 541);
+            dataGridView2.Size = new Size(287, 183);
             dataGridView2.TabIndex = 26;
             // 
             // label3
@@ -126,7 +126,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(12, 59);
+            label3.Location = new Point(12, 9);
             label3.Name = "label3";
             label3.Size = new Size(125, 15);
             label3.TabIndex = 27;
@@ -139,9 +139,9 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(441, 12);
+            button1.Location = new Point(701, 12);
             button1.Name = "button1";
-            button1.Size = new Size(279, 46);
+            button1.Size = new Size(138, 46);
             button1.TabIndex = 28;
             button1.Text = "Lista uprawnien";
             button1.UseVisualStyleBackColor = false;
@@ -154,9 +154,9 @@
             button2.Cursor = Cursors.Hand;
             button2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(726, 12);
+            button2.Location = new Point(845, 12);
             button2.Name = "button2";
-            button2.Size = new Size(279, 46);
+            button2.Size = new Size(160, 46);
             button2.TabIndex = 29;
             button2.Text = "Ukryj liste uprawnien";
             button2.UseVisualStyleBackColor = false;

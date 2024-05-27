@@ -43,6 +43,7 @@ namespace TestowanieOprogramowania
                 buttonEdytujRole.Visible = false;
             }
             label3.Visible = true;
+            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
         }
         private void WczytajDaneDoDataGridView2()
@@ -79,7 +80,7 @@ namespace TestowanieOprogramowania
             }
         }
         private void OdswiezDataGridView()
-        {
+        {/*
             var listaUprawnien = zarzadzanieVoidami.PobierzUprawnienia();
 
             if (listaUprawnien.Count == 0)
@@ -92,7 +93,64 @@ namespace TestowanieOprogramowania
                 dataGridView1.Columns["UprawnienieID"].HeaderText = "ID Roli";
                 dataGridView1.Columns["Nazwa_stanowiska"].HeaderText = "Nazwa Roli";
                 dataGridView1.Columns["NadawanieRoli"].HeaderText = "Nadaj/Zmień Role";
+            }*/
+            string query = @"
+            SELECT TOP (1000) 
+                [UprawnienieID],
+                [Nazwa_stanowiska],
+                [DostepDoListyUzytkownikow],
+                [DostepDoListyUprawnien],
+                [DodawanieUzytkownika],
+                [UsuwanieUzytkownika],
+                [EdytowanieUzytkownika],
+                [DodawanieRoli],
+                [UsuwanieRoli],
+                [EdytowanieRoli],
+                [NadajZmienRoleStanowisko],
+                [ZmienHaslo],
+                [zmianaVAT],
+                [PrzegladStanuMagazynowego],
+                [PrzegladanieHistoriiStanuMagazynowego],
+                [PrzegladHistoriiUzupelniania],
+                [RejestracjaNowegoTowaru]
+            FROM [MagazynTestowanieOprogramowania].[dbo].[Uprawnienia]";
+
+            using (SqlConnection connection = new SqlConnection(StringPolaczeniowy))
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
             }
+            dataGridView1.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.Columns["UprawnienieID"].HeaderText = "ID Roli";
+            dataGridView1.Columns["Nazwa_stanowiska"].HeaderText = "Nazwa Roli";
+            dataGridView1.Columns["NadajZmienRoleStanowisko"].HeaderText = "Nadaj/Zmień Role";
+            dataGridView1.Columns["DostepDoListyUzytkownikow"].HeaderText = "Dostep Do Listy Uzytkownikow";
+            dataGridView1.Columns["DostepDoListyUprawnien"].HeaderText = "Dostep Do Listy Uprawnien";
+            dataGridView1.Columns["DodawanieUzytkownika"].HeaderText = "Dodawanie Uzytkownika";
+            dataGridView1.Columns["UsuwanieUzytkownika"].HeaderText = "Usuwanie Uzytkownika";
+            dataGridView1.Columns["EdytowanieUzytkownika"].HeaderText = "Edytowanie Uzytkownika";
+            dataGridView1.Columns["DodawanieRoli"].HeaderText = "Dodawanie Roli";
+            dataGridView1.Columns["UsuwanieRoli"].HeaderText = "Usuwanie Roli";
+            dataGridView1.Columns["EdytowanieRoli"].HeaderText = "Edytowanie Roli";
+            dataGridView1.Columns["NadajZmienRoleStanowisko"].HeaderText = "Nadaj/Zmien Role/Stanowisko";
+            dataGridView1.Columns["ZmienHaslo"].HeaderText = "Zmiana Hasla";
+            dataGridView1.Columns["zmianaVAT"].HeaderText = "Zmiana stawki VAT";
+            dataGridView1.Columns["PrzegladStanuMagazynowego"].HeaderText = "Przegląd stanów magazynowych (1,2)";
+            dataGridView1.Columns["PrzegladanieHistoriiStanuMagazynowego"].HeaderText = "Przegladanie Historii Stanu Magazynowego na wskazana datę (3)";
+            dataGridView1.Columns["PrzegladHistoriiUzupelniania"].HeaderText = "Przegladanie Historii Uzupełniania Stanów Magazynowych";
+            dataGridView1.Columns["RejestracjaNowegoTowaru"].HeaderText = "Rejestracja Nowego Towaru/Produktu";
+
+
+
+
+
+
+
+
+
+            dataGridView1.AutoResizeColumnHeadersHeight();
         }
 
         private void buttonDodajRole_Click(object sender, EventArgs e)
