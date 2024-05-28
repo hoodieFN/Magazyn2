@@ -78,7 +78,7 @@ namespace TestowanieOprogramowania
             // Walidacja, aby upewnić się, że pola nie są puste
             if (string.IsNullOrWhiteSpace(nazwaRodzaju))
             {
-                MessageBox.Show("Proszę wpisać nazwę towaru.", "Brak nazwy towaru", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Proszę wpisać nazwę rodzaju.", "Brak nazwy rodzaju", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

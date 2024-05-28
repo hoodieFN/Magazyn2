@@ -21,6 +21,8 @@
             labelJednostkaMiary = new Label();
             numericUpDownIlosc = new NumericUpDown();
             buttonDodaj = new Button();
+            label123 = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDownIlosc).BeginInit();
             SuspendLayout();
             // 
@@ -89,12 +91,36 @@
             buttonDodaj.UseVisualStyleBackColor = false;
             buttonDodaj.Click += buttonDodaj_Click;
             // 
+            // label123
+            // 
+            label123.AutoSize = true;
+            label123.ForeColor = SystemColors.Control;
+            label123.Location = new Point(18, 191);
+            label123.Margin = new Padding(4, 0, 4, 0);
+            label123.Name = "label123";
+            label123.Size = new Size(371, 15);
+            label123.TabIndex = 6;
+            label123.Text = "Dla wartości powyżej 100 system przyjmuje wartość maksymalną 100.";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(18, 219);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(332, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Dla wartości poniżej 0 system przyjmuje wartość minimalną 0.";
+            // 
             // FormDodajIlosc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(331, 186);
+            ClientSize = new Size(407, 251);
+            Controls.Add(label1);
+            Controls.Add(label123);
             Controls.Add(buttonDodaj);
             Controls.Add(numericUpDownIlosc);
             Controls.Add(labelJednostkaMiary);
@@ -117,5 +143,7 @@
         private System.Windows.Forms.Label labelJednostkaMiary;
         private System.Windows.Forms.NumericUpDown numericUpDownIlosc;
         private System.Windows.Forms.Button buttonDodaj;
+        private Label label123;
+        private Label label1;
     }
 }
