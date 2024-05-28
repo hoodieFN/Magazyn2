@@ -149,7 +149,7 @@ namespace TestowanieOprogramowania
                 return;
             }
 
-            
+
         }
 
         private void StanMagazynu_Load_1(object sender, EventArgs e)
@@ -232,7 +232,7 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Nie masz uprawnien do tej sekcji");
                 return;
             }
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)

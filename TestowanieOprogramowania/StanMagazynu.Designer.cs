@@ -62,7 +62,7 @@
             comboBoxSzukaj.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSzukaj.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSzukaj.FormattingEnabled = true;
-            comboBoxSzukaj.Items.AddRange(new object[] { "NazwaTowaru", "RodzajTowaru", "Rejestrujacy", "DataRejestracji" });
+            comboBoxSzukaj.Items.AddRange(new object[] { "NazwaTowaru", "RodzajTowaru", "Rejestrujacy" });
             comboBoxSzukaj.Location = new Point(199, 25);
             comboBoxSzukaj.Margin = new Padding(3, 2, 3, 2);
             comboBoxSzukaj.Name = "comboBoxSzukaj";
