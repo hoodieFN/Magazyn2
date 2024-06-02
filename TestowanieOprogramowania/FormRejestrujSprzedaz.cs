@@ -22,7 +22,7 @@ namespace TestowanieOprogramowania
             numericUpDownIloscTowaru.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
             numericUpDownCenaZaTowar.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
-            textBoxNazwaKlienta.Visible = true ;
+            textBoxNazwaKlienta.Visible = true;
             label14.Visible = false;
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -23,6 +23,7 @@
             buttonDodaj = new Button();
             label123 = new Label();
             label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDownIlosc).BeginInit();
             SuspendLayout();
             // 
@@ -113,12 +114,24 @@
             label1.TabIndex = 7;
             label1.Text = "Dla wartości poniżej 0 system przyjmuje wartość minimalną 0.";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(18, 271);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(114, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Dodac data dostawy";
+            // 
             // FormDodajIlosc
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
-            ClientSize = new Size(407, 251);
+            ClientSize = new Size(407, 307);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(label123);
             Controls.Add(buttonDodaj);
@@ -145,5 +158,6 @@
         private System.Windows.Forms.Button buttonDodaj;
         private Label label123;
         private Label label1;
+        private Label label2;
     }
 }

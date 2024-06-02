@@ -4050,3 +4050,4 @@ C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206b\TestowanieOprog
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206b\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.pdb
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206b\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.genruntimeconfig.cache
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206b\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
+C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206b\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormSprzedazDetails.resources

@@ -27,6 +27,8 @@ namespace TestowanieOprogramowania
             labelJednostkaMiary.Text = $"Jednostka miary: {_jednostkaMiary}";
         }
 
+
+
         private void buttonDodaj_Click(object sender, EventArgs e)
         {
             int ilosc = (int)numericUpDownIlosc.Value;

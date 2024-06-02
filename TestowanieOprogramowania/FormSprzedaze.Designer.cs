@@ -31,7 +31,6 @@
             button4 = new Button();
             dataGridView1 = new DataGridView();
             label1 = new Label();
-            label2 = new Label();
             textBoxFilter = new TextBox();
             comboBoxColumns = new ComboBox();
             button1 = new Button();
@@ -69,26 +68,17 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(1029, 525);
             dataGridView1.TabIndex = 10;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(117, 416);
+            label1.Location = new Point(95, 488);
             label1.Name = "label1";
-            label1.Size = new Size(764, 15);
+            label1.Size = new Size(346, 15);
             label1.TabIndex = 11;
-            label1.Text = "Tu są sprzedaze trzeba dodac filtorwanie i ejszcze trigera ze jak sprzedane zostały 2 produkty to w histori magazynowej jest ze (sprzedano 2 sztuk)";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(117, 483);
-            label2.Name = "label2";
-            label2.Size = new Size(707, 15);
-            label2.TabIndex = 12;
-            label2.Text = "tutaj wyswietlac najwazniejsze informacje i jak sie kliknie to więcej info zrobic tak ze jet id sprzedazy i produkty do tego i kto zamawial";
+            label1.Text = "Dodac trigera aktualizujacego historei magazynow i uprawnienia";
             // 
             // textBoxFilter
             // 
@@ -189,7 +179,6 @@
             Controls.Add(button1);
             Controls.Add(comboBoxColumns);
             Controls.Add(textBoxFilter);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(button4);
@@ -208,7 +197,6 @@
         private Button button4;
         private DataGridView dataGridView1;
         private Label label1;
-        private Label label2;
         private TextBox textBoxFilter;
         private ComboBox comboBoxColumns;
         private Button button1;

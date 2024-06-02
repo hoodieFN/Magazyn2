@@ -213,9 +213,9 @@
             label6.ForeColor = SystemColors.Control;
             label6.Location = new Point(20, 235);
             label6.Name = "label6";
-            label6.Size = new Size(101, 15);
+            label6.Size = new Size(13, 15);
             label6.TabIndex = 24;
-            label6.Text = "Przychód WYLICZ";
+            label6.Text = "  ";
             // 
             // label7
             // 

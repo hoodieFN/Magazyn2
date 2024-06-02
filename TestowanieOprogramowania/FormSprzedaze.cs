@@ -22,6 +22,8 @@ namespace TestowanieOprogramowania
 
             // Add event handler for comboBoxColumns.SelectedIndexChanged
             comboBoxColumns.SelectedIndexChanged += comboBoxColumns_SelectedIndexChanged;
+            // Add event handler for row double-click
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -152,7 +154,20 @@ namespace TestowanieOprogramowania
                 }
             }
         }
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                int idSprzedazy = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["IDSprzedazy"].Value);
+                FormSprzedazDetails formDetails = new FormSprzedazDetails(idSprzedazy, con);
+                formDetails.ShowDialog();
+            }
+        }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
 
 
