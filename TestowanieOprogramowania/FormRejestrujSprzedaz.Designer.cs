@@ -139,7 +139,10 @@
             // 
             // numericUpDownCenaZaTowar
             // 
+            numericUpDownCenaZaTowar.DecimalPlaces = 2;
+            numericUpDownCenaZaTowar.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             numericUpDownCenaZaTowar.Location = new Point(21, 167);
+            numericUpDownCenaZaTowar.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownCenaZaTowar.Name = "numericUpDownCenaZaTowar";
             numericUpDownCenaZaTowar.Size = new Size(120, 23);
             numericUpDownCenaZaTowar.TabIndex = 15;

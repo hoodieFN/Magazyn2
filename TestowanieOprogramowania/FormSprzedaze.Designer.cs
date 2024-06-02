@@ -74,11 +74,11 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(95, 488);
+            label1.Location = new Point(29, 452);
             label1.Name = "label1";
-            label1.Size = new Size(346, 15);
+            label1.Size = new Size(383, 15);
             label1.TabIndex = 11;
-            label1.Text = "Dodac trigera aktualizujacego historei magazynow i uprawnienia";
+            label1.Text = "Dodac trigera aktualizujacego historei magazynow | Zrobic uprawnienia";
             // 
             // textBoxFilter
             // 
