@@ -3958,3 +3958,4 @@ C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206a\TestowanieOprog
 C:\Users\cayna\source\repos\TestowanieOprogramowaniaMagazyn0206a\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.genruntimeconfig.cache
 C:\Users\cayna\source\repos\TestowanieOprogramowaniaMagazyn0206a\TestowanieOprogramowania\obj\Debug\net6.0-windows\ref\TestowanieOprogramowania.dll
 C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206a\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormRejestrujSprzedaz.resources
+C:\Users\cayna\Source\Repos\TestowanieOprogramowaniaMagazyn0206a\TestowanieOprogramowania\obj\Debug\net6.0-windows\TestowanieOprogramowania.FormKoszykInfo.resources

@@ -21,6 +21,22 @@ namespace TestowanieOprogramowania
             OdswiezKoszyk();
             numericUpDownIloscTowaru.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
             numericUpDownCenaZaTowar.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+        }
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Pobranie nazwy towaru z zaznaczonego wiersza
+                string nazwaTowaru = dataGridView1.Rows[e.RowIndex].Cells["NazwaTowaru"].Value.ToString();
+
+                // Utworzenie nowego formularza i przekazanie nazwy towaru
+                FormKoszykInfo formDetails = new FormKoszykInfo();
+                formDetails.LoadProductDetails(nazwaTowaru);
+
+                // Otwarcie nowego formularza
+                formDetails.ShowDialog();
+            }
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
