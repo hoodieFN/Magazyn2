@@ -111,6 +111,7 @@
             Name = "FromResetPas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Resetuj hasło";
+            Load += FromResetPas_Load;
             ResumeLayout(false);
             PerformLayout();
         }

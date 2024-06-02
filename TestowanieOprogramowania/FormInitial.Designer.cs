@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelslide = new Panel();
+            button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -44,6 +45,7 @@
             // panelslide
             // 
             panelslide.BackColor = Color.FromArgb(24, 24, 24);
+            panelslide.Controls.Add(button4);
             panelslide.Controls.Add(button3);
             panelslide.Controls.Add(button2);
             panelslide.Controls.Add(button1);
@@ -58,6 +60,20 @@
             panelslide.Size = new Size(194, 630);
             panelslide.TabIndex = 0;
             panelslide.Paint += panelslide_Paint;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Indigo;
+            button4.Cursor = Cursors.Hand;
+            button4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.ControlLightLight;
+            button4.Location = new Point(12, 305);
+            button4.Name = "button4";
+            button4.Size = new Size(171, 49);
+            button4.TabIndex = 8;
+            button4.Text = "Sprzedaże";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -205,5 +221,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }

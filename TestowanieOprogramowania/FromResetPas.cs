@@ -32,9 +32,14 @@ namespace TestowanieOprogramowania
             odzyskajhaslo.ResetPassword(username, mail, (message) =>
             {
                 return MessageBox.Show(message, "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-                
+
             });
-            
+
+        }
+
+        private void FromResetPas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

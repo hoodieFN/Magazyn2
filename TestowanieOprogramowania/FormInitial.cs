@@ -16,15 +16,15 @@ namespace TestowanieOprogramowania
     {
         public FormInitial()
         {
-            
+
             InitializeComponent();
             labelWitajUzytkowniku.Text = $"Witaj, {GetUserName(UserSession.CurrentUserId)}";
             labelRola.Text = $"Rola: {GetUserRole(UserSession.CurrentUserId)}";
             this.FormClosing += new FormClosingEventHandler(FormInitial_FormClosing);
-            
-            
-            
-           
+
+
+
+
 
         }
         private void FormInitial_FormClosing(object sender, FormClosingEventArgs e)
@@ -295,7 +295,12 @@ namespace TestowanieOprogramowania
                 MessageBox.Show("Nie masz uprawnien do tej sekcji.");
                 return;
             }
-            
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            loadform(new FormSprzedaze());
         }
     }
 
