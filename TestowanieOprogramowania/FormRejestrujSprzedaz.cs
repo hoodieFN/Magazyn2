@@ -22,6 +22,8 @@ namespace TestowanieOprogramowania
             numericUpDownIloscTowaru.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
             numericUpDownCenaZaTowar.ValueChanged += new EventHandler(NumericUpDown_ValueChanged);
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            textBoxNazwaKlienta.Visible = true ;
+            label14.Visible = false;
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -212,6 +214,7 @@ namespace TestowanieOprogramowania
 
                 OdswiezKoszyk();
             }
+            CheckDataGridViewRows();
 
         }
 
@@ -256,15 +259,18 @@ namespace TestowanieOprogramowania
 
                 // Odśwież zawartość DataGridView
                 OdswiezKoszyk();
+                CheckDataGridViewRows();
             }
             else
             {
                 MessageBox.Show("Proszę zaznaczyć wiersz do usunięcia.");
             }
+            CheckDataGridViewRows();
         }
 
         private void buttonZarejestrujSprzedaz_Click(object sender, EventArgs e)
         {
+            string imieNazwiskoRejestr = PobierzImieNazwisko(UserSession.CurrentUserId);
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
@@ -285,9 +291,9 @@ namespace TestowanieOprogramowania
                     {
                         string insertQuery = @"
                 INSERT INTO dbo.Sprzedaz
-                (ProduktID, NazwaTowaru, RodzajTowaru, JednostkaMiary, Ilosc, CenaNetto, StawkaVAT, Opis, Dostawca, DataDostawy, DataRejestracji, Rejestrujacy, NazwaTowaruNowa, IloscTowaru, CenaZaTowar, Przychod, NazwaKlienta, Miejscowosc, KodPocztowy, Ulica, NrDomu, DataSprzedazy, IDSprzedazy)
+                (ProduktID, NazwaTowaru, RodzajTowaru, JednostkaMiary, Ilosc, CenaNetto, StawkaVAT, Opis, Dostawca, DataDostawy, DataRejestracji, Rejestrujacy, NazwaTowaruNowa, IloscTowaru, CenaZaTowar, Przychod, NazwaKlienta, Miejscowosc, KodPocztowy, Ulica, NrDomu, DataSprzedazy, IDSprzedazy, NazwaSprzedawcy)
                 VALUES
-                (@ProduktID, @NazwaTowaru, @RodzajTowaru, @JednostkaMiary, @Ilosc, @CenaNetto, @StawkaVAT, @Opis, @Dostawca, @DataDostawy, @DataRejestracji, @Rejestrujacy, @NazwaTowaruNowa, @IloscTowaru, @CenaZaTowar, @Przychod, @NazwaKlienta, @Miejscowosc, @KodPocztowy, @Ulica, @NrDomu, @DataSprzedazy, @IDSprzedazy)";
+                (@ProduktID, @NazwaTowaru, @RodzajTowaru, @JednostkaMiary, @Ilosc, @CenaNetto, @StawkaVAT, @Opis, @Dostawca, @DataDostawy, @DataRejestracji, @Rejestrujacy, @NazwaTowaruNowa, @IloscTowaru, @CenaZaTowar, @Przychod, @NazwaKlienta, @Miejscowosc, @KodPocztowy, @Ulica, @NrDomu, @DataSprzedazy, @IDSprzedazy, @NazwaSprzedawcy)";
 
                         SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
                         insertCmd.Parameters.AddWithValue("@ProduktID", row["ProduktID"]);
@@ -313,6 +319,7 @@ namespace TestowanieOprogramowania
                         insertCmd.Parameters.AddWithValue("@NrDomu", row["NrDomu"]);
                         insertCmd.Parameters.AddWithValue("@DataSprzedazy", row["DataSprzedazy"]);
                         insertCmd.Parameters.AddWithValue("@IDSprzedazy", nextSaleID);
+                        insertCmd.Parameters.AddWithValue("@NazwaSprzedawcy", imieNazwiskoRejestr);
 
                         insertCmd.ExecuteNonQuery();
                     }
@@ -321,6 +328,8 @@ namespace TestowanieOprogramowania
                     SqlCommand deleteCmd = new SqlCommand("DELETE FROM dbo.Koszyk", conn);
                     deleteCmd.ExecuteNonQuery();
 
+                    MessageBox.Show("Pomyślnie zarejestrowano sprzedaż");
+
                     // Odśwież zawartość DataGridView
                     OdswiezKoszyk();
                 }
@@ -328,7 +337,9 @@ namespace TestowanieOprogramowania
                 {
                     MessageBox.Show("Koszyk jest pusty.");
                 }
+
             }
+            CheckDataGridViewRows();
         }
 
         private void NumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -420,6 +431,7 @@ namespace TestowanieOprogramowania
             {
                 MessageBox.Show("Proszę zaznaczyć wiersz w koszyku.");
             }
+            CheckDataGridViewRows();
         }
         private void UpdateIloscProdukty(string nazwaTowaru, decimal nowaIloscDostepna)
         {
@@ -443,6 +455,65 @@ namespace TestowanieOprogramowania
                     MessageBox.Show("Ilość produktu w magazynie została zaktualizowana.");
                 }
             }
+        }
+
+
+        private void CheckDataGridViewRows()
+        {
+            // Sprawdzamy ilość wierszy w DataGridView, z wyłączeniem wiersza nowego wiersza (jeśli AllowUserToAddRows = true)
+            int rowCount = dataGridView1.Rows.Count;
+
+            // Jeśli AllowUserToAddRows jest włączone, musimy odjąć ten dodatkowy wiersz od liczby wierszy
+            if (dataGridView1.AllowUserToAddRows)
+            {
+                rowCount--;
+            }
+
+            // Jeśli ilość wierszy jest większa od 0
+            if (rowCount > 0)
+            {
+                // Ustawiamy widoczność textBoxNazwaKlienta na false
+                textBoxNazwaKlienta.Visible = false;
+                label14.Visible = true;
+            }
+            else
+            {
+                // W przeciwnym wypadku ustawiamy widoczność na true
+                textBoxNazwaKlienta.Visible = true;
+                label14.Visible = false;
+            }
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            CheckDataGridViewRows();
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CheckDataGridViewRows();
+        }
+        public string PobierzImieNazwisko(int userId)
+        {
+            string fullName = "";
+
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                string query = "SELECT CONCAT(Imie, ' ', Nazwisko) AS PelneImieNazwisko FROM Uzytkownicy WHERE UzytkownikID = @UzytkownikID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UzytkownikID", userId);
+
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+
+                    if (result != null)
+                        fullName = result.ToString();
+                }
+            }
+
+            return fullName;
         }
 
     }

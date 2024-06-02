@@ -56,6 +56,7 @@
             numericUpDown1 = new NumericUpDown();
             button1 = new Button();
             label13 = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownIloscTowaru).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownCenaZaTowar).BeginInit();
@@ -329,12 +330,23 @@
             label13.TabIndex = 35;
             label13.Text = "Nowa ilosc";
             // 
+            // label14
+            // 
+            label14.ForeColor = SystemColors.Control;
+            label14.Location = new Point(20, 282);
+            label14.MaximumSize = new Size(300, 300);
+            label14.Name = "label14";
+            label14.Size = new Size(200, 30);
+            label14.TabIndex = 36;
+            label14.Text = "Nazwa klienta dla jednego koszyka musi byc taka sama";
+            // 
             // FormRejestrujSprzedaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1089, 438);
+            Controls.Add(label14);
             Controls.Add(label13);
             Controls.Add(button1);
             Controls.Add(numericUpDown1);
@@ -405,5 +417,6 @@
         private NumericUpDown numericUpDown1;
         private Button button1;
         private Label label13;
+        private Label label14;
     }
 }

@@ -32,6 +32,15 @@
             dataGridView1 = new DataGridView();
             label1 = new Label();
             label2 = new Label();
+            textBoxFilter = new TextBox();
+            comboBoxColumns = new ComboBox();
+            button1 = new Button();
+            dateTimePickerStart = new DateTimePicker();
+            dateTimePickerEnd = new DateTimePicker();
+            labelOd = new Label();
+            labelDo = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -65,7 +74,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(12, 30);
+            label1.Location = new Point(117, 416);
             label1.Name = "label1";
             label1.Size = new Size(764, 15);
             label1.TabIndex = 11;
@@ -75,11 +84,95 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(59, 54);
+            label2.Location = new Point(117, 483);
             label2.Name = "label2";
             label2.Size = new Size(707, 15);
             label2.TabIndex = 12;
             label2.Text = "tutaj wyswietlac najwazniejsze informacje i jak sie kliknie to więcej info zrobic tak ze jet id sprzedazy i produkty do tego i kto zamawial";
+            // 
+            // textBoxFilter
+            // 
+            textBoxFilter.Location = new Point(12, 27);
+            textBoxFilter.Name = "textBoxFilter";
+            textBoxFilter.Size = new Size(104, 23);
+            textBoxFilter.TabIndex = 13;
+            // 
+            // comboBoxColumns
+            // 
+            comboBoxColumns.FormattingEnabled = true;
+            comboBoxColumns.Items.AddRange(new object[] { "Nabywca", "Sprzedawca", "Towary", "DataSprzedazy" });
+            comboBoxColumns.Location = new Point(127, 27);
+            comboBoxColumns.Name = "comboBoxColumns";
+            comboBoxColumns.Size = new Size(121, 23);
+            comboBoxColumns.TabIndex = 14;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Indigo;
+            button1.Cursor = Cursors.Hand;
+            button1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(264, 27);
+            button1.Name = "button1";
+            button1.Size = new Size(111, 25);
+            button1.TabIndex = 15;
+            button1.Text = "Szukaj";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // dateTimePickerStart
+            // 
+            dateTimePickerStart.Location = new Point(392, 27);
+            dateTimePickerStart.Name = "dateTimePickerStart";
+            dateTimePickerStart.Size = new Size(200, 23);
+            dateTimePickerStart.TabIndex = 16;
+            // 
+            // dateTimePickerEnd
+            // 
+            dateTimePickerEnd.Location = new Point(598, 27);
+            dateTimePickerEnd.Name = "dateTimePickerEnd";
+            dateTimePickerEnd.Size = new Size(200, 23);
+            dateTimePickerEnd.TabIndex = 17;
+            // 
+            // labelOd
+            // 
+            labelOd.AutoSize = true;
+            labelOd.ForeColor = SystemColors.Control;
+            labelOd.Location = new Point(392, 9);
+            labelOd.Name = "labelOd";
+            labelOd.Size = new Size(23, 15);
+            labelOd.TabIndex = 18;
+            labelOd.Text = "Od";
+            // 
+            // labelDo
+            // 
+            labelDo.AutoSize = true;
+            labelDo.ForeColor = SystemColors.Control;
+            labelDo.Location = new Point(598, 12);
+            labelDo.Name = "labelDo";
+            labelDo.Size = new Size(22, 15);
+            labelDo.TabIndex = 19;
+            labelDo.Text = "Do";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = SystemColors.Control;
+            label3.Location = new Point(12, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(104, 15);
+            label3.TabIndex = 20;
+            label3.Text = "Wyszukaj sprzedaż";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = SystemColors.Control;
+            label4.Location = new Point(127, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(105, 15);
+            label4.TabIndex = 21;
+            label4.Text = "Kategoria szukania";
             // 
             // FormSprzedaze
             // 
@@ -87,6 +180,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(24, 24, 24);
             ClientSize = new Size(1031, 599);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(labelDo);
+            Controls.Add(labelOd);
+            Controls.Add(dateTimePickerEnd);
+            Controls.Add(dateTimePickerStart);
+            Controls.Add(button1);
+            Controls.Add(comboBoxColumns);
+            Controls.Add(textBoxFilter);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
@@ -95,6 +197,7 @@
             Name = "FormSprzedaze";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormSprzedaze";
+            Load += FormSprzedaze_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -106,5 +209,14 @@
         private DataGridView dataGridView1;
         private Label label1;
         private Label label2;
+        private TextBox textBoxFilter;
+        private ComboBox comboBoxColumns;
+        private Button button1;
+        private DateTimePicker dateTimePickerStart;
+        private DateTimePicker dateTimePickerEnd;
+        private Label labelOd;
+        private Label labelDo;
+        private Label label3;
+        private Label label4;
     }
 }
