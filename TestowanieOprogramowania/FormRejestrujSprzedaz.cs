@@ -24,6 +24,7 @@ namespace TestowanieOprogramowania
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             textBoxNazwaKlienta.Visible = true;
             label14.Visible = false;
+            CheckDataGridViewRows();
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -76,8 +77,22 @@ namespace TestowanieOprogramowania
 
         private void buttonDodajDoKoszyka_Click(object sender, EventArgs e)
         {
-            string nazwaTowaru = comboBoxNazwaTowaru.SelectedItem.ToString();
             decimal iloscZamawiana = numericUpDownIloscTowaru.Value;
+
+            // Walidacja
+            if (comboBoxNazwaTowaru.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać nazwę towaru.");
+                return;
+            }
+
+            string nazwaTowaru = comboBoxNazwaTowaru.SelectedItem.ToString();
+
+            if (numericUpDownIloscTowaru.Value <= 0)
+            {
+                MessageBox.Show("Ilość towaru do sprzedania musi być większa niż 0.");
+                return;
+            }
 
 
             //Walidacja

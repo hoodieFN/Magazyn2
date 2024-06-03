@@ -30,7 +30,6 @@
         {
             button4 = new Button();
             dataGridView1 = new DataGridView();
-            label1 = new Label();
             textBoxFilter = new TextBox();
             comboBoxColumns = new ComboBox();
             button1 = new Button();
@@ -69,16 +68,6 @@
             dataGridView1.Size = new Size(1029, 525);
             dataGridView1.TabIndex = 10;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(29, 452);
-            label1.Name = "label1";
-            label1.Size = new Size(383, 15);
-            label1.TabIndex = 11;
-            label1.Text = "Dodac trigera aktualizujacego historei magazynow | Zrobic uprawnienia";
             // 
             // textBoxFilter
             // 
@@ -179,7 +168,6 @@
             Controls.Add(button1);
             Controls.Add(comboBoxColumns);
             Controls.Add(textBoxFilter);
-            Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(button4);
             FormBorderStyle = FormBorderStyle.None;
@@ -196,7 +184,6 @@
 
         private Button button4;
         private DataGridView dataGridView1;
-        private Label label1;
         private TextBox textBoxFilter;
         private ComboBox comboBoxColumns;
         private Button button1;
