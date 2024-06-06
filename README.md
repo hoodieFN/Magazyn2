@@ -40,5 +40,12 @@ b) Główne funkcje systemu
 - Zarządzanie uprawnieniami do różnych funkcji systemu.
 - Definiowanie ról i przypisywanie ich użytkownikom.
 
+# Przykładowe screeny porgamu
+### FORM LOGIN
+![Ekran główny](images/1.png)
+### FORM STRONA GŁÓWNA
+![Ekran główny](images/2.png)
+
+
 
 Znalazłeś błędy w programie? Pisz DM!
