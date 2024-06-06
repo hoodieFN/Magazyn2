@@ -1,5 +1,5 @@
 # Projekt Magazyn
-Jak pobrać projekt?
+##Jak pobrać projekt?
 - pobierz bazę, wgraj backup do SQL Server (link do bazy: https://drive.google.com/file/d/1vFboBLp07vut0vxiCZxTukFnz5datJjY/view?usp=sharing)
 - pobierz projekt poprzez Open with Visual Studio
 - zmień nazwę Data Source w projekcie na nazwę swojego serwera w SQL Server (nazwę serwera pobierzesz poprzez zapytanie SELECT @@SERVERNAME)
