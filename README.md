@@ -1,4 +1,4 @@
-## Projekt Magazyn
+# Projekt Magazyn
 Jak pobrać projekt?
 - pobierz bazę, wgraj backup do SQL Server (link do bazy: https://drive.google.com/file/d/1vFboBLp07vut0vxiCZxTukFnz5datJjY/view?usp=sharing)
 - pobierz projekt poprzez Open with Visual Studio
@@ -7,7 +7,7 @@ Jak pobrać projekt?
 - projekt powinien działać w razie problemów pisz DM
 
 
-# Opis projektu:
+## Opis projektu:
 a) Cel projektu:
 Projekt jest systemem zarządzania magazynem, który pozwala na śledzenie stanów magazynowych, zarządzanie użytkownikami oraz ich uprawnieniami, a także zarządzanie produktami i przeglądanie histori operacji magazynowych.
 
