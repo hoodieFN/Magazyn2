@@ -55,7 +55,6 @@ b) Główne funkcje systemu
 ### UPRAWNIENIA
 ![f](images/8.png)
 ### STAN MAGAZYNOWY
-![f](images/8.png)
 ![f](images/9.png)
 ![f](images/10.png)
 ![f](images/11.png)
