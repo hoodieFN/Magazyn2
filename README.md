@@ -41,11 +41,39 @@ b) Główne funkcje systemu
 - Definiowanie ról i przypisywanie ich użytkownikom.
 
 # Przykładowe screeny porgamu
-### FORM LOGIN
-![Ekran główny](images/1.png)
-### FORM STRONA GŁÓWNA
-![Ekran główny](images/2.png)
+### LOGIN
+![Login](images/1.png)
+### STRONA GŁÓWNA
+![Strona główna](images/2.png)
+### ZARZĄDZANIE UŻYTKOWNIKAMI
+![a](images/3.png)
+![b](images/4.png)
+![c](images/5.png)
+![d](images/6.png)
+### ROLE
+![e](images/7.png)
+### UPRAWNIENIA
+![f](images/8.png)
+### STAN MAGAZYNOWY
+![f](images/8.png)
+![f](images/9.png)
+![f](images/10.png)
+![f](images/11.png)
+![f](images/12.png)
+![f](images/13.png)
+![f](images/14.png)
+### SPRZEDAŻ
+![f](images/15.png)
+![f](images/16.png)
+### ZMIANA HASŁA W SYSTEMIE
+![f](images/17.png)
+### RESET HASŁA
+![f](images/18.png)
+![f](images/19.png)
+W systemie jeszcze nie ma funkcjonalności rejestracji samodzielnie!
 
-
-
+# Błędy?
 Znalazłeś błędy w programie? Pisz DM!
+
+# Dokumentacja
+Dokumentacja wkrótce
