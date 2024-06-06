@@ -69,6 +69,7 @@ b) Główne funkcje systemu
 ### RESET HASŁA
 ![f](images/18.png)
 ![f](images/19.png)
+
 W systemie jeszcze nie ma funkcjonalności rejestracji samodzielnie!
 
 # Błędy?
