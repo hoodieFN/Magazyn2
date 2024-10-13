@@ -77,3 +77,71 @@ Znalazłeś błędy w programie? Pisz DM!
 
 # Dokumentacja
 Dokumentacja wkrótce
+
+
+### ENG
+
+Warehouse Project
+How to download the project:
+Download the database and upload the backup to SQL Server (link: Download here)
+Open the project in Visual Studio.
+Change the Data Source in the project to match your SQL Server name (get it via the query SELECT @@SERVERNAME).
+Log in using: Login: kamilslimak Password: haslo111.
+If you encounter any issues, contact via DM.
+Project description:
+a) Goal: A warehouse management system that tracks inventory, manages users, roles, and permissions, and oversees products and operation history.
+
+b) Main features:
+
+1. User Management:
+Add, edit, delete users.
+Assign roles and permissions.
+Change user passwords with security protocols.
+2. Product Management:
+Add and update products.
+View and search inventory.
+3. Inventory Management:
+Add/remove product quantities.
+View current inventory and operation history.
+4. VAT Management:
+Update and manage VAT rates and categories.
+5. Sales Registration:
+Register product sales and view sales history, including details on customers and sellers.
+6. Roles and Permissions:
+Define and assign roles to users.
+
+# SAMPLE SCREENS
+### LOGIN
+![Login](images/1.png)
+### MAIN PAGE
+![Strona główna](images/2.png)
+### USER MANAGEMENT
+![a](images/3.png)
+![b](images/4.png)
+![c](images/5.png)
+![d](images/6.png)
+### ROLES
+![e](images/7.png)
+### RIGHTS
+![f](images/8.png)
+### STOCK STATUS
+![f](images/9.png)
+![f](images/10.png)
+![f](images/11.png)
+![f](images/12.png)
+![f](images/13.png)
+![f](images/14.png)
+### SALES
+![f](images/15.png)
+![f](images/16.png)
+### CHANGE PASSWORD
+![f](images/17.png)
+### RESET PASSWORD
+![f](images/18.png)
+![f](images/19.png)
+
+Bugs?
+Found any issues? Contact via DM.
+
+Documentation:
+Documentation coming soon.
